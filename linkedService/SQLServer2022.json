@@ -1,0 +1,22 @@
+{
+	"name": "SQLServer2022",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"parameters": {
+			"dbname": {
+				"type": "String",
+				"defaultValue": "TSQL2012"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=localhost;initial catalog=@{linkedService().dbname};user id=lnewport",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI5YzlhOTE0MC02YmMzLTRiOTAtODk3OC1lNTg2YWM5NTBhM2EiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "MSI",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
