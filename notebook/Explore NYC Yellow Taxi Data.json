@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "77a5b060-2205-49ca-a837-244ffc441760"
+				"spark.autotune.trackingId": "11a41c90-14d1-4205-8f6a-8a84533aaa57"
 			}
 		},
 		"metadata": {
@@ -82,7 +82,7 @@
 					"nyc_tlc = NycTlcYellow(start_date=start_date, end_date=end_date)\n",
 					"df_nyc_tlc = nyc_tlc.to_spark_dataframe()"
 				],
-				"execution_count": 2
+				"execution_count": 1
 			},
 			{
 				"cell_type": "markdown",
