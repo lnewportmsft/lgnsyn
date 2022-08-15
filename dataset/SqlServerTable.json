@@ -10,10 +10,12 @@
 		},
 		"parameters": {
 			"schemaName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Sales"
 			},
 			"tableName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Orders"
 			}
 		},
 		"annotations": [],
