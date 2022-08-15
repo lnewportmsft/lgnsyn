@@ -1,0 +1,33 @@
+{
+	"name": "SqlServerTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQLServer2022",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"dbname": "TSQL2012"
+			}
+		},
+		"parameters": {
+			"schemaName": {
+				"type": "string"
+			},
+			"tableName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().schemaName",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().tableName",
+				"type": "Expression"
+			}
+		}
+	}
+}
