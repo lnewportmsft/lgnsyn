@@ -1,0 +1,243 @@
+{
+	"name": "StartingExample",
+	"properties": {
+		"folder": {
+			"name": "SynapseML"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "lgnsynspark31",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "56g",
+			"driverCores": 8,
+			"executorMemory": "56g",
+			"executorCores": 8,
+			"numExecutors": 1,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "true",
+				"spark.dynamicAllocation.minExecutors": "1",
+				"spark.dynamicAllocation.maxExecutors": "4",
+				"spark.autotune.trackingId": "c747068e-bfcc-4c11-a0e1-6a832a23cb61"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/65c04546-fce4-4b3c-be44-dac0e5324e24/resourceGroups/lgnsynapse/providers/Microsoft.Synapse/workspaces/lgnsynapse/bigDataPools/lgnsynspark31",
+				"name": "lgnsynspark31",
+				"type": "Spark",
+				"endpoint": "https://lgnsynapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/lgnsynspark31",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "3.1",
+				"nodeCount": 10,
+				"cores": 8,
+				"memory": 56,
+				"automaticScaleJobs": true
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"%%configure -f\r\n",
+					"{\r\n",
+					"  \"name\": \"synapseml\",\r\n",
+					"  \"conf\": {\r\n",
+					"      \"spark.jars.packages\": \"com.microsoft.azure:synapseml_2.12:0.9.5-13-d1b51517-SNAPSHOT\",\r\n",
+					"      \"spark.jars.repositories\": \"https://mmlspark.azureedge.net/maven\",\r\n",
+					"      \"spark.jars.excludes\": \"org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.12,org.scalactic:scalactic_2.12,org.scalatest:scalatest_2.12\",\r\n",
+					"      \"spark.yarn.user.classpath.first\": \"true\"\r\n",
+					"  }\r\n",
+					"}"
+				],
+				"execution_count": 1
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"import synapse.ml\r\n",
+					"from synapse.ml.cognitive import *\r\n",
+					"from notebookutils import mssparkutils\r\n",
+					"\r\n",
+					"# A general Cognitive Services key for Text Analytics and Computer Vision (or use separate keys that belong to each service)\r\n",
+					"cognitive_service_key = \"19b7a28cda994fb2b50a556327ad4012\"\r\n",
+					"# A Bing Search v7 subscription key\r\n",
+					"#bingsearch_service_key = mssparkutils.credentials.getSecret(\"ADD_YOUR_KEY_VAULT_NAME\", \"ADD_YOUR_BING_SEARCH_KEY\",\"ADD_YOUR_KEY_VAULT_LINKED_SERVICE_NAME\")\r\n",
+					"# An Anomaly Dectector subscription key\r\n",
+					"#anomalydetector_key = mssparkutils.credentials.getSecret(\"ADD_YOUR_KEY_VAULT_NAME\", \"ADD_YOUR_ANOMALY_KEY\",\"ADD_YOUR_KEY_VAULT_LINKED_SERVICE_NAME\")\r\n",
+					"\r\n",
+					""
+				],
+				"execution_count": 2
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"from pyspark.sql.functions import col\r\n",
+					"\r\n",
+					"# Create a dataframe that's tied to it's column names\r\n",
+					"df_sentences = spark.createDataFrame([\r\n",
+					"  (\"I am so happy today, its sunny!\", \"en-US\"),\r\n",
+					"  (\"this is a dog\", \"en-US\"),\r\n",
+					"  (\"I am frustrated by this rush hour traffic!\", \"en-US\")\r\n",
+					"], [\"text\", \"language\"])\r\n",
+					"\r\n",
+					"# Run the Text Analytics service with options\r\n",
+					"sentiment = (TextSentiment()\r\n",
+					"    .setTextCol(\"text\")\r\n",
+					"    .setLocation(\"eastus2\") # Set the location of your cognitive service\r\n",
+					"    .setSubscriptionKey(cognitive_service_key)\r\n",
+					"    .setOutputCol(\"sentiment\")\r\n",
+					"    .setErrorCol(\"error\")\r\n",
+					"    .setLanguageCol(\"language\"))\r\n",
+					"\r\n",
+					"# Show the results of your text query in a table format\r\n",
+					"\r\n",
+					"display(sentiment.transform(df_sentences).select(\"text\", col(\"sentiment\")[0].getItem(\"sentiment\").alias(\"sentiment\")))"
+				],
+				"execution_count": 5
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"#first model\r\n",
+					"import numpy as np\r\n",
+					"import pandas as pd"
+				],
+				"execution_count": 6
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"dataFile = \"AdultCensusIncome.csv\"\r\n",
+					"import os, urllib\r\n",
+					"if not os.path.isfile(dataFile):\r\n",
+					"    urllib.request.urlretrieve(\"https://mmlspark.azureedge.net/datasets/\" + dataFile, dataFile)\r\n",
+					"data = spark.createDataFrame(pd.read_csv(dataFile, dtype={\" hours-per-week\": np.float64}))\r\n",
+					"data.show(5)"
+				],
+				"execution_count": 7
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"data = data.select([\" education\", \" marital-status\", \" hours-per-week\", \" income\"])\r\n",
+					"train, test = data.randomSplit([0.75, 0.25], seed=123)"
+				],
+				"execution_count": 8
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"from synapse.ml.train import TrainClassifier\r\n",
+					"from pyspark.ml.classification import LogisticRegression\r\n",
+					"model = TrainClassifier(model=LogisticRegression(), labelCol=\" income\").fit(train)"
+				],
+				"execution_count": 9
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"from synapse.ml.train import ComputeModelStatistics\r\n",
+					"prediction = model.transform(test)\r\n",
+					"metrics = ComputeModelStatistics().transform(prediction)\r\n",
+					"metrics.select('accuracy').show()"
+				],
+				"execution_count": 10
+			}
+		]
+	}
+}

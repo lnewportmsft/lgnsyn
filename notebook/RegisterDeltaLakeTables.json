@@ -1,0 +1,152 @@
+{
+	"name": "RegisterDeltaLakeTables",
+	"properties": {
+		"folder": {
+			"name": "Delta"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "lgnsynspark31",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "56g",
+			"driverCores": 8,
+			"executorMemory": "56g",
+			"executorCores": 8,
+			"numExecutors": 1,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "true",
+				"spark.dynamicAllocation.minExecutors": "1",
+				"spark.dynamicAllocation.maxExecutors": "4",
+				"spark.autotune.trackingId": "1565f601-ee22-4792-8b2a-7ec0fa478221"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_sparksql",
+				"display_name": "sql"
+			},
+			"language_info": {
+				"name": "sql"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/65c04546-fce4-4b3c-be44-dac0e5324e24/resourceGroups/lgnsynapse/providers/Microsoft.Synapse/workspaces/lgnsynapse/bigDataPools/lgnsynspark31",
+				"name": "lgnsynspark31",
+				"type": "Spark",
+				"endpoint": "https://lgnsynapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/lgnsynspark31",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "3.1",
+				"nodeCount": 10,
+				"cores": 8,
+				"memory": 56,
+				"automaticScaleJobs": true
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"CREATE DATABASE IF NOT EXISTS bronze2 LOCATION \"/delta/bronze/\""
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"USE bronze;\r\n",
+					"CREATE TABLE IF NOT EXISTS Address USING DELTA LOCATION \"/delta/bronze/Address/\";\r\n",
+					"CREATE TABLE IF NOT EXISTS Customer USING DELTA LOCATION \"/delta/bronze/Customer/\";\r\n",
+					"CREATE TABLE IF NOT EXISTS CustomerAddress USING DELTA LOCATION \"/delta/bronze/CustomerAddress/\";\r\n",
+					"CREATE TABLE IF NOT EXISTS Product USING DELTA LOCATION \"/delta/bronze/Product/\";\r\n",
+					"CREATE TABLE IF NOT EXISTS ProductCategory USING DELTA LOCATION \"/delta/bronze/ProductCategory/\";\r\n",
+					"CREATE TABLE IF NOT EXISTS ProductDescription USING DELTA LOCATION \"/delta/bronze/ProductDescription/\";\r\n",
+					"CREATE TABLE IF NOT EXISTS ProductModel USING DELTA LOCATION \"/delta/bronze/ProductModel/\";\r\n",
+					"CREATE TABLE IF NOT EXISTS SalesOrderDetail USING DELTA LOCATION \"/delta/bronze/SalesOrderDetail/\";\r\n",
+					"CREATE TABLE IF NOT EXISTS SalesOrderHeader USING DELTA LOCATION \"/delta/bronze/SalesOrderHeader/\";"
+				],
+				"execution_count": 4
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"select * from bronze.salesorderdetail"
+				],
+				"execution_count": 5
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"SELECT 'SalesOrderDetail' as TableName, count(*) as RowCnt from bronze.salesorderdetail\r\n",
+					"UNION ALL\r\n",
+					"Select 'Product' as TableName, count(*) as RowCnt from bronze.product"
+				],
+				"execution_count": 6
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"drop DATABASE bronze"
+				],
+				"execution_count": null
+			}
+		]
+	}
+}

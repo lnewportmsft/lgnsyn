@@ -1,0 +1,220 @@
+{
+	"name": "CognitiveServices - Analyze Text",
+	"properties": {
+		"folder": {
+			"name": "SynapseML"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "lgnsynspark31",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "56g",
+			"driverCores": 8,
+			"executorMemory": "56g",
+			"executorCores": 8,
+			"numExecutors": 1,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "true",
+				"spark.dynamicAllocation.minExecutors": "1",
+				"spark.dynamicAllocation.maxExecutors": "4",
+				"spark.autotune.trackingId": "80df2f74-9589-4ead-9773-f82a19384072"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/65c04546-fce4-4b3c-be44-dac0e5324e24/resourceGroups/lgnsynapse/providers/Microsoft.Synapse/workspaces/lgnsynapse/bigDataPools/lgnsynspark31",
+				"name": "lgnsynspark31",
+				"type": "Spark",
+				"endpoint": "https://lgnsynapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/lgnsynspark31",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "3.1",
+				"nodeCount": 10,
+				"cores": 8,
+				"memory": 56,
+				"automaticScaleJobs": true
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "markdown",
+				"source": [
+					"# Cognitive Services - Analyze Text\n",
+					"\n",
+					""
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"outputs_hidden": true
+					}
+				},
+				"source": [
+					"import os\n",
+					"\n",
+					"if os.environ.get(\"AZURE_SERVICE\", None) == \"Microsoft.ProjectArcadia\":\n",
+					"    from pyspark.sql import SparkSession\n",
+					"    spark = SparkSession.builder.getOrCreate()\n",
+					"    from notebookutils.mssparkutils.credentials import getSecret\n",
+					"    os.environ['19b7a28cda994fb2b50a556327ad4012'] = getSecret(\"mmlspark-keys\", \"mmlspark-cs-key\")\n",
+					"\n",
+					"#put your service keys here\n",
+					"key = os.environ['19b7a28cda994fb2b50a556327ad4012']\n",
+					"location = 'eastus2'"
+				],
+				"execution_count": 8
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"from pyspark.sql.functions import udf, col\r\n",
+					"from synapse.ml.io.http import HTTPTransformer, http_udf\r\n",
+					"from requests import Request\r\n",
+					"from pyspark.sql.functions import lit\r\n",
+					"from pyspark.ml import PipelineModel\r\n",
+					"from pyspark.sql.functions import col\r\n",
+					"import os\r\n",
+					""
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"from mmlspark.cognitive import *\r\n",
+					"from pyspark.sql.functions import col\r\n",
+					"\r\n",
+					"# Add your subscription key from the Language service (or a general Cognitive Service key)\r\n",
+					"service_key = \"9f5a72151e634cc196e1b537e8bb4cbc\"\r\n",
+					"\r\n",
+					"df = spark.createDataFrame([\r\n",
+					"  (\"I am so happy today, its sunny!\", \"en-US\"),\r\n",
+					"  (\"I am frustrated by this rush hour traffic\", \"en-US\"),\r\n",
+					"  (\"The cognitive services on spark aint bad\", \"en-US\"),\r\n",
+					"], [\"text\", \"language\"])\r\n",
+					"\r\n",
+					"sentiment = (TextSentiment()\r\n",
+					"    .setTextCol(\"text\")\r\n",
+					"    .setLocation(\"eastus2\")\r\n",
+					"    .setSubscriptionKey(service_key)\r\n",
+					"    .setOutputCol(\"sentiment\")\r\n",
+					"    .setErrorCol(\"error\")\r\n",
+					"    .setLanguageCol(\"language\"))\r\n",
+					"\r\n",
+					"results = sentiment.transform(df)\r\n",
+					"\r\n",
+					"# Show the results in a table\r\n",
+					"display(results.select(\"text\", col(\"sentiment\")[0].getItem(\"score\").alias(\"sentiment\")))"
+				],
+				"execution_count": 2
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"\n",
+					"df = spark.createDataFrame(data=[\n",
+					"        [\"en\", \"Hello Seattle\"],\n",
+					"        [\"en\", \"There once was a dog who lived in London and thought she was a human\"]\n",
+					"    ], \n",
+					"    schema=[\"language\",\"text\"])"
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"display(df)"
+				],
+				"execution_count": 4
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"from synapse.ml.cognitive import *\n",
+					"\n",
+					"text_analyze = (TextAnalyze()\n",
+					"    .setLocation(location)\n",
+					"    .setSubscriptionKey(key)\n",
+					"    .setTextCol(\"text\")\n",
+					"    .setOutputCol(\"textAnalysis\")\n",
+					"    .setErrorCol(\"error\")\n",
+					"    .setLanguageCol(\"language\")\n",
+					"    # set the tasks to perform\n",
+					"    .setEntityRecognitionTasks([{\"parameters\": { \"model-version\": \"latest\"}}])\n",
+					"    .setKeyPhraseExtractionTasks([{\"parameters\": { \"model-version\": \"latest\"}}])\n",
+					"    # Uncomment these lines to add more tasks\n",
+					"    # .setEntityRecognitionPiiTasks([{\"parameters\": { \"model-version\": \"latest\"}}])\n",
+					"    # .setEntityLinkingTasks([{\"parameters\": { \"model-version\": \"latest\"}}])\n",
+					"    # .setSentimentAnalysisTasks([{\"parameters\": { \"model-version\": \"latest\"}}])\n",
+					"    )\n",
+					"\n",
+					"df_results = text_analyze.transform(df)\n",
+					""
+				],
+				"execution_count": 5
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"display(df_results)"
+				],
+				"execution_count": null
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"from pyspark.sql.functions import col\n",
+					"\n",
+					"# reformat and display for easier viewing\n",
+					"display(\n",
+					"    df_results.select(\"language\", \"text\", \"error\", col(\"textAnalysis\").getItem(0)) # we are not batching so only have a single result\n",
+					"        .select(\"language\", \"text\", \"error\", \"textAnalysis[0].*\") # explode the Text Analytics tasks into columns\n",
+					")"
+				],
+				"execution_count": null
+			}
+		]
+	}
+}

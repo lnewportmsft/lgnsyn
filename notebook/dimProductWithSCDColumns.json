@@ -1,0 +1,125 @@
+{
+	"name": "dimProductWithSCDColumns",
+	"properties": {
+		"folder": {
+			"name": "Delta"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "lgnsynspark31",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "56g",
+			"driverCores": 8,
+			"executorMemory": "56g",
+			"executorCores": 8,
+			"numExecutors": 1,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "true",
+				"spark.dynamicAllocation.minExecutors": "1",
+				"spark.dynamicAllocation.maxExecutors": "4",
+				"spark.autotune.trackingId": "ca6345e2-5d47-4784-83e3-6c6aa0d12b6a"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "sql"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/65c04546-fce4-4b3c-be44-dac0e5324e24/resourceGroups/lgnsynapse/providers/Microsoft.Synapse/workspaces/lgnsynapse/bigDataPools/lgnsynspark31",
+				"name": "lgnsynspark31",
+				"type": "Spark",
+				"endpoint": "https://lgnsynapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/lgnsynspark31",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "3.1",
+				"nodeCount": 10,
+				"cores": 8,
+				"memory": 56,
+				"automaticScaleJobs": true
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"DROP TABLE dimProduct"
+				],
+				"execution_count": null
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"CREATE TABLE dimProduct (\r\n",
+					"    ProductID int,\r\n",
+					"    Name string,\r\n",
+					"    ProductNumber string,\r\n",
+					"    Color string,\r\n",
+					"    StandardCost decimal(19,4),\r\n",
+					"    ListPrice decimal(19,4),\r\n",
+					"    Size string,\r\n",
+					"    Weight decimal(8,2),\r\n",
+					"    ModifiedDate timestamp,\r\n",
+					"    DateInserted timestamp,\r\n",
+					"    ProductCategory string,\r\n",
+					"    ProductModel string,\r\n",
+					"    RowSignature bigint,\r\n",
+					"    EffectiveFromDate timestamp,\r\n",
+					"    EffectiveToDate timestamp,\r\n",
+					"    IsActive int,\r\n",
+					"    ProductKey bigint\r\n",
+					"    )\r\n",
+					"    USING DELTA\r\n",
+					"    LOCATION  '/delta/gold/dimProduct/'"
+				],
+				"execution_count": 6
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"INSERT INTO dimProduct  VALUES (-1,'Unknown',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,\r\n",
+					"NULL,NULL,CURRENT_TIMESTAMP(),cast('9099-01-01' as timestamp),1,-1)"
+				],
+				"execution_count": 7
+			}
+		]
+	}
+}

@@ -1,0 +1,687 @@
+{
+	"name": "Challenge 4 - Movies and Actors - Customers - Addresses",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "lgnsynspark32",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "168eed2d-11ac-4d46-8a15-c6ac17009d0e"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/65c04546-fce4-4b3c-be44-dac0e5324e24/resourceGroups/lgnsynapse/providers/Microsoft.Synapse/workspaces/lgnsynapse/bigDataPools/lgnsynspark32",
+				"name": "lgnsynspark32",
+				"type": "Spark",
+				"endpoint": "https://lgnsynapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/lgnsynspark32",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "3.2",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"automaticScaleJobs": false
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"import pandas as pd\r\n",
+					"\r\n",
+					"  #\"abfss://synapsefs@lgnmdwohdatalake.dfs.core.windows.net/raw/vanarsdel/dboMovies.parquet\"\r\n",
+					"\r\n",
+					"mountPoint = \"abfss://lgnsynapsefs@lgnsynapselake.dfs.core.windows.net/mdwoh\"\r\n",
+					"print(mountPoint)"
+				],
+				"execution_count": 9
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Load Southridge Customers"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"sr_sales_customers_parquet = mountPoint + \"/raw/southridge/cloudsales/dboCustomers.parquet\"\r\n",
+					"sr_streaming_customers_parquet = mountPoint + \"/raw/southridge/cloudstreaming/dboCustomers.parquet\"\r\n",
+					"\r\n",
+					"sr_sales_customers = sqlContext.read.parquet(sr_sales_customers_parquet)\r\n",
+					"sr_streaming_customers = sqlContext.read.parquet(sr_streaming_customers_parquet)\r\n",
+					"\r\n",
+					"sr_sales_customers = sr_sales_customers.toPandas()\r\n",
+					"sr_streaming_customers = sr_streaming_customers.toPandas()\r\n",
+					"\r\n",
+					"sr_customers_frame = [sr_sales_customers, sr_streaming_customers]\r\n",
+					"sr_customers = pd.concat(sr_customers_frame)\r\n",
+					"\r\n",
+					"sr_customers['CreatedDate'] = pd.to_datetime(sr_customers['CreatedDate'], errors='coerce')\r\n",
+					"sr_customers['UpdatedDate'] = pd.to_datetime(sr_customers['UpdatedDate'], errors='coerce')\r\n",
+					"sr_customers.PhoneNumber = sr_customers.PhoneNumber.astype(str)\r\n",
+					"\r\n",
+					"display(sr_customers)"
+				],
+				"execution_count": 10
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Load VanArsdel Customers"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"va_customers_filePath = mountPoint + \"/raw/vanarsdel/dboCustomers.parquet\"\r\n",
+					"\r\n",
+					"va_customers_raw = sqlContext.read.parquet(va_customers_filePath)\r\n",
+					"va_customers_pd = va_customers_raw.toPandas()\r\n",
+					"\r\n",
+					"va_customers = va_customers_pd[['CustomerID', 'LastName', 'FirstName', 'PhoneNumber', 'CreatedDate', 'UpdatedDate']]\r\n",
+					"\r\n",
+					"#conforming data types\r\n",
+					"va_customers['CreatedDate'] = pd.to_datetime(va_customers_pd['CreatedDate'], errors='coerce')\r\n",
+					"va_customers['UpdatedDate'] = pd.to_datetime(va_customers_pd['UpdatedDate'], errors='coerce')\r\n",
+					"\r\n",
+					"va_customers.PhoneNumber = va_customers_pd.PhoneNumber.astype(str)\r\n",
+					"\r\n",
+					"display(va_customers)"
+				],
+				"execution_count": 11
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Load FourthCoffee Customers"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"fc_customers_filePath = mountPoint + \"/raw/fourthcoffee/Customers.csv\"\r\n",
+					"\r\n",
+					"fc_customers_pd = pd.read_csv(fc_customers_filePath)\r\n",
+					"\r\n",
+					"#select relevant columns\r\n",
+					"fc_customers = fc_customers_pd[['CustomerID', 'LastName', 'FirstName', 'PhoneNumber', 'CreatedDate', 'UpdatedDate']]\r\n",
+					"\r\n",
+					"#conform data types\r\n",
+					"fc_customers['CreatedDate'] = pd.to_datetime(fc_customers_pd['CreatedDate'], errors='coerce')\r\n",
+					"fc_customers['UpdatedDate'] = pd.to_datetime(fc_customers_pd['UpdatedDate'], errors='coerce')\r\n",
+					"fc_customers.PhoneNumber = fc_customers_pd.PhoneNumber.astype(str)\r\n",
+					"\r\n",
+					"display(fc_customers)"
+				],
+				"execution_count": 12
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					" Loading Southridge Addresses"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"sr_sales_addresses_parquet = mountPoint + \"/raw/southridge/cloudsales/dboAddresses.parquet\"\r\n",
+					"sr_streaming_addresses_parquet = mountPoint + \"/raw/southridge/cloudstreaming/dboAddresses.parquet\"\r\n",
+					"\r\n",
+					"sr_sales_addresses = sqlContext.read.parquet(sr_sales_addresses_parquet)\r\n",
+					"sr_streaming_addresses = sqlContext.read.parquet(sr_streaming_addresses_parquet)\r\n",
+					"\r\n",
+					"sr_sales_addresses = sr_sales_addresses.toPandas()\r\n",
+					"sr_streaming_addresses = sr_streaming_addresses.toPandas()\r\n",
+					"\r\n",
+					"sr_addresses_frame = [sr_sales_addresses, sr_streaming_addresses]\r\n",
+					"sr_addresses = pd.concat(sr_addresses_frame)\r\n",
+					"\r\n",
+					"sr_addresses['CreatedDate'] = pd.to_datetime(sr_addresses['CreatedDate'], errors='coerce')\r\n",
+					"sr_addresses['UpdatedDate'] = pd.to_datetime(sr_addresses['UpdatedDate'], errors='coerce')\r\n",
+					"\r\n",
+					"sr_addresses.AddressLine2 = sr_addresses.AddressLine2.astype(str)\r\n",
+					"sr_addresses.ZipCode = sr_addresses.ZipCode.astype(str)\r\n",
+					"\r\n",
+					"display(sr_addresses)"
+				],
+				"execution_count": 13
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Loading VanArsdel Addresses"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"va_customers_filePath = mountPoint + \"/raw/vanarsdel/dboCustomers.parquet\"\r\n",
+					"\r\n",
+					"va_customers_raw = sqlContext.read.parquet(va_customers_filePath)\r\n",
+					"va_customers_pd = va_customers_raw.toPandas()\r\n",
+					"\r\n",
+					"va_addresses = va_customers_pd[['CustomerID', 'AddressLine1', 'AddressLine2', 'City', 'State', 'ZipCode', 'CreatedDate', 'UpdatedDate']]\r\n",
+					"\r\n",
+					"va_addresses['CreatedDate'] = pd.to_datetime(va_addresses['CreatedDate'], errors='coerce')\r\n",
+					"va_addresses['UpdatedDate'] = pd.to_datetime(va_addresses['UpdatedDate'], errors='coerce')\r\n",
+					"\r\n",
+					"va_addresses.AddressLine2 = va_addresses.AddressLine2.astype(str)\r\n",
+					"va_addresses.ZipCode = va_addresses.ZipCode.astype(str)\r\n",
+					"\r\n",
+					"va_addresses.insert(0, 'AddressID', 'None')\r\n",
+					"\r\n",
+					"display(va_addresses)"
+				],
+				"execution_count": 14
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Loading FourthCoffee Addresses"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"fc_customers_filePath = mountPoint + \"/raw/fourthcoffee/Customers.csv\"\r\n",
+					"\r\n",
+					"fc_customers_pd = pd.read_csv(fc_customers_filePath)\r\n",
+					"\r\n",
+					"fc_addresses = fc_customers_pd[['CustomerID', 'AddressLine1', 'AddressLine2', 'City', 'State', 'ZipCode', 'CreatedDate', 'UpdatedDate']]\r\n",
+					"\r\n",
+					"fc_addresses['CreatedDate'] = pd.to_datetime(fc_addresses['CreatedDate'], errors='coerce')\r\n",
+					"fc_addresses['UpdatedDate'] = pd.to_datetime(fc_addresses['UpdatedDate'], errors='coerce')\r\n",
+					"fc_addresses.AddressLine2 = fc_addresses.AddressLine2.astype(str)\r\n",
+					"fc_addresses.ZipCode = fc_addresses.ZipCode.astype(str)\r\n",
+					"\r\n",
+					"#To conform all the data to a same set of columns, you will add the AddressID to this data frame so it will conform the Southridge's schema.\r\n",
+					"fc_addresses.loc[fc_addresses.AddressLine2 == 'nan', 'AddressLine2'] = 'None'\r\n",
+					"\r\n",
+					"fc_addresses.insert(0, 'AddressID', 'None')\r\n",
+					"\r\n",
+					"display(fc_addresses)"
+				],
+				"execution_count": 15
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Loading Southridge Movies and Actors - old school method"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"sr_movies_filepath = mountPoint + \"/raw/southridge/catalog/movies2.json\"\r\n",
+					"\r\n",
+					"sr_movies_raw = spark.read.option(\"multiLine\", \"true\").options(header='true', inferschema='true').json(sr_movies_filepath)\r\n",
+					"sr_movies_pd = sr_movies_raw.toPandas()\r\n",
+					"\r\n",
+					"sr_movies_pd = sr_movies_pd[['actors', 'availabilityDate', 'genre', 'id', 'rating', 'releaseYear', 'runtime', 'streamingAvailabilityDate', 'tier', 'title']]\r\n",
+					"\r\n",
+					"#display(sr_movies_pd)\r\n",
+					"\r\n",
+					"movieactors = sr_movies_pd[['id', 'actors']]\r\n",
+					"movies = sr_movies_pd[['id', 'title', 'genre', 'availabilityDate', 'rating', 'releaseYear', 'runtime', 'streamingAvailabilityDate', 'tier']]\r\n",
+					"\r\n",
+					"import numpy as np\r\n",
+					"\r\n",
+					"actorslist = movieactors.actors.values.tolist()\r\n",
+					"actorcountbymovie = [len(r) for r in actorslist]\r\n",
+					"explodedmovieids = np.repeat(movieactors.id, actorcountbymovie)\r\n",
+					"\r\n",
+					"movieactors = pd.DataFrame(np.column_stack((explodedmovieids, np.concatenate(actorslist))), columns=movieactors.columns)\r\n",
+					"\r\n",
+					"sr_all_moviesactorsactors = pd.merge(movies, movieactors, on='id')\r\n",
+					"\r\n",
+					"sr_all_moviesactorsactors = sr_all_moviesactorsactors.rename(index=str, columns={'id': 'MovieID', 'title': 'MovieTitle', 'genre': 'Genre', 'availabilityDate': 'AvailabilityDate', 'rating': 'Rating', 'releaseYear': 'ReleaseYear', 'runtime': 'RuntimeMin', 'streamingAvailabilityDate': 'StreamingAvailabilityDate', 'tier': 'Tier', 'actors': 'ActorName'})\r\n",
+					"\r\n",
+					"sr_all_moviesactorsactors['ActorID'] = 'None'\r\n",
+					"sr_all_moviesactorsactors['MovieActorID'] = 'None'\r\n",
+					"sr_all_moviesactorsactors['ActorGender'] = 'None'\r\n",
+					"sr_all_moviesactorsactors['ReleaseDate'] = 'None'\r\n",
+					"\r\n",
+					"sr_all_moviesactorsactors.ReleaseYear = sr_all_moviesactorsactors.ReleaseYear.astype(str)\r\n",
+					"sr_all_moviesactorsactors.Tier = sr_all_moviesactorsactors.Tier.astype(str)\r\n",
+					"sr_all_moviesactorsactors.RuntimeMin = sr_all_moviesactorsactors.RuntimeMin.astype(str)\r\n",
+					"\r\n",
+					"sr_all_moviesactorsactors = sr_all_moviesactorsactors[['MovieID', 'MovieTitle', 'Genre', 'ReleaseDate', 'AvailabilityDate', 'StreamingAvailabilityDate', 'ReleaseYear', 'Tier', 'Rating', 'RuntimeMin', 'MovieActorID', 'ActorID', 'ActorName', 'ActorGender']]\r\n",
+					"\r\n",
+					"display(sr_all_moviesactorsactors)"
+				],
+				"execution_count": 16
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Alternate (probably better) method to explode Actors array."
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# After reading the JSON, explode the actors array to create multiple rows per movie, each having a single actor name\r\n",
+					"# Drop the original actors array, as it is then no longer needed\r\n",
+					"# Also drop the Cosmos DB metadata, as it will not be valuable here\r\n",
+					"\r\n",
+					"#import pyspark.sql.functions as F\r\n",
+					"\r\n",
+					"#sr_catalog = spark.read.json(\"abfss://lgnsynapsefs@lgnsynapselake.dfs.core.windows.net/mdwoh/raw/southridge/catalog/movies.json\") \\\r\n",
+					"#  .withColumn('actor', F.explode('actors')) \\\r\n",
+					"#  .drop('actors', '_attachments', '_etag', '_rid', '_self', '_ts')\r\n",
+					"\r\n",
+					"#display(sr_catalog)"
+				],
+				"execution_count": 17
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Loading VanArsdel Movies and Actors"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"va_movies_filepath = mountPoint + \"/raw/vanarsdel/dboMovies.parquet\"\r\n",
+					"va_actors_filepath = mountPoint + \"/raw/vanarsdel/dboActors.parquet\"\r\n",
+					"va_movieactors_filepath = mountPoint + \"/raw/vanarsdel/dboMovieActors.parquet\"\r\n",
+					"\r\n",
+					"va_movies_raw = sqlContext.read.parquet(va_movies_filepath)\r\n",
+					"va_actors_raw = sqlContext.read.parquet(va_actors_filepath)\r\n",
+					"va_movieactors_raw = sqlContext.read.parquet(va_movieactors_filepath)\r\n",
+					"\r\n",
+					"va_movies_pd = va_movies_raw.toPandas()\r\n",
+					"va_actors_pd = va_actors_raw.toPandas()\r\n",
+					"va_movieactors_pd = va_movieactors_raw.toPandas()\r\n",
+					"\r\n",
+					"va_all_movies = pd.merge(va_movieactors_pd, va_movies_pd, on='MovieID')\r\n",
+					"va_all_movies = pd.merge(va_all_movies, va_actors_pd, on='ActorID')\r\n",
+					"\r\n",
+					"va_all_movies = va_all_movies.rename(index=str, columns={'Category': 'Genre', 'RunTimeMin': 'RuntimeMin', 'Gender': 'ActorGender'})\r\n",
+					"\r\n",
+					"va_all_movies['AvailabilityDate'] = 'None'\r\n",
+					"va_all_movies['StreamingAvailabilityDate'] = 'None'\r\n",
+					"va_all_movies['ReleaseYear'] = 'None'\r\n",
+					"va_all_movies['Tier'] = 'None'\r\n",
+					"\r\n",
+					"va_all_movies.RuntimeMin = va_all_movies.RuntimeMin.astype(str)\r\n",
+					"\r\n",
+					"va_all_movies = va_all_movies[['MovieID', 'MovieTitle', 'Genre', 'ReleaseDate', 'AvailabilityDate', 'StreamingAvailabilityDate', 'ReleaseYear', 'Tier', 'Rating', 'RuntimeMin', 'MovieActorID', 'ActorID', 'ActorName', 'ActorGender']]\r\n",
+					"\r\n",
+					"#va_all_movies.dtypes\r\n",
+					"\r\n",
+					"display(va_all_movies)"
+				],
+				"execution_count": 18
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Loading FourthCoffee Movies and Actors"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"fc_movies_filepath = mountPoint + \"/raw/fourthcoffee/Movies.csv\"\r\n",
+					"fc_actors_filepath = mountPoint + \"/raw/fourthcoffee/Actors.csv\"\r\n",
+					"fc_movieactors_filepath = mountPoint + \"/raw/fourthcoffee/MovieActors.csv\"\r\n",
+					"\r\n",
+					"fc_movies_pd = pd.read_csv(fc_movies_filepath)\r\n",
+					"fc_actors_pd = pd.read_csv(fc_actors_filepath)\r\n",
+					"fc_movieactors_pd = pd.read_csv(fc_movieactors_filepath)\r\n",
+					"\r\n",
+					"fc_all_moviesactors = pd.merge(fc_movieactors_pd, fc_movies_pd, on='MovieID')\r\n",
+					"fc_all_moviesactors = pd.merge(fc_all_moviesactors, fc_actors_pd, on='ActorID')\r\n",
+					"\r\n",
+					"fc_all_moviesactors = fc_all_moviesactors.rename(index=str, columns={'Category': 'Genre', 'RunTimeMin': 'RuntimeMin', 'Gender': 'ActorGender'})\r\n",
+					"\r\n",
+					"fc_all_moviesactors['AvailabilityDate'] = 'None'\r\n",
+					"fc_all_moviesactors['StreamingAvailabilityDate'] = 'None'\r\n",
+					"fc_all_moviesactors['ReleaseYear'] = 'None'\r\n",
+					"fc_all_moviesactors['Tier'] = 'None'\r\n",
+					"\r\n",
+					"fc_all_moviesactors.RuntimeMin = fc_all_moviesactors.RuntimeMin.astype(str)\r\n",
+					"\r\n",
+					"fc_all_moviesactors = fc_all_moviesactors[['MovieID', 'MovieTitle', 'Genre', 'ReleaseDate', 'AvailabilityDate', 'StreamingAvailabilityDate', 'ReleaseYear', 'Tier', 'Rating', 'RuntimeMin', 'MovieActorID', 'ActorID', 'ActorName', 'ActorGender']]\r\n",
+					"\r\n",
+					"display(fc_all_moviesactors)"
+				],
+				"execution_count": 19
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Bringing all Customers together"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"sr_customers['SourceSystem'] = 'southridge'\r\n",
+					"va_customers['SourceSystem'] = 'vanarsdel'\r\n",
+					"fc_customers['SourceSystem'] = 'fourthcoffee'\r\n",
+					"customers_frame = [sr_customers, va_customers, fc_customers]\r\n",
+					"\r\n",
+					"all_customers = pd.concat(customers_frame)\r\n",
+					"\r\n",
+					"display(all_customers)"
+				],
+				"execution_count": 20
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Bring all Addresses together"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"sr_addresses['SourceSystem'] = 'southridge'\r\n",
+					"va_addresses['SourceSystem'] = 'vanarsdel'\r\n",
+					"fc_addresses['SourceSystem'] = 'fourthcoffee'\r\n",
+					"addresses_frame = [sr_addresses, va_addresses, fc_addresses]\r\n",
+					"\r\n",
+					"all_addresses = pd.concat(addresses_frame)\r\n",
+					"\r\n",
+					"display(all_addresses)"
+				],
+				"execution_count": 21
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Bringing all Movies and Actors together"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"sr_all_moviesactorsactors['SourceSystem'] = 'southridge'\r\n",
+					"va_all_movies['SourceSystem'] = 'vanarsdel'\r\n",
+					"fc_all_moviesactors['SourceSystem'] = 'fourthcoffee'\r\n",
+					"\r\n",
+					"moviesactors_frame = [sr_all_moviesactorsactors, va_all_movies, fc_all_moviesactors]\r\n",
+					"\r\n",
+					"all_moviesactors = pd.concat(moviesactors_frame)\r\n",
+					"\r\n",
+					"display(all_moviesactors)"
+				],
+				"execution_count": 22
+			}
+		]
+	}
+}

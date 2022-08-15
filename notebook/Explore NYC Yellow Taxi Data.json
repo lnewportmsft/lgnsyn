@@ -1,0 +1,160 @@
+{
+	"name": "Explore NYC Yellow Taxi Data",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "lgnsynspark31",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "56g",
+			"driverCores": 8,
+			"executorMemory": "56g",
+			"executorCores": 8,
+			"numExecutors": 1,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "true",
+				"spark.dynamicAllocation.minExecutors": "1",
+				"spark.dynamicAllocation.maxExecutors": "4",
+				"spark.autotune.trackingId": "fb4749a7-e1ce-4eae-8d3a-8cd443a054ea"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/65c04546-fce4-4b3c-be44-dac0e5324e24/resourceGroups/lgnsynapse/providers/Microsoft.Synapse/workspaces/lgnsynapse/bigDataPools/lgnsynspark31",
+				"name": "lgnsynspark31",
+				"type": "Spark",
+				"endpoint": "https://lgnsynapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/lgnsynspark31",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "3.1",
+				"nodeCount": 10,
+				"cores": 8,
+				"memory": 56,
+				"automaticScaleJobs": true
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "markdown",
+				"source": [
+					"# Explore NYC Yellow Taxi Data using Spark\n",
+					"\n",
+					"In this notebook, you'll learn the basic steps to load and analyze an Open Dataset that tracks NYC Yellow Taxi trips with Apache Spark for Azure Synapse.\n",
+					"\n",
+					"\n",
+					""
+				]
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"## Load Data\n",
+					"\n",
+					"Read NYC Yellow Taxi data as a Spark DataFrame object to manipulate."
+				]
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"# Read NYC yellow cab data from Azure Open Datasets\n",
+					"from azureml.opendatasets import NycTlcYellow\n",
+					"\n",
+					"from datetime import datetime\n",
+					"from dateutil import parser\n",
+					"\n",
+					"end_date = parser.parse('2018-05-08 00:00:00')\n",
+					"start_date = parser.parse('2018-05-01 00:00:00')\n",
+					"\n",
+					"nyc_tlc = NycTlcYellow(start_date=start_date, end_date=end_date)\n",
+					"df_nyc_tlc = nyc_tlc.to_spark_dataframe()"
+				],
+				"execution_count": 2
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"## Analyze the NYC Taxi data using Spark and notebooks\n",
+					""
+				]
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"df_nyc_tlc.printSchema()"
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"diagram": {
+						"activateDiagramType": 1,
+						"chartConfig": {
+							"category": "bar",
+							"keys": [
+								"AvgTripDistance"
+							],
+							"values": [
+								"passengerCount"
+							],
+							"yLabel": "passengerCount",
+							"xLabel": "AvgTripDistance",
+							"aggregation": "SUM",
+							"aggByBackend": false
+						},
+						"aggData": "{\"passengerCount\":{\"2.382\":7,\"2.9365876998482907\":0,\"2.955385293728598\":1,\"3.0823106614325835\":6,\"3.1096431007047065\":5,\"3.124120509875713\":3,\"3.132080374155551\":4,\"3.1983281312300624\":2,\"6.23\":9,\"7.831666666666666\":8}}",
+						"isSummary": false,
+						"previewData": {
+							"filter": null
+						},
+						"isSql": false
+					},
+					"collapsed": false
+				},
+				"source": [
+					"from pyspark.sql import functions as F\n",
+					"df_nyc = df_nyc_tlc.groupBy(\"passengerCount\").agg(F.avg('tripDistance').alias('AvgTripDistance'), F.sum('tripDistance').alias('SumTripDistance'))\n",
+					"display(df_nyc)"
+				],
+				"execution_count": 4
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"## Customize data visualization with Spark and notebooks\n",
+					"You can control how charts render by using notebooks. The following code shows a simple example. It uses the popular libraries matplotlib and seaborn. The code renders the same kind of line chart as the SQL queries we ran earlier.\n",
+					"\n",
+					""
+				]
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"import matplotlib.pyplot\n",
+					"import seaborn\n",
+					"\n",
+					"seaborn.set(style = \"whitegrid\")\n",
+					"pdf_nyc = df_nyc.toPandas()\n",
+					"seaborn.lineplot(x=\"passengerCount\", y=\"SumTripDistance\" , data = pdf_nyc)\n",
+					"seaborn.lineplot(x=\"passengerCount\", y=\"AvgTripDistance\" , data = pdf_nyc)\n",
+					"matplotlib.pyplot.show()"
+				],
+				"execution_count": 5
+			}
+		]
+	}
+}
