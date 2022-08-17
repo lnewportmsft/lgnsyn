@@ -1,0 +1,19 @@
+{
+	"name": "LNewport2_AdventureWorks_7p7_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "LNewport2_AdventureWorks_7p7_20220817"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "MainControlTable"
+		}
+	}
+}
