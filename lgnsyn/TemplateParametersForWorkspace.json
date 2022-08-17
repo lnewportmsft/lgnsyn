@@ -5,11 +5,20 @@
 		"workspaceName": {
 			"value": "lgnsyn"
 		},
+		"AzureSqlDatabase_connectionString": {
+			"value": ""
+		},
+		"SQLServer2022_connectionString": {
+			"value": ""
+		},
 		"lgnsyn-WorkspaceDefaultSqlServer_connectionString": {
 			"value": ""
 		},
 		"lgnsyn-WorkspaceDefaultStorage_properties_typeProperties_url": {
 			"value": "https://lgnsynlake.dfs.core.windows.net"
+		},
+		"Trigger_7p7_properties_LNewport2_AdventureWorks_7p7_TopLevel_parameters_windowStart": {
+			"value": "@trigger().scheduledTime"
 		}
 	}
 }
