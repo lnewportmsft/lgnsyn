@@ -1,0 +1,26 @@
+{
+	"name": "relationship-yjgpdkuloj",
+	"properties": {
+		"Name": "relationship-yjgpdkuloj",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProviders"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Channel",
+		"ToTableName": "Order",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ChannelId",
+				"ToColumnName": "DistributionChannelId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Channel.cdm.json/Channel\",\"toEntity\":\"Order.cdm.json/Order\",\"joinPairs\":[{\"fromAttribute\":\"ChannelId\",\"toAttribute\":\"DistributionChannelId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,26 @@
+{
+	"name": "relationship-hbbcrsrqaa",
+	"properties": {
+		"Name": "relationship-hbbcrsrqaa",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProviders"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "HealthcareProduct",
+		"ToTableName": "Item",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ProductId",
+				"ToColumnName": "ProductId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"HealthcareProduct.cdm.json/HealthcareProduct\",\"toEntity\":\"Item.cdm.json/Item\",\"joinPairs\":[{\"fromAttribute\":\"ProductId\",\"toAttribute\":\"ProductId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

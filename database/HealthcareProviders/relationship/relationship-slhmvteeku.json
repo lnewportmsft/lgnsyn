@@ -1,0 +1,26 @@
+{
+	"name": "relationship-slhmvteeku",
+	"properties": {
+		"Name": "relationship-slhmvteeku",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProviders"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Vendor",
+		"ToTableName": "Item",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "VendorId",
+				"ToColumnName": "VendorId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Vendor.cdm.json/Vendor\",\"toEntity\":\"Item.cdm.json/Item\",\"joinPairs\":[{\"fromAttribute\":\"VendorId\",\"toAttribute\":\"VendorId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}
