@@ -1,0 +1,17 @@
+{
+	"name": "oracle",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"description": "docker - hr - welcome2 - port 1521\n\nService name ORCLPDB1.localdomain",
+		"annotations": [],
+		"type": "Oracle",
+		"typeProperties": {
+			"connectionString": "host=192.168.1.43;port=1521;servicename=ORCLPDB1.localdomain;user id=hr",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyNDBhZTk1MS1hNjg3LTRlZDEtYTdiYi0xYTYwZjIyZjI1MDgiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "P50",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
