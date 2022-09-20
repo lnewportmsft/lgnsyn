@@ -1,0 +1,262 @@
+{
+	"name": "PatientMedication",
+	"properties": {
+		"Name": "PatientMedication",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more drug(s) (medications) taken by the patient. This information is to be based on patient self-reported medications and may include drugs prescribed by other service providers or for medications that were obtained without the use of a prescription or without the advice of a service provider. Where the medication is known to be prescribed by the service provider the Prescription ID should be populated.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedication.cdm.json/PatientMedication",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedication.cdm.json/PatientMedication",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "DrugId",
+					"Description": "The unique identifier of a drug.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedication.cdm.json/PatientMedication",
+						"Name": "DrugId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedication.cdm.json/PatientMedication",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedication.cdm.json/PatientMedication",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "DosageStatement",
+					"Description": "The dosage statement related to the associated medication.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedication.cdm.json/PatientMedication",
+						"Name": "DosageStatement"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "QuantityStatement",
+					"Description": "The quantity statement related to the associated medication.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedication.cdm.json/PatientMedication",
+						"Name": "QuantityStatement"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "MedicationInstructionsStatement",
+					"Description": "The instructions statement related to the associated medication.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedication.cdm.json/PatientMedication",
+						"Name": "MedicationInstructionsStatement"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "FrequencyStatement",
+					"Description": "The frequency statement related to how often the medication is administered.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedication.cdm.json/PatientMedication",
+						"Name": "FrequencyStatement"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "AdministrationRouteId",
+					"Description": "The unique identifier of the route, means or method of administering the associated drug/pharmaceutical product.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedication.cdm.json/PatientMedication",
+						"Name": "AdministrationRouteId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientMedicationNote",
+					"Description": "A note, comment or additional information regarding a patient medication.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedication.cdm.json/PatientMedication",
+						"Name": "PatientMedicationNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PrescriptionId",
+					"Description": "The unique identifier of a prescription.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedication.cdm.json/PatientMedication",
+						"Name": "PrescriptionId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientMedication",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientMedication",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"PatientId\"},\"DrugId\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"DrugId\"},\"PeriodStartDate\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"PeriodEndDate\"},\"DosageStatement\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"DosageStatement\"},\"QuantityStatement\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"QuantityStatement\"},\"MedicationInstructionsStatement\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"MedicationInstructionsStatement\"},\"FrequencyStatement\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"FrequencyStatement\"},\"AdministrationRouteId\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"AdministrationRouteId\"},\"PatientMedicationNote\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"PatientMedicationNote\"},\"PrescriptionId\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"PrescriptionId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientMedication\",\"path\":\"PatientMedication.cdm.json/PatientMedication\"},\"description\":\"The one or more drug(s) (medications) taken by the patient. This information is to be based on patient self-reported medications and may include drugs prescribed by other service providers or for medications that were obtained without the use of a prescription or without the advice of a service provider. Where the medication is known to be prescribed by the service provider the Prescription ID should be populated.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"DrugId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"DrugId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a drug.\",\"isNullable\":false,\"name\":\"DrugId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"DosageStatement\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The dosage statement related to the associated medication.\",\"isNullable\":true,\"name\":\"DosageStatement\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"QuantityStatement\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The quantity statement related to the associated medication.\",\"isNullable\":true,\"name\":\"QuantityStatement\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"MedicationInstructionsStatement\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The instructions statement related to the associated medication.\",\"isNullable\":true,\"name\":\"MedicationInstructionsStatement\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"FrequencyStatement\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The frequency statement related to how often the medication is administered.\",\"isNullable\":true,\"name\":\"FrequencyStatement\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"AdministrationRouteId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of the route, means or method of administering the associated drug/pharmaceutical product.\",\"isNullable\":true,\"name\":\"AdministrationRouteId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"PatientMedicationNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding a patient medication.\",\"isNullable\":true,\"name\":\"PatientMedicationNote\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedication.cdm.json/PatientMedication\",\"name\":\"PrescriptionId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a prescription.\",\"isNullable\":true,\"name\":\"PrescriptionId\"}]}}}",
+			"Description": "The one or more drug(s) (medications) taken by the patient. This information is to be based on patient self-reported medications and may include drugs prescribed by other service providers or for medications that were obtained without the use of a prescription or without the advice of a service provider. Where the medication is known to be prescribed by the service provider the Prescription ID should be populated.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,DrugId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

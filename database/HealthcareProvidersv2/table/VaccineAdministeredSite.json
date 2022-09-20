@@ -1,0 +1,113 @@
+{
+	"name": "VaccineAdministeredSite",
+	"properties": {
+		"Name": "VaccineAdministeredSite",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The site where the vaccine was administered.\n\nEx:\n- RA (right arm)\n- LA (left arm)\n- RT (right thigh)\n- LT (left thigh)\n- IN (Intranasal)\n- PO (mouth)",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "VaccineAdministeredSiteId",
+					"Description": "The unique identifier of a vaccine administered site.",
+					"BaseAttributeReference": {
+						"Entity": "VaccineAdministeredSite.cdm.json/VaccineAdministeredSite",
+						"Name": "VaccineAdministeredSiteId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "VaccineAdministeredSiteName",
+					"Description": "The name of a vaccine administered site.",
+					"BaseAttributeReference": {
+						"Entity": "VaccineAdministeredSite.cdm.json/VaccineAdministeredSite",
+						"Name": "VaccineAdministeredSiteName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "VaccineAdministeredSiteDescription",
+					"Description": "The description of a vaccine administered site.",
+					"BaseAttributeReference": {
+						"Entity": "VaccineAdministeredSite.cdm.json/VaccineAdministeredSite",
+						"Name": "VaccineAdministeredSiteDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/VaccineAdministeredSite",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/VaccineAdministeredSite",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"VaccineAdministeredSiteId\":{\"entity\":\"VaccineAdministeredSite.cdm.json/VaccineAdministeredSite\",\"name\":\"VaccineAdministeredSiteId\"},\"VaccineAdministeredSiteName\":{\"entity\":\"VaccineAdministeredSite.cdm.json/VaccineAdministeredSite\",\"name\":\"VaccineAdministeredSiteName\"},\"VaccineAdministeredSiteDescription\":{\"entity\":\"VaccineAdministeredSite.cdm.json/VaccineAdministeredSite\",\"name\":\"VaccineAdministeredSiteDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"VaccineAdministeredSite\",\"path\":\"VaccineAdministeredSite.cdm.json/VaccineAdministeredSite\"},\"description\":\"The site where the vaccine was administered.\\n\\nEx:\\n- RA (right arm)\\n- LA (left arm)\\n- RT (right thigh)\\n- LT (left thigh)\\n- IN (Intranasal)\\n- PO (mouth)\",\"primaryKey\":[\"VaccineAdministeredSiteId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"VaccineAdministeredSite.cdm.json/VaccineAdministeredSite\",\"name\":\"VaccineAdministeredSiteId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a vaccine administered site.\",\"isNullable\":false,\"name\":\"VaccineAdministeredSiteId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"VaccineAdministeredSite.cdm.json/VaccineAdministeredSite\",\"name\":\"VaccineAdministeredSiteName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a vaccine administered site.\",\"isNullable\":true,\"name\":\"VaccineAdministeredSiteName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"VaccineAdministeredSite.cdm.json/VaccineAdministeredSite\",\"name\":\"VaccineAdministeredSiteDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a vaccine administered site.\",\"isNullable\":true,\"name\":\"VaccineAdministeredSiteDescription\"}]}}}",
+			"Description": "The site where the vaccine was administered.\n\nEx:\n- RA (right arm)\n- LA (left arm)\n- RT (right thigh)\n- LT (left thigh)\n- IN (Intranasal)\n- PO (mouth)",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "VaccineAdministeredSiteId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

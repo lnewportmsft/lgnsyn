@@ -1,0 +1,177 @@
+{
+	"name": "PatientNameComponent",
+	"properties": {
+		"Name": "PatientNameComponent",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The individual name components of the patient name and their ordering in the name.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNameComponent.cdm.json/PatientNameComponent",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNameComponent.cdm.json/PatientNameComponent",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientNameId",
+					"Description": "The unique identifier of a Patient Name.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNameComponent.cdm.json/PatientNameComponent",
+						"Name": "PatientNameId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "NameComponentOrderNumber",
+					"Description": "The order number associated with the customer name component.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNameComponent.cdm.json/PatientNameComponent",
+						"Name": "NameComponentOrderNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "Name",
+					"Description": "The component name.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNameComponent.cdm.json/PatientNameComponent",
+						"Name": "Name"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "NameComponentTypeId",
+					"Description": "The unique identifier of a Name Component Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNameComponent.cdm.json/PatientNameComponent",
+						"Name": "NameComponentTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "NameComponentNote",
+					"Description": "A note, comment or additional information regarding the component name.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNameComponent.cdm.json/PatientNameComponent",
+						"Name": "NameComponentNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientNameComponent",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientNameComponent",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"name\":\"PatientId\"},\"PatientNameId\":{\"entity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"name\":\"PatientNameId\"},\"NameComponentOrderNumber\":{\"entity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"name\":\"NameComponentOrderNumber\"},\"Name\":{\"entity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"name\":\"Name\"},\"NameComponentTypeId\":{\"entity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"name\":\"NameComponentTypeId\"},\"NameComponentNote\":{\"entity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"name\":\"NameComponentNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientNameComponent\",\"path\":\"PatientNameComponent.cdm.json/PatientNameComponent\"},\"description\":\"The individual name components of the patient name and their ordering in the name.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PatientNameId\",\"NameComponentOrderNumber\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"name\":\"PatientNameId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Name.\",\"isNullable\":false,\"name\":\"PatientNameId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"name\":\"NameComponentOrderNumber\"},\"dataType\":\"integer\",\"description\":\"The order number associated with the customer name component.\",\"isNullable\":false,\"name\":\"NameComponentOrderNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"name\":\"Name\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The component name.\",\"isNullable\":true,\"name\":\"Name\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"name\":\"NameComponentTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Name Component Type.\",\"isNullable\":false,\"name\":\"NameComponentTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"name\":\"NameComponentNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the component name.\",\"isNullable\":true,\"name\":\"NameComponentNote\"}]}}}",
+			"Description": "The individual name components of the patient name and their ordering in the name.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PatientNameId,NameComponentOrderNumber",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

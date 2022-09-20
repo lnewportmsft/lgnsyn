@@ -1,0 +1,26 @@
+{
+	"name": "relationship-kjwmlsqdra",
+	"properties": {
+		"Name": "relationship-kjwmlsqdra",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Patient",
+		"ToTableName": "PatientOccupationGroup",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ServiceProviderId",
+				"ToColumnName": "ServiceProviderId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Patient.cdm.json/Patient\",\"toEntity\":\"PatientOccupationGroup.cdm.json/PatientOccupationGroup\",\"joinPairs\":[{\"fromAttribute\":\"ServiceProviderId\",\"toAttribute\":\"ServiceProviderId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

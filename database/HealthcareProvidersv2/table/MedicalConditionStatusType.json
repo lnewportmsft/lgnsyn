@@ -1,0 +1,113 @@
+{
+	"name": "MedicalConditionStatusType",
+	"properties": {
+		"Name": "MedicalConditionStatusType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The status of the Patient Medical Condition as of the associated period.\n\nEx:\n- Diagnosed/untreated\n- Diagnosed/under treatment\n- Treatment terminated\n- Chronic\n- Unknown",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "MedicalConditionStatusTypeId",
+					"Description": "The unique identifier of a medical condition status type.",
+					"BaseAttributeReference": {
+						"Entity": "MedicalConditionStatusType.cdm.json/MedicalConditionStatusType",
+						"Name": "MedicalConditionStatusTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "MedicalConditionStatusTypeName",
+					"Description": "The name of a medical condition status type.",
+					"BaseAttributeReference": {
+						"Entity": "MedicalConditionStatusType.cdm.json/MedicalConditionStatusType",
+						"Name": "MedicalConditionStatusTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "MedicalConditionStatusTypeDescription",
+					"Description": "The description of a medical condition status type.",
+					"BaseAttributeReference": {
+						"Entity": "MedicalConditionStatusType.cdm.json/MedicalConditionStatusType",
+						"Name": "MedicalConditionStatusTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/MedicalConditionStatusType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/MedicalConditionStatusType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"MedicalConditionStatusTypeId\":{\"entity\":\"MedicalConditionStatusType.cdm.json/MedicalConditionStatusType\",\"name\":\"MedicalConditionStatusTypeId\"},\"MedicalConditionStatusTypeName\":{\"entity\":\"MedicalConditionStatusType.cdm.json/MedicalConditionStatusType\",\"name\":\"MedicalConditionStatusTypeName\"},\"MedicalConditionStatusTypeDescription\":{\"entity\":\"MedicalConditionStatusType.cdm.json/MedicalConditionStatusType\",\"name\":\"MedicalConditionStatusTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"MedicalConditionStatusType\",\"path\":\"MedicalConditionStatusType.cdm.json/MedicalConditionStatusType\"},\"description\":\"The status of the Patient Medical Condition as of the associated period.\\n\\nEx:\\n- Diagnosed/untreated\\n- Diagnosed/under treatment\\n- Treatment terminated\\n- Chronic\\n- Unknown\",\"primaryKey\":[\"MedicalConditionStatusTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"MedicalConditionStatusType.cdm.json/MedicalConditionStatusType\",\"name\":\"MedicalConditionStatusTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a medical condition status type.\",\"isNullable\":false,\"name\":\"MedicalConditionStatusTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"MedicalConditionStatusType.cdm.json/MedicalConditionStatusType\",\"name\":\"MedicalConditionStatusTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a medical condition status type.\",\"isNullable\":true,\"name\":\"MedicalConditionStatusTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"MedicalConditionStatusType.cdm.json/MedicalConditionStatusType\",\"name\":\"MedicalConditionStatusTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a medical condition status type.\",\"isNullable\":true,\"name\":\"MedicalConditionStatusTypeDescription\"}]}}}",
+			"Description": "The status of the Patient Medical Condition as of the associated period.\n\nEx:\n- Diagnosed/untreated\n- Diagnosed/under treatment\n- Treatment terminated\n- Chronic\n- Unknown",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "MedicalConditionStatusTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

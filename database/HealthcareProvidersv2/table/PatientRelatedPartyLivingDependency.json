@@ -1,0 +1,211 @@
+{
+	"name": "PatientRelatedPartyLivingDependency",
+	"properties": {
+		"Name": "PatientRelatedPartyLivingDependency",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The specific living conditions of the Patient Related Party.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PartyId",
+					"Description": "The unique identifier of a Party.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency",
+						"Name": "PartyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "PatientPartyRelationshipTypeId",
+					"Description": "The unique identifier of a Patient-Party relationship type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency",
+						"Name": "PatientPartyRelationshipTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated patient - party relationship is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "LivingDependencyTypeId",
+					"Description": "The unique identifier of a physical characteristic.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency",
+						"Name": "LivingDependencyTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "LivingDependencyPeriodStartDate",
+					"Description": "The period start date for which the associated living dependency is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency",
+						"Name": "LivingDependencyPeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "LivingDependencyPeriodEndDate",
+					"Description": "The period end date for which the associated living dependency is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency",
+						"Name": "LivingDependencyPeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientPartyLivingDependencyRelationshipNote",
+					"Description": "A note, comment or additional information regarding the Patient - Party Living Dependency relationship.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency",
+						"Name": "PatientPartyLivingDependencyRelationshipNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRelatedPartyLivingDependency",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRelatedPartyLivingDependency",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"PatientId\"},\"PartyId\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"PartyId\"},\"PatientPartyRelationshipTypeId\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"PatientPartyRelationshipTypeId\"},\"PeriodStartDate\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"PeriodStartDate\"},\"LivingDependencyTypeId\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"LivingDependencyTypeId\"},\"LivingDependencyPeriodStartDate\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"LivingDependencyPeriodStartDate\"},\"LivingDependencyPeriodEndDate\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"LivingDependencyPeriodEndDate\"},\"PatientPartyLivingDependencyRelationshipNote\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"PatientPartyLivingDependencyRelationshipNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientRelatedPartyLivingDependency\",\"path\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\"},\"description\":\"The specific living conditions of the Patient Related Party.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PartyId\",\"PatientPartyRelationshipTypeId\",\"PeriodStartDate\",\"LivingDependencyTypeId\",\"LivingDependencyPeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"PartyId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Party.\",\"isNullable\":false,\"name\":\"PartyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"PatientPartyRelationshipTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient-Party relationship type.\",\"isNullable\":false,\"name\":\"PatientPartyRelationshipTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated patient - party relationship is valid or in-effect.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"LivingDependencyTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a physical characteristic.\",\"isNullable\":false,\"name\":\"LivingDependencyTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"LivingDependencyPeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated living dependency is valid or in-effect.\",\"isNullable\":false,\"name\":\"LivingDependencyPeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"LivingDependencyPeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated living dependency is valid or in-effect.\",\"isNullable\":true,\"name\":\"LivingDependencyPeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"name\":\"PatientPartyLivingDependencyRelationshipNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient - Party Living Dependency relationship.\",\"isNullable\":true,\"name\":\"PatientPartyLivingDependencyRelationshipNote\"}]}}}",
+			"Description": "The specific living conditions of the Patient Related Party.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PartyId,PatientPartyRelationshipTypeId,PeriodStartDate,LivingDependencyTypeId,LivingDependencyPeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

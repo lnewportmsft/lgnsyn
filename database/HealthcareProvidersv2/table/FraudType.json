@@ -1,0 +1,113 @@
+{
+	"name": "FraudType",
+	"properties": {
+		"Name": "FraudType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "Fraud is defined as an intentional deception or misrepresentation made by a person with the knowledge that the deception could result in some unauthorized benefit to himself or some other person. It includes any act that constitutes fraud under applicable federal or state law. \n\nTypes of fraud include:\n\n- Falsifying Claims/Encounters\n- Billing for services not rendered \n- Altering claims \n- Submission of any false data on claims\n- Duplicate billing for the same service",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "FraudTypeId",
+					"Description": "The unique identifier of a Fraud Type.",
+					"BaseAttributeReference": {
+						"Entity": "FraudType.cdm.json/FraudType",
+						"Name": "FraudTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "FraudTypeName",
+					"Description": "The name of a Fraud Type.",
+					"BaseAttributeReference": {
+						"Entity": "FraudType.cdm.json/FraudType",
+						"Name": "FraudTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "FraudTypeDescription",
+					"Description": "The description of a Fraud Type.",
+					"BaseAttributeReference": {
+						"Entity": "FraudType.cdm.json/FraudType",
+						"Name": "FraudTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/FraudType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/FraudType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"FraudTypeId\":{\"entity\":\"FraudType.cdm.json/FraudType\",\"name\":\"FraudTypeId\"},\"FraudTypeName\":{\"entity\":\"FraudType.cdm.json/FraudType\",\"name\":\"FraudTypeName\"},\"FraudTypeDescription\":{\"entity\":\"FraudType.cdm.json/FraudType\",\"name\":\"FraudTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"FraudType\",\"path\":\"FraudType.cdm.json/FraudType\"},\"description\":\"Fraud is defined as an intentional deception or misrepresentation made by a person with the knowledge that the deception could result in some unauthorized benefit to himself or some other person. It includes any act that constitutes fraud under applicable federal or state law. \\n\\nTypes of fraud include:\\n\\n- Falsifying Claims/Encounters\\n- Billing for services not rendered \\n- Altering claims \\n- Submission of any false data on claims\\n- Duplicate billing for the same service\",\"primaryKey\":[\"FraudTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"FraudType.cdm.json/FraudType\",\"name\":\"FraudTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Fraud Type.\",\"isNullable\":false,\"name\":\"FraudTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"FraudType.cdm.json/FraudType\",\"name\":\"FraudTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Fraud Type.\",\"isNullable\":true,\"name\":\"FraudTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"FraudType.cdm.json/FraudType\",\"name\":\"FraudTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Fraud Type.\",\"isNullable\":true,\"name\":\"FraudTypeDescription\"}]}}}",
+			"Description": "Fraud is defined as an intentional deception or misrepresentation made by a person with the knowledge that the deception could result in some unauthorized benefit to himself or some other person. It includes any act that constitutes fraud under applicable federal or state law. \n\nTypes of fraud include:\n\n- Falsifying Claims/Encounters\n- Billing for services not rendered \n- Altering claims \n- Submission of any false data on claims\n- Duplicate billing for the same service",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "FraudTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

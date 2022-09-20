@@ -1,0 +1,26 @@
+{
+	"name": "relationship-qtjiblcrvr",
+	"properties": {
+		"Name": "relationship-qtjiblcrvr",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientDrugAllergy",
+		"ToTableName": "PatientDrugAllergyReaction",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ServiceProviderId",
+				"ToColumnName": "ServiceProviderId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientDrugAllergy.cdm.json/PatientDrugAllergy\",\"toEntity\":\"PatientDrugAllergyReaction.cdm.json/PatientDrugAllergyReaction\",\"joinPairs\":[{\"fromAttribute\":\"ServiceProviderId\",\"toAttribute\":\"ServiceProviderId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,26 @@
+{
+	"name": "relationship-schwctenab",
+	"properties": {
+		"Name": "relationship-schwctenab",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Patient",
+		"ToTableName": "PatientAmbulatoryStatus",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientId",
+				"ToColumnName": "PatientId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Patient.cdm.json/Patient\",\"toEntity\":\"PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus\",\"joinPairs\":[{\"fromAttribute\":\"PatientId\",\"toAttribute\":\"PatientId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

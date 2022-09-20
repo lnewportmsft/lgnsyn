@@ -1,0 +1,26 @@
+{
+	"name": "relationship-njcyrkkwio",
+	"properties": {
+		"Name": "relationship-njcyrkkwio",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientProblem",
+		"ToTableName": "PatientProblemActivity",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientId",
+				"ToColumnName": "PatientId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientProblem.cdm.json/PatientProblem\",\"toEntity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"joinPairs\":[{\"fromAttribute\":\"PatientId\",\"toAttribute\":\"PatientId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

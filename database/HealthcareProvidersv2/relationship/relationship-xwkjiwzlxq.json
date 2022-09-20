@@ -1,0 +1,26 @@
+{
+	"name": "relationship-xwkjiwzlxq",
+	"properties": {
+		"Name": "relationship-xwkjiwzlxq",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientFollowup",
+		"ToTableName": "PatientFollowupCommunication",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientFollowupId",
+				"ToColumnName": "PatientFollowupId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"toEntity\":\"PatientFollowupCommunication.cdm.json/PatientFollowupCommunication\",\"joinPairs\":[{\"fromAttribute\":\"PatientFollowupId\",\"toAttribute\":\"PatientFollowupId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

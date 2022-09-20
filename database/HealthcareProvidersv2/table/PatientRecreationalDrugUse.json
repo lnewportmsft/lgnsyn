@@ -1,0 +1,178 @@
+{
+	"name": "PatientRecreationalDrugUse",
+	"properties": {
+		"Name": "PatientRecreationalDrugUse",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The recreational drugs used by a Patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "RecreationalDrugId",
+					"Description": "The unique identifier of a physical characteristic.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse",
+						"Name": "RecreationalDrugId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "RecreationalDrugUsePeriodStartDate",
+					"Description": "The period start date for which the associated Recreational Drug Use is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse",
+						"Name": "RecreationalDrugUsePeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "RecreationalDrugUsePeriodEndDate",
+					"Description": "The period end date for which the associated Recreational Drug Use is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse",
+						"Name": "RecreationalDrugUsePeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "RecreationalDrugUseNote",
+					"Description": "A note, comment or additional information regarding the Recreational Drug Use.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse",
+						"Name": "RecreationalDrugUseNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "FrequencyId",
+					"Description": "The unique identifier of a frequency.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse",
+						"Name": "FrequencyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRecreationalDrugUse",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRecreationalDrugUse",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"name\":\"PatientId\"},\"RecreationalDrugId\":{\"entity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"name\":\"RecreationalDrugId\"},\"ServiceProviderId\":{\"entity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"name\":\"ServiceProviderId\"},\"RecreationalDrugUsePeriodStartDate\":{\"entity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"name\":\"RecreationalDrugUsePeriodStartDate\"},\"RecreationalDrugUsePeriodEndDate\":{\"entity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"name\":\"RecreationalDrugUsePeriodEndDate\"},\"RecreationalDrugUseNote\":{\"entity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"name\":\"RecreationalDrugUseNote\"},\"FrequencyId\":{\"entity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"name\":\"FrequencyId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientRecreationalDrugUse\",\"path\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\"},\"description\":\"The recreational drugs used by a Patient.\",\"primaryKey\":[\"PatientId\",\"RecreationalDrugId\",\"ServiceProviderId\",\"RecreationalDrugUsePeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"name\":\"RecreationalDrugId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a physical characteristic.\",\"isNullable\":false,\"name\":\"RecreationalDrugId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"name\":\"RecreationalDrugUsePeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated Recreational Drug Use is valid or in-effect.\",\"isNullable\":false,\"name\":\"RecreationalDrugUsePeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"name\":\"RecreationalDrugUsePeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated Recreational Drug Use is valid or in-effect.\",\"isNullable\":true,\"name\":\"RecreationalDrugUsePeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"name\":\"RecreationalDrugUseNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Recreational Drug Use.\",\"isNullable\":true,\"name\":\"RecreationalDrugUseNote\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"name\":\"FrequencyId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a frequency.\",\"isNullable\":true,\"name\":\"FrequencyId\"}]}}}",
+			"Description": "The recreational drugs used by a Patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,RecreationalDrugId,ServiceProviderId,RecreationalDrugUsePeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

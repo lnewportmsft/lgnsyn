@@ -1,0 +1,26 @@
+{
+	"name": "relationship-dwloghwamq",
+	"properties": {
+		"Name": "relationship-dwloghwamq",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientPregnancyStatusType",
+		"ToTableName": "PatientPregnancyStatus",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientPregnancyStatusTypeId",
+				"ToColumnName": "PatientPregnancyStatusTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientPregnancyStatusType.cdm.json/PatientPregnancyStatusType\",\"toEntity\":\"PatientPregnancyStatus.cdm.json/PatientPregnancyStatus\",\"joinPairs\":[{\"fromAttribute\":\"PatientPregnancyStatusTypeId\",\"toAttribute\":\"PatientPregnancyStatusTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

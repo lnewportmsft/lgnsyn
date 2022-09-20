@@ -1,0 +1,178 @@
+{
+	"name": "PatientProductBenefitCriteria",
+	"properties": {
+		"Name": "PatientProductBenefitCriteria",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more benefit criteria that are assigned or linked to a Patient and by which they are identified or qualified from a benefit focus in relationship to a specific Product.\n\nBenefit market segmentation is a strategy for defining consumers by the benefits they seek from a product or service.    \n\nFor example, benefits for a product may include price, flavor, health, investment objectives.\n\nThe business organization identifies a finite number of Benefit Criteria that are used to identify members and prospective customers.   These criteria will be unique to each business organization and focus upon that organizations specific information requirements.\n\nThe Benefit Criteria is the specific variable or value that may be linked to a Market Segment.\n\nThe Benefit Type is the larger category to which the Benefit Criteria belongs.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ProductId",
+					"Description": "The unique identifier of a Product.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria",
+						"Name": "ProductId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "BenefitCriteriaId",
+					"Description": "The unique identifier of a Benefit Criteria.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria",
+						"Name": "BenefitCriteriaId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientBenefitCriteriaNote",
+					"Description": "A note, comment or additional information related to Patient Product Benefit Criteria.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria",
+						"Name": "PatientBenefitCriteriaNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientProductBenefitCriteria",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientProductBenefitCriteria",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\",\"name\":\"PatientId\"},\"ProductId\":{\"entity\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\",\"name\":\"ProductId\"},\"BenefitCriteriaId\":{\"entity\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\",\"name\":\"BenefitCriteriaId\"},\"PeriodStartDate\":{\"entity\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\",\"name\":\"PeriodEndDate\"},\"PatientBenefitCriteriaNote\":{\"entity\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\",\"name\":\"PatientBenefitCriteriaNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientProductBenefitCriteria\",\"path\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\"},\"description\":\"The one or more benefit criteria that are assigned or linked to a Patient and by which they are identified or qualified from a benefit focus in relationship to a specific Product.\\n\\nBenefit market segmentation is a strategy for defining consumers by the benefits they seek from a product or service.    \\n\\nFor example, benefits for a product may include price, flavor, health, investment objectives.\\n\\nThe business organization identifies a finite number of Benefit Criteria that are used to identify members and prospective customers.   These criteria will be unique to each business organization and focus upon that organizations specific information requirements.\\n\\nThe Benefit Criteria is the specific variable or value that may be linked to a Market Segment.\\n\\nThe Benefit Type is the larger category to which the Benefit Criteria belongs.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"ProductId\",\"BenefitCriteriaId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\",\"name\":\"ProductId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Product.\",\"isNullable\":false,\"name\":\"ProductId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\",\"name\":\"BenefitCriteriaId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Benefit Criteria.\",\"isNullable\":false,\"name\":\"BenefitCriteriaId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\",\"name\":\"PatientBenefitCriteriaNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information related to Patient Product Benefit Criteria.\",\"isNullable\":true,\"name\":\"PatientBenefitCriteriaNote\"}]}}}",
+			"Description": "The one or more benefit criteria that are assigned or linked to a Patient and by which they are identified or qualified from a benefit focus in relationship to a specific Product.\n\nBenefit market segmentation is a strategy for defining consumers by the benefits they seek from a product or service.    \n\nFor example, benefits for a product may include price, flavor, health, investment objectives.\n\nThe business organization identifies a finite number of Benefit Criteria that are used to identify members and prospective customers.   These criteria will be unique to each business organization and focus upon that organizations specific information requirements.\n\nThe Benefit Criteria is the specific variable or value that may be linked to a Market Segment.\n\nThe Benefit Type is the larger category to which the Benefit Criteria belongs.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,ProductId,BenefitCriteriaId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

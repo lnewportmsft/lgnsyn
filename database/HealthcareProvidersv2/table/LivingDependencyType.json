@@ -1,0 +1,113 @@
+{
+	"name": "LivingDependencyType",
+	"properties": {
+		"Name": "LivingDependencyType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The specific living conditions that are relevant to an individual's healthcare needs. This information can be useful in the discharge planning process.\n\nEx.:\n- Spouse Dependent\n- Medical Supervision Required\n- Small Children Dependent",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "LivingDependencyTypeId",
+					"Description": "The unique identifier of a Living Dependency Type.",
+					"BaseAttributeReference": {
+						"Entity": "LivingDependencyType.cdm.json/LivingDependencyType",
+						"Name": "LivingDependencyTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "LivingDependencyTypeName",
+					"Description": "The name of a Living Dependency Type.",
+					"BaseAttributeReference": {
+						"Entity": "LivingDependencyType.cdm.json/LivingDependencyType",
+						"Name": "LivingDependencyTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "LivingDependencyTypeDescription",
+					"Description": "The description of a Living Dependency Type.",
+					"BaseAttributeReference": {
+						"Entity": "LivingDependencyType.cdm.json/LivingDependencyType",
+						"Name": "LivingDependencyTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/LivingDependencyType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/LivingDependencyType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"LivingDependencyTypeId\":{\"entity\":\"LivingDependencyType.cdm.json/LivingDependencyType\",\"name\":\"LivingDependencyTypeId\"},\"LivingDependencyTypeName\":{\"entity\":\"LivingDependencyType.cdm.json/LivingDependencyType\",\"name\":\"LivingDependencyTypeName\"},\"LivingDependencyTypeDescription\":{\"entity\":\"LivingDependencyType.cdm.json/LivingDependencyType\",\"name\":\"LivingDependencyTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"LivingDependencyType\",\"path\":\"LivingDependencyType.cdm.json/LivingDependencyType\"},\"description\":\"The specific living conditions that are relevant to an individual's healthcare needs. This information can be useful in the discharge planning process.\\n\\nEx.:\\n- Spouse Dependent\\n- Medical Supervision Required\\n- Small Children Dependent\",\"primaryKey\":[\"LivingDependencyTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"LivingDependencyType.cdm.json/LivingDependencyType\",\"name\":\"LivingDependencyTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Living Dependency Type.\",\"isNullable\":false,\"name\":\"LivingDependencyTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"LivingDependencyType.cdm.json/LivingDependencyType\",\"name\":\"LivingDependencyTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Living Dependency Type.\",\"isNullable\":true,\"name\":\"LivingDependencyTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"LivingDependencyType.cdm.json/LivingDependencyType\",\"name\":\"LivingDependencyTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Living Dependency Type.\",\"isNullable\":true,\"name\":\"LivingDependencyTypeDescription\"}]}}}",
+			"Description": "The specific living conditions that are relevant to an individual's healthcare needs. This information can be useful in the discharge planning process.\n\nEx.:\n- Spouse Dependent\n- Medical Supervision Required\n- Small Children Dependent",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "LivingDependencyTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

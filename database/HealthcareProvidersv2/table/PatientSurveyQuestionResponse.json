@@ -1,0 +1,177 @@
+{
+	"name": "PatientSurveyQuestionResponse",
+	"properties": {
+		"Name": "PatientSurveyQuestionResponse",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The Patient's response to the survey question.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "SurveyId",
+					"Description": "The unique identifier of a Survey.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse",
+						"Name": "SurveyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "QuestionId",
+					"Description": "The unique identifier of a Question.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse",
+						"Name": "QuestionId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ResponseTimestamp",
+					"Description": "The timestamp of the response to the Survey Question.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse",
+						"Name": "ResponseTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "ResponseText",
+					"Description": "A Patient response to the associated question that cannot be addressed by a simple Question Response Rating and requires some amount of text that must be individually interpreted.\n\nAn example is a statement made in response to a Question as opposed to a standard \"Yes/No\" or scaled rating.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse",
+						"Name": "ResponseText"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "QuestionResponseRatingId",
+					"Description": "The unique identifier of a Question Response Rating.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse",
+						"Name": "QuestionResponseRatingId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientSurveyQuestionResponse",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientSurveyQuestionResponse",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse\",\"name\":\"PatientId\"},\"SurveyId\":{\"entity\":\"PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse\",\"name\":\"SurveyId\"},\"QuestionId\":{\"entity\":\"PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse\",\"name\":\"QuestionId\"},\"ResponseTimestamp\":{\"entity\":\"PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse\",\"name\":\"ResponseTimestamp\"},\"ResponseText\":{\"entity\":\"PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse\",\"name\":\"ResponseText\"},\"QuestionResponseRatingId\":{\"entity\":\"PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse\",\"name\":\"QuestionResponseRatingId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientSurveyQuestionResponse\",\"path\":\"PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse\"},\"description\":\"The Patient's response to the survey question.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"SurveyId\",\"QuestionId\",\"ResponseTimestamp\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse\",\"name\":\"SurveyId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Survey.\",\"isNullable\":false,\"name\":\"SurveyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse\",\"name\":\"QuestionId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Question.\",\"isNullable\":false,\"name\":\"QuestionId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse\",\"name\":\"ResponseTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp of the response to the Survey Question.\",\"isNullable\":false,\"name\":\"ResponseTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse\",\"name\":\"ResponseText\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A Patient response to the associated question that cannot be addressed by a simple Question Response Rating and requires some amount of text that must be individually interpreted.\\n\\nAn example is a statement made in response to a Question as opposed to a standard \\\"Yes/No\\\" or scaled rating.\",\"isNullable\":true,\"name\":\"ResponseText\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSurveyQuestionResponse.cdm.json/PatientSurveyQuestionResponse\",\"name\":\"QuestionResponseRatingId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Question Response Rating.\",\"isNullable\":true,\"name\":\"QuestionResponseRatingId\"}]}}}",
+			"Description": "The Patient's response to the survey question.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,SurveyId,QuestionId,ResponseTimestamp",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

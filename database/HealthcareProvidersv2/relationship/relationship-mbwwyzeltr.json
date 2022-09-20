@@ -1,0 +1,26 @@
+{
+	"name": "relationship-mbwwyzeltr",
+	"properties": {
+		"Name": "relationship-mbwwyzeltr",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "AmbulatoryStatusType",
+		"ToTableName": "PatientRelatedPartyAmbulatoryStatus",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "AmbulatoryStatusTypeId",
+				"ToColumnName": "AmbulatoryStatusTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"AmbulatoryStatusType.cdm.json/AmbulatoryStatusType\",\"toEntity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"joinPairs\":[{\"fromAttribute\":\"AmbulatoryStatusTypeId\",\"toAttribute\":\"AmbulatoryStatusTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

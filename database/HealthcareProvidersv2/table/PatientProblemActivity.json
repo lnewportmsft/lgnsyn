@@ -1,0 +1,177 @@
+{
+	"name": "PatientProblemActivity",
+	"properties": {
+		"Name": "PatientProblemActivity",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "An activity that occurs in support of a Patient Problem.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblemActivity.cdm.json/PatientProblemActivity",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblemActivity.cdm.json/PatientProblemActivity",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientProblemNumber",
+					"Description": "The unique identifier of a Patient Problem.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblemActivity.cdm.json/PatientProblemActivity",
+						"Name": "PatientProblemNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientProblemActivityTypeId",
+					"Description": "The unique identifier of a Patient Problem Activity Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblemActivity.cdm.json/PatientProblemActivity",
+						"Name": "PatientProblemActivityTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientProblemActivityTimestamp",
+					"Description": "The timestamp when t he patient problem activity occurred.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblemActivity.cdm.json/PatientProblemActivity",
+						"Name": "PatientProblemActivityTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "IdentifiedDuringEncounterId",
+					"Description": "The unique identifier of an Encounter with a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblemActivity.cdm.json/PatientProblemActivity",
+						"Name": "IdentifiedDuringEncounterId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "PatientProblemActivityNote",
+					"Description": "A note, comment or additional information regarding a patient problem activity.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblemActivity.cdm.json/PatientProblemActivity",
+						"Name": "PatientProblemActivityNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientProblemActivity",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientProblemActivity",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"name\":\"PatientId\"},\"PatientProblemNumber\":{\"entity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"name\":\"PatientProblemNumber\"},\"PatientProblemActivityTypeId\":{\"entity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"name\":\"PatientProblemActivityTypeId\"},\"PatientProblemActivityTimestamp\":{\"entity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"name\":\"PatientProblemActivityTimestamp\"},\"IdentifiedDuringEncounterId\":{\"entity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"name\":\"IdentifiedDuringEncounterId\"},\"PatientProblemActivityNote\":{\"entity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"name\":\"PatientProblemActivityNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientProblemActivity\",\"path\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\"},\"description\":\"An activity that occurs in support of a Patient Problem.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PatientProblemNumber\",\"PatientProblemActivityTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"name\":\"PatientProblemNumber\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Problem.\",\"isNullable\":false,\"name\":\"PatientProblemNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"name\":\"PatientProblemActivityTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Problem Activity Type.\",\"isNullable\":false,\"name\":\"PatientProblemActivityTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"name\":\"PatientProblemActivityTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp when t he patient problem activity occurred.\",\"isNullable\":true,\"name\":\"PatientProblemActivityTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"name\":\"IdentifiedDuringEncounterId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of an Encounter with a Service Provider.\",\"isNullable\":true,\"name\":\"IdentifiedDuringEncounterId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"name\":\"PatientProblemActivityNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding a patient problem activity.\",\"isNullable\":true,\"name\":\"PatientProblemActivityNote\"}]}}}",
+			"Description": "An activity that occurs in support of a Patient Problem.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PatientProblemNumber,PatientProblemActivityTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

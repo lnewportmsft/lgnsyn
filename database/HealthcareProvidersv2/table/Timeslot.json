@@ -1,0 +1,147 @@
+{
+	"name": "Timeslot",
+	"properties": {
+		"Name": "Timeslot",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A Preferred Timeslot for a proposed event.\n\nEx:\n- Morning\n- Afternoon\n- Evening\n- Default: N/A",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "TimeslotId",
+					"Description": "The unique identifier of a Timeslot occurrence.",
+					"BaseAttributeReference": {
+						"Entity": "Timeslot.cdm.json/Timeslot",
+						"Name": "TimeslotId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "FromTime",
+					"Description": "Earliest Preferred Time",
+					"BaseAttributeReference": {
+						"Entity": "Timeslot.cdm.json/Timeslot",
+						"Name": "FromTime"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "ToTime",
+					"Description": "Latest Preferred Time",
+					"BaseAttributeReference": {
+						"Entity": "Timeslot.cdm.json/Timeslot",
+						"Name": "ToTime"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "TimeslotName",
+					"Description": "The name of the Timeslot.",
+					"BaseAttributeReference": {
+						"Entity": "Timeslot.cdm.json/Timeslot",
+						"Name": "TimeslotName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "TimeslotDescription",
+					"Description": "The description of the Timeslot.",
+					"BaseAttributeReference": {
+						"Entity": "Timeslot.cdm.json/Timeslot",
+						"Name": "TimeslotDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/Timeslot",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/Timeslot",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"TimeslotId\":{\"entity\":\"Timeslot.cdm.json/Timeslot\",\"name\":\"TimeslotId\"},\"FromTime\":{\"entity\":\"Timeslot.cdm.json/Timeslot\",\"name\":\"FromTime\"},\"ToTime\":{\"entity\":\"Timeslot.cdm.json/Timeslot\",\"name\":\"ToTime\"},\"TimeslotName\":{\"entity\":\"Timeslot.cdm.json/Timeslot\",\"name\":\"TimeslotName\"},\"TimeslotDescription\":{\"entity\":\"Timeslot.cdm.json/Timeslot\",\"name\":\"TimeslotDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"Timeslot\",\"path\":\"Timeslot.cdm.json/Timeslot\"},\"description\":\"A Preferred Timeslot for a proposed event.\\n\\nEx:\\n- Morning\\n- Afternoon\\n- Evening\\n- Default: N/A\",\"primaryKey\":[\"TimeslotId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Timeslot.cdm.json/Timeslot\",\"name\":\"TimeslotId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Timeslot occurrence.\",\"isNullable\":false,\"name\":\"TimeslotId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Timeslot.cdm.json/Timeslot\",\"name\":\"FromTime\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"Earliest Preferred Time\",\"isNullable\":true,\"name\":\"FromTime\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Timeslot.cdm.json/Timeslot\",\"name\":\"ToTime\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"Latest Preferred Time\",\"isNullable\":true,\"name\":\"ToTime\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Timeslot.cdm.json/Timeslot\",\"name\":\"TimeslotName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the Timeslot.\",\"isNullable\":true,\"name\":\"TimeslotName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Timeslot.cdm.json/Timeslot\",\"name\":\"TimeslotDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of the Timeslot.\",\"isNullable\":true,\"name\":\"TimeslotDescription\"}]}}}",
+			"Description": "A Preferred Timeslot for a proposed event.\n\nEx:\n- Morning\n- Afternoon\n- Evening\n- Default: N/A",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "TimeslotId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

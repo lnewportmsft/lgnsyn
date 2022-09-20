@@ -1,0 +1,129 @@
+{
+	"name": "PatientFamilyMemberRelationshipType",
+	"properties": {
+		"Name": "PatientFamilyMemberRelationshipType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The type or nature of relationship between the patient and a family member.\n\nEx:\n- Maternal Grandfather\n- Maternal Grandmother\n- Paternal Grandfather\n- Paternal Grandmother\n- Father\n- Mother\n- Sibling\n- Son\n- Daughter",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientFamilyMemberRelationshipTypeId",
+					"Description": "The unique identifier of a Patient Family Member Relationship Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMemberRelationshipType.cdm.json/PatientFamilyMemberRelationshipType",
+						"Name": "PatientFamilyMemberRelationshipTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientFamilyMemberRelationshipTypeName",
+					"Description": "The name of a Patient Family Member Relationship Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMemberRelationshipType.cdm.json/PatientFamilyMemberRelationshipType",
+						"Name": "PatientFamilyMemberRelationshipTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientFamilyMemberRelationshipTypeDescription",
+					"Description": "The description of a Patient Family Member Relationship Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMemberRelationshipType.cdm.json/PatientFamilyMemberRelationshipType",
+						"Name": "PatientFamilyMemberRelationshipTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "FirstDegreeRelativeIndicator",
+					"Description": "Indicates whether the relationship makes the individual a first degree relative.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMemberRelationshipType.cdm.json/PatientFamilyMemberRelationshipType",
+						"Name": "FirstDegreeRelativeIndicator"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFamilyMemberRelationshipType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFamilyMemberRelationshipType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientFamilyMemberRelationshipTypeId\":{\"entity\":\"PatientFamilyMemberRelationshipType.cdm.json/PatientFamilyMemberRelationshipType\",\"name\":\"PatientFamilyMemberRelationshipTypeId\"},\"PatientFamilyMemberRelationshipTypeName\":{\"entity\":\"PatientFamilyMemberRelationshipType.cdm.json/PatientFamilyMemberRelationshipType\",\"name\":\"PatientFamilyMemberRelationshipTypeName\"},\"PatientFamilyMemberRelationshipTypeDescription\":{\"entity\":\"PatientFamilyMemberRelationshipType.cdm.json/PatientFamilyMemberRelationshipType\",\"name\":\"PatientFamilyMemberRelationshipTypeDescription\"},\"FirstDegreeRelativeIndicator\":{\"entity\":\"PatientFamilyMemberRelationshipType.cdm.json/PatientFamilyMemberRelationshipType\",\"name\":\"FirstDegreeRelativeIndicator\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientFamilyMemberRelationshipType\",\"path\":\"PatientFamilyMemberRelationshipType.cdm.json/PatientFamilyMemberRelationshipType\"},\"description\":\"The type or nature of relationship between the patient and a family member.\\n\\nEx:\\n- Maternal Grandfather\\n- Maternal Grandmother\\n- Paternal Grandfather\\n- Paternal Grandmother\\n- Father\\n- Mother\\n- Sibling\\n- Son\\n- Daughter\",\"primaryKey\":[\"PatientFamilyMemberRelationshipTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMemberRelationshipType.cdm.json/PatientFamilyMemberRelationshipType\",\"name\":\"PatientFamilyMemberRelationshipTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Family Member Relationship Type.\",\"isNullable\":false,\"name\":\"PatientFamilyMemberRelationshipTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMemberRelationshipType.cdm.json/PatientFamilyMemberRelationshipType\",\"name\":\"PatientFamilyMemberRelationshipTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Patient Family Member Relationship Type.\",\"isNullable\":true,\"name\":\"PatientFamilyMemberRelationshipTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMemberRelationshipType.cdm.json/PatientFamilyMemberRelationshipType\",\"name\":\"PatientFamilyMemberRelationshipTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Patient Family Member Relationship Type.\",\"isNullable\":true,\"name\":\"PatientFamilyMemberRelationshipTypeDescription\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMemberRelationshipType.cdm.json/PatientFamilyMemberRelationshipType\",\"name\":\"FirstDegreeRelativeIndicator\"},\"dataType\":\"boolean\",\"description\":\"Indicates whether the relationship makes the individual a first degree relative.\",\"isNullable\":true,\"name\":\"FirstDegreeRelativeIndicator\"}]}}}",
+			"Description": "The type or nature of relationship between the patient and a family member.\n\nEx:\n- Maternal Grandfather\n- Maternal Grandmother\n- Paternal Grandfather\n- Paternal Grandmother\n- Father\n- Mother\n- Sibling\n- Son\n- Daughter",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientFamilyMemberRelationshipTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

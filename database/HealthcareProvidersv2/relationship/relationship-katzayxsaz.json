@@ -1,0 +1,26 @@
+{
+	"name": "relationship-katzayxsaz",
+	"properties": {
+		"Name": "relationship-katzayxsaz",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientRiskType",
+		"ToTableName": "RiskAssessmentTool",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientRiskTypeId",
+				"ToColumnName": "PatientRiskTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientRiskType.cdm.json/PatientRiskType\",\"toEntity\":\"RiskAssessmentTool.cdm.json/RiskAssessmentTool\",\"joinPairs\":[{\"fromAttribute\":\"PatientRiskTypeId\",\"toAttribute\":\"PatientRiskTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

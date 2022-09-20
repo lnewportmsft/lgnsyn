@@ -1,0 +1,26 @@
+{
+	"name": "relationship-rvsjmrysgl",
+	"properties": {
+		"Name": "relationship-rvsjmrysgl",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Severity",
+		"ToTableName": "PatientBehavioralIndicator",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "SeverityId",
+				"ToColumnName": "SeverityId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Severity.cdm.json/Severity\",\"toEntity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"joinPairs\":[{\"fromAttribute\":\"SeverityId\",\"toAttribute\":\"SeverityId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

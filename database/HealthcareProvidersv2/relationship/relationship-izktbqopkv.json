@@ -1,0 +1,26 @@
+{
+	"name": "relationship-izktbqopkv",
+	"properties": {
+		"Name": "relationship-izktbqopkv",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientName",
+		"ToTableName": "PatientNameComponent",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientId",
+				"ToColumnName": "PatientId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientName.cdm.json/PatientName\",\"toEntity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"joinPairs\":[{\"fromAttribute\":\"PatientId\",\"toAttribute\":\"PatientId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,162 @@
+{
+	"name": "PatientMarketSegment",
+	"properties": {
+		"Name": "PatientMarketSegment",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more Market Segment(s) to which the Patient is assigned.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "MarketSegmentId",
+					"Description": "The unique identifier of a Market Segment.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMarketSegment.cdm.json/PatientMarketSegment",
+						"Name": "MarketSegmentId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMarketSegment.cdm.json/PatientMarketSegment",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date that the Patient has been assigned to the market segment.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMarketSegment.cdm.json/PatientMarketSegment",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMarketSegment.cdm.json/PatientMarketSegment",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date that the Patient has been assigned to the market segment.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMarketSegment.cdm.json/PatientMarketSegment",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientMarketSegmentNote",
+					"Description": "A note, comment or additional information regarding the Patient market segment.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMarketSegment.cdm.json/PatientMarketSegment",
+						"Name": "PatientMarketSegmentNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientMarketSegment",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientMarketSegment",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"MarketSegmentId\":{\"entity\":\"PatientMarketSegment.cdm.json/PatientMarketSegment\",\"name\":\"MarketSegmentId\"},\"PatientId\":{\"entity\":\"PatientMarketSegment.cdm.json/PatientMarketSegment\",\"name\":\"PatientId\"},\"PeriodStartDate\":{\"entity\":\"PatientMarketSegment.cdm.json/PatientMarketSegment\",\"name\":\"PeriodStartDate\"},\"ServiceProviderId\":{\"entity\":\"PatientMarketSegment.cdm.json/PatientMarketSegment\",\"name\":\"ServiceProviderId\"},\"PeriodEndDate\":{\"entity\":\"PatientMarketSegment.cdm.json/PatientMarketSegment\",\"name\":\"PeriodEndDate\"},\"PatientMarketSegmentNote\":{\"entity\":\"PatientMarketSegment.cdm.json/PatientMarketSegment\",\"name\":\"PatientMarketSegmentNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientMarketSegment\",\"path\":\"PatientMarketSegment.cdm.json/PatientMarketSegment\"},\"description\":\"The one or more Market Segment(s) to which the Patient is assigned.\",\"primaryKey\":[\"MarketSegmentId\",\"PatientId\",\"PeriodStartDate\",\"ServiceProviderId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMarketSegment.cdm.json/PatientMarketSegment\",\"name\":\"MarketSegmentId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Market Segment.\",\"isNullable\":false,\"name\":\"MarketSegmentId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMarketSegment.cdm.json/PatientMarketSegment\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMarketSegment.cdm.json/PatientMarketSegment\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date that the Patient has been assigned to the market segment.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMarketSegment.cdm.json/PatientMarketSegment\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMarketSegment.cdm.json/PatientMarketSegment\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date that the Patient has been assigned to the market segment.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMarketSegment.cdm.json/PatientMarketSegment\",\"name\":\"PatientMarketSegmentNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient market segment.\",\"isNullable\":true,\"name\":\"PatientMarketSegmentNote\"}]}}}",
+			"Description": "The one or more Market Segment(s) to which the Patient is assigned.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "MarketSegmentId,PatientId,PeriodStartDate,ServiceProviderId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

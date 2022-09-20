@@ -1,0 +1,113 @@
+{
+	"name": "BehavioralIndicatorType",
+	"properties": {
+		"Name": "BehavioralIndicatorType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A behavioral indicator that is tracked for the purpose of evaluating an individuals mental health.\n\nEx:\n- Depression\n- Anxiety\n- Suicidal Behavior\n- Substance Abuse",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "BehavioralIndicatorTypeId",
+					"Description": "The unique identifier of a Behavioral Indicator Type.",
+					"BaseAttributeReference": {
+						"Entity": "BehavioralIndicatorType.cdm.json/BehavioralIndicatorType",
+						"Name": "BehavioralIndicatorTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "BehavioralIndicatorTypeName",
+					"Description": "The name of a Behavioral Indicator Type.",
+					"BaseAttributeReference": {
+						"Entity": "BehavioralIndicatorType.cdm.json/BehavioralIndicatorType",
+						"Name": "BehavioralIndicatorTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "BehavioralIndicatorTypeDescription",
+					"Description": "The description of a Behavioral Indicator Type.",
+					"BaseAttributeReference": {
+						"Entity": "BehavioralIndicatorType.cdm.json/BehavioralIndicatorType",
+						"Name": "BehavioralIndicatorTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/BehavioralIndicatorType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/BehavioralIndicatorType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"BehavioralIndicatorTypeId\":{\"entity\":\"BehavioralIndicatorType.cdm.json/BehavioralIndicatorType\",\"name\":\"BehavioralIndicatorTypeId\"},\"BehavioralIndicatorTypeName\":{\"entity\":\"BehavioralIndicatorType.cdm.json/BehavioralIndicatorType\",\"name\":\"BehavioralIndicatorTypeName\"},\"BehavioralIndicatorTypeDescription\":{\"entity\":\"BehavioralIndicatorType.cdm.json/BehavioralIndicatorType\",\"name\":\"BehavioralIndicatorTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"BehavioralIndicatorType\",\"path\":\"BehavioralIndicatorType.cdm.json/BehavioralIndicatorType\"},\"description\":\"A behavioral indicator that is tracked for the purpose of evaluating an individuals mental health.\\n\\nEx:\\n- Depression\\n- Anxiety\\n- Suicidal Behavior\\n- Substance Abuse\",\"primaryKey\":[\"BehavioralIndicatorTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"BehavioralIndicatorType.cdm.json/BehavioralIndicatorType\",\"name\":\"BehavioralIndicatorTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Behavioral Indicator Type.\",\"isNullable\":false,\"name\":\"BehavioralIndicatorTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"BehavioralIndicatorType.cdm.json/BehavioralIndicatorType\",\"name\":\"BehavioralIndicatorTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Behavioral Indicator Type.\",\"isNullable\":true,\"name\":\"BehavioralIndicatorTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"BehavioralIndicatorType.cdm.json/BehavioralIndicatorType\",\"name\":\"BehavioralIndicatorTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Behavioral Indicator Type.\",\"isNullable\":true,\"name\":\"BehavioralIndicatorTypeDescription\"}]}}}",
+			"Description": "A behavioral indicator that is tracked for the purpose of evaluating an individuals mental health.\n\nEx:\n- Depression\n- Anxiety\n- Suicidal Behavior\n- Substance Abuse",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "BehavioralIndicatorTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

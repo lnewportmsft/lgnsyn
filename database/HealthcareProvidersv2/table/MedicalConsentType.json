@@ -1,0 +1,113 @@
+{
+	"name": "MedicalConsentType",
+	"properties": {
+		"Name": "MedicalConsentType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "Types of medical consent.\n\nEx:\n- Blanket/ time period\n- Blanket/ encounter\n- Specific specimen\n- Specific test\n- Specific medical procedure\n- Specific service\n- Specific drug",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "MedicalConsentTypeId",
+					"Description": "The unique identifier of a type of medical consent.",
+					"BaseAttributeReference": {
+						"Entity": "MedicalConsentType.cdm.json/MedicalConsentType",
+						"Name": "MedicalConsentTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "MedicalConsentTypeName",
+					"Description": "The name of a type of medical consent.",
+					"BaseAttributeReference": {
+						"Entity": "MedicalConsentType.cdm.json/MedicalConsentType",
+						"Name": "MedicalConsentTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "MedicalConsentTypeDescription",
+					"Description": "The description of a type of medical consent.",
+					"BaseAttributeReference": {
+						"Entity": "MedicalConsentType.cdm.json/MedicalConsentType",
+						"Name": "MedicalConsentTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/MedicalConsentType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/MedicalConsentType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"MedicalConsentTypeId\":{\"entity\":\"MedicalConsentType.cdm.json/MedicalConsentType\",\"name\":\"MedicalConsentTypeId\"},\"MedicalConsentTypeName\":{\"entity\":\"MedicalConsentType.cdm.json/MedicalConsentType\",\"name\":\"MedicalConsentTypeName\"},\"MedicalConsentTypeDescription\":{\"entity\":\"MedicalConsentType.cdm.json/MedicalConsentType\",\"name\":\"MedicalConsentTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"MedicalConsentType\",\"path\":\"MedicalConsentType.cdm.json/MedicalConsentType\"},\"description\":\"Types of medical consent.\\n\\nEx:\\n- Blanket/ time period\\n- Blanket/ encounter\\n- Specific specimen\\n- Specific test\\n- Specific medical procedure\\n- Specific service\\n- Specific drug\",\"primaryKey\":[\"MedicalConsentTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"MedicalConsentType.cdm.json/MedicalConsentType\",\"name\":\"MedicalConsentTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a type of medical consent.\",\"isNullable\":false,\"name\":\"MedicalConsentTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"MedicalConsentType.cdm.json/MedicalConsentType\",\"name\":\"MedicalConsentTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a type of medical consent.\",\"isNullable\":true,\"name\":\"MedicalConsentTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"MedicalConsentType.cdm.json/MedicalConsentType\",\"name\":\"MedicalConsentTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a type of medical consent.\",\"isNullable\":true,\"name\":\"MedicalConsentTypeDescription\"}]}}}",
+			"Description": "Types of medical consent.\n\nEx:\n- Blanket/ time period\n- Blanket/ encounter\n- Specific specimen\n- Specific test\n- Specific medical procedure\n- Specific service\n- Specific drug",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "MedicalConsentTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

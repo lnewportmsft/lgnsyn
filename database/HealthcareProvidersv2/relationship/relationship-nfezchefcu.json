@@ -1,0 +1,26 @@
+{
+	"name": "relationship-nfezchefcu",
+	"properties": {
+		"Name": "relationship-nfezchefcu",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "HandicapType",
+		"ToTableName": "PatientHandicap",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "HandicapTypeId",
+				"ToColumnName": "HandicapTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"HandicapType.cdm.json/HandicapType\",\"toEntity\":\"PatientHandicap.cdm.json/PatientHandicap\",\"joinPairs\":[{\"fromAttribute\":\"HandicapTypeId\",\"toAttribute\":\"HandicapTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

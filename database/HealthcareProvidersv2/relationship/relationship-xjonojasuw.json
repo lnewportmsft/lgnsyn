@@ -1,0 +1,26 @@
+{
+	"name": "relationship-xjonojasuw",
+	"properties": {
+		"Name": "relationship-xjonojasuw",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientRiskType",
+		"ToTableName": "PatientAtRisk",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientRiskTypeId",
+				"ToColumnName": "PatientRiskTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientRiskType.cdm.json/PatientRiskType\",\"toEntity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"joinPairs\":[{\"fromAttribute\":\"PatientRiskTypeId\",\"toAttribute\":\"PatientRiskTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

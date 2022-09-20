@@ -1,0 +1,112 @@
+{
+	"name": "PatientFollowupCommunication",
+	"properties": {
+		"Name": "PatientFollowupCommunication",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more communications used for patient followup.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientFollowupId",
+					"Description": "The unique identifier of a Patient Followup.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFollowupCommunication.cdm.json/PatientFollowupCommunication",
+						"Name": "PatientFollowupId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "CommunicationId",
+					"Description": "The unique identifier of a service request/contact Communication.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFollowupCommunication.cdm.json/PatientFollowupCommunication",
+						"Name": "CommunicationId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "PatientFollowupCommunicationNote",
+					"Description": "A note, comment or additional information regarding a patient followup communication.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFollowupCommunication.cdm.json/PatientFollowupCommunication",
+						"Name": "PatientFollowupCommunicationNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFollowupCommunication",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFollowupCommunication",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientFollowupId\":{\"entity\":\"PatientFollowupCommunication.cdm.json/PatientFollowupCommunication\",\"name\":\"PatientFollowupId\"},\"CommunicationId\":{\"entity\":\"PatientFollowupCommunication.cdm.json/PatientFollowupCommunication\",\"name\":\"CommunicationId\"},\"PatientFollowupCommunicationNote\":{\"entity\":\"PatientFollowupCommunication.cdm.json/PatientFollowupCommunication\",\"name\":\"PatientFollowupCommunicationNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientFollowupCommunication\",\"path\":\"PatientFollowupCommunication.cdm.json/PatientFollowupCommunication\"},\"description\":\"The one or more communications used for patient followup.\",\"primaryKey\":[\"PatientFollowupId\",\"CommunicationId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFollowupCommunication.cdm.json/PatientFollowupCommunication\",\"name\":\"PatientFollowupId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Followup.\",\"isNullable\":false,\"name\":\"PatientFollowupId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFollowupCommunication.cdm.json/PatientFollowupCommunication\",\"name\":\"CommunicationId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a service request/contact Communication.\",\"isNullable\":false,\"name\":\"CommunicationId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFollowupCommunication.cdm.json/PatientFollowupCommunication\",\"name\":\"PatientFollowupCommunicationNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding a patient followup communication.\",\"isNullable\":true,\"name\":\"PatientFollowupCommunicationNote\"}]}}}",
+			"Description": "The one or more communications used for patient followup.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientFollowupId,CommunicationId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

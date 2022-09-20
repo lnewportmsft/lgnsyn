@@ -1,0 +1,163 @@
+{
+	"name": "PatientActivityOfDailyLiving",
+	"properties": {
+		"Name": "PatientActivityOfDailyLiving",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The activity of daily living criteria identified for the patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ActivityOfDailyLivingId",
+					"Description": "The unique identifier of an Activity Of Daily Living.",
+					"BaseAttributeReference": {
+						"Entity": "PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving",
+						"Name": "ActivityOfDailyLivingId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date that the ADL's are reported.",
+					"BaseAttributeReference": {
+						"Entity": "PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date that the ADL's are reported.",
+					"BaseAttributeReference": {
+						"Entity": "PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PercentageOfAbilityToParticipateInAdl",
+					"Description": "The percentage to which the patient can participate in the associated ADL.",
+					"BaseAttributeReference": {
+						"Entity": "PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving",
+						"Name": "PercentageOfAbilityToParticipateInAdl"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientActivityOfDailyLiving",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientActivityOfDailyLiving",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving\",\"name\":\"PatientId\"},\"ActivityOfDailyLivingId\":{\"entity\":\"PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving\",\"name\":\"ActivityOfDailyLivingId\"},\"ServiceProviderId\":{\"entity\":\"PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving\",\"name\":\"ServiceProviderId\"},\"PeriodStartDate\":{\"entity\":\"PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving\",\"name\":\"PeriodEndDate\"},\"PercentageOfAbilityToParticipateInAdl\":{\"entity\":\"PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving\",\"name\":\"PercentageOfAbilityToParticipateInAdl\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientActivityOfDailyLiving\",\"path\":\"PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving\"},\"description\":\"The activity of daily living criteria identified for the patient.\",\"primaryKey\":[\"PatientId\",\"ActivityOfDailyLivingId\",\"ServiceProviderId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving\",\"name\":\"ActivityOfDailyLivingId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Activity Of Daily Living.\",\"isNullable\":false,\"name\":\"ActivityOfDailyLivingId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date that the ADL's are reported.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date that the ADL's are reported.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving\",\"name\":\"PercentageOfAbilityToParticipateInAdl\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The percentage to which the patient can participate in the associated ADL.\",\"isNullable\":true,\"scale\":8,\"name\":\"PercentageOfAbilityToParticipateInAdl\"}]}}}",
+			"Description": "The activity of daily living criteria identified for the patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,ActivityOfDailyLivingId,ServiceProviderId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,26 @@
+{
+	"name": "relationship-wusstcybwf",
+	"properties": {
+		"Name": "relationship-wusstcybwf",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Patient",
+		"ToTableName": "PatientPreExistingCondition",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientId",
+				"ToColumnName": "PatientId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Patient.cdm.json/Patient\",\"toEntity\":\"PatientPreExistingCondition.cdm.json/PatientPreExistingCondition\",\"joinPairs\":[{\"fromAttribute\":\"PatientId\",\"toAttribute\":\"PatientId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

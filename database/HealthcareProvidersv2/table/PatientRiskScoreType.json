@@ -1,0 +1,113 @@
+{
+	"name": "PatientRiskScoreType",
+	"properties": {
+		"Name": "PatientRiskScoreType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A type of risk score that can be associated with a patient.\n\nEx:\n-  Medical\n-  Prospective",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientRiskScoreTypeId",
+					"Description": "The unique identifier of a Patient Risk Score Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskScoreType.cdm.json/PatientRiskScoreType",
+						"Name": "PatientRiskScoreTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientRiskScoreTypeName",
+					"Description": "The name of a Patient Risk Score Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskScoreType.cdm.json/PatientRiskScoreType",
+						"Name": "PatientRiskScoreTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientRiskScoreTypeDescription",
+					"Description": "The description of a Patient Risk Score Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskScoreType.cdm.json/PatientRiskScoreType",
+						"Name": "PatientRiskScoreTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRiskScoreType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRiskScoreType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientRiskScoreTypeId\":{\"entity\":\"PatientRiskScoreType.cdm.json/PatientRiskScoreType\",\"name\":\"PatientRiskScoreTypeId\"},\"PatientRiskScoreTypeName\":{\"entity\":\"PatientRiskScoreType.cdm.json/PatientRiskScoreType\",\"name\":\"PatientRiskScoreTypeName\"},\"PatientRiskScoreTypeDescription\":{\"entity\":\"PatientRiskScoreType.cdm.json/PatientRiskScoreType\",\"name\":\"PatientRiskScoreTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientRiskScoreType\",\"path\":\"PatientRiskScoreType.cdm.json/PatientRiskScoreType\"},\"description\":\"A type of risk score that can be associated with a patient.\\n\\nEx:\\n-  Medical\\n-  Prospective\",\"primaryKey\":[\"PatientRiskScoreTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskScoreType.cdm.json/PatientRiskScoreType\",\"name\":\"PatientRiskScoreTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Risk Score Type.\",\"isNullable\":false,\"name\":\"PatientRiskScoreTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskScoreType.cdm.json/PatientRiskScoreType\",\"name\":\"PatientRiskScoreTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Patient Risk Score Type.\",\"isNullable\":true,\"name\":\"PatientRiskScoreTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskScoreType.cdm.json/PatientRiskScoreType\",\"name\":\"PatientRiskScoreTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Patient Risk Score Type.\",\"isNullable\":true,\"name\":\"PatientRiskScoreTypeDescription\"}]}}}",
+			"Description": "A type of risk score that can be associated with a patient.\n\nEx:\n-  Medical\n-  Prospective",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientRiskScoreTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

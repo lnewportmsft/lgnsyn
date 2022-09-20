@@ -1,0 +1,363 @@
+{
+	"name": "PatientFinancialProfile",
+	"properties": {
+		"Name": "PatientFinancialProfile",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A profile of financial information or characteristics describing the Patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "EstimatedAnnualIncome",
+					"Description": "The Customer's estimated gross annual income.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "EstimatedAnnualIncome"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "EstimatedAnnualSalaryIncome",
+					"Description": "The amount of annual income that is attributable to salary income.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "EstimatedAnnualSalaryIncome"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "EstimatedAnnualInvestmentsIncome",
+					"Description": "The amount of annual income that is attributable to investments.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "EstimatedAnnualInvestmentsIncome"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "EstimatedLiquidSecuritiesNetWorth",
+					"Description": "The amount of member net worth that is held in liquid securities that can be readily liquidated or turned into cash.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "EstimatedLiquidSecuritiesNetWorth"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "EstimatedCashNetWorth",
+					"Description": "The amount of Patient net worth that is either in cash or near cash equivalents.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "EstimatedCashNetWorth"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "EstimatedPersonalPropertyNetWorth",
+					"Description": "The amount of net worth that is in personal real estate holdings.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "EstimatedPersonalPropertyNetWorth"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "EstimatedRealEstateLoansAmount",
+					"Description": "The estimated real estate loans held by the member as of the associate timestamp.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "EstimatedRealEstateLoansAmount"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "EstimatedInvestmentPropertyNetWorth",
+					"Description": "The amount of net worth that is in investment (non-personal) real estate holdings.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "EstimatedInvestmentPropertyNetWorth"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "EstimatedCurrentSecuritiesPortfolioValue",
+					"Description": "The estimated value of the Customer's current equities and bond portfolio.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "EstimatedCurrentSecuritiesPortfolioValue"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "LiquidAssetsAmount",
+					"Description": "The amount of liquid assets ('near money') such as time deposits, treasury bills, and other short-term securities that can readily be turned into cash on short notice.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "LiquidAssetsAmount"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "RealEstateAssetsAmount",
+					"Description": "The real estate assets held by the member during the period.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "RealEstateAssetsAmount"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "CreditLimitAmount",
+					"Description": "The customer's credit limit during the period.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "CreditLimitAmount"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "FederalTaxBracketPercentage",
+					"Description": "The estimated US federal tax bracket that the member is in during the period.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFinancialProfile.cdm.json/PatientFinancialProfile",
+						"Name": "FederalTaxBracketPercentage"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFinancialProfile",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFinancialProfile",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"PatientId\"},\"PeriodStartDate\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"PeriodEndDate\"},\"ServiceProviderId\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"ServiceProviderId\"},\"EstimatedAnnualIncome\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedAnnualIncome\"},\"EstimatedAnnualSalaryIncome\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedAnnualSalaryIncome\"},\"EstimatedAnnualInvestmentsIncome\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedAnnualInvestmentsIncome\"},\"EstimatedLiquidSecuritiesNetWorth\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedLiquidSecuritiesNetWorth\"},\"EstimatedCashNetWorth\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedCashNetWorth\"},\"EstimatedPersonalPropertyNetWorth\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedPersonalPropertyNetWorth\"},\"EstimatedRealEstateLoansAmount\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedRealEstateLoansAmount\"},\"EstimatedInvestmentPropertyNetWorth\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedInvestmentPropertyNetWorth\"},\"EstimatedCurrentSecuritiesPortfolioValue\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedCurrentSecuritiesPortfolioValue\"},\"LiquidAssetsAmount\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"LiquidAssetsAmount\"},\"RealEstateAssetsAmount\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"RealEstateAssetsAmount\"},\"CreditLimitAmount\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"CreditLimitAmount\"},\"FederalTaxBracketPercentage\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"FederalTaxBracketPercentage\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientFinancialProfile\",\"path\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\"},\"description\":\"A profile of financial information or characteristics describing the Patient.\",\"primaryKey\":[\"PatientId\",\"PeriodStartDate\",\"PeriodEndDate\",\"ServiceProviderId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedAnnualIncome\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The Customer's estimated gross annual income.\",\"isNullable\":true,\"scale\":2,\"name\":\"EstimatedAnnualIncome\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedAnnualSalaryIncome\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The amount of annual income that is attributable to salary income.\",\"isNullable\":true,\"scale\":2,\"name\":\"EstimatedAnnualSalaryIncome\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedAnnualInvestmentsIncome\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The amount of annual income that is attributable to investments.\",\"isNullable\":true,\"scale\":2,\"name\":\"EstimatedAnnualInvestmentsIncome\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedLiquidSecuritiesNetWorth\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The amount of member net worth that is held in liquid securities that can be readily liquidated or turned into cash.\",\"isNullable\":true,\"scale\":2,\"name\":\"EstimatedLiquidSecuritiesNetWorth\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedCashNetWorth\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The amount of Patient net worth that is either in cash or near cash equivalents.\",\"isNullable\":true,\"scale\":2,\"name\":\"EstimatedCashNetWorth\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedPersonalPropertyNetWorth\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The amount of net worth that is in personal real estate holdings.\",\"isNullable\":true,\"scale\":2,\"name\":\"EstimatedPersonalPropertyNetWorth\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedRealEstateLoansAmount\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The estimated real estate loans held by the member as of the associate timestamp.\",\"isNullable\":true,\"scale\":2,\"name\":\"EstimatedRealEstateLoansAmount\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedInvestmentPropertyNetWorth\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The amount of net worth that is in investment (non-personal) real estate holdings.\",\"isNullable\":true,\"scale\":2,\"name\":\"EstimatedInvestmentPropertyNetWorth\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"EstimatedCurrentSecuritiesPortfolioValue\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The estimated value of the Customer's current equities and bond portfolio.\",\"isNullable\":true,\"scale\":2,\"name\":\"EstimatedCurrentSecuritiesPortfolioValue\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"LiquidAssetsAmount\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The amount of liquid assets ('near money') such as time deposits, treasury bills, and other short-term securities that can readily be turned into cash on short notice.\",\"isNullable\":true,\"scale\":2,\"name\":\"LiquidAssetsAmount\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"RealEstateAssetsAmount\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The real estate assets held by the member during the period.\",\"isNullable\":true,\"scale\":2,\"name\":\"RealEstateAssetsAmount\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"CreditLimitAmount\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The customer's credit limit during the period.\",\"isNullable\":true,\"scale\":2,\"name\":\"CreditLimitAmount\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFinancialProfile.cdm.json/PatientFinancialProfile\",\"name\":\"FederalTaxBracketPercentage\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The estimated US federal tax bracket that the member is in during the period.\",\"isNullable\":true,\"scale\":8,\"name\":\"FederalTaxBracketPercentage\"}]}}}",
+			"Description": "A profile of financial information or characteristics describing the Patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,PeriodStartDate,PeriodEndDate,ServiceProviderId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

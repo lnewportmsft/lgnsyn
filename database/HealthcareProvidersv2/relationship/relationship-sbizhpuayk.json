@@ -1,0 +1,26 @@
+{
+	"name": "relationship-sbizhpuayk",
+	"properties": {
+		"Name": "relationship-sbizhpuayk",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientDocumentType",
+		"ToTableName": "PatientRelatedDocument",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientDocumentTypeId",
+				"ToColumnName": "PatientDocumentTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientDocumentType.cdm.json/PatientDocumentType\",\"toEntity\":\"PatientRelatedDocument.cdm.json/PatientRelatedDocument\",\"joinPairs\":[{\"fromAttribute\":\"PatientDocumentTypeId\",\"toAttribute\":\"PatientDocumentTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

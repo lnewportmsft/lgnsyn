@@ -1,0 +1,26 @@
+{
+	"name": "relationship-ygqlmvwcdk",
+	"properties": {
+		"Name": "relationship-ygqlmvwcdk",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "RecreationalDrug",
+		"ToTableName": "PatientRecreationalDrugUse",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "RecreationalDrugId",
+				"ToColumnName": "RecreationalDrugId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"RecreationalDrug.cdm.json/RecreationalDrug\",\"toEntity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"joinPairs\":[{\"fromAttribute\":\"RecreationalDrugId\",\"toAttribute\":\"RecreationalDrugId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

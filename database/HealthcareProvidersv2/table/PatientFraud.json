@@ -1,0 +1,229 @@
+{
+	"name": "PatientFraud",
+	"properties": {
+		"Name": "PatientFraud",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The fraud committed by a Patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFraud.cdm.json/PatientFraud",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "FraudTypeId",
+					"Description": "The unique identifier of a Fraud Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFraud.cdm.json/PatientFraud",
+						"Name": "FraudTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "FraudCommittedDate",
+					"Description": "The date that the fraud was committed.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFraud.cdm.json/PatientFraud",
+						"Name": "FraudCommittedDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFraud.cdm.json/PatientFraud",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "FraudLossAmount",
+					"Description": "The amount resulting from the fraud.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFraud.cdm.json/PatientFraud",
+						"Name": "FraudLossAmount"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "ComplaintSubmittedDate",
+					"Description": "The date that the legal complaint against the patient was filed.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFraud.cdm.json/PatientFraud",
+						"Name": "ComplaintSubmittedDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "LegalOutcomeStatement",
+					"Description": "A statement describing the results or outcome of the legal action against the patient for fraud.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFraud.cdm.json/PatientFraud",
+						"Name": "LegalOutcomeStatement"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "LegalActionIndicator",
+					"Description": "Indicates that legal action was taken against the patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFraud.cdm.json/PatientFraud",
+						"Name": "LegalActionIndicator"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					}
+				},
+				{
+					"Name": "PatientSuspendedIndicator",
+					"Description": "Indicates that the Patient's health plan membership was suspended.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFraud.cdm.json/PatientFraud",
+						"Name": "PatientSuspendedIndicator"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					}
+				},
+				{
+					"Name": "PatientFraudNote",
+					"Description": "A note, comment or additional information regarding the Patient Fraud.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFraud.cdm.json/PatientFraud",
+						"Name": "PatientFraudNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFraud",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFraud",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"PatientId\"},\"FraudTypeId\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"FraudTypeId\"},\"FraudCommittedDate\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"FraudCommittedDate\"},\"ServiceProviderId\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"ServiceProviderId\"},\"FraudLossAmount\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"FraudLossAmount\"},\"ComplaintSubmittedDate\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"ComplaintSubmittedDate\"},\"LegalOutcomeStatement\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"LegalOutcomeStatement\"},\"LegalActionIndicator\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"LegalActionIndicator\"},\"PatientSuspendedIndicator\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"PatientSuspendedIndicator\"},\"PatientFraudNote\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"PatientFraudNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientFraud\",\"path\":\"PatientFraud.cdm.json/PatientFraud\"},\"description\":\"The fraud committed by a Patient.\",\"primaryKey\":[\"PatientId\",\"FraudTypeId\",\"FraudCommittedDate\",\"ServiceProviderId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"FraudTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Fraud Type.\",\"isNullable\":false,\"name\":\"FraudTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"FraudCommittedDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that the fraud was committed.\",\"isNullable\":false,\"name\":\"FraudCommittedDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"FraudLossAmount\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The amount resulting from the fraud.\",\"isNullable\":true,\"scale\":2,\"name\":\"FraudLossAmount\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"ComplaintSubmittedDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that the legal complaint against the patient was filed.\",\"isNullable\":true,\"name\":\"ComplaintSubmittedDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"LegalOutcomeStatement\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A statement describing the results or outcome of the legal action against the patient for fraud.\",\"isNullable\":true,\"name\":\"LegalOutcomeStatement\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"LegalActionIndicator\"},\"dataType\":\"boolean\",\"description\":\"Indicates that legal action was taken against the patient.\",\"isNullable\":true,\"name\":\"LegalActionIndicator\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"PatientSuspendedIndicator\"},\"dataType\":\"boolean\",\"description\":\"Indicates that the Patient's health plan membership was suspended.\",\"isNullable\":true,\"name\":\"PatientSuspendedIndicator\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFraud.cdm.json/PatientFraud\",\"name\":\"PatientFraudNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient Fraud.\",\"isNullable\":true,\"name\":\"PatientFraudNote\"}]}}}",
+			"Description": "The fraud committed by a Patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,FraudTypeId,FraudCommittedDate,ServiceProviderId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

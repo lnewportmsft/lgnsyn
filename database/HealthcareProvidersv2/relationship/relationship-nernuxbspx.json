@@ -1,0 +1,26 @@
+{
+	"name": "relationship-nernuxbspx",
+	"properties": {
+		"Name": "relationship-nernuxbspx",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Patient",
+		"ToTableName": "PatientSocialMediaPlatformUser",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ServiceProviderId",
+				"ToColumnName": "ServiceProviderId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Patient.cdm.json/Patient\",\"toEntity\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\",\"joinPairs\":[{\"fromAttribute\":\"ServiceProviderId\",\"toAttribute\":\"ServiceProviderId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

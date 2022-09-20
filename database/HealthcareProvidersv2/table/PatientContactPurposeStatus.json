@@ -1,0 +1,194 @@
+{
+	"name": "PatientContactPurposeStatus",
+	"properties": {
+		"Name": "PatientContactPurposeStatus",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The status of the patient contact purpose.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ContactPurposeId",
+					"Description": "The unique identifier of the Contact Purpose.",
+					"BaseAttributeReference": {
+						"Entity": "PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus",
+						"Name": "ContactPurposeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ContactMethodId",
+					"Description": "The unique identifier of a Contact Method.",
+					"BaseAttributeReference": {
+						"Entity": "PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus",
+						"Name": "ContactMethodId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "OptInStatusTypeId",
+					"Description": "The unique identifier of an Opt-In Status Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus",
+						"Name": "OptInStatusTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientContactPurposeStatusNote",
+					"Description": "A note, comment or additional information regarding the patient contact purpose status.",
+					"BaseAttributeReference": {
+						"Entity": "PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus",
+						"Name": "PatientContactPurposeStatusNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientContactPurposeStatus",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientContactPurposeStatus",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ContactPurposeId\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"ContactPurposeId\"},\"ContactMethodId\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"ContactMethodId\"},\"PeriodStartDate\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"PeriodStartDate\"},\"ServiceProviderId\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"PatientId\"},\"PeriodEndDate\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"PeriodEndDate\"},\"OptInStatusTypeId\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"OptInStatusTypeId\"},\"PatientContactPurposeStatusNote\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"PatientContactPurposeStatusNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientContactPurposeStatus\",\"path\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\"},\"description\":\"The status of the patient contact purpose.\",\"primaryKey\":[\"ContactPurposeId\",\"ContactMethodId\",\"PeriodStartDate\",\"ServiceProviderId\",\"PatientId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"ContactPurposeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of the Contact Purpose.\",\"isNullable\":false,\"name\":\"ContactPurposeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"ContactMethodId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Contact Method.\",\"isNullable\":false,\"name\":\"ContactMethodId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"OptInStatusTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Opt-In Status Type.\",\"isNullable\":true,\"name\":\"OptInStatusTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"name\":\"PatientContactPurposeStatusNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the patient contact purpose status.\",\"isNullable\":true,\"name\":\"PatientContactPurposeStatusNote\"}]}}}",
+			"Description": "The status of the patient contact purpose.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ContactPurposeId,ContactMethodId,PeriodStartDate,ServiceProviderId,PatientId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

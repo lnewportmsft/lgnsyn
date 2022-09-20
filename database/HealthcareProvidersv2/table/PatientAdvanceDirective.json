@@ -1,0 +1,162 @@
+{
+	"name": "PatientAdvanceDirective",
+	"properties": {
+		"Name": "PatientAdvanceDirective",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "Identifies the instructions given regarding various advance directives.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAdvanceDirective.cdm.json/PatientAdvanceDirective",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAdvanceDirective.cdm.json/PatientAdvanceDirective",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AdvanceDirectiveTypeId",
+					"Description": "The unique identifier of an Advance Directive Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAdvanceDirective.cdm.json/PatientAdvanceDirective",
+						"Name": "AdvanceDirectiveTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated  data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAdvanceDirective.cdm.json/PatientAdvanceDirective",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated  data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAdvanceDirective.cdm.json/PatientAdvanceDirective",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientAdvanceDirectiveNote",
+					"Description": "A note, comment or additional information regarding the Patient Advance Directive.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAdvanceDirective.cdm.json/PatientAdvanceDirective",
+						"Name": "PatientAdvanceDirectiveNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientAdvanceDirective",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientAdvanceDirective",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientAdvanceDirective.cdm.json/PatientAdvanceDirective\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientAdvanceDirective.cdm.json/PatientAdvanceDirective\",\"name\":\"PatientId\"},\"AdvanceDirectiveTypeId\":{\"entity\":\"PatientAdvanceDirective.cdm.json/PatientAdvanceDirective\",\"name\":\"AdvanceDirectiveTypeId\"},\"PeriodStartDate\":{\"entity\":\"PatientAdvanceDirective.cdm.json/PatientAdvanceDirective\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientAdvanceDirective.cdm.json/PatientAdvanceDirective\",\"name\":\"PeriodEndDate\"},\"PatientAdvanceDirectiveNote\":{\"entity\":\"PatientAdvanceDirective.cdm.json/PatientAdvanceDirective\",\"name\":\"PatientAdvanceDirectiveNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientAdvanceDirective\",\"path\":\"PatientAdvanceDirective.cdm.json/PatientAdvanceDirective\"},\"description\":\"Identifies the instructions given regarding various advance directives.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"AdvanceDirectiveTypeId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAdvanceDirective.cdm.json/PatientAdvanceDirective\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAdvanceDirective.cdm.json/PatientAdvanceDirective\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAdvanceDirective.cdm.json/PatientAdvanceDirective\",\"name\":\"AdvanceDirectiveTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Advance Directive Type.\",\"isNullable\":false,\"name\":\"AdvanceDirectiveTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAdvanceDirective.cdm.json/PatientAdvanceDirective\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated  data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAdvanceDirective.cdm.json/PatientAdvanceDirective\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated  data is effective or 'as-of'.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAdvanceDirective.cdm.json/PatientAdvanceDirective\",\"name\":\"PatientAdvanceDirectiveNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient Advance Directive.\",\"isNullable\":true,\"name\":\"PatientAdvanceDirectiveNote\"}]}}}",
+			"Description": "Identifies the instructions given regarding various advance directives.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,AdvanceDirectiveTypeId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

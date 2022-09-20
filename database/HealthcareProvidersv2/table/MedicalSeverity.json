@@ -1,0 +1,113 @@
+{
+	"name": "MedicalSeverity",
+	"properties": {
+		"Name": "MedicalSeverity",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The medical severity of the associated allergy or medical condition.\n\nEx:\n- Life-threatening\n- Debilitating\n- Chronic\n- Mild",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "MedicalSeverityId",
+					"Description": "The unique identifier of a the medical severity of an allergy or medical condition.",
+					"BaseAttributeReference": {
+						"Entity": "MedicalSeverity.cdm.json/MedicalSeverity",
+						"Name": "MedicalSeverityId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "MedicalSeverityName",
+					"Description": "The name of a the medical severity of an allergy or medical condition.",
+					"BaseAttributeReference": {
+						"Entity": "MedicalSeverity.cdm.json/MedicalSeverity",
+						"Name": "MedicalSeverityName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "MedicalSeverityDescription",
+					"Description": "The description of a the medical severity of an allergy or medical condition.",
+					"BaseAttributeReference": {
+						"Entity": "MedicalSeverity.cdm.json/MedicalSeverity",
+						"Name": "MedicalSeverityDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/MedicalSeverity",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/MedicalSeverity",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"MedicalSeverityId\":{\"entity\":\"MedicalSeverity.cdm.json/MedicalSeverity\",\"name\":\"MedicalSeverityId\"},\"MedicalSeverityName\":{\"entity\":\"MedicalSeverity.cdm.json/MedicalSeverity\",\"name\":\"MedicalSeverityName\"},\"MedicalSeverityDescription\":{\"entity\":\"MedicalSeverity.cdm.json/MedicalSeverity\",\"name\":\"MedicalSeverityDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"MedicalSeverity\",\"path\":\"MedicalSeverity.cdm.json/MedicalSeverity\"},\"description\":\"The medical severity of the associated allergy or medical condition.\\n\\nEx:\\n- Life-threatening\\n- Debilitating\\n- Chronic\\n- Mild\",\"primaryKey\":[\"MedicalSeverityId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"MedicalSeverity.cdm.json/MedicalSeverity\",\"name\":\"MedicalSeverityId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a the medical severity of an allergy or medical condition.\",\"isNullable\":false,\"name\":\"MedicalSeverityId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"MedicalSeverity.cdm.json/MedicalSeverity\",\"name\":\"MedicalSeverityName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a the medical severity of an allergy or medical condition.\",\"isNullable\":true,\"name\":\"MedicalSeverityName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"MedicalSeverity.cdm.json/MedicalSeverity\",\"name\":\"MedicalSeverityDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a the medical severity of an allergy or medical condition.\",\"isNullable\":true,\"name\":\"MedicalSeverityDescription\"}]}}}",
+			"Description": "The medical severity of the associated allergy or medical condition.\n\nEx:\n- Life-threatening\n- Debilitating\n- Chronic\n- Mild",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "MedicalSeverityId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,26 @@
+{
+	"name": "relationship-bkeocroamj",
+	"properties": {
+		"Name": "relationship-bkeocroamj",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "LivingDependencyType",
+		"ToTableName": "PatientRelatedPartyLivingDependency",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "LivingDependencyTypeId",
+				"ToColumnName": "LivingDependencyTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"LivingDependencyType.cdm.json/LivingDependencyType\",\"toEntity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"joinPairs\":[{\"fromAttribute\":\"LivingDependencyTypeId\",\"toAttribute\":\"LivingDependencyTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,26 @@
+{
+	"name": "relationship-asadaxdqyf",
+	"properties": {
+		"Name": "relationship-asadaxdqyf",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientRelatedParty",
+		"ToTableName": "PatientRelatedPartyLivingDependency",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientPartyRelationshipTypeId",
+				"ToColumnName": "PatientPartyRelationshipTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientRelatedParty.cdm.json/PatientRelatedParty\",\"toEntity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"joinPairs\":[{\"fromAttribute\":\"PatientPartyRelationshipTypeId\",\"toAttribute\":\"PatientPartyRelationshipTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,209 @@
+{
+	"name": "PatientScreening",
+	"properties": {
+		"Name": "PatientScreening",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more screenings that the patient has undergone.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientScreening.cdm.json/PatientScreening",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientScreening.cdm.json/PatientScreening",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ScreeningTypeId",
+					"Description": "The unique identifier of a Screening Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientScreening.cdm.json/PatientScreening",
+						"Name": "ScreeningTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientScreeningTimestamp",
+					"Description": "The timestamp associated with the patient screening.",
+					"BaseAttributeReference": {
+						"Entity": "PatientScreening.cdm.json/PatientScreening",
+						"Name": "PatientScreeningTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "PatientScreeningScore",
+					"Description": "The score associated with the patient screening.",
+					"BaseAttributeReference": {
+						"Entity": "PatientScreening.cdm.json/PatientScreening",
+						"Name": "PatientScreeningScore"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ScreeningMethodologyId",
+					"Description": "The unique identifier of a Screening Methodology.",
+					"BaseAttributeReference": {
+						"Entity": "PatientScreening.cdm.json/PatientScreening",
+						"Name": "ScreeningMethodologyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "EncounterId",
+					"Description": "The unique identifier of an Encounter.",
+					"BaseAttributeReference": {
+						"Entity": "PatientScreening.cdm.json/PatientScreening",
+						"Name": "EncounterId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "AdministeredByPartyId",
+					"Description": "The unique identifier of a Party.",
+					"BaseAttributeReference": {
+						"Entity": "PatientScreening.cdm.json/PatientScreening",
+						"Name": "AdministeredByPartyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "PatientScreeningNote",
+					"Description": "A note, comment or additional information regarding the patient screening.",
+					"BaseAttributeReference": {
+						"Entity": "PatientScreening.cdm.json/PatientScreening",
+						"Name": "PatientScreeningNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientScreening",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientScreening",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"PatientId\"},\"ScreeningTypeId\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"ScreeningTypeId\"},\"PatientScreeningTimestamp\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"PatientScreeningTimestamp\"},\"PatientScreeningScore\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"PatientScreeningScore\"},\"ScreeningMethodologyId\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"ScreeningMethodologyId\"},\"EncounterId\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"EncounterId\"},\"AdministeredByPartyId\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"AdministeredByPartyId\"},\"PatientScreeningNote\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"PatientScreeningNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientScreening\",\"path\":\"PatientScreening.cdm.json/PatientScreening\"},\"description\":\"The one or more screenings that the patient has undergone.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"ScreeningTypeId\",\"PatientScreeningTimestamp\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"ScreeningTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Screening Type.\",\"isNullable\":false,\"name\":\"ScreeningTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"PatientScreeningTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp associated with the patient screening.\",\"isNullable\":false,\"name\":\"PatientScreeningTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"PatientScreeningScore\"},\"dataType\":\"integer\",\"description\":\"The score associated with the patient screening.\",\"isNullable\":true,\"name\":\"PatientScreeningScore\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"ScreeningMethodologyId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Screening Methodology.\",\"isNullable\":true,\"name\":\"ScreeningMethodologyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"EncounterId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of an Encounter.\",\"isNullable\":false,\"name\":\"EncounterId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"AdministeredByPartyId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Party.\",\"isNullable\":true,\"name\":\"AdministeredByPartyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientScreening.cdm.json/PatientScreening\",\"name\":\"PatientScreeningNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the patient screening.\",\"isNullable\":true,\"name\":\"PatientScreeningNote\"}]}}}",
+			"Description": "The one or more screenings that the patient has undergone.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,ScreeningTypeId,PatientScreeningTimestamp",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

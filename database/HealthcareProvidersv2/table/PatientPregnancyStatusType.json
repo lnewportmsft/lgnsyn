@@ -1,0 +1,113 @@
+{
+	"name": "PatientPregnancyStatusType",
+	"properties": {
+		"Name": "PatientPregnancyStatusType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A type of Patient Pregnancy Status.\n\nEx:\n- Yes - Patient Reported\n- No - Patient Reported\n- Maybe - Patient Report\n- Yes - Medically Confirmed\n- No - Medically Confirmed",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientPregnancyStatusTypeId",
+					"Description": "The unique identifier of a Patient Pregnancy Status type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPregnancyStatusType.cdm.json/PatientPregnancyStatusType",
+						"Name": "PatientPregnancyStatusTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientPregnancyStatusTypeName",
+					"Description": "The name of a Patient Pregnancy Status type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPregnancyStatusType.cdm.json/PatientPregnancyStatusType",
+						"Name": "PatientPregnancyStatusTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientPregnancyStatusTypeDescription",
+					"Description": "The description of a Patient Pregnancy Status type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPregnancyStatusType.cdm.json/PatientPregnancyStatusType",
+						"Name": "PatientPregnancyStatusTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPregnancyStatusType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPregnancyStatusType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientPregnancyStatusTypeId\":{\"entity\":\"PatientPregnancyStatusType.cdm.json/PatientPregnancyStatusType\",\"name\":\"PatientPregnancyStatusTypeId\"},\"PatientPregnancyStatusTypeName\":{\"entity\":\"PatientPregnancyStatusType.cdm.json/PatientPregnancyStatusType\",\"name\":\"PatientPregnancyStatusTypeName\"},\"PatientPregnancyStatusTypeDescription\":{\"entity\":\"PatientPregnancyStatusType.cdm.json/PatientPregnancyStatusType\",\"name\":\"PatientPregnancyStatusTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientPregnancyStatusType\",\"path\":\"PatientPregnancyStatusType.cdm.json/PatientPregnancyStatusType\"},\"description\":\"A type of Patient Pregnancy Status.\\n\\nEx:\\n- Yes - Patient Reported\\n- No - Patient Reported\\n- Maybe - Patient Report\\n- Yes - Medically Confirmed\\n- No - Medically Confirmed\",\"primaryKey\":[\"PatientPregnancyStatusTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPregnancyStatusType.cdm.json/PatientPregnancyStatusType\",\"name\":\"PatientPregnancyStatusTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Pregnancy Status type.\",\"isNullable\":false,\"name\":\"PatientPregnancyStatusTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPregnancyStatusType.cdm.json/PatientPregnancyStatusType\",\"name\":\"PatientPregnancyStatusTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Patient Pregnancy Status type.\",\"isNullable\":true,\"name\":\"PatientPregnancyStatusTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPregnancyStatusType.cdm.json/PatientPregnancyStatusType\",\"name\":\"PatientPregnancyStatusTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Patient Pregnancy Status type.\",\"isNullable\":true,\"name\":\"PatientPregnancyStatusTypeDescription\"}]}}}",
+			"Description": "A type of Patient Pregnancy Status.\n\nEx:\n- Yes - Patient Reported\n- No - Patient Reported\n- Maybe - Patient Report\n- Yes - Medically Confirmed\n- No - Medically Confirmed",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientPregnancyStatusTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

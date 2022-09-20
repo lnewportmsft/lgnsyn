@@ -1,0 +1,113 @@
+{
+	"name": "RiskFactor",
+	"properties": {
+		"Name": "RiskFactor",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "An activity or factor that may increase the chance of developing a disease.\n\nEx:\n- Smoking\n- Drinking\n- Lack of Exercise\n- Poor diet\n- Live In Food Desert (affordable and nutritious food are hard to obtain)",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "RiskFactorId",
+					"Description": "The unique identifier of a risk factor.",
+					"BaseAttributeReference": {
+						"Entity": "RiskFactor.cdm.json/RiskFactor",
+						"Name": "RiskFactorId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "RiskFactorName",
+					"Description": "The name of a risk factor.",
+					"BaseAttributeReference": {
+						"Entity": "RiskFactor.cdm.json/RiskFactor",
+						"Name": "RiskFactorName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "RiskFactorDescription",
+					"Description": "The description of a risk factor.",
+					"BaseAttributeReference": {
+						"Entity": "RiskFactor.cdm.json/RiskFactor",
+						"Name": "RiskFactorDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/RiskFactor",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/RiskFactor",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"RiskFactorId\":{\"entity\":\"RiskFactor.cdm.json/RiskFactor\",\"name\":\"RiskFactorId\"},\"RiskFactorName\":{\"entity\":\"RiskFactor.cdm.json/RiskFactor\",\"name\":\"RiskFactorName\"},\"RiskFactorDescription\":{\"entity\":\"RiskFactor.cdm.json/RiskFactor\",\"name\":\"RiskFactorDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"RiskFactor\",\"path\":\"RiskFactor.cdm.json/RiskFactor\"},\"description\":\"An activity or factor that may increase the chance of developing a disease.\\n\\nEx:\\n- Smoking\\n- Drinking\\n- Lack of Exercise\\n- Poor diet\\n- Live In Food Desert (affordable and nutritious food are hard to obtain)\",\"primaryKey\":[\"RiskFactorId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RiskFactor.cdm.json/RiskFactor\",\"name\":\"RiskFactorId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a risk factor.\",\"isNullable\":false,\"name\":\"RiskFactorId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RiskFactor.cdm.json/RiskFactor\",\"name\":\"RiskFactorName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a risk factor.\",\"isNullable\":true,\"name\":\"RiskFactorName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RiskFactor.cdm.json/RiskFactor\",\"name\":\"RiskFactorDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a risk factor.\",\"isNullable\":true,\"name\":\"RiskFactorDescription\"}]}}}",
+			"Description": "An activity or factor that may increase the chance of developing a disease.\n\nEx:\n- Smoking\n- Drinking\n- Lack of Exercise\n- Poor diet\n- Live In Food Desert (affordable and nutritious food are hard to obtain)",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "RiskFactorId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

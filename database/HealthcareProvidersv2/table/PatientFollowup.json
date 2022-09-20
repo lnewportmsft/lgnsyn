@@ -1,0 +1,210 @@
+{
+	"name": "PatientFollowup",
+	"properties": {
+		"Name": "PatientFollowup",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more followups set for a patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientFollowupId",
+					"Description": "The unique identifier of a Patient Followup.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFollowup.cdm.json/PatientFollowup",
+						"Name": "PatientFollowupId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFollowup.cdm.json/PatientFollowup",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFollowup.cdm.json/PatientFollowup",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientFollowupScheduleDate",
+					"Description": "The date for which a patient followup is scheduled.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFollowup.cdm.json/PatientFollowup",
+						"Name": "PatientFollowupScheduleDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientFollowupCommunicatedDate",
+					"Description": "The date for which a patient followup was communicated.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFollowup.cdm.json/PatientFollowup",
+						"Name": "PatientFollowupCommunicatedDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientFollowupCommunicatedIndicator",
+					"Description": "Indicates whether a followup has been communicated or not.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFollowup.cdm.json/PatientFollowup",
+						"Name": "PatientFollowupCommunicatedIndicator"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					}
+				},
+				{
+					"Name": "PatientFollowupNote",
+					"Description": "A note, comment or additional information regarding a patient followup.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFollowup.cdm.json/PatientFollowup",
+						"Name": "PatientFollowupNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientFollowupTypeId",
+					"Description": "The unique identifier of a Patient Followup type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFollowup.cdm.json/PatientFollowup",
+						"Name": "PatientFollowupTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "EncounterId",
+					"Description": "The unique identifier of an Encounter.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFollowup.cdm.json/PatientFollowup",
+						"Name": "EncounterId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFollowup",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFollowup",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientFollowupId\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"PatientFollowupId\"},\"ServiceProviderId\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"PatientId\"},\"PatientFollowupScheduleDate\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"PatientFollowupScheduleDate\"},\"PatientFollowupCommunicatedDate\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"PatientFollowupCommunicatedDate\"},\"PatientFollowupCommunicatedIndicator\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"PatientFollowupCommunicatedIndicator\"},\"PatientFollowupNote\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"PatientFollowupNote\"},\"PatientFollowupTypeId\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"PatientFollowupTypeId\"},\"EncounterId\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"EncounterId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientFollowup\",\"path\":\"PatientFollowup.cdm.json/PatientFollowup\"},\"description\":\"The one or more followups set for a patient.\",\"primaryKey\":[\"PatientFollowupId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"PatientFollowupId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Followup.\",\"isNullable\":false,\"name\":\"PatientFollowupId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"PatientFollowupScheduleDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date for which a patient followup is scheduled.\",\"isNullable\":true,\"name\":\"PatientFollowupScheduleDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"PatientFollowupCommunicatedDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date for which a patient followup was communicated.\",\"isNullable\":false,\"name\":\"PatientFollowupCommunicatedDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"PatientFollowupCommunicatedIndicator\"},\"dataType\":\"boolean\",\"description\":\"Indicates whether a followup has been communicated or not.\",\"isNullable\":true,\"name\":\"PatientFollowupCommunicatedIndicator\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"PatientFollowupNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding a patient followup.\",\"isNullable\":true,\"name\":\"PatientFollowupNote\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"PatientFollowupTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Followup type.\",\"isNullable\":true,\"name\":\"PatientFollowupTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFollowup.cdm.json/PatientFollowup\",\"name\":\"EncounterId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of an Encounter.\",\"isNullable\":true,\"name\":\"EncounterId\"}]}}}",
+			"Description": "The one or more followups set for a patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientFollowupId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

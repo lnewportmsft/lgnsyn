@@ -1,0 +1,165 @@
+{
+	"name": "PatientEquifaxCreditReport",
+	"properties": {
+		"Name": "PatientEquifaxCreditReport",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "An Equifax Credit Report, which is a summary of a member's recent credit history plus additional facts about the consumer that will help creditors judge the consumer's creditworthiness.\n\nAn Equifax Credit Profile is a consumer credit report from Equifax Credit Services. It is a picture of how you paid back the companies from whom you borrowed money, or how you have met other financial obligations. Fair Isaac's personalized FICO score analysis gives you a detailed, plain-language explanation of your current BEACON FICO score. This includes how your score compares to scores nationally and what your score says to creditors about your likelihood to repay. \n\nA FICO score is a credit score developed by Fair Isaac & Co. Credit scoring is a method of determining the likelihood that credit users will pay their bills. Fair, Isaac began its pioneering work with credit scoring in the late 1950s and, since then, scoring has become widely accepted by lenders as a reliable means of credit evaluation. \n\nA credit score attempts to condense a borrowers credit history into a single number. Fair, Isaac & Co. and the credit bureaus do not reveal how these scores are computed. The Federal Trade Commission has ruled this to be acceptable.\n\nCredit scores are calculated by using scoring models and mathematical tables that assign points for different pieces of information which best predict future credit performance. Developing these models involves studying how thousands, even millions, of people have used credit. Score-model developers find predictive factors in the data that have proven to indicate future credit performance. Models can be developed from different sources of data. Credit-bureau models are developed from information in consumer credit-bureau reports. \n\nCredit scores analyze a borrower's credit history considering numerous factors such as:\n\nLate payments \nThe amount of time credit has been established \nThe amount of credit used versus the amount of credit available \nLength of time at present residence \nEmployment history \nNegative credit information such as bankruptcies, charge-offs, collections, etc. \n\nThere are really three FICO scores computed by data provided by each of the three bureaus: Experian, Trans Union and Equifax. \n\nSome lenders use one of these three scores, while other lenders may use the middle score.\n\nTRW/FICO Model: This scoring system developed by TRW in association with Fair, Isaac, and Company, Inc. The score enables credit grantor to identify credit prospect with the best credit opportunities and avoid losses due to charge-offs, repossessions, collections, and bankruptcies.\n\nBeacon: This scoring system developed by Equifax in association with Fair, Isaac, and Company, Inc. Beacon helps identifies and projects the full range of serious consumer credit risks which include bankruptcies, charge-offs, repossessions, loan defaults, and serious delinquencies.\n\nFICO scores five main kinds of credit information. Listed from most important to least important, these are: \n\nPayment History \nAmount owed \nLength of credit history \nNew credit \nTypes of credit in use \n\nWhat does BEACON®FICO ® ignore? \n\nYour race, color, religion, national origin, sex, or marital status \nYour age \nYour salary, occupation, title, employer, date employed, or employment history \nWhere you live \nCertain types of inquiries such as promotional, account review, insurance or employment related inquiries \nAny information not found in your credit report \nAny information that is not proven to be predictive of future credit performance \n\nWhat is the highest and lowest BEACON ® FICO ® score? \n\nBEACON scores range from 300 to 850.. The higher the score the lower the predicted credit risk for lenders. \n\nEmpirica: This scoring system developed by Trans Union in association with Fair, Isaac, and Company, Inc. Empirica has been fully validated to predict the performance odds, slow pays, no pays, and bankruptcies with unprecedented accuracy.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ReportDate",
+					"Description": "The date of the Equifax credit report.",
+					"BaseAttributeReference": {
+						"Entity": "PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport",
+						"Name": "ReportDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "SocialSecurityNumber",
+					"Description": "The Patient's social security number.",
+					"BaseAttributeReference": {
+						"Entity": "PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport",
+						"Name": "SocialSecurityNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 9,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "CreditProfileDate",
+					"Description": "The date of the reported associated FICO Score.",
+					"BaseAttributeReference": {
+						"Entity": "PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport",
+						"Name": "CreditProfileDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "FicoScore",
+					"Description": "The associated FICO Score.\n\nA consumer three FICO scores, one for each credit bureau\n\nA FICO score is a credit score developed by Fair Isaac & Co. Credit scoring is a method of determining the likelihood that credit users will pay their bills. Fair, Isaac began its pioneering work with credit scoring in the late 1950s and, since then, scoring has become widely accepted by lenders as a reliable means of credit evaluation. \n\nA credit score attempts to condense a borrowers credit history into a single number. Fair, Isaac & Co. and the credit bureaus do not reveal how these scores are computed. The Federal Trade Commission has ruled this to be acceptable.\n\nCredit scores are calculated by using scoring models and mathematical tables that assign points for different pieces of information which best predict future credit performance. Developing these models involves studying how thousands, even millions, of people have used credit. Score-model developers find predictive factors in the data that have proven to indicate future credit performance. Models can be developed from different sources of data. Credit-bureau models are developed from information in consumer credit-bureau reports. \n\nCredit scores analyze a borrower's credit history considering numerous factors such as:\n\nLate payments \nThe amount of time credit has been established \nThe amount of credit used versus the amount of credit available \nLength of time at present residence \nEmployment history \nNegative credit information such as bankruptcies, charge-offs, collections, etc. \n\nThere are really three FICO scores computed by data provided by each of the three bureaus: Experian, Trans Union and Equifax. \n\nSome lenders use one of these three scores, while other lenders may use the middle score.\n\nTRW/FICO Model: This scoring system developed by TRW in association with Fair, Isaac, and Company, Inc. The score enables credit grantor to identify credit prospect with the best credit opportunities and avoid losses due to charge-offs, repossessions, collections, and bankruptcies.\n\nBeacon: This scoring system developed by Equifax in association with Fair, Isaac, and Company, Inc. Beacon helps identifies and projects the full range of serious consumer credit risks which include bankruptcies, charge-offs, repossessions, loan defaults, and serious delinquencies.\n\nEmpirica: This scoring system developed by Trans Union in association with Fair, Isaac, and Company, Inc. Empirica has been fully validated to predict the performance odds, slow pays, no pays, and bankruptcies with unprecedented accuracy.",
+					"BaseAttributeReference": {
+						"Entity": "PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport",
+						"Name": "FicoScore"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 3,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientEquifaxCreditReport",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientEquifaxCreditReport",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport\",\"name\":\"PatientId\"},\"ReportDate\":{\"entity\":\"PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport\",\"name\":\"ReportDate\"},\"ServiceProviderId\":{\"entity\":\"PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport\",\"name\":\"ServiceProviderId\"},\"SocialSecurityNumber\":{\"entity\":\"PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport\",\"name\":\"SocialSecurityNumber\"},\"CreditProfileDate\":{\"entity\":\"PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport\",\"name\":\"CreditProfileDate\"},\"FicoScore\":{\"entity\":\"PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport\",\"name\":\"FicoScore\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientEquifaxCreditReport\",\"path\":\"PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport\"},\"description\":\"An Equifax Credit Report, which is a summary of a member's recent credit history plus additional facts about the consumer that will help creditors judge the consumer's creditworthiness.\\n\\nAn Equifax Credit Profile is a consumer credit report from Equifax Credit Services. It is a picture of how you paid back the companies from whom you borrowed money, or how you have met other financial obligations. Fair Isaac's personalized FICO score analysis gives you a detailed, plain-language explanation of your current BEACON FICO score. This includes how your score compares to scores nationally and what your score says to creditors about your likelihood to repay. \\n\\nA FICO score is a credit score developed by Fair Isaac & Co. Credit scoring is a method of determining the likelihood that credit users will pay their bills. Fair, Isaac began its pioneering work with credit scoring in the late 1950s and, since then, scoring has become widely accepted by lenders as a reliable means of credit evaluation. \\n\\nA credit score attempts to condense a borrowers credit history into a single number. Fair, Isaac & Co. and the credit bureaus do not reveal how these scores are computed. The Federal Trade Commission has ruled this to be acceptable.\\n\\nCredit scores are calculated by using scoring models and mathematical tables that assign points for different pieces of information which best predict future credit performance. Developing these models involves studying how thousands, even millions, of people have used credit. Score-model developers find predictive factors in the data that have proven to indicate future credit performance. Models can be developed from different sources of data. Credit-bureau models are developed from information in consumer credit-bureau reports. \\n\\nCredit scores analyze a borrower's credit history considering numerous factors such as:\\n\\nLate payments \\nThe amount of time credit has been established \\nThe amount of credit used versus the amount of credit available \\nLength of time at present residence \\nEmployment history \\nNegative credit information such as bankruptcies, charge-offs, collections, etc. \\n\\nThere are really three FICO scores computed by data provided by each of the three bureaus: Experian, Trans Union and Equifax. \\n\\nSome lenders use one of these three scores, while other lenders may use the middle score.\\n\\nTRW/FICO Model: This scoring system developed by TRW in association with Fair, Isaac, and Company, Inc. The score enables credit grantor to identify credit prospect with the best credit opportunities and avoid losses due to charge-offs, repossessions, collections, and bankruptcies.\\n\\nBeacon: This scoring system developed by Equifax in association with Fair, Isaac, and Company, Inc. Beacon helps identifies and projects the full range of serious consumer credit risks which include bankruptcies, charge-offs, repossessions, loan defaults, and serious delinquencies.\\n\\nFICO scores five main kinds of credit information. Listed from most important to least important, these are: \\n\\nPayment History \\nAmount owed \\nLength of credit history \\nNew credit \\nTypes of credit in use \\n\\nWhat does BEACON®FICO ® ignore? \\n\\nYour race, color, religion, national origin, sex, or marital status \\nYour age \\nYour salary, occupation, title, employer, date employed, or employment history \\nWhere you live \\nCertain types of inquiries such as promotional, account review, insurance or employment related inquiries \\nAny information not found in your credit report \\nAny information that is not proven to be predictive of future credit performance \\n\\nWhat is the highest and lowest BEACON ® FICO ® score? \\n\\nBEACON scores range from 300 to 850.. The higher the score the lower the predicted credit risk for lenders. \\n\\nEmpirica: This scoring system developed by Trans Union in association with Fair, Isaac, and Company, Inc. Empirica has been fully validated to predict the performance odds, slow pays, no pays, and bankruptcies with unprecedented accuracy.\",\"primaryKey\":[\"PatientId\",\"ReportDate\",\"ServiceProviderId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport\",\"name\":\"ReportDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date of the Equifax credit report.\",\"isNullable\":false,\"name\":\"ReportDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport\",\"name\":\"SocialSecurityNumber\"},\"dataType\":\"decimal\",\"dataTypeLength\":9,\"description\":\"The Patient's social security number.\",\"isNullable\":true,\"scale\":0,\"name\":\"SocialSecurityNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport\",\"name\":\"CreditProfileDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date of the reported associated FICO Score.\",\"isNullable\":false,\"name\":\"CreditProfileDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientEquifaxCreditReport.cdm.json/PatientEquifaxCreditReport\",\"name\":\"FicoScore\"},\"dataType\":\"decimal\",\"dataTypeLength\":3,\"description\":\"The associated FICO Score.\\n\\nA consumer three FICO scores, one for each credit bureau\\n\\nA FICO score is a credit score developed by Fair Isaac & Co. Credit scoring is a method of determining the likelihood that credit users will pay their bills. Fair, Isaac began its pioneering work with credit scoring in the late 1950s and, since then, scoring has become widely accepted by lenders as a reliable means of credit evaluation. \\n\\nA credit score attempts to condense a borrowers credit history into a single number. Fair, Isaac & Co. and the credit bureaus do not reveal how these scores are computed. The Federal Trade Commission has ruled this to be acceptable.\\n\\nCredit scores are calculated by using scoring models and mathematical tables that assign points for different pieces of information which best predict future credit performance. Developing these models involves studying how thousands, even millions, of people have used credit. Score-model developers find predictive factors in the data that have proven to indicate future credit performance. Models can be developed from different sources of data. Credit-bureau models are developed from information in consumer credit-bureau reports. \\n\\nCredit scores analyze a borrower's credit history considering numerous factors such as:\\n\\nLate payments \\nThe amount of time credit has been established \\nThe amount of credit used versus the amount of credit available \\nLength of time at present residence \\nEmployment history \\nNegative credit information such as bankruptcies, charge-offs, collections, etc. \\n\\nThere are really three FICO scores computed by data provided by each of the three bureaus: Experian, Trans Union and Equifax. \\n\\nSome lenders use one of these three scores, while other lenders may use the middle score.\\n\\nTRW/FICO Model: This scoring system developed by TRW in association with Fair, Isaac, and Company, Inc. The score enables credit grantor to identify credit prospect with the best credit opportunities and avoid losses due to charge-offs, repossessions, collections, and bankruptcies.\\n\\nBeacon: This scoring system developed by Equifax in association with Fair, Isaac, and Company, Inc. Beacon helps identifies and projects the full range of serious consumer credit risks which include bankruptcies, charge-offs, repossessions, loan defaults, and serious delinquencies.\\n\\nEmpirica: This scoring system developed by Trans Union in association with Fair, Isaac, and Company, Inc. Empirica has been fully validated to predict the performance odds, slow pays, no pays, and bankruptcies with unprecedented accuracy.\",\"isNullable\":true,\"scale\":0,\"name\":\"FicoScore\"}]}}}",
+			"Description": "An Equifax Credit Report, which is a summary of a member's recent credit history plus additional facts about the consumer that will help creditors judge the consumer's creditworthiness.\n\nAn Equifax Credit Profile is a consumer credit report from Equifax Credit Services. It is a picture of how you paid back the companies from whom you borrowed money, or how you have met other financial obligations. Fair Isaac's personalized FICO score analysis gives you a detailed, plain-language explanation of your current BEACON FICO score. This includes how your score compares to scores nationally and what your score says to creditors about your likelihood to repay. \n\nA FICO score is a credit score developed by Fair Isaac & Co. Credit scoring is a method of determining the likelihood that credit users will pay their bills. Fair, Isaac began its pioneering work with credit scoring in the late 1950s and, since then, scoring has become widely accepted by lenders as a reliable means of credit evaluation. \n\nA credit score attempts to condense a borrowers credit history into a single number. Fair, Isaac & Co. and the credit bureaus do not reveal how these scores are computed. The Federal Trade Commission has ruled this to be acceptable.\n\nCredit scores are calculated by using scoring models and mathematical tables that assign points for different pieces of information which best predict future credit performance. Developing these models involves studying how thousands, even millions, of people have used credit. Score-model developers find predictive factors in the data that have proven to indicate future credit performance. Models can be developed from different sources of data. Credit-bureau models are developed from information in consumer credit-bureau reports. \n\nCredit scores analyze a borrower's credit history considering numerous factors such as:\n\nLate payments \nThe amount of time credit has been established \nThe amount of credit used versus the amount of credit available \nLength of time at present residence \nEmployment history \nNegative credit information such as bankruptcies, charge-offs, collections, etc. \n\nThere are really three FICO scores computed by data provided by each of the three bureaus: Experian, Trans Union and Equifax. \n\nSome lenders use one of these three scores, while other lenders may use the middle score.\n\nTRW/FICO Model: This scoring system developed by TRW in association with Fair, Isaac, and Company, Inc. The score enables credit grantor to identify credit prospect with the best credit opportunities and avoid losses due to charge-offs, repossessions, collections, and bankruptcies.\n\nBeacon: This scoring system developed by Equifax in association with Fair, Isaac, and Company, Inc. Beacon helps identifies and projects the full range of serious consumer credit risks which include bankruptcies, charge-offs, repossessions, loan defaults, and serious delinquencies.\n\nFICO scores five main kinds of credit information. Listed from most important to least important, these are: \n\nPayment History \nAmount owed \nLength of credit history \nNew credit \nTypes of credit in use \n\nWhat does BEACON®FICO ® ignore? \n\nYour race, color, religion, national origin, sex, or marital status \nYour age \nYour salary, occupation, title, employer, date employed, or employment history \nWhere you live \nCertain types of inquiries such as promotional, account review, insurance or employment related inquiries \nAny information not found in your credit report \nAny information that is not proven to be predictive of future credit performance \n\nWhat is the highest and lowest BEACON ® FICO ® score? \n\nBEACON scores range from 300 to 850.. The higher the score the lower the predicted credit risk for lenders. \n\nEmpirica: This scoring system developed by Trans Union in association with Fair, Isaac, and Company, Inc. Empirica has been fully validated to predict the performance odds, slow pays, no pays, and bankruptcies with unprecedented accuracy.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,ReportDate,ServiceProviderId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

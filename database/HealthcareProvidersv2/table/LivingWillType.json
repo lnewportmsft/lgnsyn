@@ -1,0 +1,113 @@
+{
+	"name": "LivingWillType",
+	"properties": {
+		"Name": "LivingWillType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A means of identifying whether a living will exists.\n\nEx.:\n- Living Will Exists\n- Living Will Exists But Is Not On File\n- Living Will Does Not Exist",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "LivingWillTypeId",
+					"Description": "The unique identifier of a Living Will Type.",
+					"BaseAttributeReference": {
+						"Entity": "LivingWillType.cdm.json/LivingWillType",
+						"Name": "LivingWillTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "LivingWillTypeName",
+					"Description": "The name of the Living Will Type.",
+					"BaseAttributeReference": {
+						"Entity": "LivingWillType.cdm.json/LivingWillType",
+						"Name": "LivingWillTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "LivingWillTypeDescription",
+					"Description": "The description of the Living Will Type.",
+					"BaseAttributeReference": {
+						"Entity": "LivingWillType.cdm.json/LivingWillType",
+						"Name": "LivingWillTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/LivingWillType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/LivingWillType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"LivingWillTypeId\":{\"entity\":\"LivingWillType.cdm.json/LivingWillType\",\"name\":\"LivingWillTypeId\"},\"LivingWillTypeName\":{\"entity\":\"LivingWillType.cdm.json/LivingWillType\",\"name\":\"LivingWillTypeName\"},\"LivingWillTypeDescription\":{\"entity\":\"LivingWillType.cdm.json/LivingWillType\",\"name\":\"LivingWillTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"LivingWillType\",\"path\":\"LivingWillType.cdm.json/LivingWillType\"},\"description\":\"A means of identifying whether a living will exists.\\n\\nEx.:\\n- Living Will Exists\\n- Living Will Exists But Is Not On File\\n- Living Will Does Not Exist\",\"primaryKey\":[\"LivingWillTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"LivingWillType.cdm.json/LivingWillType\",\"name\":\"LivingWillTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Living Will Type.\",\"isNullable\":false,\"name\":\"LivingWillTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"LivingWillType.cdm.json/LivingWillType\",\"name\":\"LivingWillTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the Living Will Type.\",\"isNullable\":true,\"name\":\"LivingWillTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"LivingWillType.cdm.json/LivingWillType\",\"name\":\"LivingWillTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of the Living Will Type.\",\"isNullable\":true,\"name\":\"LivingWillTypeDescription\"}]}}}",
+			"Description": "A means of identifying whether a living will exists.\n\nEx.:\n- Living Will Exists\n- Living Will Exists But Is Not On File\n- Living Will Does Not Exist",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "LivingWillTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

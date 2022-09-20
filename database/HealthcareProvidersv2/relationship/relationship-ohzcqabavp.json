@@ -1,0 +1,26 @@
+{
+	"name": "relationship-ohzcqabavp",
+	"properties": {
+		"Name": "relationship-ohzcqabavp",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "VaccineSource",
+		"ToTableName": "PatientImmunization",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "VaccineSourceId",
+				"ToColumnName": "VaccineSourceId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"VaccineSource.cdm.json/VaccineSource\",\"toEntity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"joinPairs\":[{\"fromAttribute\":\"VaccineSourceId\",\"toAttribute\":\"VaccineSourceId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

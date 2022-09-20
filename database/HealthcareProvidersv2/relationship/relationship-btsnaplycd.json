@@ -1,0 +1,26 @@
+{
+	"name": "relationship-btsnaplycd",
+	"properties": {
+		"Name": "relationship-btsnaplycd",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "OrganDonorType",
+		"ToTableName": "Patient",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "OrganDonorTypeId",
+				"ToColumnName": "OrganDonorTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"OrganDonorType.cdm.json/OrganDonorType\",\"toEntity\":\"Patient.cdm.json/Patient\",\"joinPairs\":[{\"fromAttribute\":\"OrganDonorTypeId\",\"toAttribute\":\"OrganDonorTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

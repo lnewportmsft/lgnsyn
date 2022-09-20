@@ -1,0 +1,26 @@
+{
+	"name": "relationship-tgrrgzyflf",
+	"properties": {
+		"Name": "relationship-tgrrgzyflf",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "AllergicReactionType",
+		"ToTableName": "PatientDrugAllergyReaction",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "AllergicReactionTypeId",
+				"ToColumnName": "AllergicReactionTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"AllergicReactionType.cdm.json/AllergicReactionType\",\"toEntity\":\"PatientDrugAllergyReaction.cdm.json/PatientDrugAllergyReaction\",\"joinPairs\":[{\"fromAttribute\":\"AllergicReactionTypeId\",\"toAttribute\":\"AllergicReactionTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

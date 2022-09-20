@@ -1,0 +1,161 @@
+{
+	"name": "PatientNote",
+	"properties": {
+		"Name": "PatientNote",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A note made regarding the patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNote.cdm.json/PatientNote",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNote.cdm.json/PatientNote",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "Timestamp",
+					"Description": "The timestamp associated with the Patient Note.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNote.cdm.json/PatientNote",
+						"Name": "Timestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "NotedByPartyId",
+					"Description": "The unique identifier of a Party.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNote.cdm.json/PatientNote",
+						"Name": "NotedByPartyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "PatientNote",
+					"Description": "A note, comment or additional information regarding the patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNote.cdm.json/PatientNote",
+						"Name": "PatientNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientNoteImage",
+					"Description": "An image or link to an image referred to in the patient note.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNote.cdm.json/PatientNote",
+						"Name": "PatientNoteImage"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "binary",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "binary"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientNote",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientNote",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientNote.cdm.json/PatientNote\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientNote.cdm.json/PatientNote\",\"name\":\"PatientId\"},\"Timestamp\":{\"entity\":\"PatientNote.cdm.json/PatientNote\",\"name\":\"Timestamp\"},\"NotedByPartyId\":{\"entity\":\"PatientNote.cdm.json/PatientNote\",\"name\":\"NotedByPartyId\"},\"PatientNote\":{\"entity\":\"PatientNote.cdm.json/PatientNote\",\"name\":\"PatientNote\"},\"PatientNoteImage\":{\"entity\":\"PatientNote.cdm.json/PatientNote\",\"name\":\"PatientNoteImage\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientNote\",\"path\":\"PatientNote.cdm.json/PatientNote\"},\"description\":\"A note made regarding the patient.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"Timestamp\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNote.cdm.json/PatientNote\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNote.cdm.json/PatientNote\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNote.cdm.json/PatientNote\",\"name\":\"Timestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp associated with the Patient Note.\",\"isNullable\":false,\"name\":\"Timestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNote.cdm.json/PatientNote\",\"name\":\"NotedByPartyId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Party.\",\"isNullable\":true,\"name\":\"NotedByPartyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNote.cdm.json/PatientNote\",\"name\":\"PatientNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the patient.\",\"isNullable\":true,\"name\":\"PatientNote\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNote.cdm.json/PatientNote\",\"name\":\"PatientNoteImage\"},\"dataType\":\"binary\",\"description\":\"An image or link to an image referred to in the patient note.\",\"isNullable\":true,\"name\":\"PatientNoteImage\"}]}}}",
+			"Description": "A note made regarding the patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,Timestamp",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

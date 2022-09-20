@@ -1,0 +1,26 @@
+{
+	"name": "relationship-shphybxhte",
+	"properties": {
+		"Name": "relationship-shphybxhte",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "BehavioralIndicatorType",
+		"ToTableName": "PatientBehavioralIndicator",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "BehavioralIndicatorTypeId",
+				"ToColumnName": "BehavioralIndicatorTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"BehavioralIndicatorType.cdm.json/BehavioralIndicatorType\",\"toEntity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"joinPairs\":[{\"fromAttribute\":\"BehavioralIndicatorTypeId\",\"toAttribute\":\"BehavioralIndicatorTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

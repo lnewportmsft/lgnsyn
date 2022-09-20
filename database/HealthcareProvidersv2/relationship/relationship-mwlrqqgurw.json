@@ -1,0 +1,26 @@
+{
+	"name": "relationship-mwlrqqgurw",
+	"properties": {
+		"Name": "relationship-mwlrqqgurw",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "MedicalConditionStatusType",
+		"ToTableName": "PatientMedicalCondition",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "MedicalConditionStatusTypeId",
+				"ToColumnName": "MedicalConditionStatusTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"MedicalConditionStatusType.cdm.json/MedicalConditionStatusType\",\"toEntity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"joinPairs\":[{\"fromAttribute\":\"MedicalConditionStatusTypeId\",\"toAttribute\":\"MedicalConditionStatusTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

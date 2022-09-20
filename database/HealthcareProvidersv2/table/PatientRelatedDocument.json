@@ -1,0 +1,144 @@
+{
+	"name": "PatientRelatedDocument",
+	"properties": {
+		"Name": "PatientRelatedDocument",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "Documents related to the patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedDocument.cdm.json/PatientRelatedDocument",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedDocument.cdm.json/PatientRelatedDocument",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "DocumentId",
+					"Description": "The unique identifier of a Document.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedDocument.cdm.json/PatientRelatedDocument",
+						"Name": "DocumentId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "PatientDocumentTypeId",
+					"Description": "The unique identifier of a Family Life Cycle.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedDocument.cdm.json/PatientRelatedDocument",
+						"Name": "PatientDocumentTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientDocumentRelationshipNote",
+					"Description": "A note, comment or additional information regarding the Patient - Document relationship.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedDocument.cdm.json/PatientRelatedDocument",
+						"Name": "PatientDocumentRelationshipNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRelatedDocument",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRelatedDocument",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientRelatedDocument.cdm.json/PatientRelatedDocument\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientRelatedDocument.cdm.json/PatientRelatedDocument\",\"name\":\"PatientId\"},\"DocumentId\":{\"entity\":\"PatientRelatedDocument.cdm.json/PatientRelatedDocument\",\"name\":\"DocumentId\"},\"PatientDocumentTypeId\":{\"entity\":\"PatientRelatedDocument.cdm.json/PatientRelatedDocument\",\"name\":\"PatientDocumentTypeId\"},\"PatientDocumentRelationshipNote\":{\"entity\":\"PatientRelatedDocument.cdm.json/PatientRelatedDocument\",\"name\":\"PatientDocumentRelationshipNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientRelatedDocument\",\"path\":\"PatientRelatedDocument.cdm.json/PatientRelatedDocument\"},\"description\":\"Documents related to the patient.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"DocumentId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedDocument.cdm.json/PatientRelatedDocument\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedDocument.cdm.json/PatientRelatedDocument\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedDocument.cdm.json/PatientRelatedDocument\",\"name\":\"DocumentId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Document.\",\"isNullable\":false,\"name\":\"DocumentId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedDocument.cdm.json/PatientRelatedDocument\",\"name\":\"PatientDocumentTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Family Life Cycle.\",\"isNullable\":false,\"name\":\"PatientDocumentTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedDocument.cdm.json/PatientRelatedDocument\",\"name\":\"PatientDocumentRelationshipNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient - Document relationship.\",\"isNullable\":true,\"name\":\"PatientDocumentRelationshipNote\"}]}}}",
+			"Description": "Documents related to the patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,DocumentId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,162 @@
+{
+	"name": "PatientMedicalCategory",
+	"properties": {
+		"Name": "PatientMedicalCategory",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more Medical Category(s) applicable to the Patient for the associated period.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCategory.cdm.json/PatientMedicalCategory",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "MedicalCategoryTypeId",
+					"Description": "The unique identifier of a Medical Category Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCategory.cdm.json/PatientMedicalCategory",
+						"Name": "MedicalCategoryTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated information is effective.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCategory.cdm.json/PatientMedicalCategory",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCategory.cdm.json/PatientMedicalCategory",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated information is effective.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCategory.cdm.json/PatientMedicalCategory",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientMedicalCategoryNote",
+					"Description": "A note, comment or additional information regarding the Patient Medical Category.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCategory.cdm.json/PatientMedicalCategory",
+						"Name": "PatientMedicalCategoryNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientMedicalCategory",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientMedicalCategory",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientMedicalCategory.cdm.json/PatientMedicalCategory\",\"name\":\"PatientId\"},\"MedicalCategoryTypeId\":{\"entity\":\"PatientMedicalCategory.cdm.json/PatientMedicalCategory\",\"name\":\"MedicalCategoryTypeId\"},\"PeriodStartDate\":{\"entity\":\"PatientMedicalCategory.cdm.json/PatientMedicalCategory\",\"name\":\"PeriodStartDate\"},\"ServiceProviderId\":{\"entity\":\"PatientMedicalCategory.cdm.json/PatientMedicalCategory\",\"name\":\"ServiceProviderId\"},\"PeriodEndDate\":{\"entity\":\"PatientMedicalCategory.cdm.json/PatientMedicalCategory\",\"name\":\"PeriodEndDate\"},\"PatientMedicalCategoryNote\":{\"entity\":\"PatientMedicalCategory.cdm.json/PatientMedicalCategory\",\"name\":\"PatientMedicalCategoryNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientMedicalCategory\",\"path\":\"PatientMedicalCategory.cdm.json/PatientMedicalCategory\"},\"description\":\"The one or more Medical Category(s) applicable to the Patient for the associated period.\",\"primaryKey\":[\"PatientId\",\"MedicalCategoryTypeId\",\"PeriodStartDate\",\"ServiceProviderId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCategory.cdm.json/PatientMedicalCategory\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCategory.cdm.json/PatientMedicalCategory\",\"name\":\"MedicalCategoryTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Medical Category Type.\",\"isNullable\":false,\"name\":\"MedicalCategoryTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCategory.cdm.json/PatientMedicalCategory\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated information is effective.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCategory.cdm.json/PatientMedicalCategory\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCategory.cdm.json/PatientMedicalCategory\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated information is effective.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCategory.cdm.json/PatientMedicalCategory\",\"name\":\"PatientMedicalCategoryNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient Medical Category.\",\"isNullable\":true,\"name\":\"PatientMedicalCategoryNote\"}]}}}",
+			"Description": "The one or more Medical Category(s) applicable to the Patient for the associated period.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,MedicalCategoryTypeId,PeriodStartDate,ServiceProviderId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

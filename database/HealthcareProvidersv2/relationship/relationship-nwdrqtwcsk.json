@@ -1,0 +1,26 @@
+{
+	"name": "relationship-nwdrqtwcsk",
+	"properties": {
+		"Name": "relationship-nwdrqtwcsk",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "DisabilityType",
+		"ToTableName": "PatientDisability",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "DisabilityTypeId",
+				"ToColumnName": "DisabilityTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"DisabilityType.cdm.json/DisabilityType\",\"toEntity\":\"PatientDisability.cdm.json/PatientDisability\",\"joinPairs\":[{\"fromAttribute\":\"DisabilityTypeId\",\"toAttribute\":\"DisabilityTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

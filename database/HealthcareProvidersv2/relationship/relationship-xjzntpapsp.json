@@ -1,0 +1,26 @@
+{
+	"name": "relationship-xjzntpapsp",
+	"properties": {
+		"Name": "relationship-xjzntpapsp",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "LivingWillType",
+		"ToTableName": "Patient",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "LivingWillTypeId",
+				"ToColumnName": "LivingWillTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"LivingWillType.cdm.json/LivingWillType\",\"toEntity\":\"Patient.cdm.json/Patient\",\"joinPairs\":[{\"fromAttribute\":\"LivingWillTypeId\",\"toAttribute\":\"LivingWillTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

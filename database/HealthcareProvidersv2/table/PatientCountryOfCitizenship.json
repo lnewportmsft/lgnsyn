@@ -1,0 +1,193 @@
+{
+	"name": "PatientCountryOfCitizenship",
+	"properties": {
+		"Name": "PatientCountryOfCitizenship",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The country of citizenship of the Patient as of the associated time.\n\nThis answers the question \"What country(s) does the individual have citizenship for?\"",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date that the member has citizenship in the associated country.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "CountryId",
+					"Description": "The unique identifier of the Country.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship",
+						"Name": "CountryId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date that the member has citizenship in the associated country.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "NationalId",
+					"Description": "The unique national identifier or citizenship ID of the Patient in the associated country.\n\nThe number typically consists of alphanumeric characters and is not a 'number' but rather an 'ID'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship",
+						"Name": "NationalId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PassportId",
+					"Description": "The unique passport identifier or ID of the Patient n the associated country.\n\nThe number typically consists of alphanumeric characters and is not a 'number' but rather an 'ID'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship",
+						"Name": "PassportId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "CitizenshipTypeId",
+					"Description": "The unique identifier of a citizenship type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship",
+						"Name": "CitizenshipTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientCountryOfCitizenship",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientCountryOfCitizenship",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"PatientId\"},\"PeriodStartDate\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"PeriodStartDate\"},\"ServiceProviderId\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"ServiceProviderId\"},\"CountryId\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"CountryId\"},\"PeriodEndDate\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"PeriodEndDate\"},\"NationalId\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"NationalId\"},\"PassportId\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"PassportId\"},\"CitizenshipTypeId\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"CitizenshipTypeId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientCountryOfCitizenship\",\"path\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\"},\"description\":\"The country of citizenship of the Patient as of the associated time.\\n\\nThis answers the question \\\"What country(s) does the individual have citizenship for?\\\"\",\"primaryKey\":[\"PatientId\",\"PeriodStartDate\",\"ServiceProviderId\",\"CountryId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date that the member has citizenship in the associated country.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"CountryId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of the Country.\",\"isNullable\":false,\"name\":\"CountryId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date that the member has citizenship in the associated country.\",\"isNullable\":false,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"NationalId\"},\"dataType\":\"integer\",\"description\":\"The unique national identifier or citizenship ID of the Patient in the associated country.\\n\\nThe number typically consists of alphanumeric characters and is not a 'number' but rather an 'ID'.\",\"isNullable\":true,\"name\":\"NationalId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"PassportId\"},\"dataType\":\"integer\",\"description\":\"The unique passport identifier or ID of the Patient n the associated country.\\n\\nThe number typically consists of alphanumeric characters and is not a 'number' but rather an 'ID'.\",\"isNullable\":true,\"name\":\"PassportId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCountryOfCitizenship.cdm.json/PatientCountryOfCitizenship\",\"name\":\"CitizenshipTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a citizenship type.\",\"isNullable\":true,\"name\":\"CitizenshipTypeId\"}]}}}",
+			"Description": "The country of citizenship of the Patient as of the associated time.\n\nThis answers the question \"What country(s) does the individual have citizenship for?\"",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,PeriodStartDate,ServiceProviderId,CountryId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,244 @@
+{
+	"name": "PatientCoordinationOfBenefits",
+	"properties": {
+		"Name": "PatientCoordinationOfBenefits",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The priority and/or percentage assigned to the Health Plan Policies that the Patient has coverage under.\n\nFor patients that have more than one health plan policy the payment priority is assigned as follows:\nIf the patient is the primary of the policy the payment priority is first. \nIf the patient is primary on more than one policy the policy that the patient has been enrolled on longest is first.\nThis is followed by the policy(ies) in which the patient is a dependent or is secondary.\nIf the patient is secondary on more than one policy the policy that the patient has been enrolled on longest is first.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PaymentPriority",
+					"Description": "The payment priority that this Health Plan Policy has relative to other Health Plan Policies held by the Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits",
+						"Name": "PaymentPriority"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "StartDate",
+					"Description": "The start date that the Patient's Health Plan Policy has this priority relative to other Health Plan Policies held by the Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits",
+						"Name": "StartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "EndDate",
+					"Description": "The end date that the Patient's Health Plan Policy has this priority relative to other Health Plan Policies held by the Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits",
+						"Name": "EndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "CobHealthPlanInsurerId",
+					"Description": "The unique identifier of an insurer.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits",
+						"Name": "CobHealthPlanInsurerId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "CobHealthPlanPolicyId",
+					"Description": "The unique identifier of a policy.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits",
+						"Name": "CobHealthPlanPolicyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "CobInsurerId",
+					"Description": "The unique identifier of an insurer.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits",
+						"Name": "CobInsurerId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "CobMemberId",
+					"Description": "The unique identifier of a Member.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits",
+						"Name": "CobMemberId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "CoordinationOfBenefitsPercentage",
+					"Description": "The percentage of a claim that is payable under this Health Plan Policy relative to other Health Plan Policies held by the Patient. The total of this field across all policies held by the patient should not exceed 100%.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits",
+						"Name": "CoordinationOfBenefitsPercentage"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "CoordinationOfBenefitsNote",
+					"Description": "A note, comment or additional information regarding the patient coordination of benefits.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits",
+						"Name": "CoordinationOfBenefitsNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientCoordinationOfBenefits",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientCoordinationOfBenefits",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"PatientId\"},\"PaymentPriority\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"PaymentPriority\"},\"StartDate\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"StartDate\"},\"EndDate\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"EndDate\"},\"CobHealthPlanInsurerId\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"CobHealthPlanInsurerId\"},\"CobHealthPlanPolicyId\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"CobHealthPlanPolicyId\"},\"CobInsurerId\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"CobInsurerId\"},\"CobMemberId\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"CobMemberId\"},\"CoordinationOfBenefitsPercentage\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"CoordinationOfBenefitsPercentage\"},\"CoordinationOfBenefitsNote\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"CoordinationOfBenefitsNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientCoordinationOfBenefits\",\"path\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\"},\"description\":\"The priority and/or percentage assigned to the Health Plan Policies that the Patient has coverage under.\\n\\nFor patients that have more than one health plan policy the payment priority is assigned as follows:\\nIf the patient is the primary of the policy the payment priority is first. \\nIf the patient is primary on more than one policy the policy that the patient has been enrolled on longest is first.\\nThis is followed by the policy(ies) in which the patient is a dependent or is secondary.\\nIf the patient is secondary on more than one policy the policy that the patient has been enrolled on longest is first.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PaymentPriority\",\"StartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"PaymentPriority\"},\"dataType\":\"integer\",\"description\":\"The payment priority that this Health Plan Policy has relative to other Health Plan Policies held by the Patient.\",\"isNullable\":false,\"name\":\"PaymentPriority\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"StartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The start date that the Patient's Health Plan Policy has this priority relative to other Health Plan Policies held by the Patient.\",\"isNullable\":false,\"name\":\"StartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"EndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The end date that the Patient's Health Plan Policy has this priority relative to other Health Plan Policies held by the Patient.\",\"isNullable\":true,\"name\":\"EndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"CobHealthPlanInsurerId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an insurer.\",\"isNullable\":false,\"name\":\"CobHealthPlanInsurerId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"CobHealthPlanPolicyId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a policy.\",\"isNullable\":false,\"name\":\"CobHealthPlanPolicyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"CobInsurerId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an insurer.\",\"isNullable\":false,\"name\":\"CobInsurerId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"CobMemberId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Member.\",\"isNullable\":false,\"name\":\"CobMemberId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"CoordinationOfBenefitsPercentage\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The percentage of a claim that is payable under this Health Plan Policy relative to other Health Plan Policies held by the Patient. The total of this field across all policies held by the patient should not exceed 100%.\",\"isNullable\":true,\"scale\":8,\"name\":\"CoordinationOfBenefitsPercentage\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCoordinationOfBenefits.cdm.json/PatientCoordinationOfBenefits\",\"name\":\"CoordinationOfBenefitsNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the patient coordination of benefits.\",\"isNullable\":true,\"name\":\"CoordinationOfBenefitsNote\"}]}}}",
+			"Description": "The priority and/or percentage assigned to the Health Plan Policies that the Patient has coverage under.\n\nFor patients that have more than one health plan policy the payment priority is assigned as follows:\nIf the patient is the primary of the policy the payment priority is first. \nIf the patient is primary on more than one policy the policy that the patient has been enrolled on longest is first.\nThis is followed by the policy(ies) in which the patient is a dependent or is secondary.\nIf the patient is secondary on more than one policy the policy that the patient has been enrolled on longest is first.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PaymentPriority,StartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

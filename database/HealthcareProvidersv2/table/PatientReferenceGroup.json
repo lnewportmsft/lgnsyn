@@ -1,0 +1,162 @@
+{
+	"name": "PatientReferenceGroup",
+	"properties": {
+		"Name": "PatientReferenceGroup",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The Reference Group(s) that have been identified as those for which the Patient has membership.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientReferenceGroup.cdm.json/PatientReferenceGroup",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientReferenceGroup.cdm.json/PatientReferenceGroup",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ReferenceGroupId",
+					"Description": "The unique identifier of a Reference Group.",
+					"BaseAttributeReference": {
+						"Entity": "PatientReferenceGroup.cdm.json/PatientReferenceGroup",
+						"Name": "ReferenceGroupId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientReferenceGroup.cdm.json/PatientReferenceGroup",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientReferenceGroup.cdm.json/PatientReferenceGroup",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientReferenceGroupNote",
+					"Description": "A note, comment or additional information regarding the Individual Patient-Reference Group relationship.",
+					"BaseAttributeReference": {
+						"Entity": "PatientReferenceGroup.cdm.json/PatientReferenceGroup",
+						"Name": "PatientReferenceGroupNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientReferenceGroup",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientReferenceGroup",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientReferenceGroup.cdm.json/PatientReferenceGroup\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientReferenceGroup.cdm.json/PatientReferenceGroup\",\"name\":\"PatientId\"},\"ReferenceGroupId\":{\"entity\":\"PatientReferenceGroup.cdm.json/PatientReferenceGroup\",\"name\":\"ReferenceGroupId\"},\"PeriodStartDate\":{\"entity\":\"PatientReferenceGroup.cdm.json/PatientReferenceGroup\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientReferenceGroup.cdm.json/PatientReferenceGroup\",\"name\":\"PeriodEndDate\"},\"PatientReferenceGroupNote\":{\"entity\":\"PatientReferenceGroup.cdm.json/PatientReferenceGroup\",\"name\":\"PatientReferenceGroupNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientReferenceGroup\",\"path\":\"PatientReferenceGroup.cdm.json/PatientReferenceGroup\"},\"description\":\"The Reference Group(s) that have been identified as those for which the Patient has membership.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"ReferenceGroupId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientReferenceGroup.cdm.json/PatientReferenceGroup\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientReferenceGroup.cdm.json/PatientReferenceGroup\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientReferenceGroup.cdm.json/PatientReferenceGroup\",\"name\":\"ReferenceGroupId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Reference Group.\",\"isNullable\":false,\"name\":\"ReferenceGroupId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientReferenceGroup.cdm.json/PatientReferenceGroup\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientReferenceGroup.cdm.json/PatientReferenceGroup\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientReferenceGroup.cdm.json/PatientReferenceGroup\",\"name\":\"PatientReferenceGroupNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Individual Patient-Reference Group relationship.\",\"isNullable\":true,\"name\":\"PatientReferenceGroupNote\"}]}}}",
+			"Description": "The Reference Group(s) that have been identified as those for which the Patient has membership.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,ReferenceGroupId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

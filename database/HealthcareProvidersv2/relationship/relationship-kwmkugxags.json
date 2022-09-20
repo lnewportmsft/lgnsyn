@@ -1,0 +1,26 @@
+{
+	"name": "relationship-kwmkugxags",
+	"properties": {
+		"Name": "relationship-kwmkugxags",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientRiskScoreType",
+		"ToTableName": "PatientRiskScore",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientRiskScoreTypeId",
+				"ToColumnName": "PatientRiskScoreTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientRiskScoreType.cdm.json/PatientRiskScoreType\",\"toEntity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"joinPairs\":[{\"fromAttribute\":\"PatientRiskScoreTypeId\",\"toAttribute\":\"PatientRiskScoreTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

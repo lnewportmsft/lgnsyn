@@ -1,0 +1,146 @@
+{
+	"name": "Vaccine",
+	"properties": {
+		"Name": "Vaccine",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A vaccine is a biological preparation that establishes or improves immunity to a particular disease.\n\nEx:\n- Hepatitis Hep B\n- Hepatitis Hib-\n- Polio IPV\n- Polio DTaP--IPV\n- Pneumococcal PCV\n- Human Papillomavirus",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "VaccineId",
+					"Description": "The unique identifier of a vaccine.",
+					"BaseAttributeReference": {
+						"Entity": "Vaccine.cdm.json/Vaccine",
+						"Name": "VaccineId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "Hl7Code",
+					"Description": "The CDC's National Center of Immunization and Respiratory Diseases (NCIRD) maintains the HL7 external code set CVX. The implementation of the HL7 standard for immunization data exchange is described in Chapter 4 of the HL7 standard. The codes in HL7 Version 2.3 table 0292, represented the initial content of the external CVX code set.\n\nEx:\nCode Short Description Full Vaccine Name \n54 adenovirus, type 4 adenovirus vaccine, type 4, live, oral \n55 adenovirus, type 7 adenovirus vaccine, type 7, live, oral \n82 adenovirus, NOS1 adenovirus vaccine, NOS",
+					"BaseAttributeReference": {
+						"Entity": "Vaccine.cdm.json/Vaccine",
+						"Name": "Hl7Code"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "VaccineName",
+					"Description": "The name of a vaccine.",
+					"BaseAttributeReference": {
+						"Entity": "Vaccine.cdm.json/Vaccine",
+						"Name": "VaccineName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "VaccineDescription",
+					"Description": "The description of a vaccine.",
+					"BaseAttributeReference": {
+						"Entity": "Vaccine.cdm.json/Vaccine",
+						"Name": "VaccineDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "DrugId",
+					"Description": "The unique identifier of a drug.",
+					"BaseAttributeReference": {
+						"Entity": "Vaccine.cdm.json/Vaccine",
+						"Name": "DrugId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/Vaccine",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/Vaccine",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"VaccineId\":{\"entity\":\"Vaccine.cdm.json/Vaccine\",\"name\":\"VaccineId\"},\"Hl7Code\":{\"entity\":\"Vaccine.cdm.json/Vaccine\",\"name\":\"Hl7Code\"},\"VaccineName\":{\"entity\":\"Vaccine.cdm.json/Vaccine\",\"name\":\"VaccineName\"},\"VaccineDescription\":{\"entity\":\"Vaccine.cdm.json/Vaccine\",\"name\":\"VaccineDescription\"},\"DrugId\":{\"entity\":\"Vaccine.cdm.json/Vaccine\",\"name\":\"DrugId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"Vaccine\",\"path\":\"Vaccine.cdm.json/Vaccine\"},\"description\":\"A vaccine is a biological preparation that establishes or improves immunity to a particular disease.\\n\\nEx:\\n- Hepatitis Hep B\\n- Hepatitis Hib-\\n- Polio IPV\\n- Polio DTaP--IPV\\n- Pneumococcal PCV\\n- Human Papillomavirus\",\"primaryKey\":[\"VaccineId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Vaccine.cdm.json/Vaccine\",\"name\":\"VaccineId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a vaccine.\",\"isNullable\":false,\"name\":\"VaccineId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Vaccine.cdm.json/Vaccine\",\"name\":\"Hl7Code\"},\"dataType\":\"string\",\"dataTypeLength\":2,\"description\":\"The CDC's National Center of Immunization and Respiratory Diseases (NCIRD) maintains the HL7 external code set CVX. The implementation of the HL7 standard for immunization data exchange is described in Chapter 4 of the HL7 standard. The codes in HL7 Version 2.3 table 0292, represented the initial content of the external CVX code set.\\n\\nEx:\\nCode Short Description Full Vaccine Name \\n54 adenovirus, type 4 adenovirus vaccine, type 4, live, oral \\n55 adenovirus, type 7 adenovirus vaccine, type 7, live, oral \\n82 adenovirus, NOS1 adenovirus vaccine, NOS\",\"isNullable\":true,\"name\":\"Hl7Code\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Vaccine.cdm.json/Vaccine\",\"name\":\"VaccineName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a vaccine.\",\"isNullable\":true,\"name\":\"VaccineName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Vaccine.cdm.json/Vaccine\",\"name\":\"VaccineDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a vaccine.\",\"isNullable\":true,\"name\":\"VaccineDescription\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Vaccine.cdm.json/Vaccine\",\"name\":\"DrugId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a drug.\",\"isNullable\":true,\"name\":\"DrugId\"}]}}}",
+			"Description": "A vaccine is a biological preparation that establishes or improves immunity to a particular disease.\n\nEx:\n- Hepatitis Hep B\n- Hepatitis Hib-\n- Polio IPV\n- Polio DTaP--IPV\n- Pneumococcal PCV\n- Human Papillomavirus",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "VaccineId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

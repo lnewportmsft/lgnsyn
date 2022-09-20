@@ -1,0 +1,178 @@
+{
+	"name": "PatientPhysicalCharacteristic",
+	"properties": {
+		"Name": "PatientPhysicalCharacteristic",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The physical characteristics that identify a Patient.\n\nEx:\n- Height\n- Weight\n- Eye Color\n- Hair Color\n- Body Type",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PhysicalCharacteristicId",
+					"Description": "The unique identifier of a physical characteristic.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic",
+						"Name": "PhysicalCharacteristicId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "Timestamp",
+					"Description": "The timestamp that the associated information is reported, recorded or effective as-of.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic",
+						"Name": "Timestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "PatientPhysicalCharacteristicNumber",
+					"Description": "The numeric parameter associated with the biometric.\n\nEx:\n\nWeight = 175\nHeight = 5'10\"",
+					"BaseAttributeReference": {
+						"Entity": "PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic",
+						"Name": "PatientPhysicalCharacteristicNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientPhysicalCharacteristicValue",
+					"Description": "The non-numeric parameter associated with the biometric.\n\nEx:\n\nEye color = blue",
+					"BaseAttributeReference": {
+						"Entity": "PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic",
+						"Name": "PatientPhysicalCharacteristicValue"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 20,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientPhysicalCharacteristicNote",
+					"Description": "A note, comment or additional information regarding the Patient physical characteristic.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic",
+						"Name": "PatientPhysicalCharacteristicNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPhysicalCharacteristic",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPhysicalCharacteristic",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic\",\"name\":\"PatientId\"},\"PhysicalCharacteristicId\":{\"entity\":\"PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic\",\"name\":\"PhysicalCharacteristicId\"},\"Timestamp\":{\"entity\":\"PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic\",\"name\":\"Timestamp\"},\"PatientPhysicalCharacteristicNumber\":{\"entity\":\"PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic\",\"name\":\"PatientPhysicalCharacteristicNumber\"},\"PatientPhysicalCharacteristicValue\":{\"entity\":\"PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic\",\"name\":\"PatientPhysicalCharacteristicValue\"},\"PatientPhysicalCharacteristicNote\":{\"entity\":\"PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic\",\"name\":\"PatientPhysicalCharacteristicNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientPhysicalCharacteristic\",\"path\":\"PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic\"},\"description\":\"The physical characteristics that identify a Patient.\\n\\nEx:\\n- Height\\n- Weight\\n- Eye Color\\n- Hair Color\\n- Body Type\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PhysicalCharacteristicId\",\"Timestamp\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic\",\"name\":\"PhysicalCharacteristicId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a physical characteristic.\",\"isNullable\":false,\"name\":\"PhysicalCharacteristicId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic\",\"name\":\"Timestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp that the associated information is reported, recorded or effective as-of.\",\"isNullable\":false,\"name\":\"Timestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic\",\"name\":\"PatientPhysicalCharacteristicNumber\"},\"dataType\":\"integer\",\"description\":\"The numeric parameter associated with the biometric.\\n\\nEx:\\n\\nWeight = 175\\nHeight = 5'10\\\"\",\"isNullable\":true,\"name\":\"PatientPhysicalCharacteristicNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic\",\"name\":\"PatientPhysicalCharacteristicValue\"},\"dataType\":\"string\",\"dataTypeLength\":20,\"description\":\"The non-numeric parameter associated with the biometric.\\n\\nEx:\\n\\nEye color = blue\",\"isNullable\":true,\"name\":\"PatientPhysicalCharacteristicValue\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPhysicalCharacteristic.cdm.json/PatientPhysicalCharacteristic\",\"name\":\"PatientPhysicalCharacteristicNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient physical characteristic.\",\"isNullable\":true,\"name\":\"PatientPhysicalCharacteristicNote\"}]}}}",
+			"Description": "The physical characteristics that identify a Patient.\n\nEx:\n- Height\n- Weight\n- Eye Color\n- Hair Color\n- Body Type",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PhysicalCharacteristicId,Timestamp",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

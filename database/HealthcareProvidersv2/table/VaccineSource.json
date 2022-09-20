@@ -1,0 +1,113 @@
+{
+	"name": "VaccineSource",
+	"properties": {
+		"Name": "VaccineSource",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The source of the vaccine.\n\nEx:\n- F (Federally-supported)\n- S (State-supported)\n- P (Private Insurance / Private Funds)",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "VaccineSourceId",
+					"Description": "The unique identifier of the Vaccine source.",
+					"BaseAttributeReference": {
+						"Entity": "VaccineSource.cdm.json/VaccineSource",
+						"Name": "VaccineSourceId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "VaccineSourceName",
+					"Description": "The name of the Vaccine source.",
+					"BaseAttributeReference": {
+						"Entity": "VaccineSource.cdm.json/VaccineSource",
+						"Name": "VaccineSourceName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "VaccineSourceDescription",
+					"Description": "The description of the Vaccine source.",
+					"BaseAttributeReference": {
+						"Entity": "VaccineSource.cdm.json/VaccineSource",
+						"Name": "VaccineSourceDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/VaccineSource",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/VaccineSource",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"VaccineSourceId\":{\"entity\":\"VaccineSource.cdm.json/VaccineSource\",\"name\":\"VaccineSourceId\"},\"VaccineSourceName\":{\"entity\":\"VaccineSource.cdm.json/VaccineSource\",\"name\":\"VaccineSourceName\"},\"VaccineSourceDescription\":{\"entity\":\"VaccineSource.cdm.json/VaccineSource\",\"name\":\"VaccineSourceDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"VaccineSource\",\"path\":\"VaccineSource.cdm.json/VaccineSource\"},\"description\":\"The source of the vaccine.\\n\\nEx:\\n- F (Federally-supported)\\n- S (State-supported)\\n- P (Private Insurance / Private Funds)\",\"primaryKey\":[\"VaccineSourceId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"VaccineSource.cdm.json/VaccineSource\",\"name\":\"VaccineSourceId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of the Vaccine source.\",\"isNullable\":false,\"name\":\"VaccineSourceId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"VaccineSource.cdm.json/VaccineSource\",\"name\":\"VaccineSourceName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the Vaccine source.\",\"isNullable\":true,\"name\":\"VaccineSourceName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"VaccineSource.cdm.json/VaccineSource\",\"name\":\"VaccineSourceDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of the Vaccine source.\",\"isNullable\":true,\"name\":\"VaccineSourceDescription\"}]}}}",
+			"Description": "The source of the vaccine.\n\nEx:\n- F (Federally-supported)\n- S (State-supported)\n- P (Private Insurance / Private Funds)",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "VaccineSourceId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

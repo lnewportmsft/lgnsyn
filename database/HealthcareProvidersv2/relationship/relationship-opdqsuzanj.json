@@ -1,0 +1,26 @@
+{
+	"name": "relationship-opdqsuzanj",
+	"properties": {
+		"Name": "relationship-opdqsuzanj",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Patient",
+		"ToTableName": "PatientEvent",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ServiceProviderId",
+				"ToColumnName": "ServiceProviderId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Patient.cdm.json/Patient\",\"toEntity\":\"PatientEvent.cdm.json/PatientEvent\",\"joinPairs\":[{\"fromAttribute\":\"ServiceProviderId\",\"toAttribute\":\"ServiceProviderId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

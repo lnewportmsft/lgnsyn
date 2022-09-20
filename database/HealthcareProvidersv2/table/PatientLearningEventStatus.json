@@ -1,0 +1,113 @@
+{
+	"name": "PatientLearningEventStatus",
+	"properties": {
+		"Name": "PatientLearningEventStatus",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The status of the associated Learning Event as applicable to a customer.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientLearningEventStatusId",
+					"Description": "The unique identifier of a Patient Learning Event Status.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLearningEventStatus.cdm.json/PatientLearningEventStatus",
+						"Name": "PatientLearningEventStatusId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientLearningEventStatusName",
+					"Description": "The name of a Patient Learning Event Status.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLearningEventStatus.cdm.json/PatientLearningEventStatus",
+						"Name": "PatientLearningEventStatusName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientLearningEventStatusDescription",
+					"Description": "The description of a Patient Learning Event Status.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLearningEventStatus.cdm.json/PatientLearningEventStatus",
+						"Name": "PatientLearningEventStatusDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientLearningEventStatus",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientLearningEventStatus",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientLearningEventStatusId\":{\"entity\":\"PatientLearningEventStatus.cdm.json/PatientLearningEventStatus\",\"name\":\"PatientLearningEventStatusId\"},\"PatientLearningEventStatusName\":{\"entity\":\"PatientLearningEventStatus.cdm.json/PatientLearningEventStatus\",\"name\":\"PatientLearningEventStatusName\"},\"PatientLearningEventStatusDescription\":{\"entity\":\"PatientLearningEventStatus.cdm.json/PatientLearningEventStatus\",\"name\":\"PatientLearningEventStatusDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientLearningEventStatus\",\"path\":\"PatientLearningEventStatus.cdm.json/PatientLearningEventStatus\"},\"description\":\"The status of the associated Learning Event as applicable to a customer.\",\"primaryKey\":[\"PatientLearningEventStatusId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLearningEventStatus.cdm.json/PatientLearningEventStatus\",\"name\":\"PatientLearningEventStatusId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Learning Event Status.\",\"isNullable\":false,\"name\":\"PatientLearningEventStatusId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLearningEventStatus.cdm.json/PatientLearningEventStatus\",\"name\":\"PatientLearningEventStatusName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Patient Learning Event Status.\",\"isNullable\":true,\"name\":\"PatientLearningEventStatusName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLearningEventStatus.cdm.json/PatientLearningEventStatus\",\"name\":\"PatientLearningEventStatusDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Patient Learning Event Status.\",\"isNullable\":true,\"name\":\"PatientLearningEventStatusDescription\"}]}}}",
+			"Description": "The status of the associated Learning Event as applicable to a customer.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientLearningEventStatusId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

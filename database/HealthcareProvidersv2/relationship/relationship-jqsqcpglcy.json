@@ -1,0 +1,26 @@
+{
+	"name": "relationship-jqsqcpglcy",
+	"properties": {
+		"Name": "relationship-jqsqcpglcy",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Patient",
+		"ToTableName": "PatientAtRisk",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ServiceProviderId",
+				"ToColumnName": "ServiceProviderId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Patient.cdm.json/Patient\",\"toEntity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"joinPairs\":[{\"fromAttribute\":\"ServiceProviderId\",\"toAttribute\":\"ServiceProviderId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

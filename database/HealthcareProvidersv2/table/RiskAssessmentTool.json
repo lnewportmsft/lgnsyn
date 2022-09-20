@@ -1,0 +1,161 @@
+{
+	"name": "RiskAssessmentTool",
+	"properties": {
+		"Name": "RiskAssessmentTool",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A tool or methodology used for assessing the level of risk that a patient has.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "RiskAssessmentToolId",
+					"Description": "The unique identifier of a Risk Assessment Tool.",
+					"BaseAttributeReference": {
+						"Entity": "RiskAssessmentTool.cdm.json/RiskAssessmentTool",
+						"Name": "RiskAssessmentToolId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "RiskAssessmentToolName",
+					"Description": "The name of a Risk Assessment Tool.",
+					"BaseAttributeReference": {
+						"Entity": "RiskAssessmentTool.cdm.json/RiskAssessmentTool",
+						"Name": "RiskAssessmentToolName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "RiskAssessmentToolDescription",
+					"Description": "The description of a Risk Assessment Tool.",
+					"BaseAttributeReference": {
+						"Entity": "RiskAssessmentTool.cdm.json/RiskAssessmentTool",
+						"Name": "RiskAssessmentToolDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "MedicalTestTypeId",
+					"Description": "The unique identifier of a Medical Test Type.",
+					"BaseAttributeReference": {
+						"Entity": "RiskAssessmentTool.cdm.json/RiskAssessmentTool",
+						"Name": "MedicalTestTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "MedicalProcedureId",
+					"Description": "The unique identifier of a Medical Procedure.",
+					"BaseAttributeReference": {
+						"Entity": "RiskAssessmentTool.cdm.json/RiskAssessmentTool",
+						"Name": "MedicalProcedureId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "PatientRiskTypeId",
+					"Description": "The unique identifier of a Patient Risk Type.",
+					"BaseAttributeReference": {
+						"Entity": "RiskAssessmentTool.cdm.json/RiskAssessmentTool",
+						"Name": "PatientRiskTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/RiskAssessmentTool",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/RiskAssessmentTool",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"RiskAssessmentToolId\":{\"entity\":\"RiskAssessmentTool.cdm.json/RiskAssessmentTool\",\"name\":\"RiskAssessmentToolId\"},\"RiskAssessmentToolName\":{\"entity\":\"RiskAssessmentTool.cdm.json/RiskAssessmentTool\",\"name\":\"RiskAssessmentToolName\"},\"RiskAssessmentToolDescription\":{\"entity\":\"RiskAssessmentTool.cdm.json/RiskAssessmentTool\",\"name\":\"RiskAssessmentToolDescription\"},\"MedicalTestTypeId\":{\"entity\":\"RiskAssessmentTool.cdm.json/RiskAssessmentTool\",\"name\":\"MedicalTestTypeId\"},\"MedicalProcedureId\":{\"entity\":\"RiskAssessmentTool.cdm.json/RiskAssessmentTool\",\"name\":\"MedicalProcedureId\"},\"PatientRiskTypeId\":{\"entity\":\"RiskAssessmentTool.cdm.json/RiskAssessmentTool\",\"name\":\"PatientRiskTypeId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"RiskAssessmentTool\",\"path\":\"RiskAssessmentTool.cdm.json/RiskAssessmentTool\"},\"description\":\"A tool or methodology used for assessing the level of risk that a patient has.\",\"primaryKey\":[\"RiskAssessmentToolId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RiskAssessmentTool.cdm.json/RiskAssessmentTool\",\"name\":\"RiskAssessmentToolId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Risk Assessment Tool.\",\"isNullable\":false,\"name\":\"RiskAssessmentToolId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RiskAssessmentTool.cdm.json/RiskAssessmentTool\",\"name\":\"RiskAssessmentToolName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Risk Assessment Tool.\",\"isNullable\":true,\"name\":\"RiskAssessmentToolName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RiskAssessmentTool.cdm.json/RiskAssessmentTool\",\"name\":\"RiskAssessmentToolDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Risk Assessment Tool.\",\"isNullable\":true,\"name\":\"RiskAssessmentToolDescription\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RiskAssessmentTool.cdm.json/RiskAssessmentTool\",\"name\":\"MedicalTestTypeId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Medical Test Type.\",\"isNullable\":false,\"name\":\"MedicalTestTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RiskAssessmentTool.cdm.json/RiskAssessmentTool\",\"name\":\"MedicalProcedureId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Medical Procedure.\",\"isNullable\":true,\"name\":\"MedicalProcedureId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RiskAssessmentTool.cdm.json/RiskAssessmentTool\",\"name\":\"PatientRiskTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Risk Type.\",\"isNullable\":true,\"name\":\"PatientRiskTypeId\"}]}}}",
+			"Description": "A tool or methodology used for assessing the level of risk that a patient has.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "RiskAssessmentToolId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

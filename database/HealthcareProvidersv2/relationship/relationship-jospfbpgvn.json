@@ -1,0 +1,26 @@
+{
+	"name": "relationship-jospfbpgvn",
+	"properties": {
+		"Name": "relationship-jospfbpgvn",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Vaccine",
+		"ToTableName": "PatientImmunization",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "VaccineId",
+				"ToColumnName": "VaccineId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Vaccine.cdm.json/Vaccine\",\"toEntity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"joinPairs\":[{\"fromAttribute\":\"VaccineId\",\"toAttribute\":\"VaccineId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

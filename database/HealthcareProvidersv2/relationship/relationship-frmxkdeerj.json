@@ -1,0 +1,26 @@
+{
+	"name": "relationship-frmxkdeerj",
+	"properties": {
+		"Name": "relationship-frmxkdeerj",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "MedicalSeverity",
+		"ToTableName": "PatientAllergyReaction",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "MedicalSeverityId",
+				"ToColumnName": "MedicalSeverityId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"MedicalSeverity.cdm.json/MedicalSeverity\",\"toEntity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"joinPairs\":[{\"fromAttribute\":\"MedicalSeverityId\",\"toAttribute\":\"MedicalSeverityId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

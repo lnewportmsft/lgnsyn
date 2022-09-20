@@ -1,0 +1,113 @@
+{
+	"name": "PatientPartyRelationshipType",
+	"properties": {
+		"Name": "PatientPartyRelationshipType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The nature of the relationship between the party and the patient over the indicated period.\n\nEx:\n- Spouse\n- Domestic Partner\n- Healthcare Payer\n- Primary Physician\n- Gatekeeper\n- Accepted By",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientPartyRelationshipTypeId",
+					"Description": "The unique identifier of a Patient-Party relationship type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPartyRelationshipType.cdm.json/PatientPartyRelationshipType",
+						"Name": "PatientPartyRelationshipTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientPartyRelationshipTypeName",
+					"Description": "The name of a Patient-Party relationship type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPartyRelationshipType.cdm.json/PatientPartyRelationshipType",
+						"Name": "PatientPartyRelationshipTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientPartyRelationshipTypeDescription",
+					"Description": "The description of a Patient-Party relationship type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPartyRelationshipType.cdm.json/PatientPartyRelationshipType",
+						"Name": "PatientPartyRelationshipTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPartyRelationshipType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPartyRelationshipType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientPartyRelationshipTypeId\":{\"entity\":\"PatientPartyRelationshipType.cdm.json/PatientPartyRelationshipType\",\"name\":\"PatientPartyRelationshipTypeId\"},\"PatientPartyRelationshipTypeName\":{\"entity\":\"PatientPartyRelationshipType.cdm.json/PatientPartyRelationshipType\",\"name\":\"PatientPartyRelationshipTypeName\"},\"PatientPartyRelationshipTypeDescription\":{\"entity\":\"PatientPartyRelationshipType.cdm.json/PatientPartyRelationshipType\",\"name\":\"PatientPartyRelationshipTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientPartyRelationshipType\",\"path\":\"PatientPartyRelationshipType.cdm.json/PatientPartyRelationshipType\"},\"description\":\"The nature of the relationship between the party and the patient over the indicated period.\\n\\nEx:\\n- Spouse\\n- Domestic Partner\\n- Healthcare Payer\\n- Primary Physician\\n- Gatekeeper\\n- Accepted By\",\"primaryKey\":[\"PatientPartyRelationshipTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPartyRelationshipType.cdm.json/PatientPartyRelationshipType\",\"name\":\"PatientPartyRelationshipTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient-Party relationship type.\",\"isNullable\":false,\"name\":\"PatientPartyRelationshipTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPartyRelationshipType.cdm.json/PatientPartyRelationshipType\",\"name\":\"PatientPartyRelationshipTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Patient-Party relationship type.\",\"isNullable\":true,\"name\":\"PatientPartyRelationshipTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPartyRelationshipType.cdm.json/PatientPartyRelationshipType\",\"name\":\"PatientPartyRelationshipTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Patient-Party relationship type.\",\"isNullable\":true,\"name\":\"PatientPartyRelationshipTypeDescription\"}]}}}",
+			"Description": "The nature of the relationship between the party and the patient over the indicated period.\n\nEx:\n- Spouse\n- Domestic Partner\n- Healthcare Payer\n- Primary Physician\n- Gatekeeper\n- Accepted By",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientPartyRelationshipTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

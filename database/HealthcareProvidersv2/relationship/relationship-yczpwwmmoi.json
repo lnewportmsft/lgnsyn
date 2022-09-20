@@ -1,0 +1,26 @@
+{
+	"name": "relationship-yczpwwmmoi",
+	"properties": {
+		"Name": "relationship-yczpwwmmoi",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientStatementType",
+		"ToTableName": "PatientStatement",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientStatementTypeId",
+				"ToColumnName": "PatientStatementTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientStatementType.cdm.json/PatientStatementType\",\"toEntity\":\"PatientStatement.cdm.json/PatientStatement\",\"joinPairs\":[{\"fromAttribute\":\"PatientStatementTypeId\",\"toAttribute\":\"PatientStatementTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

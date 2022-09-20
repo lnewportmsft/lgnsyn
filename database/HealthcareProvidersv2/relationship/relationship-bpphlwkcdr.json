@@ -1,0 +1,26 @@
+{
+	"name": "relationship-bpphlwkcdr",
+	"properties": {
+		"Name": "relationship-bpphlwkcdr",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientProblemActivityType",
+		"ToTableName": "PatientProblemActivity",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientProblemActivityTypeId",
+				"ToColumnName": "PatientProblemActivityTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientProblemActivityType.cdm.json/PatientProblemActivityType\",\"toEntity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"joinPairs\":[{\"fromAttribute\":\"PatientProblemActivityTypeId\",\"toAttribute\":\"PatientProblemActivityTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

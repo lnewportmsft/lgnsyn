@@ -1,0 +1,161 @@
+{
+	"name": "PatientActivity",
+	"properties": {
+		"Name": "PatientActivity",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The Activity(s) that a specific Patient has acknowledged was identified or recorded as of the indicated date.\n\nActivities, Interests and Opinions are the foundation of Psychographics and Psychographic Segmentation.     Activities, Interests and Opinions equate to 'lifestyle'.    Activities, Interests and Opinions (AIO) are the basis for understanding consumer buying behavior as a function of their lifestyle.\n\nActivities describe what a consumer 'does', such as occupation, hobbies, entertainment.\n\nEach organization will identify, define and track a specific set of AIO's to gather information about, define consumers and make decisions. \n\nEx:\nActivity =  \"Cooking\"\nActivity Type = \"Personal Interest\"\n\nActivity =  \"Golf\"\nActivity Type = \"Personal Sports\n\nActivity =  \"Mutual Fund Investing\"\nActivity Type = \"Finance\"\n\nSales, marketing and advertising activities are often planned for or targeted at groups involved in or interested in specific activities.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientActivity.cdm.json/PatientActivity",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ActivityId",
+					"Description": "The unique identifier of an Activity.",
+					"BaseAttributeReference": {
+						"Entity": "PatientActivity.cdm.json/PatientActivity",
+						"Name": "ActivityId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "Date",
+					"Description": "The timestamp that the associated information is reported, recorded or effective as-of.",
+					"BaseAttributeReference": {
+						"Entity": "PatientActivity.cdm.json/PatientActivity",
+						"Name": "Date"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientActivity.cdm.json/PatientActivity",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AioLevelId",
+					"Description": "The unique identifier of an AIO Level.",
+					"BaseAttributeReference": {
+						"Entity": "PatientActivity.cdm.json/PatientActivity",
+						"Name": "AioLevelId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientActivityNote",
+					"Description": "A note, comment or additional information related to the Activity in which the Patient participates.",
+					"BaseAttributeReference": {
+						"Entity": "PatientActivity.cdm.json/PatientActivity",
+						"Name": "PatientActivityNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientActivity",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientActivity",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientActivity.cdm.json/PatientActivity\",\"name\":\"PatientId\"},\"ActivityId\":{\"entity\":\"PatientActivity.cdm.json/PatientActivity\",\"name\":\"ActivityId\"},\"Date\":{\"entity\":\"PatientActivity.cdm.json/PatientActivity\",\"name\":\"Date\"},\"ServiceProviderId\":{\"entity\":\"PatientActivity.cdm.json/PatientActivity\",\"name\":\"ServiceProviderId\"},\"AioLevelId\":{\"entity\":\"PatientActivity.cdm.json/PatientActivity\",\"name\":\"AioLevelId\"},\"PatientActivityNote\":{\"entity\":\"PatientActivity.cdm.json/PatientActivity\",\"name\":\"PatientActivityNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientActivity\",\"path\":\"PatientActivity.cdm.json/PatientActivity\"},\"description\":\"The Activity(s) that a specific Patient has acknowledged was identified or recorded as of the indicated date.\\n\\nActivities, Interests and Opinions are the foundation of Psychographics and Psychographic Segmentation.     Activities, Interests and Opinions equate to 'lifestyle'.    Activities, Interests and Opinions (AIO) are the basis for understanding consumer buying behavior as a function of their lifestyle.\\n\\nActivities describe what a consumer 'does', such as occupation, hobbies, entertainment.\\n\\nEach organization will identify, define and track a specific set of AIO's to gather information about, define consumers and make decisions. \\n\\nEx:\\nActivity =  \\\"Cooking\\\"\\nActivity Type = \\\"Personal Interest\\\"\\n\\nActivity =  \\\"Golf\\\"\\nActivity Type = \\\"Personal Sports\\n\\nActivity =  \\\"Mutual Fund Investing\\\"\\nActivity Type = \\\"Finance\\\"\\n\\nSales, marketing and advertising activities are often planned for or targeted at groups involved in or interested in specific activities.\",\"primaryKey\":[\"PatientId\",\"ActivityId\",\"Date\",\"ServiceProviderId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientActivity.cdm.json/PatientActivity\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientActivity.cdm.json/PatientActivity\",\"name\":\"ActivityId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Activity.\",\"isNullable\":false,\"name\":\"ActivityId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientActivity.cdm.json/PatientActivity\",\"name\":\"Date\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The timestamp that the associated information is reported, recorded or effective as-of.\",\"isNullable\":false,\"name\":\"Date\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientActivity.cdm.json/PatientActivity\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientActivity.cdm.json/PatientActivity\",\"name\":\"AioLevelId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an AIO Level.\",\"isNullable\":true,\"name\":\"AioLevelId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientActivity.cdm.json/PatientActivity\",\"name\":\"PatientActivityNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information related to the Activity in which the Patient participates.\",\"isNullable\":true,\"name\":\"PatientActivityNote\"}]}}}",
+			"Description": "The Activity(s) that a specific Patient has acknowledged was identified or recorded as of the indicated date.\n\nActivities, Interests and Opinions are the foundation of Psychographics and Psychographic Segmentation.     Activities, Interests and Opinions equate to 'lifestyle'.    Activities, Interests and Opinions (AIO) are the basis for understanding consumer buying behavior as a function of their lifestyle.\n\nActivities describe what a consumer 'does', such as occupation, hobbies, entertainment.\n\nEach organization will identify, define and track a specific set of AIO's to gather information about, define consumers and make decisions. \n\nEx:\nActivity =  \"Cooking\"\nActivity Type = \"Personal Interest\"\n\nActivity =  \"Golf\"\nActivity Type = \"Personal Sports\n\nActivity =  \"Mutual Fund Investing\"\nActivity Type = \"Finance\"\n\nSales, marketing and advertising activities are often planned for or targeted at groups involved in or interested in specific activities.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,ActivityId,Date,ServiceProviderId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

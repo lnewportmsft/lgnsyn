@@ -1,0 +1,113 @@
+{
+	"name": "PatientServiceProviderRelationshipType",
+	"properties": {
+		"Name": "PatientServiceProviderRelationshipType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The nature of the relationship between the service provider and the patient over the indicated period.\n\nEx:\n- Primary Physician\n- Oncologist\n- Specialist",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientServiceProviderRelationshipTypeId",
+					"Description": "The unique identifier of a Patient - Service Provider relationship type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientServiceProviderRelationshipType.cdm.json/PatientServiceProviderRelationshipType",
+						"Name": "PatientServiceProviderRelationshipTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientServiceProviderRelationshipTypeName",
+					"Description": "The name of a Patient - Service Provider relationship type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientServiceProviderRelationshipType.cdm.json/PatientServiceProviderRelationshipType",
+						"Name": "PatientServiceProviderRelationshipTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientServiceProviderRelationshipTypeDescription",
+					"Description": "The description of a Patient - Service Provider relationship type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientServiceProviderRelationshipType.cdm.json/PatientServiceProviderRelationshipType",
+						"Name": "PatientServiceProviderRelationshipTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientServiceProviderRelationshipType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientServiceProviderRelationshipType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientServiceProviderRelationshipTypeId\":{\"entity\":\"PatientServiceProviderRelationshipType.cdm.json/PatientServiceProviderRelationshipType\",\"name\":\"PatientServiceProviderRelationshipTypeId\"},\"PatientServiceProviderRelationshipTypeName\":{\"entity\":\"PatientServiceProviderRelationshipType.cdm.json/PatientServiceProviderRelationshipType\",\"name\":\"PatientServiceProviderRelationshipTypeName\"},\"PatientServiceProviderRelationshipTypeDescription\":{\"entity\":\"PatientServiceProviderRelationshipType.cdm.json/PatientServiceProviderRelationshipType\",\"name\":\"PatientServiceProviderRelationshipTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientServiceProviderRelationshipType\",\"path\":\"PatientServiceProviderRelationshipType.cdm.json/PatientServiceProviderRelationshipType\"},\"description\":\"The nature of the relationship between the service provider and the patient over the indicated period.\\n\\nEx:\\n- Primary Physician\\n- Oncologist\\n- Specialist\",\"primaryKey\":[\"PatientServiceProviderRelationshipTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientServiceProviderRelationshipType.cdm.json/PatientServiceProviderRelationshipType\",\"name\":\"PatientServiceProviderRelationshipTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient - Service Provider relationship type.\",\"isNullable\":false,\"name\":\"PatientServiceProviderRelationshipTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientServiceProviderRelationshipType.cdm.json/PatientServiceProviderRelationshipType\",\"name\":\"PatientServiceProviderRelationshipTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Patient - Service Provider relationship type.\",\"isNullable\":true,\"name\":\"PatientServiceProviderRelationshipTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientServiceProviderRelationshipType.cdm.json/PatientServiceProviderRelationshipType\",\"name\":\"PatientServiceProviderRelationshipTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Patient - Service Provider relationship type.\",\"isNullable\":true,\"name\":\"PatientServiceProviderRelationshipTypeDescription\"}]}}}",
+			"Description": "The nature of the relationship between the service provider and the patient over the indicated period.\n\nEx:\n- Primary Physician\n- Oncologist\n- Specialist",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientServiceProviderRelationshipTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

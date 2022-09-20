@@ -1,0 +1,113 @@
+{
+	"name": "Frequency",
+	"properties": {
+		"Name": "Frequency",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The frequency of use.\n\nEx:\n- Daily\n- Multiple Times Per Day\n- Every Few Days\n- Weekly\n- Monthly",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "FrequencyId",
+					"Description": "The unique identifier of a frequency.",
+					"BaseAttributeReference": {
+						"Entity": "Frequency.cdm.json/Frequency",
+						"Name": "FrequencyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "FrequencyName",
+					"Description": "The name of a frequency.",
+					"BaseAttributeReference": {
+						"Entity": "Frequency.cdm.json/Frequency",
+						"Name": "FrequencyName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "FrequencyDescription",
+					"Description": "The description of a frequency.",
+					"BaseAttributeReference": {
+						"Entity": "Frequency.cdm.json/Frequency",
+						"Name": "FrequencyDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/Frequency",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/Frequency",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"FrequencyId\":{\"entity\":\"Frequency.cdm.json/Frequency\",\"name\":\"FrequencyId\"},\"FrequencyName\":{\"entity\":\"Frequency.cdm.json/Frequency\",\"name\":\"FrequencyName\"},\"FrequencyDescription\":{\"entity\":\"Frequency.cdm.json/Frequency\",\"name\":\"FrequencyDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"Frequency\",\"path\":\"Frequency.cdm.json/Frequency\"},\"description\":\"The frequency of use.\\n\\nEx:\\n- Daily\\n- Multiple Times Per Day\\n- Every Few Days\\n- Weekly\\n- Monthly\",\"primaryKey\":[\"FrequencyId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Frequency.cdm.json/Frequency\",\"name\":\"FrequencyId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a frequency.\",\"isNullable\":false,\"name\":\"FrequencyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Frequency.cdm.json/Frequency\",\"name\":\"FrequencyName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a frequency.\",\"isNullable\":true,\"name\":\"FrequencyName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Frequency.cdm.json/Frequency\",\"name\":\"FrequencyDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a frequency.\",\"isNullable\":true,\"name\":\"FrequencyDescription\"}]}}}",
+			"Description": "The frequency of use.\n\nEx:\n- Daily\n- Multiple Times Per Day\n- Every Few Days\n- Weekly\n- Monthly",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "FrequencyId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

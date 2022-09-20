@@ -1,0 +1,26 @@
+{
+	"name": "relationship-bgasqaofrs",
+	"properties": {
+		"Name": "relationship-bgasqaofrs",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientScreening",
+		"ToTableName": "PatientAtRisk",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientScreeningTimestamp",
+				"ToColumnName": "PatientScreeningTimestamp"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientScreening.cdm.json/PatientScreening\",\"toEntity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"joinPairs\":[{\"fromAttribute\":\"PatientScreeningTimestamp\",\"toAttribute\":\"PatientScreeningTimestamp\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

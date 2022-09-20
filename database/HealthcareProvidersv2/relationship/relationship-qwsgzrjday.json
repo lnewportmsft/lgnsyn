@@ -1,0 +1,26 @@
+{
+	"name": "relationship-qwsgzrjday",
+	"properties": {
+		"Name": "relationship-qwsgzrjday",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientAllergy",
+		"ToTableName": "PatientAllergyReaction",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PeriodStartDate",
+				"ToColumnName": "PeriodStartDate"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"toEntity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"joinPairs\":[{\"fromAttribute\":\"PeriodStartDate\",\"toAttribute\":\"PeriodStartDate\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

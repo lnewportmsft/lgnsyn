@@ -1,0 +1,26 @@
+{
+	"name": "relationship-tuyagaepby",
+	"properties": {
+		"Name": "relationship-tuyagaepby",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "MedicalSeverity",
+		"ToTableName": "PatientDrugAllergyReaction",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "MedicalSeverityId",
+				"ToColumnName": "MedicalSeverityId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"MedicalSeverity.cdm.json/MedicalSeverity\",\"toEntity\":\"PatientDrugAllergyReaction.cdm.json/PatientDrugAllergyReaction\",\"joinPairs\":[{\"fromAttribute\":\"MedicalSeverityId\",\"toAttribute\":\"MedicalSeverityId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

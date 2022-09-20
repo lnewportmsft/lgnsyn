@@ -1,0 +1,26 @@
+{
+	"name": "relationship-ilpkhuamfl",
+	"properties": {
+		"Name": "relationship-ilpkhuamfl",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientRelatedParty",
+		"ToTableName": "PatientRelatedPartyLivingDependency",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ServiceProviderId",
+				"ToColumnName": "ServiceProviderId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientRelatedParty.cdm.json/PatientRelatedParty\",\"toEntity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"joinPairs\":[{\"fromAttribute\":\"ServiceProviderId\",\"toAttribute\":\"ServiceProviderId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

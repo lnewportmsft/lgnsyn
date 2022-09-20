@@ -1,0 +1,355 @@
+{
+	"name": "Patient",
+	"properties": {
+		"Name": "Patient",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "An individual who receives medical care, attention or treatment from the healthcare service provider.\n\nTypically in order to receive plan healthcare from the service provider the patient must have an existing health plan in effect or be eligible for care under a program that provides healthcare to individuals without health plans.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientName",
+					"Description": "The name of the Patient.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "PatientName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "BirthTimestamp",
+					"Description": "The timestamp of birth of the Patient.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "BirthTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "DeathTimestamp",
+					"Description": "The timestamp of death of the Patient.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "DeathTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "PatientEnrollmentTimestamp",
+					"Description": "The timestamp that the patient was enrolled at the Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "PatientEnrollmentTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "CaseManagerId",
+					"Description": "The unique identifier of a case manager.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "CaseManagerId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "SexId",
+					"Description": "The unique identifier of a Sex.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "SexId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "GenderId",
+					"Description": "The unique identifier of a Gender.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "GenderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "EthnicCategoryId",
+					"Description": "The unique identifier of an Ethnic Category.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "EthnicCategoryId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "RacialCategoryId",
+					"Description": "The unique identifier of a Racial Category.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "RacialCategoryId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PartyId",
+					"Description": "The unique identifier of a Party.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "PartyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "LivingWillTypeId",
+					"Description": "The unique identifier of a Living Will Type.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "LivingWillTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "OrganDonorTypeId",
+					"Description": "The unique identifier of an Organ Donor Type.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "OrganDonorTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientUserId",
+					"Description": "A User ID assigned to the Patient for the purpose of allowing them to access protected or sensitive data through a website, portal or special email account. The Patient User ID and associated password are to be maintained and secured using a third party package.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "PatientUserId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientSystemAccessOptOut",
+					"Description": "Indicates that the patient has decided to opt-out of receiving system access to their personal health information.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "PatientSystemAccessOptOut"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					}
+				},
+				{
+					"Name": "SpeciesId",
+					"Description": "The unique identifier of a species.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "SpeciesId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientOwnBirthEventCountTypeId",
+					"Description": "The unique identifier of a Patient Own Birth Event Count Type.",
+					"BaseAttributeReference": {
+						"Entity": "Patient.cdm.json/Patient",
+						"Name": "PatientOwnBirthEventCountTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/Patient",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/Patient",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"PatientId\"},\"PatientName\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"PatientName\"},\"BirthTimestamp\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"BirthTimestamp\"},\"DeathTimestamp\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"DeathTimestamp\"},\"PatientEnrollmentTimestamp\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"PatientEnrollmentTimestamp\"},\"CaseManagerId\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"CaseManagerId\"},\"SexId\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"SexId\"},\"GenderId\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"GenderId\"},\"EthnicCategoryId\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"EthnicCategoryId\"},\"RacialCategoryId\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"RacialCategoryId\"},\"PartyId\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"PartyId\"},\"LivingWillTypeId\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"LivingWillTypeId\"},\"OrganDonorTypeId\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"OrganDonorTypeId\"},\"PatientUserId\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"PatientUserId\"},\"PatientSystemAccessOptOut\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"PatientSystemAccessOptOut\"},\"SpeciesId\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"SpeciesId\"},\"PatientOwnBirthEventCountTypeId\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"PatientOwnBirthEventCountTypeId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"Patient\",\"path\":\"Patient.cdm.json/Patient\"},\"description\":\"An individual who receives medical care, attention or treatment from the healthcare service provider.\\n\\nTypically in order to receive plan healthcare from the service provider the patient must have an existing health plan in effect or be eligible for care under a program that provides healthcare to individuals without health plans.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"PatientName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the Patient.\",\"isNullable\":true,\"name\":\"PatientName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"BirthTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp of birth of the Patient.\",\"isNullable\":true,\"name\":\"BirthTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"DeathTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp of death of the Patient.\",\"isNullable\":true,\"name\":\"DeathTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"PatientEnrollmentTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp that the patient was enrolled at the Service Provider.\",\"isNullable\":true,\"name\":\"PatientEnrollmentTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"CaseManagerId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a case manager.\",\"isNullable\":true,\"name\":\"CaseManagerId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"SexId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Sex.\",\"isNullable\":true,\"name\":\"SexId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"GenderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Gender.\",\"isNullable\":true,\"name\":\"GenderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"EthnicCategoryId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Ethnic Category.\",\"isNullable\":true,\"name\":\"EthnicCategoryId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"RacialCategoryId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Racial Category.\",\"isNullable\":true,\"name\":\"RacialCategoryId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"PartyId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Party.\",\"isNullable\":true,\"name\":\"PartyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"LivingWillTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Living Will Type.\",\"isNullable\":true,\"name\":\"LivingWillTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"OrganDonorTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Organ Donor Type.\",\"isNullable\":true,\"name\":\"OrganDonorTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"PatientUserId\"},\"dataType\":\"integer\",\"description\":\"A User ID assigned to the Patient for the purpose of allowing them to access protected or sensitive data through a website, portal or special email account. The Patient User ID and associated password are to be maintained and secured using a third party package.\",\"isNullable\":true,\"name\":\"PatientUserId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"PatientSystemAccessOptOut\"},\"dataType\":\"boolean\",\"description\":\"Indicates that the patient has decided to opt-out of receiving system access to their personal health information.\",\"isNullable\":true,\"name\":\"PatientSystemAccessOptOut\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"SpeciesId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a species.\",\"isNullable\":true,\"name\":\"SpeciesId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Patient.cdm.json/Patient\",\"name\":\"PatientOwnBirthEventCountTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Own Birth Event Count Type.\",\"isNullable\":true,\"name\":\"PatientOwnBirthEventCountTypeId\"}]}}}",
+			"Description": "An individual who receives medical care, attention or treatment from the healthcare service provider.\n\nTypically in order to receive plan healthcare from the service provider the patient must have an existing health plan in effect or be eligible for care under a program that provides healthcare to individuals without health plans.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,211 @@
+{
+	"name": "PatientRelatedPartyAmbulatoryStatus",
+	"properties": {
+		"Name": "PatientRelatedPartyAmbulatoryStatus",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The permanent or transient handicapped conditions of an individual.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PartyId",
+					"Description": "The unique identifier of a Party.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus",
+						"Name": "PartyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "PatientPartyRelationshipTypeId",
+					"Description": "The unique identifier of a Patient-Party relationship type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus",
+						"Name": "PatientPartyRelationshipTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated patient - party relationship is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "AmbulatoryStatusTypeId",
+					"Description": "The unique identifier of a physical characteristic.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus",
+						"Name": "AmbulatoryStatusTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AmbulatoryStatusPeriodStartDate",
+					"Description": "The period start date for which the associated ambulatory status is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus",
+						"Name": "AmbulatoryStatusPeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "AmbulatoryStatusPeriodEndDate",
+					"Description": "The period end date for which the associated ambulatory status is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus",
+						"Name": "AmbulatoryStatusPeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientPartyAmbulatoryStatusRelationshipNote",
+					"Description": "A note, comment or additional information regarding the Patient - Party Ambulatory Status relationship.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus",
+						"Name": "PatientPartyAmbulatoryStatusRelationshipNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRelatedPartyAmbulatoryStatus",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRelatedPartyAmbulatoryStatus",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"PatientId\"},\"PartyId\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"PartyId\"},\"PatientPartyRelationshipTypeId\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"PatientPartyRelationshipTypeId\"},\"PeriodStartDate\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"PeriodStartDate\"},\"AmbulatoryStatusTypeId\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"AmbulatoryStatusTypeId\"},\"AmbulatoryStatusPeriodStartDate\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"AmbulatoryStatusPeriodStartDate\"},\"AmbulatoryStatusPeriodEndDate\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"AmbulatoryStatusPeriodEndDate\"},\"PatientPartyAmbulatoryStatusRelationshipNote\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"PatientPartyAmbulatoryStatusRelationshipNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientRelatedPartyAmbulatoryStatus\",\"path\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\"},\"description\":\"The permanent or transient handicapped conditions of an individual.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PartyId\",\"PatientPartyRelationshipTypeId\",\"PeriodStartDate\",\"AmbulatoryStatusTypeId\",\"AmbulatoryStatusPeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"PartyId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Party.\",\"isNullable\":false,\"name\":\"PartyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"PatientPartyRelationshipTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient-Party relationship type.\",\"isNullable\":false,\"name\":\"PatientPartyRelationshipTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated patient - party relationship is valid or in-effect.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"AmbulatoryStatusTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a physical characteristic.\",\"isNullable\":false,\"name\":\"AmbulatoryStatusTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"AmbulatoryStatusPeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated ambulatory status is valid or in-effect.\",\"isNullable\":false,\"name\":\"AmbulatoryStatusPeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"AmbulatoryStatusPeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated ambulatory status is valid or in-effect.\",\"isNullable\":true,\"name\":\"AmbulatoryStatusPeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"name\":\"PatientPartyAmbulatoryStatusRelationshipNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient - Party Ambulatory Status relationship.\",\"isNullable\":true,\"name\":\"PatientPartyAmbulatoryStatusRelationshipNote\"}]}}}",
+			"Description": "The permanent or transient handicapped conditions of an individual.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PartyId,PatientPartyRelationshipTypeId,PeriodStartDate,AmbulatoryStatusTypeId,AmbulatoryStatusPeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

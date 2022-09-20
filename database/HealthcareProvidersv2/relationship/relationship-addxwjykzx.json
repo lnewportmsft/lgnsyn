@@ -1,0 +1,26 @@
+{
+	"name": "relationship-addxwjykzx",
+	"properties": {
+		"Name": "relationship-addxwjykzx",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "MedicalSeverity",
+		"ToTableName": "PatientFamilyMemberMedicalCondition",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "MedicalSeverityId",
+				"ToColumnName": "MedicalSeverityId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"MedicalSeverity.cdm.json/MedicalSeverity\",\"toEntity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"joinPairs\":[{\"fromAttribute\":\"MedicalSeverityId\",\"toAttribute\":\"MedicalSeverityId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

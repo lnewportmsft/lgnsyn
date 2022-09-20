@@ -1,0 +1,211 @@
+{
+	"name": "PatientProblem",
+	"properties": {
+		"Name": "PatientProblem",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A Patient Problem List is comprised of the active Patient Problems at a point in time.\n\nWhat is included in this list varies by organization and practitioner:\n- nontransitive illnesses (official definition according to the federal meaningful use program)\n- anything ongoing or active with the patient\n- summary of the most important things about a patient",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblem.cdm.json/PatientProblem",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblem.cdm.json/PatientProblem",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientProblemNumber",
+					"Description": "The unique identifier of a Patient Problem.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblem.cdm.json/PatientProblem",
+						"Name": "PatientProblemNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientProblemStartDate",
+					"Description": "The start date for which the patient had the specified problem.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblem.cdm.json/PatientProblem",
+						"Name": "PatientProblemStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientProblemEndDate",
+					"Description": "The end date for which the patient had the specified problem. i.e.. the date that the problem was no longer a factor in the patient's treatment.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblem.cdm.json/PatientProblem",
+						"Name": "PatientProblemEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "SnomedCtConceptId",
+					"Description": "The unique identifier of a SNOMED CT Concept.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblem.cdm.json/PatientProblem",
+						"Name": "SnomedCtConceptId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "IcdVersionNumber",
+					"Description": "The version number of the ICD Code.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblem.cdm.json/PatientProblem",
+						"Name": "IcdVersionNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "IcdDiseaseCode",
+					"Description": "The code identifying an ICD-defined disease.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblem.cdm.json/PatientProblem",
+						"Name": "IcdDiseaseCode"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 20,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientProblemNote",
+					"Description": "A note, comment or additional information regarding a patient problem.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblem.cdm.json/PatientProblem",
+						"Name": "PatientProblemNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientProblem",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientProblem",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"PatientId\"},\"PatientProblemNumber\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"PatientProblemNumber\"},\"PatientProblemStartDate\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"PatientProblemStartDate\"},\"PatientProblemEndDate\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"PatientProblemEndDate\"},\"SnomedCtConceptId\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"SnomedCtConceptId\"},\"IcdVersionNumber\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"IcdVersionNumber\"},\"IcdDiseaseCode\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"IcdDiseaseCode\"},\"PatientProblemNote\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"PatientProblemNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientProblem\",\"path\":\"PatientProblem.cdm.json/PatientProblem\"},\"description\":\"A Patient Problem List is comprised of the active Patient Problems at a point in time.\\n\\nWhat is included in this list varies by organization and practitioner:\\n- nontransitive illnesses (official definition according to the federal meaningful use program)\\n- anything ongoing or active with the patient\\n- summary of the most important things about a patient\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PatientProblemNumber\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"PatientProblemNumber\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Problem.\",\"isNullable\":false,\"name\":\"PatientProblemNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"PatientProblemStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The start date for which the patient had the specified problem.\",\"isNullable\":true,\"name\":\"PatientProblemStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"PatientProblemEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The end date for which the patient had the specified problem. i.e.. the date that the problem was no longer a factor in the patient's treatment.\",\"isNullable\":false,\"name\":\"PatientProblemEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"SnomedCtConceptId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a SNOMED CT Concept.\",\"isNullable\":true,\"name\":\"SnomedCtConceptId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"IcdVersionNumber\"},\"dataType\":\"integer\",\"description\":\"The version number of the ICD Code.\",\"isNullable\":true,\"name\":\"IcdVersionNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"IcdDiseaseCode\"},\"dataType\":\"string\",\"dataTypeLength\":20,\"description\":\"The code identifying an ICD-defined disease.\",\"isNullable\":true,\"name\":\"IcdDiseaseCode\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblem.cdm.json/PatientProblem\",\"name\":\"PatientProblemNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding a patient problem.\",\"isNullable\":true,\"name\":\"PatientProblemNote\"}]}}}",
+			"Description": "A Patient Problem List is comprised of the active Patient Problems at a point in time.\n\nWhat is included in this list varies by organization and practitioner:\n- nontransitive illnesses (official definition according to the federal meaningful use program)\n- anything ongoing or active with the patient\n- summary of the most important things about a patient",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PatientProblemNumber",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,26 @@
+{
+	"name": "relationship-btsqpcedmg",
+	"properties": {
+		"Name": "relationship-btsqpcedmg",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientContactPurpose",
+		"ToTableName": "PatientContactPurposeStatus",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientId",
+				"ToColumnName": "PatientId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientContactPurpose.cdm.json/PatientContactPurpose\",\"toEntity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"joinPairs\":[{\"fromAttribute\":\"PatientId\",\"toAttribute\":\"PatientId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

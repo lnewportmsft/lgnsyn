@@ -1,0 +1,26 @@
+{
+	"name": "relationship-qtvwpyatud",
+	"properties": {
+		"Name": "relationship-qtvwpyatud",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientName",
+		"ToTableName": "PatientNamePrefix",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientNameId",
+				"ToColumnName": "PatientNameId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientName.cdm.json/PatientName\",\"toEntity\":\"PatientNamePrefix.cdm.json/PatientNamePrefix\",\"joinPairs\":[{\"fromAttribute\":\"PatientNameId\",\"toAttribute\":\"PatientNameId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

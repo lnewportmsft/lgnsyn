@@ -1,0 +1,26 @@
+{
+	"name": "relationship-welboitvyu",
+	"properties": {
+		"Name": "relationship-welboitvyu",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PrecautionType",
+		"ToTableName": "PatientPrecaution",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PrecautionTypeId",
+				"ToColumnName": "PrecautionTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PrecautionType.cdm.json/PrecautionType\",\"toEntity\":\"PatientPrecaution.cdm.json/PatientPrecaution\",\"joinPairs\":[{\"fromAttribute\":\"PrecautionTypeId\",\"toAttribute\":\"PrecautionTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

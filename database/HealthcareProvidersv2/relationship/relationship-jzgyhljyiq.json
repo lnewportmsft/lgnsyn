@@ -1,0 +1,26 @@
+{
+	"name": "relationship-jzgyhljyiq",
+	"properties": {
+		"Name": "relationship-jzgyhljyiq",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientLearningEventStatus",
+		"ToTableName": "PatientLearningEvent",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientLearningEventStatusId",
+				"ToColumnName": "PatientLearningEventStatusId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientLearningEventStatus.cdm.json/PatientLearningEventStatus\",\"toEntity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"joinPairs\":[{\"fromAttribute\":\"PatientLearningEventStatusId\",\"toAttribute\":\"PatientLearningEventStatusId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

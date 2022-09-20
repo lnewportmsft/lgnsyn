@@ -1,0 +1,183 @@
+{
+	"name": "PatientExperianCreditReport",
+	"properties": {
+		"Name": "PatientExperianCreditReport",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A Experian (TRW) Credit Report, which is a summary of a Patient's recent credit history plus additional facts about the consumer that will help creditors judge the consumer's creditworthiness.\n\nTRW/FICO Model: This scoring system developed by TRW in association with Fair, Isaac, and Company, Inc. The score enables credit grantor to identify credit prospect with the best credit opportunities and avoid losses due to charge-offs, repossessions, collections, and bankruptcies.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientExperianCreditReport.cdm.json/PatientExperianCreditReport",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ReportNumber",
+					"Description": "The unique identifier of a Experian (TRW) Credit Report.",
+					"BaseAttributeReference": {
+						"Entity": "PatientExperianCreditReport.cdm.json/PatientExperianCreditReport",
+						"Name": "ReportNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientExperianCreditReport.cdm.json/PatientExperianCreditReport",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "SocialSecurityNumber",
+					"Description": "The social security number reported on the Experian Credit Report.",
+					"BaseAttributeReference": {
+						"Entity": "PatientExperianCreditReport.cdm.json/PatientExperianCreditReport",
+						"Name": "SocialSecurityNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 9,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "ExperianCreditScore",
+					"Description": "The overall credit score provided by Experian for the Patient as the associated Report Date.\n\nExample:\n\nScore = 800\nPercentile = 92%\n8% of US Credit Active population is higher than you\n92% of US Credit Active population is lower than you.\n\nScore Factors (taken from Experian website):\n\nWHAT MAKES UP YOUR SCORE\nYour Score is based on the combination of your positive and potentially negative factors on your credit report. For suggestions on what you could do to potentially help your credit, read the Score Factors below.\n\nElements from your credit report often are not the only factors determining your credit score. Many lenders also use information submitted on a credit application such as your income and employment history when determining a custom credit score. Please be aware that the advice below is not intended to be, nor should it be construed as, legal advice. In addition, the advice below is oriented to the Experian credit score only; lenders often use their own custom credit score and score factors when making credit decisions.\n\nSCORE FACTORS THAT ARE POSITIVELY AFFECTING YOUR SCORE\nListed below are the top factors that raised your score. They are listed in order of importance. \n\nNo applications for credit made in the last two years. \n\nHaving no applications for new credit in the last two years shows lenders that you are less likely to accumulate additional debt by opening new accounts. \n\nFew, if any, 30 day (or more) delinquencies. \nYou do not have a delinquency of 30 day or more reported on your credit report. Continue to pay all your bills on time - it is generally the single most important contributor to a good credit score. \n\nSCORE FACTORS THAT ARE NEGATIVELY AFFECTING YOUR SCORE\n\nListed below are the top factors that lowered your score. They are listed in order of importance. \n\nLack of a real estate loan (or lack of a real estate loan that has always been paid on time) \nIn most cases, having a real estate loan that has always been paid on time shows lenders that you have established a strong credit base, and reflects positively on your credit responsibility. The lack of a real estate loan on your credit report does not decrease your score; however, it generally means that your credit score may not be as high as it could be. One or more late payments on a real estate loan usually has a significantly negative effect on your credit score. Since a real estate loan is typically a consumer's greatest debt obligation, lenders generally view late payments as a sign that you may be having trouble meeting all of your debt obligations. \n\nThe outstanding balances on your revolving accounts are greater than the average in your credit category \n\nYour outstanding credit balances on your revolving accounts are higher than the average consumer in your credit category. Most lenders view this negatively because it may show that you are taking on too much debt. By avoiding taking on new debt and paying down your total debt as soon as you can, your credit score will usually improve. \n\nThe total credit extended to you across your bankcard accounts is less than the average in your credit category \n\nSince current lenders have extended you lower bankcard credit limits than average for your credit category, a new lender may assume that you are riskier than average. If you minimize outstanding debt and pay all your bills on time, many lenders will eventually raise your credit limits.",
+					"BaseAttributeReference": {
+						"Entity": "PatientExperianCreditReport.cdm.json/PatientExperianCreditReport",
+						"Name": "ExperianCreditScore"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 3,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "ExperianPercentileScore",
+					"Description": "The Patient's percentile rating relative to the US Credit Active population.\n\nExample:\n\nScore = 800\nPercentile = 92%\n8% of US Credit Active population is higher than you\n92% of US Credit Active population is lower than you.",
+					"BaseAttributeReference": {
+						"Entity": "PatientExperianCreditReport.cdm.json/PatientExperianCreditReport",
+						"Name": "ExperianPercentileScore"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "FicoScore",
+					"Description": "The associated FICO Score.\n\nA consumer three FICO scores, one for each credit bureau\n\nA FICO score is a credit score developed by Fair Isaac & Co. Credit scoring is a method of determining the likelihood that credit users will pay their bills. Fair, Isaac began its pioneering work with credit scoring in the late 1950s and, since then, scoring has become widely accepted by lenders as a reliable means of credit evaluation. \n\nA credit score attempts to condense a borrowers credit history into a single number. Fair, Isaac & Co. and the credit bureaus do not reveal how these scores are computed. The Federal Trade Commission has ruled this to be acceptable.\n\nCredit scores are calculated by using scoring models and mathematical tables that assign points for different pieces of information which best predict future credit performance. Developing these models involves studying how thousands, even millions, of people have used credit. Score-model developers find predictive factors in the data that have proven to indicate future credit performance. Models can be developed from different sources of data. Credit-bureau models are developed from information in consumer credit-bureau reports. \n\nCredit scores analyze a borrower's credit history considering numerous factors such as:\n\nLate payments \nThe amount of time credit has been established \nThe amount of credit used versus the amount of credit available \nLength of time at present residence \nEmployment history \nNegative credit information such as bankruptcies, charge-offs, collections, etc. \n\nThere are really three FICO scores computed by data provided by each of the three bureaus: Experian, Trans Union and Equifax. \n\nSome lenders use one of these three scores, while other lenders may use the middle score.\n\nTRW/FICO Model: This scoring system developed by TRW in association with Fair, Isaac, and Company, Inc. The score enables credit grantor to identify credit prospect with the best credit opportunities and avoid losses due to charge-offs, repossessions, collections, and bankruptcies.\n\nBeacon: This scoring system developed by Equifax in association with Fair, Isaac, and Company, Inc. Beacon helps identifies and projects the full range of serious consumer credit risks which include bankruptcies, charge-offs, repossessions, loan defaults, and serious delinquencies.\n\nEmpirica: This scoring system developed by Trans Union in association with Fair, Isaac, and Company, Inc. Empirica has been fully validated to predict the performance odds, slow pays, no pays, and bankruptcies with unprecedented accuracy.",
+					"BaseAttributeReference": {
+						"Entity": "PatientExperianCreditReport.cdm.json/PatientExperianCreditReport",
+						"Name": "FicoScore"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 3,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientExperianCreditReport",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientExperianCreditReport",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientExperianCreditReport.cdm.json/PatientExperianCreditReport\",\"name\":\"PatientId\"},\"ReportNumber\":{\"entity\":\"PatientExperianCreditReport.cdm.json/PatientExperianCreditReport\",\"name\":\"ReportNumber\"},\"ServiceProviderId\":{\"entity\":\"PatientExperianCreditReport.cdm.json/PatientExperianCreditReport\",\"name\":\"ServiceProviderId\"},\"SocialSecurityNumber\":{\"entity\":\"PatientExperianCreditReport.cdm.json/PatientExperianCreditReport\",\"name\":\"SocialSecurityNumber\"},\"ExperianCreditScore\":{\"entity\":\"PatientExperianCreditReport.cdm.json/PatientExperianCreditReport\",\"name\":\"ExperianCreditScore\"},\"ExperianPercentileScore\":{\"entity\":\"PatientExperianCreditReport.cdm.json/PatientExperianCreditReport\",\"name\":\"ExperianPercentileScore\"},\"FicoScore\":{\"entity\":\"PatientExperianCreditReport.cdm.json/PatientExperianCreditReport\",\"name\":\"FicoScore\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientExperianCreditReport\",\"path\":\"PatientExperianCreditReport.cdm.json/PatientExperianCreditReport\"},\"description\":\"A Experian (TRW) Credit Report, which is a summary of a Patient's recent credit history plus additional facts about the consumer that will help creditors judge the consumer's creditworthiness.\\n\\nTRW/FICO Model: This scoring system developed by TRW in association with Fair, Isaac, and Company, Inc. The score enables credit grantor to identify credit prospect with the best credit opportunities and avoid losses due to charge-offs, repossessions, collections, and bankruptcies.\",\"primaryKey\":[\"PatientId\",\"ReportNumber\",\"ServiceProviderId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientExperianCreditReport.cdm.json/PatientExperianCreditReport\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientExperianCreditReport.cdm.json/PatientExperianCreditReport\",\"name\":\"ReportNumber\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Experian (TRW) Credit Report.\",\"isNullable\":false,\"name\":\"ReportNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientExperianCreditReport.cdm.json/PatientExperianCreditReport\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientExperianCreditReport.cdm.json/PatientExperianCreditReport\",\"name\":\"SocialSecurityNumber\"},\"dataType\":\"decimal\",\"dataTypeLength\":9,\"description\":\"The social security number reported on the Experian Credit Report.\",\"isNullable\":true,\"scale\":0,\"name\":\"SocialSecurityNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientExperianCreditReport.cdm.json/PatientExperianCreditReport\",\"name\":\"ExperianCreditScore\"},\"dataType\":\"decimal\",\"dataTypeLength\":3,\"description\":\"The overall credit score provided by Experian for the Patient as the associated Report Date.\\n\\nExample:\\n\\nScore = 800\\nPercentile = 92%\\n8% of US Credit Active population is higher than you\\n92% of US Credit Active population is lower than you.\\n\\nScore Factors (taken from Experian website):\\n\\nWHAT MAKES UP YOUR SCORE\\nYour Score is based on the combination of your positive and potentially negative factors on your credit report. For suggestions on what you could do to potentially help your credit, read the Score Factors below.\\n\\nElements from your credit report often are not the only factors determining your credit score. Many lenders also use information submitted on a credit application such as your income and employment history when determining a custom credit score. Please be aware that the advice below is not intended to be, nor should it be construed as, legal advice. In addition, the advice below is oriented to the Experian credit score only; lenders often use their own custom credit score and score factors when making credit decisions.\\n\\nSCORE FACTORS THAT ARE POSITIVELY AFFECTING YOUR SCORE\\nListed below are the top factors that raised your score. They are listed in order of importance. \\n\\nNo applications for credit made in the last two years. \\n\\nHaving no applications for new credit in the last two years shows lenders that you are less likely to accumulate additional debt by opening new accounts. \\n\\nFew, if any, 30 day (or more) delinquencies. \\nYou do not have a delinquency of 30 day or more reported on your credit report. Continue to pay all your bills on time - it is generally the single most important contributor to a good credit score. \\n\\nSCORE FACTORS THAT ARE NEGATIVELY AFFECTING YOUR SCORE\\n\\nListed below are the top factors that lowered your score. They are listed in order of importance. \\n\\nLack of a real estate loan (or lack of a real estate loan that has always been paid on time) \\nIn most cases, having a real estate loan that has always been paid on time shows lenders that you have established a strong credit base, and reflects positively on your credit responsibility. The lack of a real estate loan on your credit report does not decrease your score; however, it generally means that your credit score may not be as high as it could be. One or more late payments on a real estate loan usually has a significantly negative effect on your credit score. Since a real estate loan is typically a consumer's greatest debt obligation, lenders generally view late payments as a sign that you may be having trouble meeting all of your debt obligations. \\n\\nThe outstanding balances on your revolving accounts are greater than the average in your credit category \\n\\nYour outstanding credit balances on your revolving accounts are higher than the average consumer in your credit category. Most lenders view this negatively because it may show that you are taking on too much debt. By avoiding taking on new debt and paying down your total debt as soon as you can, your credit score will usually improve. \\n\\nThe total credit extended to you across your bankcard accounts is less than the average in your credit category \\n\\nSince current lenders have extended you lower bankcard credit limits than average for your credit category, a new lender may assume that you are riskier than average. If you minimize outstanding debt and pay all your bills on time, many lenders will eventually raise your credit limits.\",\"isNullable\":true,\"scale\":0,\"name\":\"ExperianCreditScore\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientExperianCreditReport.cdm.json/PatientExperianCreditReport\",\"name\":\"ExperianPercentileScore\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The Patient's percentile rating relative to the US Credit Active population.\\n\\nExample:\\n\\nScore = 800\\nPercentile = 92%\\n8% of US Credit Active population is higher than you\\n92% of US Credit Active population is lower than you.\",\"isNullable\":true,\"scale\":8,\"name\":\"ExperianPercentileScore\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientExperianCreditReport.cdm.json/PatientExperianCreditReport\",\"name\":\"FicoScore\"},\"dataType\":\"decimal\",\"dataTypeLength\":3,\"description\":\"The associated FICO Score.\\n\\nA consumer three FICO scores, one for each credit bureau\\n\\nA FICO score is a credit score developed by Fair Isaac & Co. Credit scoring is a method of determining the likelihood that credit users will pay their bills. Fair, Isaac began its pioneering work with credit scoring in the late 1950s and, since then, scoring has become widely accepted by lenders as a reliable means of credit evaluation. \\n\\nA credit score attempts to condense a borrowers credit history into a single number. Fair, Isaac & Co. and the credit bureaus do not reveal how these scores are computed. The Federal Trade Commission has ruled this to be acceptable.\\n\\nCredit scores are calculated by using scoring models and mathematical tables that assign points for different pieces of information which best predict future credit performance. Developing these models involves studying how thousands, even millions, of people have used credit. Score-model developers find predictive factors in the data that have proven to indicate future credit performance. Models can be developed from different sources of data. Credit-bureau models are developed from information in consumer credit-bureau reports. \\n\\nCredit scores analyze a borrower's credit history considering numerous factors such as:\\n\\nLate payments \\nThe amount of time credit has been established \\nThe amount of credit used versus the amount of credit available \\nLength of time at present residence \\nEmployment history \\nNegative credit information such as bankruptcies, charge-offs, collections, etc. \\n\\nThere are really three FICO scores computed by data provided by each of the three bureaus: Experian, Trans Union and Equifax. \\n\\nSome lenders use one of these three scores, while other lenders may use the middle score.\\n\\nTRW/FICO Model: This scoring system developed by TRW in association with Fair, Isaac, and Company, Inc. The score enables credit grantor to identify credit prospect with the best credit opportunities and avoid losses due to charge-offs, repossessions, collections, and bankruptcies.\\n\\nBeacon: This scoring system developed by Equifax in association with Fair, Isaac, and Company, Inc. Beacon helps identifies and projects the full range of serious consumer credit risks which include bankruptcies, charge-offs, repossessions, loan defaults, and serious delinquencies.\\n\\nEmpirica: This scoring system developed by Trans Union in association with Fair, Isaac, and Company, Inc. Empirica has been fully validated to predict the performance odds, slow pays, no pays, and bankruptcies with unprecedented accuracy.\",\"isNullable\":true,\"scale\":0,\"name\":\"FicoScore\"}]}}}",
+			"Description": "A Experian (TRW) Credit Report, which is a summary of a Patient's recent credit history plus additional facts about the consumer that will help creditors judge the consumer's creditworthiness.\n\nTRW/FICO Model: This scoring system developed by TRW in association with Fair, Isaac, and Company, Inc. The score enables credit grantor to identify credit prospect with the best credit opportunities and avoid losses due to charge-offs, repossessions, collections, and bankruptcies.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,ReportNumber,ServiceProviderId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

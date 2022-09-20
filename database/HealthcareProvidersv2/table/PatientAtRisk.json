@@ -1,0 +1,242 @@
+{
+	"name": "PatientAtRisk",
+	"properties": {
+		"Name": "PatientAtRisk",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more types of risk or medical conditions that the Patient is at risk of.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAtRisk.cdm.json/PatientAtRisk",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAtRisk.cdm.json/PatientAtRisk",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientRiskTypeId",
+					"Description": "The unique identifier of a Patient Risk Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAtRisk.cdm.json/PatientAtRisk",
+						"Name": "PatientRiskTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientAtRiskTimestamp",
+					"Description": "The timestamp associated with determination of the patient at risk score.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAtRisk.cdm.json/PatientAtRisk",
+						"Name": "PatientAtRiskTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "PatientAtRiskScore",
+					"Description": "The score associated with the patient at risk.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAtRisk.cdm.json/PatientAtRisk",
+						"Name": "PatientAtRiskScore"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "RiskAssessmentToolId",
+					"Description": "The unique identifier of a Risk Assessment Tool.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAtRisk.cdm.json/PatientAtRisk",
+						"Name": "RiskAssessmentToolId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "EncounterId",
+					"Description": "The unique identifier of an Encounter.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAtRisk.cdm.json/PatientAtRisk",
+						"Name": "EncounterId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "ProvidedByPartyId",
+					"Description": "The unique identifier of a Party.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAtRisk.cdm.json/PatientAtRisk",
+						"Name": "ProvidedByPartyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "ScreeningTypeId",
+					"Description": "The unique identifier of a Screening Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAtRisk.cdm.json/PatientAtRisk",
+						"Name": "ScreeningTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientScreeningTimestamp",
+					"Description": "The timestamp associated with the patient screening.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAtRisk.cdm.json/PatientAtRisk",
+						"Name": "PatientScreeningTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "PatientAtRiskNote",
+					"Description": "A note, comment or additional information regarding the patient at risk.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAtRisk.cdm.json/PatientAtRisk",
+						"Name": "PatientAtRiskNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientAtRisk",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientAtRisk",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"PatientId\"},\"PatientRiskTypeId\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"PatientRiskTypeId\"},\"PatientAtRiskTimestamp\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"PatientAtRiskTimestamp\"},\"PatientAtRiskScore\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"PatientAtRiskScore\"},\"RiskAssessmentToolId\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"RiskAssessmentToolId\"},\"EncounterId\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"EncounterId\"},\"ProvidedByPartyId\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"ProvidedByPartyId\"},\"ScreeningTypeId\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"ScreeningTypeId\"},\"PatientScreeningTimestamp\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"PatientScreeningTimestamp\"},\"PatientAtRiskNote\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"PatientAtRiskNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientAtRisk\",\"path\":\"PatientAtRisk.cdm.json/PatientAtRisk\"},\"description\":\"The one or more types of risk or medical conditions that the Patient is at risk of.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PatientRiskTypeId\",\"PatientAtRiskTimestamp\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"PatientRiskTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Risk Type.\",\"isNullable\":false,\"name\":\"PatientRiskTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"PatientAtRiskTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp associated with determination of the patient at risk score.\",\"isNullable\":false,\"name\":\"PatientAtRiskTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"PatientAtRiskScore\"},\"dataType\":\"integer\",\"description\":\"The score associated with the patient at risk.\",\"isNullable\":true,\"name\":\"PatientAtRiskScore\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"RiskAssessmentToolId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Risk Assessment Tool.\",\"isNullable\":true,\"name\":\"RiskAssessmentToolId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"EncounterId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of an Encounter.\",\"isNullable\":false,\"name\":\"EncounterId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"ProvidedByPartyId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Party.\",\"isNullable\":true,\"name\":\"ProvidedByPartyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"ScreeningTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Screening Type.\",\"isNullable\":true,\"name\":\"ScreeningTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"PatientScreeningTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp associated with the patient screening.\",\"isNullable\":true,\"name\":\"PatientScreeningTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"name\":\"PatientAtRiskNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the patient at risk.\",\"isNullable\":true,\"name\":\"PatientAtRiskNote\"}]}}}",
+			"Description": "The one or more types of risk or medical conditions that the Patient is at risk of.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PatientRiskTypeId,PatientAtRiskTimestamp",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

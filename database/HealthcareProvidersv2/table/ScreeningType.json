@@ -1,0 +1,129 @@
+{
+	"name": "ScreeningType",
+	"properties": {
+		"Name": "ScreeningType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A type of screening that is used to identify a potential risk or medical condition.\n\nEx:\n- Falling\n- Domestic Abuse\n- Alcoholism\n- Obesity\n- Diabetes\n- Hypertension\n- Suicide\n- High Risk Behavior\n- Osteoporosis\n- Medication Remediation",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ScreeningTypeId",
+					"Description": "The unique identifier of a Screening Type.",
+					"BaseAttributeReference": {
+						"Entity": "ScreeningType.cdm.json/ScreeningType",
+						"Name": "ScreeningTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ScreeningTypeName",
+					"Description": "The name of a Screening Type.",
+					"BaseAttributeReference": {
+						"Entity": "ScreeningType.cdm.json/ScreeningType",
+						"Name": "ScreeningTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "ScreeningTypeDescription",
+					"Description": "The description of a Screening Type.",
+					"BaseAttributeReference": {
+						"Entity": "ScreeningType.cdm.json/ScreeningType",
+						"Name": "ScreeningTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "MedicalConditionId",
+					"Description": "The unique identifier of a medical condition.",
+					"BaseAttributeReference": {
+						"Entity": "ScreeningType.cdm.json/ScreeningType",
+						"Name": "MedicalConditionId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/ScreeningType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/ScreeningType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ScreeningTypeId\":{\"entity\":\"ScreeningType.cdm.json/ScreeningType\",\"name\":\"ScreeningTypeId\"},\"ScreeningTypeName\":{\"entity\":\"ScreeningType.cdm.json/ScreeningType\",\"name\":\"ScreeningTypeName\"},\"ScreeningTypeDescription\":{\"entity\":\"ScreeningType.cdm.json/ScreeningType\",\"name\":\"ScreeningTypeDescription\"},\"MedicalConditionId\":{\"entity\":\"ScreeningType.cdm.json/ScreeningType\",\"name\":\"MedicalConditionId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"ScreeningType\",\"path\":\"ScreeningType.cdm.json/ScreeningType\"},\"description\":\"A type of screening that is used to identify a potential risk or medical condition.\\n\\nEx:\\n- Falling\\n- Domestic Abuse\\n- Alcoholism\\n- Obesity\\n- Diabetes\\n- Hypertension\\n- Suicide\\n- High Risk Behavior\\n- Osteoporosis\\n- Medication Remediation\",\"primaryKey\":[\"ScreeningTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ScreeningType.cdm.json/ScreeningType\",\"name\":\"ScreeningTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Screening Type.\",\"isNullable\":false,\"name\":\"ScreeningTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ScreeningType.cdm.json/ScreeningType\",\"name\":\"ScreeningTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Screening Type.\",\"isNullable\":true,\"name\":\"ScreeningTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ScreeningType.cdm.json/ScreeningType\",\"name\":\"ScreeningTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Screening Type.\",\"isNullable\":true,\"name\":\"ScreeningTypeDescription\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"ScreeningType.cdm.json/ScreeningType\",\"name\":\"MedicalConditionId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a medical condition.\",\"isNullable\":true,\"name\":\"MedicalConditionId\"}]}}}",
+			"Description": "A type of screening that is used to identify a potential risk or medical condition.\n\nEx:\n- Falling\n- Domestic Abuse\n- Alcoholism\n- Obesity\n- Diabetes\n- Hypertension\n- Suicide\n- High Risk Behavior\n- Osteoporosis\n- Medication Remediation",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ScreeningTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

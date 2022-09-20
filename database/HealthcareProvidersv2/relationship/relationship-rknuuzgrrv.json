@@ -1,0 +1,26 @@
+{
+	"name": "relationship-rknuuzgrrv",
+	"properties": {
+		"Name": "relationship-rknuuzgrrv",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "MedicalSeverity",
+		"ToTableName": "PatientAllergy",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "MedicalSeverityId",
+				"ToColumnName": "MedicalSeverityId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"MedicalSeverity.cdm.json/MedicalSeverity\",\"toEntity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"joinPairs\":[{\"fromAttribute\":\"MedicalSeverityId\",\"toAttribute\":\"MedicalSeverityId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

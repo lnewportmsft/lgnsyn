@@ -1,0 +1,194 @@
+{
+	"name": "PatientMeansOfTransportation",
+	"properties": {
+		"Name": "PatientMeansOfTransportation",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The specific transportation used by the Patient under various scenarios.\n\nEx:\nPatient ID: 1000\nTransportation Requirement:  Transport to Work \nTransportation Mode: Personal Auto\nPatient Preference: Primary\n \n\nPatient ID: 1000\nTransportation Requirement:  Transport to Work \nTransportation Mode: Bus\nPatient Preference: Alternate",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "TransportationRequirementId",
+					"Description": "The unique identifier of a Transportation Requirement.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation",
+						"Name": "TransportationRequirementId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "TransportationModeId",
+					"Description": "The unique identifier of a Transportation Mode.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation",
+						"Name": "TransportationModeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientPreferenceId",
+					"Description": "The unique identifier of a Patient Preference.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation",
+						"Name": "PatientPreferenceId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientTransportationNote",
+					"Description": "Notes, comments or additional information regarding the Patient means of transportation.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation",
+						"Name": "PatientTransportationNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientMeansOfTransportation",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientMeansOfTransportation",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"PatientId\"},\"TransportationRequirementId\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"TransportationRequirementId\"},\"TransportationModeId\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"TransportationModeId\"},\"PeriodStartDate\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"PeriodStartDate\"},\"ServiceProviderId\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"ServiceProviderId\"},\"PeriodEndDate\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"PeriodEndDate\"},\"PatientPreferenceId\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"PatientPreferenceId\"},\"PatientTransportationNote\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"PatientTransportationNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientMeansOfTransportation\",\"path\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\"},\"description\":\"The specific transportation used by the Patient under various scenarios.\\n\\nEx:\\nPatient ID: 1000\\nTransportation Requirement:  Transport to Work \\nTransportation Mode: Personal Auto\\nPatient Preference: Primary\\n \\n\\nPatient ID: 1000\\nTransportation Requirement:  Transport to Work \\nTransportation Mode: Bus\\nPatient Preference: Alternate\",\"primaryKey\":[\"PatientId\",\"TransportationRequirementId\",\"TransportationModeId\",\"PeriodStartDate\",\"ServiceProviderId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"TransportationRequirementId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Transportation Requirement.\",\"isNullable\":false,\"name\":\"TransportationRequirementId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"TransportationModeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Transportation Mode.\",\"isNullable\":false,\"name\":\"TransportationModeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"PatientPreferenceId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Preference.\",\"isNullable\":false,\"name\":\"PatientPreferenceId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"name\":\"PatientTransportationNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"Notes, comments or additional information regarding the Patient means of transportation.\",\"isNullable\":true,\"name\":\"PatientTransportationNote\"}]}}}",
+			"Description": "The specific transportation used by the Patient under various scenarios.\n\nEx:\nPatient ID: 1000\nTransportation Requirement:  Transport to Work \nTransportation Mode: Personal Auto\nPatient Preference: Primary\n \n\nPatient ID: 1000\nTransportation Requirement:  Transport to Work \nTransportation Mode: Bus\nPatient Preference: Alternate",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,TransportationRequirementId,TransportationModeId,PeriodStartDate,ServiceProviderId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

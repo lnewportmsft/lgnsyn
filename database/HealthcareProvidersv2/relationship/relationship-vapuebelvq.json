@@ -1,0 +1,26 @@
+{
+	"name": "relationship-vapuebelvq",
+	"properties": {
+		"Name": "relationship-vapuebelvq",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientMedicalCondition",
+		"ToTableName": "PatientMedicalConditionTreatmentPlan",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ServiceProviderId",
+				"ToColumnName": "ServiceProviderId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"toEntity\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\",\"joinPairs\":[{\"fromAttribute\":\"ServiceProviderId\",\"toAttribute\":\"ServiceProviderId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

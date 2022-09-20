@@ -1,0 +1,26 @@
+{
+	"name": "relationship-egzjbxtzjb",
+	"properties": {
+		"Name": "relationship-egzjbxtzjb",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientPreference",
+		"ToTableName": "PatientMeansOfTransportation",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientPreferenceId",
+				"ToColumnName": "PatientPreferenceId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientPreference.cdm.json/PatientPreference\",\"toEntity\":\"PatientMeansOfTransportation.cdm.json/PatientMeansOfTransportation\",\"joinPairs\":[{\"fromAttribute\":\"PatientPreferenceId\",\"toAttribute\":\"PatientPreferenceId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

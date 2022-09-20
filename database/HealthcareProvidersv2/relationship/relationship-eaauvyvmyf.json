@@ -1,0 +1,26 @@
+{
+	"name": "relationship-eaauvyvmyf",
+	"properties": {
+		"Name": "relationship-eaauvyvmyf",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientContactPurpose",
+		"ToTableName": "PatientContactPurposeStatus",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ContactMethodId",
+				"ToColumnName": "ContactMethodId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientContactPurpose.cdm.json/PatientContactPurpose\",\"toEntity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"joinPairs\":[{\"fromAttribute\":\"ContactMethodId\",\"toAttribute\":\"ContactMethodId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,213 @@
+{
+	"name": "PatientAbuse",
+	"properties": {
+		"Name": "PatientAbuse",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "Abuse committed by a Patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAbuse.cdm.json/PatientAbuse",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AbuseTypeId",
+					"Description": "The unique identifier of a type of abuse.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAbuse.cdm.json/PatientAbuse",
+						"Name": "AbuseTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AbuseDate",
+					"Description": "The date of the abuse.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAbuse.cdm.json/PatientAbuse",
+						"Name": "AbuseDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAbuse.cdm.json/PatientAbuse",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ReportedDate",
+					"Description": "The date that the abuse was reported.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAbuse.cdm.json/PatientAbuse",
+						"Name": "ReportedDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ComplaintSubmittedDate",
+					"Description": "The date that a complaint was filed against the member.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAbuse.cdm.json/PatientAbuse",
+						"Name": "ComplaintSubmittedDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "AbuseStatement",
+					"Description": "A statement describing the abuse.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAbuse.cdm.json/PatientAbuse",
+						"Name": "AbuseStatement"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "ActionStatement",
+					"Description": "A statement describing the action taken in response to the abuse.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAbuse.cdm.json/PatientAbuse",
+						"Name": "ActionStatement"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientAbuseNote",
+					"Description": "A note, comment or additional information regarding the Patient Abuse.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAbuse.cdm.json/PatientAbuse",
+						"Name": "PatientAbuseNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientAbuse",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientAbuse",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"PatientId\"},\"AbuseTypeId\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"AbuseTypeId\"},\"AbuseDate\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"AbuseDate\"},\"ServiceProviderId\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"ServiceProviderId\"},\"ReportedDate\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"ReportedDate\"},\"ComplaintSubmittedDate\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"ComplaintSubmittedDate\"},\"AbuseStatement\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"AbuseStatement\"},\"ActionStatement\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"ActionStatement\"},\"PatientAbuseNote\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"PatientAbuseNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientAbuse\",\"path\":\"PatientAbuse.cdm.json/PatientAbuse\"},\"description\":\"Abuse committed by a Patient.\",\"primaryKey\":[\"PatientId\",\"AbuseTypeId\",\"AbuseDate\",\"ServiceProviderId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"AbuseTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a type of abuse.\",\"isNullable\":false,\"name\":\"AbuseTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"AbuseDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date of the abuse.\",\"isNullable\":false,\"name\":\"AbuseDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"ReportedDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that the abuse was reported.\",\"isNullable\":true,\"name\":\"ReportedDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"ComplaintSubmittedDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that a complaint was filed against the member.\",\"isNullable\":true,\"name\":\"ComplaintSubmittedDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"AbuseStatement\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A statement describing the abuse.\",\"isNullable\":true,\"name\":\"AbuseStatement\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"ActionStatement\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A statement describing the action taken in response to the abuse.\",\"isNullable\":true,\"name\":\"ActionStatement\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"name\":\"PatientAbuseNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient Abuse.\",\"isNullable\":true,\"name\":\"PatientAbuseNote\"}]}}}",
+			"Description": "Abuse committed by a Patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,AbuseTypeId,AbuseDate,ServiceProviderId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

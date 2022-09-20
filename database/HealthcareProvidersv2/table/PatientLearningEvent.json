@@ -1,0 +1,196 @@
+{
+	"name": "PatientLearningEvent",
+	"properties": {
+		"Name": "PatientLearningEvent",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The Learning Events that a Patient has participated in.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "LearningEventId",
+					"Description": "The unique identifier of a Learning Event.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLearningEvent.cdm.json/PatientLearningEvent",
+						"Name": "LearningEventId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLearningEvent.cdm.json/PatientLearningEvent",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "LearningEventStartDate",
+					"Description": "The scheduled start date for the Learning Event.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLearningEvent.cdm.json/PatientLearningEvent",
+						"Name": "LearningEventStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLearningEvent.cdm.json/PatientLearningEvent",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "LearningEventEndDate",
+					"Description": "The scheduled end date for the Learning Event.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLearningEvent.cdm.json/PatientLearningEvent",
+						"Name": "LearningEventEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ScheduledLearningEventFee",
+					"Description": "The fee to attend this Scheduled Learning Event in local currency.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLearningEvent.cdm.json/PatientLearningEvent",
+						"Name": "ScheduledLearningEventFee"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "ScheduledLearningEventNote",
+					"Description": "A note, comment or additional information regarding the Patient Scheduled Learning Event.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLearningEvent.cdm.json/PatientLearningEvent",
+						"Name": "ScheduledLearningEventNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientLearningEventStatusId",
+					"Description": "The unique identifier of a Patient Learning Event Status.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLearningEvent.cdm.json/PatientLearningEvent",
+						"Name": "PatientLearningEventStatusId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientLearningEvent",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientLearningEvent",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"LearningEventId\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"LearningEventId\"},\"PatientId\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"PatientId\"},\"LearningEventStartDate\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"LearningEventStartDate\"},\"ServiceProviderId\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"ServiceProviderId\"},\"LearningEventEndDate\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"LearningEventEndDate\"},\"ScheduledLearningEventFee\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"ScheduledLearningEventFee\"},\"ScheduledLearningEventNote\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"ScheduledLearningEventNote\"},\"PatientLearningEventStatusId\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"PatientLearningEventStatusId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientLearningEvent\",\"path\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\"},\"description\":\"The Learning Events that a Patient has participated in.\",\"primaryKey\":[\"LearningEventId\",\"PatientId\",\"LearningEventStartDate\",\"ServiceProviderId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"LearningEventId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Learning Event.\",\"isNullable\":false,\"name\":\"LearningEventId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"LearningEventStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The scheduled start date for the Learning Event.\",\"isNullable\":false,\"name\":\"LearningEventStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"LearningEventEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The scheduled end date for the Learning Event.\",\"isNullable\":true,\"name\":\"LearningEventEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"ScheduledLearningEventFee\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The fee to attend this Scheduled Learning Event in local currency.\",\"isNullable\":true,\"scale\":2,\"name\":\"ScheduledLearningEventFee\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"ScheduledLearningEventNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient Scheduled Learning Event.\",\"isNullable\":true,\"name\":\"ScheduledLearningEventNote\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLearningEvent.cdm.json/PatientLearningEvent\",\"name\":\"PatientLearningEventStatusId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Learning Event Status.\",\"isNullable\":true,\"name\":\"PatientLearningEventStatusId\"}]}}}",
+			"Description": "The Learning Events that a Patient has participated in.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "LearningEventId,PatientId,LearningEventStartDate,ServiceProviderId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

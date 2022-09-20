@@ -1,0 +1,26 @@
+{
+	"name": "relationship-qufrqrtfql",
+	"properties": {
+		"Name": "relationship-qufrqrtfql",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "ScreeningType",
+		"ToTableName": "ScreeningMethodology",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ScreeningTypeId",
+				"ToColumnName": "ScreeningTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"ScreeningType.cdm.json/ScreeningType\",\"toEntity\":\"ScreeningMethodology.cdm.json/ScreeningMethodology\",\"joinPairs\":[{\"fromAttribute\":\"ScreeningTypeId\",\"toAttribute\":\"ScreeningTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

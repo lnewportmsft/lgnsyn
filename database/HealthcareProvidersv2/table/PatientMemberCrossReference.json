@@ -1,0 +1,178 @@
+{
+	"name": "PatientMemberCrossReference",
+	"properties": {
+		"Name": "PatientMemberCrossReference",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "What is the Insurer member ID for a given Patient served by a Service Provider during the indicated period.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMemberCrossReference.cdm.json/PatientMemberCrossReference",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMemberCrossReference.cdm.json/PatientMemberCrossReference",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "InsurerId",
+					"Description": "The unique identifier of an insurer.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMemberCrossReference.cdm.json/PatientMemberCrossReference",
+						"Name": "InsurerId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "MemberId",
+					"Description": "The unique identifier of a Member.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMemberCrossReference.cdm.json/PatientMemberCrossReference",
+						"Name": "MemberId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date that the patient-member relationship exists or is defined.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMemberCrossReference.cdm.json/PatientMemberCrossReference",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientMemberCrossReferenceNote",
+					"Description": "A note, comment or additional information regarding the Patient Member Cross-Reference.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMemberCrossReference.cdm.json/PatientMemberCrossReference",
+						"Name": "PatientMemberCrossReferenceNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date that the patient-member relationship exists or is defined.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMemberCrossReference.cdm.json/PatientMemberCrossReference",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientMemberCrossReference",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientMemberCrossReference",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientMemberCrossReference.cdm.json/PatientMemberCrossReference\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientMemberCrossReference.cdm.json/PatientMemberCrossReference\",\"name\":\"PatientId\"},\"InsurerId\":{\"entity\":\"PatientMemberCrossReference.cdm.json/PatientMemberCrossReference\",\"name\":\"InsurerId\"},\"MemberId\":{\"entity\":\"PatientMemberCrossReference.cdm.json/PatientMemberCrossReference\",\"name\":\"MemberId\"},\"PeriodStartDate\":{\"entity\":\"PatientMemberCrossReference.cdm.json/PatientMemberCrossReference\",\"name\":\"PeriodStartDate\"},\"PatientMemberCrossReferenceNote\":{\"entity\":\"PatientMemberCrossReference.cdm.json/PatientMemberCrossReference\",\"name\":\"PatientMemberCrossReferenceNote\"},\"PeriodEndDate\":{\"entity\":\"PatientMemberCrossReference.cdm.json/PatientMemberCrossReference\",\"name\":\"PeriodEndDate\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientMemberCrossReference\",\"path\":\"PatientMemberCrossReference.cdm.json/PatientMemberCrossReference\"},\"description\":\"What is the Insurer member ID for a given Patient served by a Service Provider during the indicated period.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"InsurerId\",\"MemberId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMemberCrossReference.cdm.json/PatientMemberCrossReference\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMemberCrossReference.cdm.json/PatientMemberCrossReference\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMemberCrossReference.cdm.json/PatientMemberCrossReference\",\"name\":\"InsurerId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an insurer.\",\"isNullable\":false,\"name\":\"InsurerId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMemberCrossReference.cdm.json/PatientMemberCrossReference\",\"name\":\"MemberId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Member.\",\"isNullable\":false,\"name\":\"MemberId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMemberCrossReference.cdm.json/PatientMemberCrossReference\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date that the patient-member relationship exists or is defined.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMemberCrossReference.cdm.json/PatientMemberCrossReference\",\"name\":\"PatientMemberCrossReferenceNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient Member Cross-Reference.\",\"isNullable\":true,\"name\":\"PatientMemberCrossReferenceNote\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMemberCrossReference.cdm.json/PatientMemberCrossReference\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date that the patient-member relationship exists or is defined.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"}]}}}",
+			"Description": "What is the Insurer member ID for a given Patient served by a Service Provider during the indicated period.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,InsurerId,MemberId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

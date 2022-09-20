@@ -1,0 +1,177 @@
+{
+	"name": "PatientAllergyReaction",
+	"properties": {
+		"Name": "PatientAllergyReaction",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The reaction(s) to the associated patient allergy(s) reported for the patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergyReaction.cdm.json/PatientAllergyReaction",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergyReaction.cdm.json/PatientAllergyReaction",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AllergenId",
+					"Description": "The unique identifier of an allergy.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergyReaction.cdm.json/PatientAllergyReaction",
+						"Name": "AllergenId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AllergicReactionTypeId",
+					"Description": "The unique identifier of an Allergic Reaction Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergyReaction.cdm.json/PatientAllergyReaction",
+						"Name": "AllergicReactionTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergyReaction.cdm.json/PatientAllergyReaction",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientAllergyReactionNote",
+					"Description": "A note, comment or additional information regarding the allergy reaction.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergyReaction.cdm.json/PatientAllergyReaction",
+						"Name": "PatientAllergyReactionNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "MedicalSeverityId",
+					"Description": "The unique identifier of a the medical severity of an allergy or medical condition.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergyReaction.cdm.json/PatientAllergyReaction",
+						"Name": "MedicalSeverityId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientAllergyReaction",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientAllergyReaction",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"name\":\"PatientId\"},\"AllergenId\":{\"entity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"name\":\"AllergenId\"},\"AllergicReactionTypeId\":{\"entity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"name\":\"AllergicReactionTypeId\"},\"PeriodStartDate\":{\"entity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"name\":\"PeriodStartDate\"},\"PatientAllergyReactionNote\":{\"entity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"name\":\"PatientAllergyReactionNote\"},\"MedicalSeverityId\":{\"entity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"name\":\"MedicalSeverityId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientAllergyReaction\",\"path\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\"},\"description\":\"The reaction(s) to the associated patient allergy(s) reported for the patient.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"AllergenId\",\"AllergicReactionTypeId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"name\":\"AllergenId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an allergy.\",\"isNullable\":false,\"name\":\"AllergenId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"name\":\"AllergicReactionTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Allergic Reaction Type.\",\"isNullable\":false,\"name\":\"AllergicReactionTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"name\":\"PatientAllergyReactionNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the allergy reaction.\",\"isNullable\":true,\"name\":\"PatientAllergyReactionNote\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"name\":\"MedicalSeverityId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a the medical severity of an allergy or medical condition.\",\"isNullable\":true,\"name\":\"MedicalSeverityId\"}]}}}",
+			"Description": "The reaction(s) to the associated patient allergy(s) reported for the patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,AllergenId,AllergicReactionTypeId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

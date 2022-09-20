@@ -1,0 +1,162 @@
+{
+	"name": "PatientFamilyLifeCycle",
+	"properties": {
+		"Name": "PatientFamilyLifeCycle",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The Patient Family Life Cycle characteristic,\n\nThese criteria can change over a period of time and are represented with 'period start date/period end date' qualifications, which represented the best case for knowing this information.    If the data is only randomly sampled or recorded then you could use a single 'date' to identify its recording or effective as-of date.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "FamilyLifeCycleId",
+					"Description": "The unique identifier of a Family Life Cycle.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle",
+						"Name": "FamilyLifeCycleId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientFamilyLifeCycleNote",
+					"Description": "A note, comment or additional information regarding the Patient Family Life Cycle relationship.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle",
+						"Name": "PatientFamilyLifeCycleNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFamilyLifeCycle",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFamilyLifeCycle",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle\",\"name\":\"PatientId\"},\"FamilyLifeCycleId\":{\"entity\":\"PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle\",\"name\":\"FamilyLifeCycleId\"},\"PeriodStartDate\":{\"entity\":\"PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle\",\"name\":\"PeriodEndDate\"},\"PatientFamilyLifeCycleNote\":{\"entity\":\"PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle\",\"name\":\"PatientFamilyLifeCycleNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientFamilyLifeCycle\",\"path\":\"PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle\"},\"description\":\"The Patient Family Life Cycle characteristic,\\n\\nThese criteria can change over a period of time and are represented with 'period start date/period end date' qualifications, which represented the best case for knowing this information.    If the data is only randomly sampled or recorded then you could use a single 'date' to identify its recording or effective as-of date.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"FamilyLifeCycleId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle\",\"name\":\"FamilyLifeCycleId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Family Life Cycle.\",\"isNullable\":false,\"name\":\"FamilyLifeCycleId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyLifeCycle.cdm.json/PatientFamilyLifeCycle\",\"name\":\"PatientFamilyLifeCycleNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient Family Life Cycle relationship.\",\"isNullable\":true,\"name\":\"PatientFamilyLifeCycleNote\"}]}}}",
+			"Description": "The Patient Family Life Cycle characteristic,\n\nThese criteria can change over a period of time and are represented with 'period start date/period end date' qualifications, which represented the best case for knowing this information.    If the data is only randomly sampled or recorded then you could use a single 'date' to identify its recording or effective as-of date.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,FamilyLifeCycleId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

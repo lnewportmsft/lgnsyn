@@ -1,0 +1,26 @@
+{
+	"name": "relationship-nlrucifmnz",
+	"properties": {
+		"Name": "relationship-nlrucifmnz",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientRelatedParty",
+		"ToTableName": "PatientRelatedPartyAmbulatoryStatus",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientPartyRelationshipTypeId",
+				"ToColumnName": "PatientPartyRelationshipTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientRelatedParty.cdm.json/PatientRelatedParty\",\"toEntity\":\"PatientRelatedPartyAmbulatoryStatus.cdm.json/PatientRelatedPartyAmbulatoryStatus\",\"joinPairs\":[{\"fromAttribute\":\"PatientPartyRelationshipTypeId\",\"toAttribute\":\"PatientPartyRelationshipTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

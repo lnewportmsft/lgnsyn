@@ -1,0 +1,26 @@
+{
+	"name": "relationship-tdaivdibdo",
+	"properties": {
+		"Name": "relationship-tdaivdibdo",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientRelatedParty",
+		"ToTableName": "PatientRelatedPartyLivingDependency",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientId",
+				"ToColumnName": "PatientId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientRelatedParty.cdm.json/PatientRelatedParty\",\"toEntity\":\"PatientRelatedPartyLivingDependency.cdm.json/PatientRelatedPartyLivingDependency\",\"joinPairs\":[{\"fromAttribute\":\"PatientId\",\"toAttribute\":\"PatientId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

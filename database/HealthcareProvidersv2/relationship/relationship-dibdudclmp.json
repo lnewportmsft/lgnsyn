@@ -1,0 +1,26 @@
+{
+	"name": "relationship-dibdudclmp",
+	"properties": {
+		"Name": "relationship-dibdudclmp",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Frequency",
+		"ToTableName": "PatientRecreationalDrugUse",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "FrequencyId",
+				"ToColumnName": "FrequencyId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Frequency.cdm.json/Frequency\",\"toEntity\":\"PatientRecreationalDrugUse.cdm.json/PatientRecreationalDrugUse\",\"joinPairs\":[{\"fromAttribute\":\"FrequencyId\",\"toAttribute\":\"FrequencyId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,26 @@
+{
+	"name": "relationship-dgrbnhrgvf",
+	"properties": {
+		"Name": "relationship-dgrbnhrgvf",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientOwnBirthEventCountType",
+		"ToTableName": "Patient",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientOwnBirthEventCountTypeId",
+				"ToColumnName": "PatientOwnBirthEventCountTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientOwnBirthEventCountType.cdm.json/PatientOwnBirthEventCountType\",\"toEntity\":\"Patient.cdm.json/Patient\",\"joinPairs\":[{\"fromAttribute\":\"PatientOwnBirthEventCountTypeId\",\"toAttribute\":\"PatientOwnBirthEventCountTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,113 @@
+{
+	"name": "OrganDonorType",
+	"properties": {
+		"Name": "OrganDonorType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A means of identifying whether the individual wishes to donate their organs.\n\nEx.:\n- Documented Donor and Documentation is On File\n- Documented Donor and Documentation is Not On File\n- Not a Documented Donor",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "OrganDonorTypeId",
+					"Description": "The unique identifier of an Organ Donor Type.",
+					"BaseAttributeReference": {
+						"Entity": "OrganDonorType.cdm.json/OrganDonorType",
+						"Name": "OrganDonorTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "OrganDonorTypeName",
+					"Description": "The name of the Organ Donor Type.",
+					"BaseAttributeReference": {
+						"Entity": "OrganDonorType.cdm.json/OrganDonorType",
+						"Name": "OrganDonorTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "OrganDonorTypeDescription",
+					"Description": "The description of the Organ Donor Type.",
+					"BaseAttributeReference": {
+						"Entity": "OrganDonorType.cdm.json/OrganDonorType",
+						"Name": "OrganDonorTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/OrganDonorType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/OrganDonorType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"OrganDonorTypeId\":{\"entity\":\"OrganDonorType.cdm.json/OrganDonorType\",\"name\":\"OrganDonorTypeId\"},\"OrganDonorTypeName\":{\"entity\":\"OrganDonorType.cdm.json/OrganDonorType\",\"name\":\"OrganDonorTypeName\"},\"OrganDonorTypeDescription\":{\"entity\":\"OrganDonorType.cdm.json/OrganDonorType\",\"name\":\"OrganDonorTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"OrganDonorType\",\"path\":\"OrganDonorType.cdm.json/OrganDonorType\"},\"description\":\"A means of identifying whether the individual wishes to donate their organs.\\n\\nEx.:\\n- Documented Donor and Documentation is On File\\n- Documented Donor and Documentation is Not On File\\n- Not a Documented Donor\",\"primaryKey\":[\"OrganDonorTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"OrganDonorType.cdm.json/OrganDonorType\",\"name\":\"OrganDonorTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Organ Donor Type.\",\"isNullable\":false,\"name\":\"OrganDonorTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"OrganDonorType.cdm.json/OrganDonorType\",\"name\":\"OrganDonorTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the Organ Donor Type.\",\"isNullable\":true,\"name\":\"OrganDonorTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"OrganDonorType.cdm.json/OrganDonorType\",\"name\":\"OrganDonorTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of the Organ Donor Type.\",\"isNullable\":true,\"name\":\"OrganDonorTypeDescription\"}]}}}",
+			"Description": "A means of identifying whether the individual wishes to donate their organs.\n\nEx.:\n- Documented Donor and Documentation is On File\n- Documented Donor and Documentation is Not On File\n- Not a Documented Donor",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "OrganDonorTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

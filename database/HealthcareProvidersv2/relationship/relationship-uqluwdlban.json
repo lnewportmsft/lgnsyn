@@ -1,0 +1,26 @@
+{
+	"name": "relationship-uqluwdlban",
+	"properties": {
+		"Name": "relationship-uqluwdlban",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientContactPurpose",
+		"ToTableName": "PatientContactPurposeStatus",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ServiceProviderId",
+				"ToColumnName": "ServiceProviderId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientContactPurpose.cdm.json/PatientContactPurpose\",\"toEntity\":\"PatientContactPurposeStatus.cdm.json/PatientContactPurposeStatus\",\"joinPairs\":[{\"fromAttribute\":\"ServiceProviderId\",\"toAttribute\":\"ServiceProviderId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

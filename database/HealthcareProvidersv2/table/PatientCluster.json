@@ -1,0 +1,179 @@
+{
+	"name": "PatientCluster",
+	"properties": {
+		"Name": "PatientCluster",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The assignment of one or more Patients to a Cluster.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCluster.cdm.json/PatientCluster",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ClusterId",
+					"Description": "The unique identifier of a Cluster.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCluster.cdm.json/PatientCluster",
+						"Name": "ClusterId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCluster.cdm.json/PatientCluster",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCluster.cdm.json/PatientCluster",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCluster.cdm.json/PatientCluster",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "DateAssigned",
+					"Description": "The date that the Patient was assigned to the Cluster.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCluster.cdm.json/PatientCluster",
+						"Name": "DateAssigned"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientClusterNote",
+					"Description": "A note, comment or additional information regarding the Patient Cluster.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCluster.cdm.json/PatientCluster",
+						"Name": "PatientClusterNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientCluster",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientCluster",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientCluster.cdm.json/PatientCluster\",\"name\":\"PatientId\"},\"ClusterId\":{\"entity\":\"PatientCluster.cdm.json/PatientCluster\",\"name\":\"ClusterId\"},\"PeriodStartDate\":{\"entity\":\"PatientCluster.cdm.json/PatientCluster\",\"name\":\"PeriodStartDate\"},\"ServiceProviderId\":{\"entity\":\"PatientCluster.cdm.json/PatientCluster\",\"name\":\"ServiceProviderId\"},\"PeriodEndDate\":{\"entity\":\"PatientCluster.cdm.json/PatientCluster\",\"name\":\"PeriodEndDate\"},\"DateAssigned\":{\"entity\":\"PatientCluster.cdm.json/PatientCluster\",\"name\":\"DateAssigned\"},\"PatientClusterNote\":{\"entity\":\"PatientCluster.cdm.json/PatientCluster\",\"name\":\"PatientClusterNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientCluster\",\"path\":\"PatientCluster.cdm.json/PatientCluster\"},\"description\":\"The assignment of one or more Patients to a Cluster.\",\"primaryKey\":[\"PatientId\",\"ClusterId\",\"PeriodStartDate\",\"ServiceProviderId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCluster.cdm.json/PatientCluster\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCluster.cdm.json/PatientCluster\",\"name\":\"ClusterId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Cluster.\",\"isNullable\":false,\"name\":\"ClusterId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCluster.cdm.json/PatientCluster\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCluster.cdm.json/PatientCluster\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCluster.cdm.json/PatientCluster\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCluster.cdm.json/PatientCluster\",\"name\":\"DateAssigned\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that the Patient was assigned to the Cluster.\",\"isNullable\":true,\"name\":\"DateAssigned\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCluster.cdm.json/PatientCluster\",\"name\":\"PatientClusterNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient Cluster.\",\"isNullable\":true,\"name\":\"PatientClusterNote\"}]}}}",
+			"Description": "The assignment of one or more Patients to a Cluster.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,ClusterId,PeriodStartDate,ServiceProviderId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,258 @@
+{
+	"name": "PatientHealthcarePreference",
+	"properties": {
+		"Name": "PatientHealthcarePreference",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "Registers patient preferences for facility appointments",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientHealthcarePreference.cdm.json/PatientHealthcarePreference",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientHealthcarePreference.cdm.json/PatientHealthcarePreference",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientHealthcarePreferenceId",
+					"Description": "The unique identifier of a Patient Healthcare Preference.",
+					"BaseAttributeReference": {
+						"Entity": "PatientHealthcarePreference.cdm.json/PatientHealthcarePreference",
+						"Name": "PatientHealthcarePreferenceId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartTimestamp",
+					"Description": "The period start timestamp of the associated encounter status.",
+					"BaseAttributeReference": {
+						"Entity": "PatientHealthcarePreference.cdm.json/PatientHealthcarePreference",
+						"Name": "PeriodStartTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndTimestamp",
+					"Description": "The period end timestamp of the associated encounter status.",
+					"BaseAttributeReference": {
+						"Entity": "PatientHealthcarePreference.cdm.json/PatientHealthcarePreference",
+						"Name": "PeriodEndTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "PatientHealthcarePreferenceNote",
+					"Description": "A note related to Patient Healthcare Facility Preference.",
+					"BaseAttributeReference": {
+						"Entity": "PatientHealthcarePreference.cdm.json/PatientHealthcarePreference",
+						"Name": "PatientHealthcarePreferenceNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "ServiceId",
+					"Description": "The unique identifier of a Service.",
+					"BaseAttributeReference": {
+						"Entity": "PatientHealthcarePreference.cdm.json/PatientHealthcarePreference",
+						"Name": "ServiceId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "HealthcareFacilityId",
+					"Description": "The unique identifier of a Healthcare Facility.",
+					"BaseAttributeReference": {
+						"Entity": "PatientHealthcarePreference.cdm.json/PatientHealthcarePreference",
+						"Name": "HealthcareFacilityId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "TimeslotId",
+					"Description": "The unique identifier of a Timeslot occurrence.",
+					"BaseAttributeReference": {
+						"Entity": "PatientHealthcarePreference.cdm.json/PatientHealthcarePreference",
+						"Name": "TimeslotId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PreferredServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientHealthcarePreference.cdm.json/PatientHealthcarePreference",
+						"Name": "PreferredServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "DayOfWeekId",
+					"Description": "The unique identifier of a Day Of Week.",
+					"BaseAttributeReference": {
+						"Entity": "PatientHealthcarePreference.cdm.json/PatientHealthcarePreference",
+						"Name": "DayOfWeekId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ContactMethodId",
+					"Description": "The unique identifier of a Contact Method.",
+					"BaseAttributeReference": {
+						"Entity": "PatientHealthcarePreference.cdm.json/PatientHealthcarePreference",
+						"Name": "ContactMethodId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientHealthcarePreference",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientHealthcarePreference",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"PatientId\"},\"PatientHealthcarePreferenceId\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"PatientHealthcarePreferenceId\"},\"PeriodStartTimestamp\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"PeriodStartTimestamp\"},\"PeriodEndTimestamp\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"PeriodEndTimestamp\"},\"PatientHealthcarePreferenceNote\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"PatientHealthcarePreferenceNote\"},\"ServiceId\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"ServiceId\"},\"HealthcareFacilityId\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"HealthcareFacilityId\"},\"TimeslotId\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"TimeslotId\"},\"PreferredServiceProviderId\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"PreferredServiceProviderId\"},\"DayOfWeekId\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"DayOfWeekId\"},\"ContactMethodId\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"ContactMethodId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientHealthcarePreference\",\"path\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\"},\"description\":\"Registers patient preferences for facility appointments\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PatientHealthcarePreferenceId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"PatientHealthcarePreferenceId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Healthcare Preference.\",\"isNullable\":false,\"name\":\"PatientHealthcarePreferenceId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"PeriodStartTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The period start timestamp of the associated encounter status.\",\"isNullable\":true,\"name\":\"PeriodStartTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"PeriodEndTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The period end timestamp of the associated encounter status.\",\"isNullable\":true,\"name\":\"PeriodEndTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"PatientHealthcarePreferenceNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note related to Patient Healthcare Facility Preference.\",\"isNullable\":true,\"name\":\"PatientHealthcarePreferenceNote\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"ServiceId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Service.\",\"isNullable\":true,\"name\":\"ServiceId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"HealthcareFacilityId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Healthcare Facility.\",\"isNullable\":true,\"name\":\"HealthcareFacilityId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"TimeslotId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Timeslot occurrence.\",\"isNullable\":true,\"name\":\"TimeslotId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"PreferredServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":true,\"name\":\"PreferredServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"DayOfWeekId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Day Of Week.\",\"isNullable\":true,\"name\":\"DayOfWeekId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"name\":\"ContactMethodId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Contact Method.\",\"isNullable\":true,\"name\":\"ContactMethodId\"}]}}}",
+			"Description": "Registers patient preferences for facility appointments",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PatientHealthcarePreferenceId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,161 @@
+{
+	"name": "PatientMedicalConditionTreatmentPlan",
+	"properties": {
+		"Name": "PatientMedicalConditionTreatmentPlan",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The treatment plan(s) prescribed for the associated patient medical condition.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "MedicalConditionId",
+					"Description": "The unique identifier of a medical condition.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan",
+						"Name": "MedicalConditionId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartTimestamp",
+					"Description": "The period start timestamp for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan",
+						"Name": "PeriodStartTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "TreatmentPlanId",
+					"Description": "The unique identifier of a Treatment Plan.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan",
+						"Name": "TreatmentPlanId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientConditionTreatmentPlanNote",
+					"Description": "A note, comment or additional information regarding the patient condition treatment plan.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan",
+						"Name": "PatientConditionTreatmentPlanNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientMedicalConditionTreatmentPlan",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientMedicalConditionTreatmentPlan",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\",\"name\":\"PatientId\"},\"MedicalConditionId\":{\"entity\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\",\"name\":\"MedicalConditionId\"},\"PeriodStartTimestamp\":{\"entity\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\",\"name\":\"PeriodStartTimestamp\"},\"TreatmentPlanId\":{\"entity\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\",\"name\":\"TreatmentPlanId\"},\"PatientConditionTreatmentPlanNote\":{\"entity\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\",\"name\":\"PatientConditionTreatmentPlanNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientMedicalConditionTreatmentPlan\",\"path\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\"},\"description\":\"The treatment plan(s) prescribed for the associated patient medical condition.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"MedicalConditionId\",\"PeriodStartTimestamp\",\"TreatmentPlanId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\",\"name\":\"MedicalConditionId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a medical condition.\",\"isNullable\":false,\"name\":\"MedicalConditionId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\",\"name\":\"PeriodStartTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The period start timestamp for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\",\"name\":\"TreatmentPlanId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Treatment Plan.\",\"isNullable\":false,\"name\":\"TreatmentPlanId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\",\"name\":\"PatientConditionTreatmentPlanNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the patient condition treatment plan.\",\"isNullable\":true,\"name\":\"PatientConditionTreatmentPlanNote\"}]}}}",
+			"Description": "The treatment plan(s) prescribed for the associated patient medical condition.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,MedicalConditionId,PeriodStartTimestamp,TreatmentPlanId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

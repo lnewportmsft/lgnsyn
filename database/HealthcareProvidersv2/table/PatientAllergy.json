@@ -1,0 +1,212 @@
+{
+	"name": "PatientAllergy",
+	"properties": {
+		"Name": "PatientAllergy",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more allergies known for a patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergy.cdm.json/PatientAllergy",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergy.cdm.json/PatientAllergy",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AllergenId",
+					"Description": "The unique identifier of an allergy.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergy.cdm.json/PatientAllergy",
+						"Name": "AllergenId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergy.cdm.json/PatientAllergy",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergy.cdm.json/PatientAllergy",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "AllergyReportedDate",
+					"Description": "The date that the allergy was reported.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergy.cdm.json/PatientAllergy",
+						"Name": "AllergyReportedDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "AllergyVerifiedDate",
+					"Description": "The date that the allergy was verified. If this date is not populated, the allergy has not been clinically verified.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergy.cdm.json/PatientAllergy",
+						"Name": "AllergyVerifiedDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "MedicalSeverityId",
+					"Description": "The unique identifier of a the medical severity of an allergy or medical condition.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergy.cdm.json/PatientAllergy",
+						"Name": "MedicalSeverityId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientAllergyNote",
+					"Description": "A note, comment or additional information regarding a patient allergy.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAllergy.cdm.json/PatientAllergy",
+						"Name": "PatientAllergyNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientAllergy",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientAllergy",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"PatientId\"},\"AllergenId\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"AllergenId\"},\"PeriodStartDate\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"PeriodEndDate\"},\"AllergyReportedDate\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"AllergyReportedDate\"},\"AllergyVerifiedDate\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"AllergyVerifiedDate\"},\"MedicalSeverityId\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"MedicalSeverityId\"},\"PatientAllergyNote\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"PatientAllergyNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientAllergy\",\"path\":\"PatientAllergy.cdm.json/PatientAllergy\"},\"description\":\"The one or more allergies known for a patient.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"AllergenId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"AllergenId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an allergy.\",\"isNullable\":false,\"name\":\"AllergenId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"AllergyReportedDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that the allergy was reported.\",\"isNullable\":false,\"name\":\"AllergyReportedDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"AllergyVerifiedDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that the allergy was verified. If this date is not populated, the allergy has not been clinically verified.\",\"isNullable\":false,\"name\":\"AllergyVerifiedDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"MedicalSeverityId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a the medical severity of an allergy or medical condition.\",\"isNullable\":true,\"name\":\"MedicalSeverityId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"name\":\"PatientAllergyNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding a patient allergy.\",\"isNullable\":true,\"name\":\"PatientAllergyNote\"}]}}}",
+			"Description": "The one or more allergies known for a patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,AllergenId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,26 @@
+{
+	"name": "relationship-ixlumtswcs",
+	"properties": {
+		"Name": "relationship-ixlumtswcs",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientServiceProviderRelationshipType",
+		"ToTableName": "PatientRelatedServiceProvider",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientServiceProviderRelationshipTypeId",
+				"ToColumnName": "PatientServiceProviderRelationshipTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientServiceProviderRelationshipType.cdm.json/PatientServiceProviderRelationshipType\",\"toEntity\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\",\"joinPairs\":[{\"fromAttribute\":\"PatientServiceProviderRelationshipTypeId\",\"toAttribute\":\"PatientServiceProviderRelationshipTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

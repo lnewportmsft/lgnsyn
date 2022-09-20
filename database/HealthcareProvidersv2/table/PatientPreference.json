@@ -1,0 +1,113 @@
+{
+	"name": "PatientPreference",
+	"properties": {
+		"Name": "PatientPreference",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The Patient preference associated with the characteristic.\n\nEx:\n- Primary\n- Secondary\n- Alternate\n\nEx:\nPatient ID: 1000\nTransportation Requirement:  Transport to Work \nTransportation Mode: Personal Auto\nPatient Preference: Primary\nTimestamp:  08/24/04  (Date information recorded/reported/entered)\n\nPatient ID: 1000\nTransportation Requirement:  Transport to Work \nTransportation Mode: Bus\nPatient Preference: Alternate\nTimestamp:  08/24/04  (Date information recorded/reported/entered)",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientPreferenceId",
+					"Description": "The unique identifier of a Patient Preference.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPreference.cdm.json/PatientPreference",
+						"Name": "PatientPreferenceId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientPreferenceName",
+					"Description": "The name of a Patient Preference.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPreference.cdm.json/PatientPreference",
+						"Name": "PatientPreferenceName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientPreferenceDescription",
+					"Description": "The description of a Patient Preference.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPreference.cdm.json/PatientPreference",
+						"Name": "PatientPreferenceDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPreference",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPreference",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientPreferenceId\":{\"entity\":\"PatientPreference.cdm.json/PatientPreference\",\"name\":\"PatientPreferenceId\"},\"PatientPreferenceName\":{\"entity\":\"PatientPreference.cdm.json/PatientPreference\",\"name\":\"PatientPreferenceName\"},\"PatientPreferenceDescription\":{\"entity\":\"PatientPreference.cdm.json/PatientPreference\",\"name\":\"PatientPreferenceDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientPreference\",\"path\":\"PatientPreference.cdm.json/PatientPreference\"},\"description\":\"The Patient preference associated with the characteristic.\\n\\nEx:\\n- Primary\\n- Secondary\\n- Alternate\\n\\nEx:\\nPatient ID: 1000\\nTransportation Requirement:  Transport to Work \\nTransportation Mode: Personal Auto\\nPatient Preference: Primary\\nTimestamp:  08/24/04  (Date information recorded/reported/entered)\\n\\nPatient ID: 1000\\nTransportation Requirement:  Transport to Work \\nTransportation Mode: Bus\\nPatient Preference: Alternate\\nTimestamp:  08/24/04  (Date information recorded/reported/entered)\",\"primaryKey\":[\"PatientPreferenceId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPreference.cdm.json/PatientPreference\",\"name\":\"PatientPreferenceId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Preference.\",\"isNullable\":false,\"name\":\"PatientPreferenceId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPreference.cdm.json/PatientPreference\",\"name\":\"PatientPreferenceName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Patient Preference.\",\"isNullable\":true,\"name\":\"PatientPreferenceName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPreference.cdm.json/PatientPreference\",\"name\":\"PatientPreferenceDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Patient Preference.\",\"isNullable\":true,\"name\":\"PatientPreferenceDescription\"}]}}}",
+			"Description": "The Patient preference associated with the characteristic.\n\nEx:\n- Primary\n- Secondary\n- Alternate\n\nEx:\nPatient ID: 1000\nTransportation Requirement:  Transport to Work \nTransportation Mode: Personal Auto\nPatient Preference: Primary\nTimestamp:  08/24/04  (Date information recorded/reported/entered)\n\nPatient ID: 1000\nTransportation Requirement:  Transport to Work \nTransportation Mode: Bus\nPatient Preference: Alternate\nTimestamp:  08/24/04  (Date information recorded/reported/entered)",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientPreferenceId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

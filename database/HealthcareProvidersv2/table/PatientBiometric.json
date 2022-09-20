@@ -1,0 +1,263 @@
+{
+	"name": "PatientBiometric",
+	"properties": {
+		"Name": "PatientBiometric",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The biometrics associated with the patient.\n\nThe automatic recognition of persons based on unique combinations of measurable physical or behavioral characteristics. Examples include fingerprints, iris scanning, face and voice recognition, or hand geometry.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBiometric.cdm.json/PatientBiometric",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBiometric.cdm.json/PatientBiometric",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "BiometricTypeId",
+					"Description": "The unique identifier of a biometric type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBiometric.cdm.json/PatientBiometric",
+						"Name": "BiometricTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientBiometricTimestamp",
+					"Description": "The timestamp that the associated information is reported, recorded or effective as-of.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBiometric.cdm.json/PatientBiometric",
+						"Name": "PatientBiometricTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "PatientBiometricTemplate",
+					"Description": "The biometric reference pattern of an individual of the associated biometric stored for matching. \n\nBioCert devices convert fingerprint information into mathematical templates, so actual fingerprint images are not stored and cannot be reconstructed based on template data.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBiometric.cdm.json/PatientBiometric",
+						"Name": "PatientBiometricTemplate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "binary",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "binary"
+						}
+					}
+				},
+				{
+					"Name": "BiometricName",
+					"Description": "The name associated with the biometric name.\n\nEx: \nHair - Brown\nEyes - Blue",
+					"BaseAttributeReference": {
+						"Entity": "PatientBiometric.cdm.json/PatientBiometric",
+						"Name": "BiometricName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "BiometricValue",
+					"Description": "The text value of the biometric.\n\nEx:\nHair = brown\nEyes = blue",
+					"BaseAttributeReference": {
+						"Entity": "PatientBiometric.cdm.json/PatientBiometric",
+						"Name": "BiometricValue"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "BiometricUnitsQuantity",
+					"Description": "The quantity or similar units associated with the biometric.\n\nEx:\nWeight = 150 pounds",
+					"BaseAttributeReference": {
+						"Entity": "PatientBiometric.cdm.json/PatientBiometric",
+						"Name": "BiometricUnitsQuantity"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "BiometricUnitOfMeasureId",
+					"Description": "The unique identifier of a Unit Of Measure.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBiometric.cdm.json/PatientBiometric",
+						"Name": "BiometricUnitOfMeasureId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "BiometricCollectionTimestamp",
+					"Description": "The timestamp of the biometric data collection.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBiometric.cdm.json/PatientBiometric",
+						"Name": "BiometricCollectionTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "BiometricRecordedTimestamp",
+					"Description": "The timestamp that the biometric data was recorded.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBiometric.cdm.json/PatientBiometric",
+						"Name": "BiometricRecordedTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "PatientBiometricNote",
+					"Description": "A note, comment or additional information regarding the Patient biometric.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBiometric.cdm.json/PatientBiometric",
+						"Name": "PatientBiometricNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientBiometric",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientBiometric",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"PatientId\"},\"BiometricTypeId\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"BiometricTypeId\"},\"PatientBiometricTimestamp\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"PatientBiometricTimestamp\"},\"PatientBiometricTemplate\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"PatientBiometricTemplate\"},\"BiometricName\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"BiometricName\"},\"BiometricValue\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"BiometricValue\"},\"BiometricUnitsQuantity\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"BiometricUnitsQuantity\"},\"BiometricUnitOfMeasureId\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"BiometricUnitOfMeasureId\"},\"BiometricCollectionTimestamp\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"BiometricCollectionTimestamp\"},\"BiometricRecordedTimestamp\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"BiometricRecordedTimestamp\"},\"PatientBiometricNote\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"PatientBiometricNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientBiometric\",\"path\":\"PatientBiometric.cdm.json/PatientBiometric\"},\"description\":\"The biometrics associated with the patient.\\n\\nThe automatic recognition of persons based on unique combinations of measurable physical or behavioral characteristics. Examples include fingerprints, iris scanning, face and voice recognition, or hand geometry.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"BiometricTypeId\",\"PatientBiometricTimestamp\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"BiometricTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a biometric type.\",\"isNullable\":false,\"name\":\"BiometricTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"PatientBiometricTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp that the associated information is reported, recorded or effective as-of.\",\"isNullable\":false,\"name\":\"PatientBiometricTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"PatientBiometricTemplate\"},\"dataType\":\"binary\",\"description\":\"The biometric reference pattern of an individual of the associated biometric stored for matching. \\n\\nBioCert devices convert fingerprint information into mathematical templates, so actual fingerprint images are not stored and cannot be reconstructed based on template data.\",\"isNullable\":true,\"name\":\"PatientBiometricTemplate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"BiometricName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name associated with the biometric name.\\n\\nEx: \\nHair - Brown\\nEyes - Blue\",\"isNullable\":true,\"name\":\"BiometricName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"BiometricValue\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The text value of the biometric.\\n\\nEx:\\nHair = brown\\nEyes = blue\",\"isNullable\":true,\"name\":\"BiometricValue\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"BiometricUnitsQuantity\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The quantity or similar units associated with the biometric.\\n\\nEx:\\nWeight = 150 pounds\",\"isNullable\":true,\"scale\":2,\"name\":\"BiometricUnitsQuantity\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"BiometricUnitOfMeasureId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Unit Of Measure.\",\"isNullable\":true,\"name\":\"BiometricUnitOfMeasureId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"BiometricCollectionTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp of the biometric data collection.\",\"isNullable\":true,\"name\":\"BiometricCollectionTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"BiometricRecordedTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp that the biometric data was recorded.\",\"isNullable\":true,\"name\":\"BiometricRecordedTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBiometric.cdm.json/PatientBiometric\",\"name\":\"PatientBiometricNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient biometric.\",\"isNullable\":true,\"name\":\"PatientBiometricNote\"}]}}}",
+			"Description": "The biometrics associated with the patient.\n\nThe automatic recognition of persons based on unique combinations of measurable physical or behavioral characteristics. Examples include fingerprints, iris scanning, face and voice recognition, or hand geometry.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,BiometricTypeId,PatientBiometricTimestamp",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

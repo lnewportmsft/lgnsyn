@@ -1,0 +1,210 @@
+{
+	"name": "PatientLanguageUsage",
+	"properties": {
+		"Name": "PatientLanguageUsage",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The language(s) and language usage that the Patient identifies or are identified as appropriate for various language usage.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLanguageUsage.cdm.json/PatientLanguageUsage",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLanguageUsage.cdm.json/PatientLanguageUsage",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "LanguageUsageId",
+					"Description": "The unique identifier of the Language Usage.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLanguageUsage.cdm.json/PatientLanguageUsage",
+						"Name": "LanguageUsageId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "IsoLanguageId",
+					"Description": "The unique identifier of an ISO Language.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLanguageUsage.cdm.json/PatientLanguageUsage",
+						"Name": "IsoLanguageId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date of the associated Patient Language Usage.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLanguageUsage.cdm.json/PatientLanguageUsage",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date of the associated Patient Language Usage.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLanguageUsage.cdm.json/PatientLanguageUsage",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PreferenceId",
+					"Description": "The unique identifier of a Preference.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLanguageUsage.cdm.json/PatientLanguageUsage",
+						"Name": "PreferenceId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "LanguageProficiencyId",
+					"Description": "The unique identifier of a Language Proficiency.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLanguageUsage.cdm.json/PatientLanguageUsage",
+						"Name": "LanguageProficiencyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientLanguageUsageNote",
+					"Description": "A note, comment or additional information regarding the Patient Language Usage.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLanguageUsage.cdm.json/PatientLanguageUsage",
+						"Name": "PatientLanguageUsageNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientLanguageUsage",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientLanguageUsage",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"PatientId\"},\"LanguageUsageId\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"LanguageUsageId\"},\"IsoLanguageId\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"IsoLanguageId\"},\"PeriodStartDate\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"PeriodEndDate\"},\"PreferenceId\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"PreferenceId\"},\"LanguageProficiencyId\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"LanguageProficiencyId\"},\"PatientLanguageUsageNote\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"PatientLanguageUsageNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientLanguageUsage\",\"path\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\"},\"description\":\"The language(s) and language usage that the Patient identifies or are identified as appropriate for various language usage.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"LanguageUsageId\",\"IsoLanguageId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"LanguageUsageId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of the Language Usage.\",\"isNullable\":false,\"name\":\"LanguageUsageId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"IsoLanguageId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an ISO Language.\",\"isNullable\":false,\"name\":\"IsoLanguageId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date of the associated Patient Language Usage.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date of the associated Patient Language Usage.\",\"isNullable\":false,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"PreferenceId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Preference.\",\"isNullable\":true,\"name\":\"PreferenceId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"LanguageProficiencyId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Language Proficiency.\",\"isNullable\":true,\"name\":\"LanguageProficiencyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLanguageUsage.cdm.json/PatientLanguageUsage\",\"name\":\"PatientLanguageUsageNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient Language Usage.\",\"isNullable\":true,\"name\":\"PatientLanguageUsageNote\"}]}}}",
+			"Description": "The language(s) and language usage that the Patient identifies or are identified as appropriate for various language usage.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,LanguageUsageId,IsoLanguageId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

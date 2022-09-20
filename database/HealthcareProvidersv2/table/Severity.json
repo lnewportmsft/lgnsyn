@@ -1,0 +1,113 @@
+{
+	"name": "Severity",
+	"properties": {
+		"Name": "Severity",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The severity of an observed behavior.\n\nEx:\n- Mild\n- Moderate\n- Severe",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "SeverityId",
+					"Description": "The unique identifier of a severity.",
+					"BaseAttributeReference": {
+						"Entity": "Severity.cdm.json/Severity",
+						"Name": "SeverityId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "SeverityName",
+					"Description": "The name of a severity.",
+					"BaseAttributeReference": {
+						"Entity": "Severity.cdm.json/Severity",
+						"Name": "SeverityName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "SeverityDescription",
+					"Description": "The description of a severity.",
+					"BaseAttributeReference": {
+						"Entity": "Severity.cdm.json/Severity",
+						"Name": "SeverityDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/Severity",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/Severity",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"SeverityId\":{\"entity\":\"Severity.cdm.json/Severity\",\"name\":\"SeverityId\"},\"SeverityName\":{\"entity\":\"Severity.cdm.json/Severity\",\"name\":\"SeverityName\"},\"SeverityDescription\":{\"entity\":\"Severity.cdm.json/Severity\",\"name\":\"SeverityDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"Severity\",\"path\":\"Severity.cdm.json/Severity\"},\"description\":\"The severity of an observed behavior.\\n\\nEx:\\n- Mild\\n- Moderate\\n- Severe\",\"primaryKey\":[\"SeverityId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Severity.cdm.json/Severity\",\"name\":\"SeverityId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a severity.\",\"isNullable\":false,\"name\":\"SeverityId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Severity.cdm.json/Severity\",\"name\":\"SeverityName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a severity.\",\"isNullable\":true,\"name\":\"SeverityName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Severity.cdm.json/Severity\",\"name\":\"SeverityDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a severity.\",\"isNullable\":true,\"name\":\"SeverityDescription\"}]}}}",
+			"Description": "The severity of an observed behavior.\n\nEx:\n- Mild\n- Moderate\n- Severe",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "SeverityId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

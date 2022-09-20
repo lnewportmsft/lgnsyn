@@ -1,0 +1,26 @@
+{
+	"name": "relationship-twfclrahlc",
+	"properties": {
+		"Name": "relationship-twfclrahlc",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "CauseOfDeathType",
+		"ToTableName": "PatientCauseOfDeath",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "CauseOfDeathTypeId",
+				"ToColumnName": "CauseOfDeathTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"CauseOfDeathType.cdm.json/CauseOfDeathType\",\"toEntity\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\",\"joinPairs\":[{\"fromAttribute\":\"CauseOfDeathTypeId\",\"toAttribute\":\"CauseOfDeathTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

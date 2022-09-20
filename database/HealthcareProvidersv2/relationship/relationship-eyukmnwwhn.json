@@ -1,0 +1,26 @@
+{
+	"name": "relationship-eyukmnwwhn",
+	"properties": {
+		"Name": "relationship-eyukmnwwhn",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientMedicalCondition",
+		"ToTableName": "PatientMedicalConditionTreatmentPlan",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "MedicalConditionId",
+				"ToColumnName": "MedicalConditionId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"toEntity\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\",\"joinPairs\":[{\"fromAttribute\":\"MedicalConditionId\",\"toAttribute\":\"MedicalConditionId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

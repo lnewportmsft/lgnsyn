@@ -1,0 +1,177 @@
+{
+	"name": "PatientFamilyMember",
+	"properties": {
+		"Name": "PatientFamilyMember",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more Family Members of the Patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMember.cdm.json/PatientFamilyMember",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMember.cdm.json/PatientFamilyMember",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientFamilyMemberId",
+					"Description": "The unique identifier of a Patient Family Member.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMember.cdm.json/PatientFamilyMember",
+						"Name": "PatientFamilyMemberId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientFamilyMemberRelationshipTypeId",
+					"Description": "The unique identifier of a Patient Family Member Relationship Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMember.cdm.json/PatientFamilyMember",
+						"Name": "PatientFamilyMemberRelationshipTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientFamilyMemberName",
+					"Description": "The name of the patient family member.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMember.cdm.json/PatientFamilyMember",
+						"Name": "PatientFamilyMemberName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientFamilyMemberNote",
+					"Description": "A note, comment or additional information regarding the patient family member.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMember.cdm.json/PatientFamilyMember",
+						"Name": "PatientFamilyMemberNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PartyId",
+					"Description": "The unique identifier of a Party.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMember.cdm.json/PatientFamilyMember",
+						"Name": "PartyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFamilyMember",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFamilyMember",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"name\":\"PatientId\"},\"PatientFamilyMemberId\":{\"entity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"name\":\"PatientFamilyMemberId\"},\"PatientFamilyMemberRelationshipTypeId\":{\"entity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"name\":\"PatientFamilyMemberRelationshipTypeId\"},\"PatientFamilyMemberName\":{\"entity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"name\":\"PatientFamilyMemberName\"},\"PatientFamilyMemberNote\":{\"entity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"name\":\"PatientFamilyMemberNote\"},\"PartyId\":{\"entity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"name\":\"PartyId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientFamilyMember\",\"path\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\"},\"description\":\"The one or more Family Members of the Patient.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PatientFamilyMemberId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"name\":\"PatientFamilyMemberId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Family Member.\",\"isNullable\":false,\"name\":\"PatientFamilyMemberId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"name\":\"PatientFamilyMemberRelationshipTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Family Member Relationship Type.\",\"isNullable\":true,\"name\":\"PatientFamilyMemberRelationshipTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"name\":\"PatientFamilyMemberName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the patient family member.\",\"isNullable\":true,\"name\":\"PatientFamilyMemberName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"name\":\"PatientFamilyMemberNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the patient family member.\",\"isNullable\":true,\"name\":\"PatientFamilyMemberNote\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"name\":\"PartyId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Party.\",\"isNullable\":true,\"name\":\"PartyId\"}]}}}",
+			"Description": "The one or more Family Members of the Patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PatientFamilyMemberId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

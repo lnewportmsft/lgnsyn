@@ -1,0 +1,195 @@
+{
+	"name": "RegistryPatient",
+	"properties": {
+		"Name": "RegistryPatient",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The inclusion of a patient on a registry.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "RegistryId",
+					"Description": "The unique identifier of a Registry,",
+					"BaseAttributeReference": {
+						"Entity": "RegistryPatient.cdm.json/RegistryPatient",
+						"Name": "RegistryId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "RegistryPatient.cdm.json/RegistryPatient",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "RegistryPatient.cdm.json/RegistryPatient",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date that the patient is included on the registry.",
+					"BaseAttributeReference": {
+						"Entity": "RegistryPatient.cdm.json/RegistryPatient",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date that the patient is included on the registry.",
+					"BaseAttributeReference": {
+						"Entity": "RegistryPatient.cdm.json/RegistryPatient",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "RegistryPatientNote",
+					"Description": "A note, comment or additional information regarding the Patient Registry.",
+					"BaseAttributeReference": {
+						"Entity": "RegistryPatient.cdm.json/RegistryPatient",
+						"Name": "RegistryPatientNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "RegistryPatientSubmittedTimestamp",
+					"Description": "The timestamp that the registry patient was submitted to the registry.",
+					"BaseAttributeReference": {
+						"Entity": "RegistryPatient.cdm.json/RegistryPatient",
+						"Name": "RegistryPatientSubmittedTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "SubmittedByProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "RegistryPatient.cdm.json/RegistryPatient",
+						"Name": "SubmittedByProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/RegistryPatient",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/RegistryPatient",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"RegistryId\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"RegistryId\"},\"ServiceProviderId\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"PatientId\"},\"PeriodStartDate\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"PeriodEndDate\"},\"RegistryPatientNote\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"RegistryPatientNote\"},\"RegistryPatientSubmittedTimestamp\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"RegistryPatientSubmittedTimestamp\"},\"SubmittedByProviderId\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"SubmittedByProviderId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"RegistryPatient\",\"path\":\"RegistryPatient.cdm.json/RegistryPatient\"},\"description\":\"The inclusion of a patient on a registry.\",\"primaryKey\":[\"RegistryId\",\"ServiceProviderId\",\"PatientId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"RegistryId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Registry,\",\"isNullable\":false,\"name\":\"RegistryId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date that the patient is included on the registry.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date that the patient is included on the registry.\",\"isNullable\":false,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"RegistryPatientNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient Registry.\",\"isNullable\":true,\"name\":\"RegistryPatientNote\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"RegistryPatientSubmittedTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp that the registry patient was submitted to the registry.\",\"isNullable\":false,\"name\":\"RegistryPatientSubmittedTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RegistryPatient.cdm.json/RegistryPatient\",\"name\":\"SubmittedByProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":true,\"name\":\"SubmittedByProviderId\"}]}}}",
+			"Description": "The inclusion of a patient on a registry.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "RegistryId,ServiceProviderId,PatientId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

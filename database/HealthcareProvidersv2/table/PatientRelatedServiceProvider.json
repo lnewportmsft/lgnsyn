@@ -1,0 +1,178 @@
+{
+	"name": "PatientRelatedServiceProvider",
+	"properties": {
+		"Name": "PatientRelatedServiceProvider",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A Service Provider that has a relationship with the Patient over the indicated period.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientServiceProviderRelationshipTypeId",
+					"Description": "The unique identifier of a Patient - Service Provider relationship type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider",
+						"Name": "PatientServiceProviderRelationshipTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "RelatedServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider",
+						"Name": "RelatedServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated patient - service provider relationship is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated patient - service provider relationship is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientServiceProviderRelationshipNote",
+					"Description": "A note, comment or additional information regarding the patient - service provider relationship.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider",
+						"Name": "PatientServiceProviderRelationshipNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRelatedServiceProvider",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRelatedServiceProvider",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\",\"name\":\"PatientId\"},\"PatientServiceProviderRelationshipTypeId\":{\"entity\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\",\"name\":\"PatientServiceProviderRelationshipTypeId\"},\"RelatedServiceProviderId\":{\"entity\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\",\"name\":\"RelatedServiceProviderId\"},\"PeriodStartDate\":{\"entity\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\",\"name\":\"PeriodEndDate\"},\"PatientServiceProviderRelationshipNote\":{\"entity\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\",\"name\":\"PatientServiceProviderRelationshipNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientRelatedServiceProvider\",\"path\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\"},\"description\":\"A Service Provider that has a relationship with the Patient over the indicated period.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PatientServiceProviderRelationshipTypeId\",\"RelatedServiceProviderId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\",\"name\":\"PatientServiceProviderRelationshipTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient - Service Provider relationship type.\",\"isNullable\":false,\"name\":\"PatientServiceProviderRelationshipTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\",\"name\":\"RelatedServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"RelatedServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated patient - service provider relationship is valid or in-effect.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated patient - service provider relationship is valid or in-effect.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedServiceProvider.cdm.json/PatientRelatedServiceProvider\",\"name\":\"PatientServiceProviderRelationshipNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the patient - service provider relationship.\",\"isNullable\":true,\"name\":\"PatientServiceProviderRelationshipNote\"}]}}}",
+			"Description": "A Service Provider that has a relationship with the Patient over the indicated period.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PatientServiceProviderRelationshipTypeId,RelatedServiceProviderId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

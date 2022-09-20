@@ -1,0 +1,129 @@
+{
+	"name": "PatientRiskType",
+	"properties": {
+		"Name": "PatientRiskType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A type of risk that a patient is at risk of having\n\nEx:\n- Falling\n- Domestic Abuse\n- Alcoholism\n- Obesity\n- Diabetes\n- Hypertension\n- Suicide\n- High Risk Behavior\n- Osteoporosis",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientRiskTypeId",
+					"Description": "The unique identifier of a Patient Risk Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskType.cdm.json/PatientRiskType",
+						"Name": "PatientRiskTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientRiskTypeName",
+					"Description": "The name of a Patient Risk Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskType.cdm.json/PatientRiskType",
+						"Name": "PatientRiskTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientRiskTypeDescription",
+					"Description": "The description of a Patient Risk Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskType.cdm.json/PatientRiskType",
+						"Name": "PatientRiskTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "MedicalConditionId",
+					"Description": "The unique identifier of a medical condition.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskType.cdm.json/PatientRiskType",
+						"Name": "MedicalConditionId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRiskType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRiskType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientRiskTypeId\":{\"entity\":\"PatientRiskType.cdm.json/PatientRiskType\",\"name\":\"PatientRiskTypeId\"},\"PatientRiskTypeName\":{\"entity\":\"PatientRiskType.cdm.json/PatientRiskType\",\"name\":\"PatientRiskTypeName\"},\"PatientRiskTypeDescription\":{\"entity\":\"PatientRiskType.cdm.json/PatientRiskType\",\"name\":\"PatientRiskTypeDescription\"},\"MedicalConditionId\":{\"entity\":\"PatientRiskType.cdm.json/PatientRiskType\",\"name\":\"MedicalConditionId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientRiskType\",\"path\":\"PatientRiskType.cdm.json/PatientRiskType\"},\"description\":\"A type of risk that a patient is at risk of having\\n\\nEx:\\n- Falling\\n- Domestic Abuse\\n- Alcoholism\\n- Obesity\\n- Diabetes\\n- Hypertension\\n- Suicide\\n- High Risk Behavior\\n- Osteoporosis\",\"primaryKey\":[\"PatientRiskTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskType.cdm.json/PatientRiskType\",\"name\":\"PatientRiskTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Risk Type.\",\"isNullable\":false,\"name\":\"PatientRiskTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskType.cdm.json/PatientRiskType\",\"name\":\"PatientRiskTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Patient Risk Type.\",\"isNullable\":true,\"name\":\"PatientRiskTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskType.cdm.json/PatientRiskType\",\"name\":\"PatientRiskTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Patient Risk Type.\",\"isNullable\":true,\"name\":\"PatientRiskTypeDescription\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskType.cdm.json/PatientRiskType\",\"name\":\"MedicalConditionId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a medical condition.\",\"isNullable\":true,\"name\":\"MedicalConditionId\"}]}}}",
+			"Description": "A type of risk that a patient is at risk of having\n\nEx:\n- Falling\n- Domestic Abuse\n- Alcoholism\n- Obesity\n- Diabetes\n- Hypertension\n- Suicide\n- High Risk Behavior\n- Osteoporosis",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientRiskTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

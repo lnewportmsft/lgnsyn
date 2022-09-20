@@ -1,0 +1,26 @@
+{
+	"name": "relationship-hcnofwrahu",
+	"properties": {
+		"Name": "relationship-hcnofwrahu",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "AdvanceDirectiveType",
+		"ToTableName": "PatientAdvanceDirective",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "AdvanceDirectiveTypeId",
+				"ToColumnName": "AdvanceDirectiveTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"AdvanceDirectiveType.cdm.json/AdvanceDirectiveType\",\"toEntity\":\"PatientAdvanceDirective.cdm.json/PatientAdvanceDirective\",\"joinPairs\":[{\"fromAttribute\":\"AdvanceDirectiveTypeId\",\"toAttribute\":\"AdvanceDirectiveTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,178 @@
+{
+	"name": "PatientLocationGeographicCriteria",
+	"properties": {
+		"Name": "PatientLocationGeographicCriteria",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more geographic criteria that are assigned or linked to a Patient Location and by which they are identified or qualified from a geographic perspective.\n\nThese criteria can change over a period of time and are represented with 'period start date/period end date' qualifications, which represented the best case for knowing this information.    If the data is only randomly sampled or recorded then you could use a single 'date' to identify its recording or effective as-of date.\n\nGeographic market segmentation is a technique for segmenting a market based upon common geographic variables.    \n\nSpecific Geographic Criteria are then assigned to parties in order to identify common characteristics that can be used for planning and analysis of the market segment.\n\nExamples of Geographic Criteria include urban, rural, Southwest and East Europe.\n\nThe business organization identifies a finite number of Geographic Criteria that are used to identify parties.   These criteria will be unique to each business organization and focus upon that organizations specific information requirements.\n\nThe Geographic Criteria Type is the larger classification to which the Geographic Criteria belongs.\n\nGeographic Criteria Type is a means of classifying, grouping or categorizing specific Geographic Criteria at a higher level for analysis and presentation.\n\nThe following are examples:\n\nGeographic Criteria Type: US Region\nGeographic Criteria: Southwest\n\nGeographic Criteria Type: ABCD County Type \nGeographic Criteria: ABCD County Type A \n\nGeographic Criteria Type: City Size\nGeographic Criteria: 50,000-100,000\n\nGeographic Criteria Type: Area Density \nGeographic Criteria: Urban\n\nGeographic Criteria Type: Climate\nGeographic Criteria: Tropical\n\nGeographic Criteria Type: Topology\nGeographic Criteria: Desert",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "LocationId",
+					"Description": "The unique identifier of a Location.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria",
+						"Name": "LocationId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "GeographicCriteriaId",
+					"Description": "The unique identifier of a Geographic Criteria.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria",
+						"Name": "GeographicCriteriaId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientGeographicCriteriaNote",
+					"Description": "A note, comment or additional information related to Patient Geographic Criteria.",
+					"BaseAttributeReference": {
+						"Entity": "PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria",
+						"Name": "PatientGeographicCriteriaNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientLocationGeographicCriteria",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientLocationGeographicCriteria",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria\",\"name\":\"PatientId\"},\"LocationId\":{\"entity\":\"PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria\",\"name\":\"LocationId\"},\"GeographicCriteriaId\":{\"entity\":\"PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria\",\"name\":\"GeographicCriteriaId\"},\"PeriodStartDate\":{\"entity\":\"PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria\",\"name\":\"PeriodEndDate\"},\"PatientGeographicCriteriaNote\":{\"entity\":\"PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria\",\"name\":\"PatientGeographicCriteriaNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientLocationGeographicCriteria\",\"path\":\"PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria\"},\"description\":\"The one or more geographic criteria that are assigned or linked to a Patient Location and by which they are identified or qualified from a geographic perspective.\\n\\nThese criteria can change over a period of time and are represented with 'period start date/period end date' qualifications, which represented the best case for knowing this information.    If the data is only randomly sampled or recorded then you could use a single 'date' to identify its recording or effective as-of date.\\n\\nGeographic market segmentation is a technique for segmenting a market based upon common geographic variables.    \\n\\nSpecific Geographic Criteria are then assigned to parties in order to identify common characteristics that can be used for planning and analysis of the market segment.\\n\\nExamples of Geographic Criteria include urban, rural, Southwest and East Europe.\\n\\nThe business organization identifies a finite number of Geographic Criteria that are used to identify parties.   These criteria will be unique to each business organization and focus upon that organizations specific information requirements.\\n\\nThe Geographic Criteria Type is the larger classification to which the Geographic Criteria belongs.\\n\\nGeographic Criteria Type is a means of classifying, grouping or categorizing specific Geographic Criteria at a higher level for analysis and presentation.\\n\\nThe following are examples:\\n\\nGeographic Criteria Type: US Region\\nGeographic Criteria: Southwest\\n\\nGeographic Criteria Type: ABCD County Type \\nGeographic Criteria: ABCD County Type A \\n\\nGeographic Criteria Type: City Size\\nGeographic Criteria: 50,000-100,000\\n\\nGeographic Criteria Type: Area Density \\nGeographic Criteria: Urban\\n\\nGeographic Criteria Type: Climate\\nGeographic Criteria: Tropical\\n\\nGeographic Criteria Type: Topology\\nGeographic Criteria: Desert\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"LocationId\",\"GeographicCriteriaId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria\",\"name\":\"LocationId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Location.\",\"isNullable\":false,\"name\":\"LocationId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria\",\"name\":\"GeographicCriteriaId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Geographic Criteria.\",\"isNullable\":false,\"name\":\"GeographicCriteriaId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientLocationGeographicCriteria.cdm.json/PatientLocationGeographicCriteria\",\"name\":\"PatientGeographicCriteriaNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information related to Patient Geographic Criteria.\",\"isNullable\":true,\"name\":\"PatientGeographicCriteriaNote\"}]}}}",
+			"Description": "The one or more geographic criteria that are assigned or linked to a Patient Location and by which they are identified or qualified from a geographic perspective.\n\nThese criteria can change over a period of time and are represented with 'period start date/period end date' qualifications, which represented the best case for knowing this information.    If the data is only randomly sampled or recorded then you could use a single 'date' to identify its recording or effective as-of date.\n\nGeographic market segmentation is a technique for segmenting a market based upon common geographic variables.    \n\nSpecific Geographic Criteria are then assigned to parties in order to identify common characteristics that can be used for planning and analysis of the market segment.\n\nExamples of Geographic Criteria include urban, rural, Southwest and East Europe.\n\nThe business organization identifies a finite number of Geographic Criteria that are used to identify parties.   These criteria will be unique to each business organization and focus upon that organizations specific information requirements.\n\nThe Geographic Criteria Type is the larger classification to which the Geographic Criteria belongs.\n\nGeographic Criteria Type is a means of classifying, grouping or categorizing specific Geographic Criteria at a higher level for analysis and presentation.\n\nThe following are examples:\n\nGeographic Criteria Type: US Region\nGeographic Criteria: Southwest\n\nGeographic Criteria Type: ABCD County Type \nGeographic Criteria: ABCD County Type A \n\nGeographic Criteria Type: City Size\nGeographic Criteria: 50,000-100,000\n\nGeographic Criteria Type: Area Density \nGeographic Criteria: Urban\n\nGeographic Criteria Type: Climate\nGeographic Criteria: Tropical\n\nGeographic Criteria Type: Topology\nGeographic Criteria: Desert",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,LocationId,GeographicCriteriaId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

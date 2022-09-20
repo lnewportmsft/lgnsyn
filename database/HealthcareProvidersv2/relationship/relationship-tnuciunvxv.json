@@ -1,0 +1,26 @@
+{
+	"name": "relationship-tnuciunvxv",
+	"properties": {
+		"Name": "relationship-tnuciunvxv",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientProblem",
+		"ToTableName": "PatientProblemActivity",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientProblemNumber",
+				"ToColumnName": "PatientProblemNumber"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientProblem.cdm.json/PatientProblem\",\"toEntity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"joinPairs\":[{\"fromAttribute\":\"PatientProblemNumber\",\"toAttribute\":\"PatientProblemNumber\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

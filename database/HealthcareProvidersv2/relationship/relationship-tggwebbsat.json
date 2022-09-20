@@ -1,0 +1,26 @@
+{
+	"name": "relationship-tggwebbsat",
+	"properties": {
+		"Name": "relationship-tggwebbsat",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientName",
+		"ToTableName": "PatientNameSuffix",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientId",
+				"ToColumnName": "PatientId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientName.cdm.json/PatientName\",\"toEntity\":\"PatientNameSuffix.cdm.json/PatientNameSuffix\",\"joinPairs\":[{\"fromAttribute\":\"PatientId\",\"toAttribute\":\"PatientId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

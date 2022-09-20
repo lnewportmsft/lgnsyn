@@ -1,0 +1,162 @@
+{
+	"name": "PatientAmbulatoryStatus",
+	"properties": {
+		"Name": "PatientAmbulatoryStatus",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The permanent or transient handicapped conditions of a patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AmbulatoryStatusTypeId",
+					"Description": "The unique identifier of an ambulatory status type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus",
+						"Name": "AmbulatoryStatusTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AmbulatoryStatusPeriodStartDate",
+					"Description": "The period start date for which the associated ambulatory status is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus",
+						"Name": "AmbulatoryStatusPeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "AmbulatoryStatusPeriodEndDate",
+					"Description": "The period end date for which the associated ambulatory status is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus",
+						"Name": "AmbulatoryStatusPeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "AmbulatoryStatusNote",
+					"Description": "A note, comment or additional information regarding the Ambulatory Status.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus",
+						"Name": "AmbulatoryStatusNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientAmbulatoryStatus",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientAmbulatoryStatus",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus\",\"name\":\"PatientId\"},\"AmbulatoryStatusTypeId\":{\"entity\":\"PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus\",\"name\":\"AmbulatoryStatusTypeId\"},\"AmbulatoryStatusPeriodStartDate\":{\"entity\":\"PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus\",\"name\":\"AmbulatoryStatusPeriodStartDate\"},\"AmbulatoryStatusPeriodEndDate\":{\"entity\":\"PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus\",\"name\":\"AmbulatoryStatusPeriodEndDate\"},\"AmbulatoryStatusNote\":{\"entity\":\"PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus\",\"name\":\"AmbulatoryStatusNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientAmbulatoryStatus\",\"path\":\"PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus\"},\"description\":\"The permanent or transient handicapped conditions of a patient.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"AmbulatoryStatusTypeId\",\"AmbulatoryStatusPeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus\",\"name\":\"AmbulatoryStatusTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an ambulatory status type.\",\"isNullable\":false,\"name\":\"AmbulatoryStatusTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus\",\"name\":\"AmbulatoryStatusPeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated ambulatory status is valid or in-effect.\",\"isNullable\":false,\"name\":\"AmbulatoryStatusPeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus\",\"name\":\"AmbulatoryStatusPeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated ambulatory status is valid or in-effect.\",\"isNullable\":true,\"name\":\"AmbulatoryStatusPeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAmbulatoryStatus.cdm.json/PatientAmbulatoryStatus\",\"name\":\"AmbulatoryStatusNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Ambulatory Status.\",\"isNullable\":true,\"name\":\"AmbulatoryStatusNote\"}]}}}",
+			"Description": "The permanent or transient handicapped conditions of a patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,AmbulatoryStatusTypeId,AmbulatoryStatusPeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

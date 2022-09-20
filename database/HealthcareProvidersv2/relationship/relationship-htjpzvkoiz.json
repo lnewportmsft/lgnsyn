@@ -1,0 +1,26 @@
+{
+	"name": "relationship-htjpzvkoiz",
+	"properties": {
+		"Name": "relationship-htjpzvkoiz",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "HealthcareProduct",
+		"ToTableName": "PatientProductBenefitCriteria",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ProductId",
+				"ToColumnName": "ProductId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"HealthcareProduct.cdm.json/HealthcareProduct\",\"toEntity\":\"PatientProductBenefitCriteria.cdm.json/PatientProductBenefitCriteria\",\"joinPairs\":[{\"fromAttribute\":\"ProductId\",\"toAttribute\":\"ProductId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

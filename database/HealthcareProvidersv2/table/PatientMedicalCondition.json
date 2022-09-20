@@ -1,0 +1,245 @@
+{
+	"name": "PatientMedicalCondition",
+	"properties": {
+		"Name": "PatientMedicalCondition",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more medical conditions ascribed to the Patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCondition.cdm.json/PatientMedicalCondition",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCondition.cdm.json/PatientMedicalCondition",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "MedicalConditionId",
+					"Description": "The unique identifier of a medical condition.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCondition.cdm.json/PatientMedicalCondition",
+						"Name": "MedicalConditionId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartTimestamp",
+					"Description": "The period start timestamp for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCondition.cdm.json/PatientMedicalCondition",
+						"Name": "PeriodStartTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndTimestamp",
+					"Description": "The period end timestamp for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCondition.cdm.json/PatientMedicalCondition",
+						"Name": "PeriodEndTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "FirstReportedTimestamp",
+					"Description": "The timestamp that the medical condition was first reported.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCondition.cdm.json/PatientMedicalCondition",
+						"Name": "FirstReportedTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "LastReportedTimestamp",
+					"Description": "The last timestamp that the medical condition was reported or updated.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCondition.cdm.json/PatientMedicalCondition",
+						"Name": "LastReportedTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "MedicalConditionRecordedTimestamp",
+					"Description": "The timestamp that the patient medical condition was recorded.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCondition.cdm.json/PatientMedicalCondition",
+						"Name": "MedicalConditionRecordedTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "MedicalSeverityId",
+					"Description": "The unique identifier of a the medical severity of an allergy or medical condition.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCondition.cdm.json/PatientMedicalCondition",
+						"Name": "MedicalSeverityId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "MedicalConditionStatusTypeId",
+					"Description": "The unique identifier of a medical condition status type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCondition.cdm.json/PatientMedicalCondition",
+						"Name": "MedicalConditionStatusTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientMedicalConditionNote",
+					"Description": "A note, comment or additional information regarding the patient medical condition.",
+					"BaseAttributeReference": {
+						"Entity": "PatientMedicalCondition.cdm.json/PatientMedicalCondition",
+						"Name": "PatientMedicalConditionNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientMedicalCondition",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientMedicalCondition",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"PatientId\"},\"MedicalConditionId\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"MedicalConditionId\"},\"PeriodStartTimestamp\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"PeriodStartTimestamp\"},\"PeriodEndTimestamp\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"PeriodEndTimestamp\"},\"FirstReportedTimestamp\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"FirstReportedTimestamp\"},\"LastReportedTimestamp\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"LastReportedTimestamp\"},\"MedicalConditionRecordedTimestamp\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"MedicalConditionRecordedTimestamp\"},\"MedicalSeverityId\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"MedicalSeverityId\"},\"MedicalConditionStatusTypeId\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"MedicalConditionStatusTypeId\"},\"PatientMedicalConditionNote\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"PatientMedicalConditionNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientMedicalCondition\",\"path\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\"},\"description\":\"The one or more medical conditions ascribed to the Patient.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"MedicalConditionId\",\"PeriodStartTimestamp\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"MedicalConditionId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a medical condition.\",\"isNullable\":false,\"name\":\"MedicalConditionId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"PeriodStartTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The period start timestamp for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"PeriodEndTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The period end timestamp for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodEndTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"FirstReportedTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp that the medical condition was first reported.\",\"isNullable\":true,\"name\":\"FirstReportedTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"LastReportedTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The last timestamp that the medical condition was reported or updated.\",\"isNullable\":true,\"name\":\"LastReportedTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"MedicalConditionRecordedTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp that the patient medical condition was recorded.\",\"isNullable\":true,\"name\":\"MedicalConditionRecordedTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"MedicalSeverityId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a the medical severity of an allergy or medical condition.\",\"isNullable\":true,\"name\":\"MedicalSeverityId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"MedicalConditionStatusTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a medical condition status type.\",\"isNullable\":true,\"name\":\"MedicalConditionStatusTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"name\":\"PatientMedicalConditionNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the patient medical condition.\",\"isNullable\":true,\"name\":\"PatientMedicalConditionNote\"}]}}}",
+			"Description": "The one or more medical conditions ascribed to the Patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,MedicalConditionId,PeriodStartTimestamp",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

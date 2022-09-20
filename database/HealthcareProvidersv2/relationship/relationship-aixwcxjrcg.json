@@ -1,0 +1,26 @@
+{
+	"name": "relationship-aixwcxjrcg",
+	"properties": {
+		"Name": "relationship-aixwcxjrcg",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientName",
+		"ToTableName": "PatientNamePrefix",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientId",
+				"ToColumnName": "PatientId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientName.cdm.json/PatientName\",\"toEntity\":\"PatientNamePrefix.cdm.json/PatientNamePrefix\",\"joinPairs\":[{\"fromAttribute\":\"PatientId\",\"toAttribute\":\"PatientId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

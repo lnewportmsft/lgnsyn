@@ -1,0 +1,26 @@
+{
+	"name": "relationship-tzgbpvlhzs",
+	"properties": {
+		"Name": "relationship-tzgbpvlhzs",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "MedicalConditionStatusType",
+		"ToTableName": "PatientFamilyMemberMedicalCondition",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "MedicalConditionStatusTypeId",
+				"ToColumnName": "MedicalConditionStatusTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"MedicalConditionStatusType.cdm.json/MedicalConditionStatusType\",\"toEntity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"joinPairs\":[{\"fromAttribute\":\"MedicalConditionStatusTypeId\",\"toAttribute\":\"MedicalConditionStatusTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

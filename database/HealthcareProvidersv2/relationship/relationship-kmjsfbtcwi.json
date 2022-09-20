@@ -1,0 +1,26 @@
+{
+	"name": "relationship-kmjsfbtcwi",
+	"properties": {
+		"Name": "relationship-kmjsfbtcwi",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Communication",
+		"ToTableName": "PatientFollowupCommunication",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "CommunicationId",
+				"ToColumnName": "CommunicationId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Communication.cdm.json/Communication\",\"toEntity\":\"PatientFollowupCommunication.cdm.json/PatientFollowupCommunication\",\"joinPairs\":[{\"fromAttribute\":\"CommunicationId\",\"toAttribute\":\"CommunicationId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

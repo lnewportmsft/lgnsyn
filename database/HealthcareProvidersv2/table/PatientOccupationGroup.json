@@ -1,0 +1,162 @@
+{
+	"name": "PatientOccupationGroup",
+	"properties": {
+		"Name": "PatientOccupationGroup",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The Patient Occupation Group.\n\nThese criteria can change over a period of time and are represented with 'period start date/period end date' qualifications, which represented the best case for knowing this information.    If the data is only randomly sampled or recorded then you could use a single 'date' to identify its recording or effective as-of date.\n\nEx:\n-  Executive, Administrative, Managerial\n-  Professional Specialty\n-  Technician\n-  Sales\n-  Clerical\n-  Private Household Service\n-  Protective Service\n-  Service Occupations Except Protective and Household\n-  Farming, Forestry and Fishing\n-  Precision Production, Craft and Repair\n-  Machine Operators, Assemblers and Inspectors\n-  Transportation/Material Moving\n-  Handlers, Equipment Cleaners, Helpers, Laborers",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientOccupationGroup.cdm.json/PatientOccupationGroup",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientOccupationGroup.cdm.json/PatientOccupationGroup",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "OccupationGroupId",
+					"Description": "The unique identifier of an Occupation Group.",
+					"BaseAttributeReference": {
+						"Entity": "PatientOccupationGroup.cdm.json/PatientOccupationGroup",
+						"Name": "OccupationGroupId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientOccupationGroup.cdm.json/PatientOccupationGroup",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientOccupationGroup.cdm.json/PatientOccupationGroup",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientOccupationGroupNote",
+					"Description": "A note, comment or additional information regarding the Patient Occupation Group relationship.",
+					"BaseAttributeReference": {
+						"Entity": "PatientOccupationGroup.cdm.json/PatientOccupationGroup",
+						"Name": "PatientOccupationGroupNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientOccupationGroup",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientOccupationGroup",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientOccupationGroup.cdm.json/PatientOccupationGroup\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientOccupationGroup.cdm.json/PatientOccupationGroup\",\"name\":\"PatientId\"},\"OccupationGroupId\":{\"entity\":\"PatientOccupationGroup.cdm.json/PatientOccupationGroup\",\"name\":\"OccupationGroupId\"},\"PeriodStartDate\":{\"entity\":\"PatientOccupationGroup.cdm.json/PatientOccupationGroup\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientOccupationGroup.cdm.json/PatientOccupationGroup\",\"name\":\"PeriodEndDate\"},\"PatientOccupationGroupNote\":{\"entity\":\"PatientOccupationGroup.cdm.json/PatientOccupationGroup\",\"name\":\"PatientOccupationGroupNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientOccupationGroup\",\"path\":\"PatientOccupationGroup.cdm.json/PatientOccupationGroup\"},\"description\":\"The Patient Occupation Group.\\n\\nThese criteria can change over a period of time and are represented with 'period start date/period end date' qualifications, which represented the best case for knowing this information.    If the data is only randomly sampled or recorded then you could use a single 'date' to identify its recording or effective as-of date.\\n\\nEx:\\n-  Executive, Administrative, Managerial\\n-  Professional Specialty\\n-  Technician\\n-  Sales\\n-  Clerical\\n-  Private Household Service\\n-  Protective Service\\n-  Service Occupations Except Protective and Household\\n-  Farming, Forestry and Fishing\\n-  Precision Production, Craft and Repair\\n-  Machine Operators, Assemblers and Inspectors\\n-  Transportation/Material Moving\\n-  Handlers, Equipment Cleaners, Helpers, Laborers\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"OccupationGroupId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientOccupationGroup.cdm.json/PatientOccupationGroup\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientOccupationGroup.cdm.json/PatientOccupationGroup\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientOccupationGroup.cdm.json/PatientOccupationGroup\",\"name\":\"OccupationGroupId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Occupation Group.\",\"isNullable\":false,\"name\":\"OccupationGroupId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientOccupationGroup.cdm.json/PatientOccupationGroup\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientOccupationGroup.cdm.json/PatientOccupationGroup\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientOccupationGroup.cdm.json/PatientOccupationGroup\",\"name\":\"PatientOccupationGroupNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient Occupation Group relationship.\",\"isNullable\":true,\"name\":\"PatientOccupationGroupNote\"}]}}}",
+			"Description": "The Patient Occupation Group.\n\nThese criteria can change over a period of time and are represented with 'period start date/period end date' qualifications, which represented the best case for knowing this information.    If the data is only randomly sampled or recorded then you could use a single 'date' to identify its recording or effective as-of date.\n\nEx:\n-  Executive, Administrative, Managerial\n-  Professional Specialty\n-  Technician\n-  Sales\n-  Clerical\n-  Private Household Service\n-  Protective Service\n-  Service Occupations Except Protective and Household\n-  Farming, Forestry and Fishing\n-  Precision Production, Craft and Repair\n-  Machine Operators, Assemblers and Inspectors\n-  Transportation/Material Moving\n-  Handlers, Equipment Cleaners, Helpers, Laborers",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,OccupationGroupId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

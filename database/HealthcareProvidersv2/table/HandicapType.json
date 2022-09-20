@@ -1,0 +1,113 @@
+{
+	"name": "HandicapType",
+	"properties": {
+		"Name": "HandicapType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The type handicap / disability of the individual.\n\nEx.:\n- Upper limb disability\n- Lower limb disability\n- Manual dexterity\n- Spinal Cord disability\n- Brain Disability\n- Vision Disability\n- Hearing Disability",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "HandicapTypeId",
+					"Description": "The unique identifier of a handicap type.",
+					"BaseAttributeReference": {
+						"Entity": "HandicapType.cdm.json/HandicapType",
+						"Name": "HandicapTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "HandicapTypeName",
+					"Description": "The name of a handicap type.",
+					"BaseAttributeReference": {
+						"Entity": "HandicapType.cdm.json/HandicapType",
+						"Name": "HandicapTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "HandicapTypeDescription",
+					"Description": "The description of a handicap type.",
+					"BaseAttributeReference": {
+						"Entity": "HandicapType.cdm.json/HandicapType",
+						"Name": "HandicapTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/HandicapType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/HandicapType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"HandicapTypeId\":{\"entity\":\"HandicapType.cdm.json/HandicapType\",\"name\":\"HandicapTypeId\"},\"HandicapTypeName\":{\"entity\":\"HandicapType.cdm.json/HandicapType\",\"name\":\"HandicapTypeName\"},\"HandicapTypeDescription\":{\"entity\":\"HandicapType.cdm.json/HandicapType\",\"name\":\"HandicapTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"HandicapType\",\"path\":\"HandicapType.cdm.json/HandicapType\"},\"description\":\"The type handicap / disability of the individual.\\n\\nEx.:\\n- Upper limb disability\\n- Lower limb disability\\n- Manual dexterity\\n- Spinal Cord disability\\n- Brain Disability\\n- Vision Disability\\n- Hearing Disability\",\"primaryKey\":[\"HandicapTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"HandicapType.cdm.json/HandicapType\",\"name\":\"HandicapTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a handicap type.\",\"isNullable\":false,\"name\":\"HandicapTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"HandicapType.cdm.json/HandicapType\",\"name\":\"HandicapTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a handicap type.\",\"isNullable\":true,\"name\":\"HandicapTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"HandicapType.cdm.json/HandicapType\",\"name\":\"HandicapTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a handicap type.\",\"isNullable\":true,\"name\":\"HandicapTypeDescription\"}]}}}",
+			"Description": "The type handicap / disability of the individual.\n\nEx.:\n- Upper limb disability\n- Lower limb disability\n- Manual dexterity\n- Spinal Cord disability\n- Brain Disability\n- Vision Disability\n- Hearing Disability",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "HandicapTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

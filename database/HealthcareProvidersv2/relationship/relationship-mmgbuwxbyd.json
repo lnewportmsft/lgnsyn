@@ -1,0 +1,26 @@
+{
+	"name": "relationship-mmgbuwxbyd",
+	"properties": {
+		"Name": "relationship-mmgbuwxbyd",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "MedicalCategoryType",
+		"ToTableName": "PatientMedicalCategory",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "MedicalCategoryTypeId",
+				"ToColumnName": "MedicalCategoryTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"MedicalCategoryType.cdm.json/MedicalCategoryType\",\"toEntity\":\"PatientMedicalCategory.cdm.json/PatientMedicalCategory\",\"joinPairs\":[{\"fromAttribute\":\"MedicalCategoryTypeId\",\"toAttribute\":\"MedicalCategoryTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

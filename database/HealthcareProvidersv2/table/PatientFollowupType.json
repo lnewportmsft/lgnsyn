@@ -1,0 +1,113 @@
+{
+	"name": "PatientFollowupType",
+	"properties": {
+		"Name": "PatientFollowupType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A usage or classification of Patient Followup based on their function or application.\n\nEx:\n- Preventative\n- Encounter Follow-Up",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientFollowupTypeId",
+					"Description": "The unique identifier of a Patient Followup type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFollowupType.cdm.json/PatientFollowupType",
+						"Name": "PatientFollowupTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientFollowupTypeName",
+					"Description": "The name of a Patient Followup type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFollowupType.cdm.json/PatientFollowupType",
+						"Name": "PatientFollowupTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientFollowupTypeDescription",
+					"Description": "The description of a Patient Followup type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFollowupType.cdm.json/PatientFollowupType",
+						"Name": "PatientFollowupTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFollowupType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFollowupType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientFollowupTypeId\":{\"entity\":\"PatientFollowupType.cdm.json/PatientFollowupType\",\"name\":\"PatientFollowupTypeId\"},\"PatientFollowupTypeName\":{\"entity\":\"PatientFollowupType.cdm.json/PatientFollowupType\",\"name\":\"PatientFollowupTypeName\"},\"PatientFollowupTypeDescription\":{\"entity\":\"PatientFollowupType.cdm.json/PatientFollowupType\",\"name\":\"PatientFollowupTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientFollowupType\",\"path\":\"PatientFollowupType.cdm.json/PatientFollowupType\"},\"description\":\"A usage or classification of Patient Followup based on their function or application.\\n\\nEx:\\n- Preventative\\n- Encounter Follow-Up\",\"primaryKey\":[\"PatientFollowupTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFollowupType.cdm.json/PatientFollowupType\",\"name\":\"PatientFollowupTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Followup type.\",\"isNullable\":false,\"name\":\"PatientFollowupTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFollowupType.cdm.json/PatientFollowupType\",\"name\":\"PatientFollowupTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Patient Followup type.\",\"isNullable\":true,\"name\":\"PatientFollowupTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFollowupType.cdm.json/PatientFollowupType\",\"name\":\"PatientFollowupTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Patient Followup type.\",\"isNullable\":true,\"name\":\"PatientFollowupTypeDescription\"}]}}}",
+			"Description": "A usage or classification of Patient Followup based on their function or application.\n\nEx:\n- Preventative\n- Encounter Follow-Up",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientFollowupTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

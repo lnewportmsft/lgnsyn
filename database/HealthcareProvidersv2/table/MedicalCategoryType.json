@@ -1,0 +1,113 @@
+{
+	"name": "MedicalCategoryType",
+	"properties": {
+		"Name": "MedicalCategoryType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A Medical Category that may be used to describe the Patient.\n\nEx:\n- High-Risk\n- High-Cost\n- Medically Needy\n- Dual Eligible Medicare Patient",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "MedicalCategoryTypeId",
+					"Description": "The unique identifier of a Medical Category Type.",
+					"BaseAttributeReference": {
+						"Entity": "MedicalCategoryType.cdm.json/MedicalCategoryType",
+						"Name": "MedicalCategoryTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "MedicalCategoryTypeName",
+					"Description": "The name of a Medical Category Type.",
+					"BaseAttributeReference": {
+						"Entity": "MedicalCategoryType.cdm.json/MedicalCategoryType",
+						"Name": "MedicalCategoryTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "MedicalCategoryTypeDescription",
+					"Description": "The description of a Medical Category Type.",
+					"BaseAttributeReference": {
+						"Entity": "MedicalCategoryType.cdm.json/MedicalCategoryType",
+						"Name": "MedicalCategoryTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/MedicalCategoryType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/MedicalCategoryType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"MedicalCategoryTypeId\":{\"entity\":\"MedicalCategoryType.cdm.json/MedicalCategoryType\",\"name\":\"MedicalCategoryTypeId\"},\"MedicalCategoryTypeName\":{\"entity\":\"MedicalCategoryType.cdm.json/MedicalCategoryType\",\"name\":\"MedicalCategoryTypeName\"},\"MedicalCategoryTypeDescription\":{\"entity\":\"MedicalCategoryType.cdm.json/MedicalCategoryType\",\"name\":\"MedicalCategoryTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"MedicalCategoryType\",\"path\":\"MedicalCategoryType.cdm.json/MedicalCategoryType\"},\"description\":\"A Medical Category that may be used to describe the Patient.\\n\\nEx:\\n- High-Risk\\n- High-Cost\\n- Medically Needy\\n- Dual Eligible Medicare Patient\",\"primaryKey\":[\"MedicalCategoryTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"MedicalCategoryType.cdm.json/MedicalCategoryType\",\"name\":\"MedicalCategoryTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Medical Category Type.\",\"isNullable\":false,\"name\":\"MedicalCategoryTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"MedicalCategoryType.cdm.json/MedicalCategoryType\",\"name\":\"MedicalCategoryTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Medical Category Type.\",\"isNullable\":true,\"name\":\"MedicalCategoryTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"MedicalCategoryType.cdm.json/MedicalCategoryType\",\"name\":\"MedicalCategoryTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Medical Category Type.\",\"isNullable\":true,\"name\":\"MedicalCategoryTypeDescription\"}]}}}",
+			"Description": "A Medical Category that may be used to describe the Patient.\n\nEx:\n- High-Risk\n- High-Cost\n- Medically Needy\n- Dual Eligible Medicare Patient",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "MedicalCategoryTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

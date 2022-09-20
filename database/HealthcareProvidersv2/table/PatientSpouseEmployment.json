@@ -1,0 +1,244 @@
+{
+	"name": "PatientSpouseEmployment",
+	"properties": {
+		"Name": "PatientSpouseEmployment",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The Employment held by the Patient's spouse during the associated period.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSpouseEmployment.cdm.json/PatientSpouseEmployment",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSpouseEmployment.cdm.json/PatientSpouseEmployment",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "SpousePartyId",
+					"Description": "The unique identifier of a Party.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSpouseEmployment.cdm.json/PatientSpouseEmployment",
+						"Name": "SpousePartyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "EmployerId",
+					"Description": "The unique identifier of an Employer.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSpouseEmployment.cdm.json/PatientSpouseEmployment",
+						"Name": "EmployerId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "JobTitleId",
+					"Description": "The unique identifier of a Job Title.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSpouseEmployment.cdm.json/PatientSpouseEmployment",
+						"Name": "JobTitleId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date of the associated Employment position.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSpouseEmployment.cdm.json/PatientSpouseEmployment",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date of the associated Employment position.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSpouseEmployment.cdm.json/PatientSpouseEmployment",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "EmploymentPositionTypeId",
+					"Description": "The unique identifier of an Employment Position Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSpouseEmployment.cdm.json/PatientSpouseEmployment",
+						"Name": "EmploymentPositionTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "EmploymentNote",
+					"Description": "Notes, comments or additional information regarding the associated employment.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSpouseEmployment.cdm.json/PatientSpouseEmployment",
+						"Name": "EmploymentNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "EmploymentClassificationId",
+					"Description": "The unique identifier of an Employment Classification.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSpouseEmployment.cdm.json/PatientSpouseEmployment",
+						"Name": "EmploymentClassificationId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AnnualSalaryAmount",
+					"Description": "The estimated annual salary of the member in the position.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSpouseEmployment.cdm.json/PatientSpouseEmployment",
+						"Name": "AnnualSalaryAmount"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 2,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientSpouseEmployment",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientSpouseEmployment",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"PatientId\"},\"SpousePartyId\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"SpousePartyId\"},\"EmployerId\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"EmployerId\"},\"JobTitleId\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"JobTitleId\"},\"PeriodStartDate\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"PeriodEndDate\"},\"EmploymentPositionTypeId\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"EmploymentPositionTypeId\"},\"EmploymentNote\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"EmploymentNote\"},\"EmploymentClassificationId\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"EmploymentClassificationId\"},\"AnnualSalaryAmount\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"AnnualSalaryAmount\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientSpouseEmployment\",\"path\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\"},\"description\":\"The Employment held by the Patient's spouse during the associated period.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"SpousePartyId\",\"EmployerId\",\"JobTitleId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"SpousePartyId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Party.\",\"isNullable\":false,\"name\":\"SpousePartyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"EmployerId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Employer.\",\"isNullable\":false,\"name\":\"EmployerId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"JobTitleId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Job Title.\",\"isNullable\":false,\"name\":\"JobTitleId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date of the associated Employment position.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date of the associated Employment position.\",\"isNullable\":false,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"EmploymentPositionTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Employment Position Type.\",\"isNullable\":true,\"name\":\"EmploymentPositionTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"EmploymentNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"Notes, comments or additional information regarding the associated employment.\",\"isNullable\":true,\"name\":\"EmploymentNote\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"EmploymentClassificationId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Employment Classification.\",\"isNullable\":true,\"name\":\"EmploymentClassificationId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSpouseEmployment.cdm.json/PatientSpouseEmployment\",\"name\":\"AnnualSalaryAmount\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The estimated annual salary of the member in the position.\",\"isNullable\":true,\"scale\":2,\"name\":\"AnnualSalaryAmount\"}]}}}",
+			"Description": "The Employment held by the Patient's spouse during the associated period.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,SpousePartyId,EmployerId,JobTitleId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

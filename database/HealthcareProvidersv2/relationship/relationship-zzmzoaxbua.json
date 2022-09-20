@@ -1,0 +1,26 @@
+{
+	"name": "relationship-zzmzoaxbua",
+	"properties": {
+		"Name": "relationship-zzmzoaxbua",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientFamilyMember",
+		"ToTableName": "PatientFamilyMemberMedicalCondition",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientId",
+				"ToColumnName": "PatientId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"toEntity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"joinPairs\":[{\"fromAttribute\":\"PatientId\",\"toAttribute\":\"PatientId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

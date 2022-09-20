@@ -1,0 +1,26 @@
+{
+	"name": "relationship-jggkudybhk",
+	"properties": {
+		"Name": "relationship-jggkudybhk",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientScreening",
+		"ToTableName": "PatientAtRisk",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientId",
+				"ToColumnName": "PatientId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientScreening.cdm.json/PatientScreening\",\"toEntity\":\"PatientAtRisk.cdm.json/PatientAtRisk\",\"joinPairs\":[{\"fromAttribute\":\"PatientId\",\"toAttribute\":\"PatientId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

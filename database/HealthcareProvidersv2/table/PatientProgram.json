@@ -1,0 +1,162 @@
+{
+	"name": "PatientProgram",
+	"properties": {
+		"Name": "PatientProgram",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The Program(s) in which a Patient participates.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProgram.cdm.json/PatientProgram",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "MarketingProgramId",
+					"Description": "The unique identifier of a Program.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProgram.cdm.json/PatientProgram",
+						"Name": "MarketingProgramId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientProgramStartDate",
+					"Description": "The starting date of the Patient's participation in a Program.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProgram.cdm.json/PatientProgram",
+						"Name": "PatientProgramStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProgram.cdm.json/PatientProgram",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientProgramEndDate",
+					"Description": "The ending date of the Patient's participation in a Program.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProgram.cdm.json/PatientProgram",
+						"Name": "PatientProgramEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientProgramParticipationNote",
+					"Description": "A note, comment or additional information regarding the Patient's Program participation.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProgram.cdm.json/PatientProgram",
+						"Name": "PatientProgramParticipationNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientProgram",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientProgram",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientProgram.cdm.json/PatientProgram\",\"name\":\"PatientId\"},\"MarketingProgramId\":{\"entity\":\"PatientProgram.cdm.json/PatientProgram\",\"name\":\"MarketingProgramId\"},\"PatientProgramStartDate\":{\"entity\":\"PatientProgram.cdm.json/PatientProgram\",\"name\":\"PatientProgramStartDate\"},\"ServiceProviderId\":{\"entity\":\"PatientProgram.cdm.json/PatientProgram\",\"name\":\"ServiceProviderId\"},\"PatientProgramEndDate\":{\"entity\":\"PatientProgram.cdm.json/PatientProgram\",\"name\":\"PatientProgramEndDate\"},\"PatientProgramParticipationNote\":{\"entity\":\"PatientProgram.cdm.json/PatientProgram\",\"name\":\"PatientProgramParticipationNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientProgram\",\"path\":\"PatientProgram.cdm.json/PatientProgram\"},\"description\":\"The Program(s) in which a Patient participates.\",\"primaryKey\":[\"PatientId\",\"MarketingProgramId\",\"PatientProgramStartDate\",\"ServiceProviderId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProgram.cdm.json/PatientProgram\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProgram.cdm.json/PatientProgram\",\"name\":\"MarketingProgramId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Program.\",\"isNullable\":false,\"name\":\"MarketingProgramId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProgram.cdm.json/PatientProgram\",\"name\":\"PatientProgramStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The starting date of the Patient's participation in a Program.\",\"isNullable\":false,\"name\":\"PatientProgramStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProgram.cdm.json/PatientProgram\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProgram.cdm.json/PatientProgram\",\"name\":\"PatientProgramEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The ending date of the Patient's participation in a Program.\",\"isNullable\":false,\"name\":\"PatientProgramEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProgram.cdm.json/PatientProgram\",\"name\":\"PatientProgramParticipationNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient's Program participation.\",\"isNullable\":true,\"name\":\"PatientProgramParticipationNote\"}]}}}",
+			"Description": "The Program(s) in which a Patient participates.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,MarketingProgramId,PatientProgramStartDate,ServiceProviderId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

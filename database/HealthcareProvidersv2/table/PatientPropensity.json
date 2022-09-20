@@ -1,0 +1,178 @@
+{
+	"name": "PatientPropensity",
+	"properties": {
+		"Name": "PatientPropensity",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more propensity values ascribed to a Patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPropensity.cdm.json/PatientPropensity",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPropensity.cdm.json/PatientPropensity",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PropensityTypeId",
+					"Description": "The unique identifier of a risk factor.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPropensity.cdm.json/PatientPropensity",
+						"Name": "PropensityTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated propensity is defined.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPropensity.cdm.json/PatientPropensity",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated propensity is defined.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPropensity.cdm.json/PatientPropensity",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "MemberPropensityValue",
+					"Description": "The value assigned to the member's propensity. This may be a numeric value on a scale of say 1-10 or it may be a percentage.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPropensity.cdm.json/PatientPropensity",
+						"Name": "MemberPropensityValue"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "MemberPropensityNote",
+					"Description": "A note, comments or additional information regarding the member propensity.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPropensity.cdm.json/PatientPropensity",
+						"Name": "MemberPropensityNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPropensity",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPropensity",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientPropensity.cdm.json/PatientPropensity\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientPropensity.cdm.json/PatientPropensity\",\"name\":\"PatientId\"},\"PropensityTypeId\":{\"entity\":\"PatientPropensity.cdm.json/PatientPropensity\",\"name\":\"PropensityTypeId\"},\"PeriodStartDate\":{\"entity\":\"PatientPropensity.cdm.json/PatientPropensity\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientPropensity.cdm.json/PatientPropensity\",\"name\":\"PeriodEndDate\"},\"MemberPropensityValue\":{\"entity\":\"PatientPropensity.cdm.json/PatientPropensity\",\"name\":\"MemberPropensityValue\"},\"MemberPropensityNote\":{\"entity\":\"PatientPropensity.cdm.json/PatientPropensity\",\"name\":\"MemberPropensityNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientPropensity\",\"path\":\"PatientPropensity.cdm.json/PatientPropensity\"},\"description\":\"The one or more propensity values ascribed to a Patient.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PropensityTypeId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPropensity.cdm.json/PatientPropensity\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPropensity.cdm.json/PatientPropensity\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPropensity.cdm.json/PatientPropensity\",\"name\":\"PropensityTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a risk factor.\",\"isNullable\":false,\"name\":\"PropensityTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPropensity.cdm.json/PatientPropensity\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated propensity is defined.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPropensity.cdm.json/PatientPropensity\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated propensity is defined.\",\"isNullable\":false,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPropensity.cdm.json/PatientPropensity\",\"name\":\"MemberPropensityValue\"},\"dataType\":\"integer\",\"description\":\"The value assigned to the member's propensity. This may be a numeric value on a scale of say 1-10 or it may be a percentage.\",\"isNullable\":true,\"name\":\"MemberPropensityValue\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPropensity.cdm.json/PatientPropensity\",\"name\":\"MemberPropensityNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comments or additional information regarding the member propensity.\",\"isNullable\":true,\"name\":\"MemberPropensityNote\"}]}}}",
+			"Description": "The one or more propensity values ascribed to a Patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PropensityTypeId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

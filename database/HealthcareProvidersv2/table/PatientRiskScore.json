@@ -1,0 +1,211 @@
+{
+	"name": "PatientRiskScore",
+	"properties": {
+		"Name": "PatientRiskScore",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more risk scores ascribed to a Patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskScore.cdm.json/PatientRiskScore",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskScore.cdm.json/PatientRiskScore",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientRiskScoreTypeId",
+					"Description": "The unique identifier of a risk factor.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskScore.cdm.json/PatientRiskScore",
+						"Name": "PatientRiskScoreTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "RiskScoreSourcePartyId",
+					"Description": "The unique identifier of a Party.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskScore.cdm.json/PatientRiskScore",
+						"Name": "RiskScoreSourcePartyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated risk score is defined.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskScore.cdm.json/PatientRiskScore",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated risk score is defined.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskScore.cdm.json/PatientRiskScore",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientRiskScoreValue",
+					"Description": "The value assigned to the patient's risk score.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskScore.cdm.json/PatientRiskScore",
+						"Name": "PatientRiskScoreValue"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientRiskScoreReportedDate",
+					"Description": "The date that the risk score was first reported or identified.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskScore.cdm.json/PatientRiskScore",
+						"Name": "PatientRiskScoreReportedDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientRiskScoreNote",
+					"Description": "A note, comments or additional information regarding the patient risk score.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRiskScore.cdm.json/PatientRiskScore",
+						"Name": "PatientRiskScoreNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRiskScore",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRiskScore",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"PatientId\"},\"PatientRiskScoreTypeId\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"PatientRiskScoreTypeId\"},\"RiskScoreSourcePartyId\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"RiskScoreSourcePartyId\"},\"PeriodStartDate\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"PeriodEndDate\"},\"PatientRiskScoreValue\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"PatientRiskScoreValue\"},\"PatientRiskScoreReportedDate\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"PatientRiskScoreReportedDate\"},\"PatientRiskScoreNote\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"PatientRiskScoreNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientRiskScore\",\"path\":\"PatientRiskScore.cdm.json/PatientRiskScore\"},\"description\":\"The one or more risk scores ascribed to a Patient.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PatientRiskScoreTypeId\",\"RiskScoreSourcePartyId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"PatientRiskScoreTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a risk factor.\",\"isNullable\":false,\"name\":\"PatientRiskScoreTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"RiskScoreSourcePartyId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Party.\",\"isNullable\":false,\"name\":\"RiskScoreSourcePartyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated risk score is defined.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated risk score is defined.\",\"isNullable\":false,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"PatientRiskScoreValue\"},\"dataType\":\"integer\",\"description\":\"The value assigned to the patient's risk score.\",\"isNullable\":true,\"name\":\"PatientRiskScoreValue\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"PatientRiskScoreReportedDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that the risk score was first reported or identified.\",\"isNullable\":true,\"name\":\"PatientRiskScoreReportedDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRiskScore.cdm.json/PatientRiskScore\",\"name\":\"PatientRiskScoreNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comments or additional information regarding the patient risk score.\",\"isNullable\":true,\"name\":\"PatientRiskScoreNote\"}]}}}",
+			"Description": "The one or more risk scores ascribed to a Patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PatientRiskScoreTypeId,RiskScoreSourcePartyId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

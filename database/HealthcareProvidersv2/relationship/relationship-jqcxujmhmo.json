@@ -1,0 +1,26 @@
+{
+	"name": "relationship-jqcxujmhmo",
+	"properties": {
+		"Name": "relationship-jqcxujmhmo",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientFamilyMember",
+		"ToTableName": "PatientFamilyMemberMedicalCondition",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientFamilyMemberId",
+				"ToColumnName": "PatientFamilyMemberId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"toEntity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"joinPairs\":[{\"fromAttribute\":\"PatientFamilyMemberId\",\"toAttribute\":\"PatientFamilyMemberId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

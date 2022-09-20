@@ -1,0 +1,113 @@
+{
+	"name": "AmbulatoryStatusType",
+	"properties": {
+		"Name": "AmbulatoryStatusType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The type of permanent or transient handicapped conditions.\n\nEx.:\n- No functional limitations\n- Ambulates with assistive device\n- Wheelchair or stretcher bound",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "AmbulatoryStatusTypeId",
+					"Description": "The unique identifier of an ambulatory status type.",
+					"BaseAttributeReference": {
+						"Entity": "AmbulatoryStatusType.cdm.json/AmbulatoryStatusType",
+						"Name": "AmbulatoryStatusTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AmbulatoryStatusTypeName",
+					"Description": "The name of an ambulatory status type.",
+					"BaseAttributeReference": {
+						"Entity": "AmbulatoryStatusType.cdm.json/AmbulatoryStatusType",
+						"Name": "AmbulatoryStatusTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "AmbulatoryStatusTypeDescription",
+					"Description": "The description of an ambulatory status type.",
+					"BaseAttributeReference": {
+						"Entity": "AmbulatoryStatusType.cdm.json/AmbulatoryStatusType",
+						"Name": "AmbulatoryStatusTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/AmbulatoryStatusType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/AmbulatoryStatusType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"AmbulatoryStatusTypeId\":{\"entity\":\"AmbulatoryStatusType.cdm.json/AmbulatoryStatusType\",\"name\":\"AmbulatoryStatusTypeId\"},\"AmbulatoryStatusTypeName\":{\"entity\":\"AmbulatoryStatusType.cdm.json/AmbulatoryStatusType\",\"name\":\"AmbulatoryStatusTypeName\"},\"AmbulatoryStatusTypeDescription\":{\"entity\":\"AmbulatoryStatusType.cdm.json/AmbulatoryStatusType\",\"name\":\"AmbulatoryStatusTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"AmbulatoryStatusType\",\"path\":\"AmbulatoryStatusType.cdm.json/AmbulatoryStatusType\"},\"description\":\"The type of permanent or transient handicapped conditions.\\n\\nEx.:\\n- No functional limitations\\n- Ambulates with assistive device\\n- Wheelchair or stretcher bound\",\"primaryKey\":[\"AmbulatoryStatusTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AmbulatoryStatusType.cdm.json/AmbulatoryStatusType\",\"name\":\"AmbulatoryStatusTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an ambulatory status type.\",\"isNullable\":false,\"name\":\"AmbulatoryStatusTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AmbulatoryStatusType.cdm.json/AmbulatoryStatusType\",\"name\":\"AmbulatoryStatusTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of an ambulatory status type.\",\"isNullable\":true,\"name\":\"AmbulatoryStatusTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AmbulatoryStatusType.cdm.json/AmbulatoryStatusType\",\"name\":\"AmbulatoryStatusTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of an ambulatory status type.\",\"isNullable\":true,\"name\":\"AmbulatoryStatusTypeDescription\"}]}}}",
+			"Description": "The type of permanent or transient handicapped conditions.\n\nEx.:\n- No functional limitations\n- Ambulates with assistive device\n- Wheelchair or stretcher bound",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "AmbulatoryStatusTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

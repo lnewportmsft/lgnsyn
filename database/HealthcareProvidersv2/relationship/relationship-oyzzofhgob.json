@@ -1,0 +1,26 @@
+{
+	"name": "relationship-oyzzofhgob",
+	"properties": {
+		"Name": "relationship-oyzzofhgob",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "FraudType",
+		"ToTableName": "PatientFraud",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "FraudTypeId",
+				"ToColumnName": "FraudTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"FraudType.cdm.json/FraudType\",\"toEntity\":\"PatientFraud.cdm.json/PatientFraud\",\"joinPairs\":[{\"fromAttribute\":\"FraudTypeId\",\"toAttribute\":\"FraudTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,26 @@
+{
+	"name": "relationship-gxgmzcftmo",
+	"properties": {
+		"Name": "relationship-gxgmzcftmo",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "AbuseType",
+		"ToTableName": "PatientAbuse",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "AbuseTypeId",
+				"ToColumnName": "AbuseTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"AbuseType.cdm.json/AbuseType\",\"toEntity\":\"PatientAbuse.cdm.json/PatientAbuse\",\"joinPairs\":[{\"fromAttribute\":\"AbuseTypeId\",\"toAttribute\":\"AbuseTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,26 @@
+{
+	"name": "relationship-otczylshks",
+	"properties": {
+		"Name": "relationship-otczylshks",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Document",
+		"ToTableName": "PatientConsent",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "DocumentId",
+				"ToColumnName": "ProofOfConsentDocumentId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Document.cdm.json/Document\",\"toEntity\":\"PatientConsent.cdm.json/PatientConsent\",\"joinPairs\":[{\"fromAttribute\":\"DocumentId\",\"toAttribute\":\"ProofOfConsentDocumentId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

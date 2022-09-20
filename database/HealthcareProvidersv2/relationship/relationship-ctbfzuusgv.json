@@ -1,0 +1,26 @@
+{
+	"name": "relationship-ctbfzuusgv",
+	"properties": {
+		"Name": "relationship-ctbfzuusgv",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "ScreeningType",
+		"ToTableName": "PatientScreening",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ScreeningTypeId",
+				"ToColumnName": "ScreeningTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"ScreeningType.cdm.json/ScreeningType\",\"toEntity\":\"PatientScreening.cdm.json/PatientScreening\",\"joinPairs\":[{\"fromAttribute\":\"ScreeningTypeId\",\"toAttribute\":\"ScreeningTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

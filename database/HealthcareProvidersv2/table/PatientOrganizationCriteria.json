@@ -1,0 +1,162 @@
+{
+	"name": "PatientOrganizationCriteria",
+	"properties": {
+		"Name": "PatientOrganizationCriteria",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "Organization Criteria are a means to identify what 'positions' or 'organizational responsibilities' a Patient has.   \n\nAn organization can be defined for both professional organizations ('Employment') or the family organization (\"Housewife\")\n\nThe Organization Criteria Type is the larger classification to which the Organization Criteria belongs.\n\nThe following are examples:\n\nOrganization Criteria:   \"Housewife\"\nOrganization Criteria Type:  \"Family\"\n\nOrganization Criteria:   \"Manager\"\nOrganization Criteria Type:  \"Employment\"\n\nEach organization will identify, define and track a specific set of Organization Criteria to gather information about, define consumers and make decisions.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "OrganizationCriteriaId",
+					"Description": "The unique identifier of an Organization Criteria.",
+					"BaseAttributeReference": {
+						"Entity": "PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria",
+						"Name": "OrganizationCriteriaId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientOrganizationCriteriaNote",
+					"Description": "A note, comment or additional information related to Patient Organization Criteria.",
+					"BaseAttributeReference": {
+						"Entity": "PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria",
+						"Name": "PatientOrganizationCriteriaNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientOrganizationCriteria",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientOrganizationCriteria",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria\",\"name\":\"PatientId\"},\"OrganizationCriteriaId\":{\"entity\":\"PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria\",\"name\":\"OrganizationCriteriaId\"},\"PeriodStartDate\":{\"entity\":\"PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria\",\"name\":\"PeriodEndDate\"},\"PatientOrganizationCriteriaNote\":{\"entity\":\"PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria\",\"name\":\"PatientOrganizationCriteriaNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientOrganizationCriteria\",\"path\":\"PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria\"},\"description\":\"Organization Criteria are a means to identify what 'positions' or 'organizational responsibilities' a Patient has.   \\n\\nAn organization can be defined for both professional organizations ('Employment') or the family organization (\\\"Housewife\\\")\\n\\nThe Organization Criteria Type is the larger classification to which the Organization Criteria belongs.\\n\\nThe following are examples:\\n\\nOrganization Criteria:   \\\"Housewife\\\"\\nOrganization Criteria Type:  \\\"Family\\\"\\n\\nOrganization Criteria:   \\\"Manager\\\"\\nOrganization Criteria Type:  \\\"Employment\\\"\\n\\nEach organization will identify, define and track a specific set of Organization Criteria to gather information about, define consumers and make decisions.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"OrganizationCriteriaId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria\",\"name\":\"OrganizationCriteriaId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Organization Criteria.\",\"isNullable\":false,\"name\":\"OrganizationCriteriaId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientOrganizationCriteria.cdm.json/PatientOrganizationCriteria\",\"name\":\"PatientOrganizationCriteriaNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information related to Patient Organization Criteria.\",\"isNullable\":true,\"name\":\"PatientOrganizationCriteriaNote\"}]}}}",
+			"Description": "Organization Criteria are a means to identify what 'positions' or 'organizational responsibilities' a Patient has.   \n\nAn organization can be defined for both professional organizations ('Employment') or the family organization (\"Housewife\")\n\nThe Organization Criteria Type is the larger classification to which the Organization Criteria belongs.\n\nThe following are examples:\n\nOrganization Criteria:   \"Housewife\"\nOrganization Criteria Type:  \"Family\"\n\nOrganization Criteria:   \"Manager\"\nOrganization Criteria Type:  \"Employment\"\n\nEach organization will identify, define and track a specific set of Organization Criteria to gather information about, define consumers and make decisions.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,OrganizationCriteriaId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

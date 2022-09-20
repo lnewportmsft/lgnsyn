@@ -1,0 +1,113 @@
+{
+	"name": "PatientProblemActivityType",
+	"properties": {
+		"Name": "PatientProblemActivityType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A type of activity that occurs regarding a patient problem.\n\nEx.:\n- Added To List\n- Resolved\n- Discussed",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientProblemActivityTypeId",
+					"Description": "The unique identifier of a Patient Problem Activity Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblemActivityType.cdm.json/PatientProblemActivityType",
+						"Name": "PatientProblemActivityTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientProblemActivityTypeName",
+					"Description": "The name of a Patient Problem Activity Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblemActivityType.cdm.json/PatientProblemActivityType",
+						"Name": "PatientProblemActivityTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientProblemActivityTypeDescription",
+					"Description": "The description of a Patient Problem Activity Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientProblemActivityType.cdm.json/PatientProblemActivityType",
+						"Name": "PatientProblemActivityTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientProblemActivityType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientProblemActivityType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientProblemActivityTypeId\":{\"entity\":\"PatientProblemActivityType.cdm.json/PatientProblemActivityType\",\"name\":\"PatientProblemActivityTypeId\"},\"PatientProblemActivityTypeName\":{\"entity\":\"PatientProblemActivityType.cdm.json/PatientProblemActivityType\",\"name\":\"PatientProblemActivityTypeName\"},\"PatientProblemActivityTypeDescription\":{\"entity\":\"PatientProblemActivityType.cdm.json/PatientProblemActivityType\",\"name\":\"PatientProblemActivityTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientProblemActivityType\",\"path\":\"PatientProblemActivityType.cdm.json/PatientProblemActivityType\"},\"description\":\"A type of activity that occurs regarding a patient problem.\\n\\nEx.:\\n- Added To List\\n- Resolved\\n- Discussed\",\"primaryKey\":[\"PatientProblemActivityTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblemActivityType.cdm.json/PatientProblemActivityType\",\"name\":\"PatientProblemActivityTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Problem Activity Type.\",\"isNullable\":false,\"name\":\"PatientProblemActivityTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblemActivityType.cdm.json/PatientProblemActivityType\",\"name\":\"PatientProblemActivityTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Patient Problem Activity Type.\",\"isNullable\":true,\"name\":\"PatientProblemActivityTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientProblemActivityType.cdm.json/PatientProblemActivityType\",\"name\":\"PatientProblemActivityTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Patient Problem Activity Type.\",\"isNullable\":true,\"name\":\"PatientProblemActivityTypeDescription\"}]}}}",
+			"Description": "A type of activity that occurs regarding a patient problem.\n\nEx.:\n- Added To List\n- Resolved\n- Discussed",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientProblemActivityTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

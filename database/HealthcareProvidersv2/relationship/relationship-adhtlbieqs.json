@@ -1,0 +1,26 @@
+{
+	"name": "relationship-adhtlbieqs",
+	"properties": {
+		"Name": "relationship-adhtlbieqs",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientAllergy",
+		"ToTableName": "PatientAllergyReaction",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ServiceProviderId",
+				"ToColumnName": "ServiceProviderId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientAllergy.cdm.json/PatientAllergy\",\"toEntity\":\"PatientAllergyReaction.cdm.json/PatientAllergyReaction\",\"joinPairs\":[{\"fromAttribute\":\"ServiceProviderId\",\"toAttribute\":\"ServiceProviderId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,113 @@
+{
+	"name": "RecreationalDrug",
+	"properties": {
+		"Name": "RecreationalDrug",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A recreational drug that can be used by an individual.\n\nEx:\n- Alcohol\n- Kava\n- Marijuana\n- Tobacco - smoked\n- Tobacco - chewed",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "RecreationalDrugId",
+					"Description": "The unique identifier of a recreational drug.",
+					"BaseAttributeReference": {
+						"Entity": "RecreationalDrug.cdm.json/RecreationalDrug",
+						"Name": "RecreationalDrugId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "RecreationalDrugName",
+					"Description": "The name of a recreational drug.",
+					"BaseAttributeReference": {
+						"Entity": "RecreationalDrug.cdm.json/RecreationalDrug",
+						"Name": "RecreationalDrugName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "RecreationalDrugDescription",
+					"Description": "The description of a recreational drug.",
+					"BaseAttributeReference": {
+						"Entity": "RecreationalDrug.cdm.json/RecreationalDrug",
+						"Name": "RecreationalDrugDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/RecreationalDrug",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/RecreationalDrug",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"RecreationalDrugId\":{\"entity\":\"RecreationalDrug.cdm.json/RecreationalDrug\",\"name\":\"RecreationalDrugId\"},\"RecreationalDrugName\":{\"entity\":\"RecreationalDrug.cdm.json/RecreationalDrug\",\"name\":\"RecreationalDrugName\"},\"RecreationalDrugDescription\":{\"entity\":\"RecreationalDrug.cdm.json/RecreationalDrug\",\"name\":\"RecreationalDrugDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"RecreationalDrug\",\"path\":\"RecreationalDrug.cdm.json/RecreationalDrug\"},\"description\":\"A recreational drug that can be used by an individual.\\n\\nEx:\\n- Alcohol\\n- Kava\\n- Marijuana\\n- Tobacco - smoked\\n- Tobacco - chewed\",\"primaryKey\":[\"RecreationalDrugId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RecreationalDrug.cdm.json/RecreationalDrug\",\"name\":\"RecreationalDrugId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a recreational drug.\",\"isNullable\":false,\"name\":\"RecreationalDrugId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RecreationalDrug.cdm.json/RecreationalDrug\",\"name\":\"RecreationalDrugName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a recreational drug.\",\"isNullable\":true,\"name\":\"RecreationalDrugName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"RecreationalDrug.cdm.json/RecreationalDrug\",\"name\":\"RecreationalDrugDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a recreational drug.\",\"isNullable\":true,\"name\":\"RecreationalDrugDescription\"}]}}}",
+			"Description": "A recreational drug that can be used by an individual.\n\nEx:\n- Alcohol\n- Kava\n- Marijuana\n- Tobacco - smoked\n- Tobacco - chewed",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "RecreationalDrugId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

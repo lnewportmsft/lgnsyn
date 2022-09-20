@@ -1,0 +1,178 @@
+{
+	"name": "PatientCauseOfDeath",
+	"properties": {
+		"Name": "PatientCauseOfDeath",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more medical conditions ascribed to the Patient's Cause of Death.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCauseOfDeath.cdm.json/PatientCauseOfDeath",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCauseOfDeath.cdm.json/PatientCauseOfDeath",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "CauseOfDeathTypeId",
+					"Description": "The unique identifier of a Cause Of Death Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCauseOfDeath.cdm.json/PatientCauseOfDeath",
+						"Name": "CauseOfDeathTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartTimestamp",
+					"Description": "The period start timestamp for which the cause of death was associated with the patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCauseOfDeath.cdm.json/PatientCauseOfDeath",
+						"Name": "PeriodStartTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndTimestamp",
+					"Description": "The period end timestamp for which the cause of death was associated with the patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCauseOfDeath.cdm.json/PatientCauseOfDeath",
+						"Name": "PeriodEndTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "MedicalConditionId",
+					"Description": "The unique identifier of a medical condition.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCauseOfDeath.cdm.json/PatientCauseOfDeath",
+						"Name": "MedicalConditionId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientCauseOfDeathNote",
+					"Description": "A note, comment or additional information regarding the patient cause of death.",
+					"BaseAttributeReference": {
+						"Entity": "PatientCauseOfDeath.cdm.json/PatientCauseOfDeath",
+						"Name": "PatientCauseOfDeathNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientCauseOfDeath",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientCauseOfDeath",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\",\"name\":\"PatientId\"},\"CauseOfDeathTypeId\":{\"entity\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\",\"name\":\"CauseOfDeathTypeId\"},\"PeriodStartTimestamp\":{\"entity\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\",\"name\":\"PeriodStartTimestamp\"},\"PeriodEndTimestamp\":{\"entity\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\",\"name\":\"PeriodEndTimestamp\"},\"MedicalConditionId\":{\"entity\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\",\"name\":\"MedicalConditionId\"},\"PatientCauseOfDeathNote\":{\"entity\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\",\"name\":\"PatientCauseOfDeathNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientCauseOfDeath\",\"path\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\"},\"description\":\"The one or more medical conditions ascribed to the Patient's Cause of Death.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"CauseOfDeathTypeId\",\"PeriodStartTimestamp\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\",\"name\":\"CauseOfDeathTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Cause Of Death Type.\",\"isNullable\":false,\"name\":\"CauseOfDeathTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\",\"name\":\"PeriodStartTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The period start timestamp for which the cause of death was associated with the patient.\",\"isNullable\":false,\"name\":\"PeriodStartTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\",\"name\":\"PeriodEndTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The period end timestamp for which the cause of death was associated with the patient.\",\"isNullable\":false,\"name\":\"PeriodEndTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\",\"name\":\"MedicalConditionId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a medical condition.\",\"isNullable\":false,\"name\":\"MedicalConditionId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientCauseOfDeath.cdm.json/PatientCauseOfDeath\",\"name\":\"PatientCauseOfDeathNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the patient cause of death.\",\"isNullable\":true,\"name\":\"PatientCauseOfDeathNote\"}]}}}",
+			"Description": "The one or more medical conditions ascribed to the Patient's Cause of Death.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,CauseOfDeathTypeId,PeriodStartTimestamp",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

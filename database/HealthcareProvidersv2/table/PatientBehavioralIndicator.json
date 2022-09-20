@@ -1,0 +1,178 @@
+{
+	"name": "PatientBehavioralIndicator",
+	"properties": {
+		"Name": "PatientBehavioralIndicator",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A behavioral indicator that was observed for the purpose of evaluating an individual's mental health. \n\nIt should be noted that this entity is for the purpose of historical tracking. ENCOUNTER SYMPTOM / SIGN is used to capture similar observations during a single encounter.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "BehavioralIndicatorTypeId",
+					"Description": "The unique identifier of a physical characteristic.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator",
+						"Name": "BehavioralIndicatorTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "BehavioralIndicatorPeriodStartDate",
+					"Description": "The period start date for which the associated Behavioral Indicator is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator",
+						"Name": "BehavioralIndicatorPeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "BehavioralIndicatorPeriodEndDate",
+					"Description": "The period end date for which the associated Behavioral Indicator is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator",
+						"Name": "BehavioralIndicatorPeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "BehavioralIndicatorNote",
+					"Description": "A note, comment or additional information regarding the Behavioral Indicator.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator",
+						"Name": "BehavioralIndicatorNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "SeverityId",
+					"Description": "The unique identifier of a severity.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator",
+						"Name": "SeverityId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientBehavioralIndicator",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientBehavioralIndicator",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"name\":\"PatientId\"},\"BehavioralIndicatorTypeId\":{\"entity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"name\":\"BehavioralIndicatorTypeId\"},\"ServiceProviderId\":{\"entity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"name\":\"ServiceProviderId\"},\"BehavioralIndicatorPeriodStartDate\":{\"entity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"name\":\"BehavioralIndicatorPeriodStartDate\"},\"BehavioralIndicatorPeriodEndDate\":{\"entity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"name\":\"BehavioralIndicatorPeriodEndDate\"},\"BehavioralIndicatorNote\":{\"entity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"name\":\"BehavioralIndicatorNote\"},\"SeverityId\":{\"entity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"name\":\"SeverityId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientBehavioralIndicator\",\"path\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\"},\"description\":\"A behavioral indicator that was observed for the purpose of evaluating an individual's mental health. \\n\\nIt should be noted that this entity is for the purpose of historical tracking. ENCOUNTER SYMPTOM / SIGN is used to capture similar observations during a single encounter.\",\"primaryKey\":[\"PatientId\",\"BehavioralIndicatorTypeId\",\"ServiceProviderId\",\"BehavioralIndicatorPeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"name\":\"BehavioralIndicatorTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a physical characteristic.\",\"isNullable\":false,\"name\":\"BehavioralIndicatorTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"name\":\"BehavioralIndicatorPeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated Behavioral Indicator is valid or in-effect.\",\"isNullable\":false,\"name\":\"BehavioralIndicatorPeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"name\":\"BehavioralIndicatorPeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated Behavioral Indicator is valid or in-effect.\",\"isNullable\":true,\"name\":\"BehavioralIndicatorPeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"name\":\"BehavioralIndicatorNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Behavioral Indicator.\",\"isNullable\":true,\"name\":\"BehavioralIndicatorNote\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBehavioralIndicator.cdm.json/PatientBehavioralIndicator\",\"name\":\"SeverityId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a severity.\",\"isNullable\":true,\"name\":\"SeverityId\"}]}}}",
+			"Description": "A behavioral indicator that was observed for the purpose of evaluating an individual's mental health. \n\nIt should be noted that this entity is for the purpose of historical tracking. ENCOUNTER SYMPTOM / SIGN is used to capture similar observations during a single encounter.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,BehavioralIndicatorTypeId,ServiceProviderId,BehavioralIndicatorPeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

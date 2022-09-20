@@ -1,0 +1,210 @@
+{
+	"name": "PatientEducation",
+	"properties": {
+		"Name": "PatientEducation",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The education attainment characteristics of the Patient consisting of:\n\n(1)  The Educational Institution attended\n(2)  The Education Attainment Level at that institution\n(3)  The Attendance Status\n(4)  Defined for a period (Period Start Date/Period End Date)",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientEducation.cdm.json/PatientEducation",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "FieldOfStudyId",
+					"Description": "The unique identifier of a Field of Study.",
+					"BaseAttributeReference": {
+						"Entity": "PatientEducation.cdm.json/PatientEducation",
+						"Name": "FieldOfStudyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "EducationalInstitutionId",
+					"Description": "The unique identifier of the Educational Institution.",
+					"BaseAttributeReference": {
+						"Entity": "PatientEducation.cdm.json/PatientEducation",
+						"Name": "EducationalInstitutionId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The Period Start Date for which the associated Patient education attainment and characteristics are defined.",
+					"BaseAttributeReference": {
+						"Entity": "PatientEducation.cdm.json/PatientEducation",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientEducation.cdm.json/PatientEducation",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The Period End Date for which the associated Patient education attainment and characteristics are defined.",
+					"BaseAttributeReference": {
+						"Entity": "PatientEducation.cdm.json/PatientEducation",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "EducationAttainmentLevelId",
+					"Description": "The unique identifier of an Education Attainment Level.",
+					"BaseAttributeReference": {
+						"Entity": "PatientEducation.cdm.json/PatientEducation",
+						"Name": "EducationAttainmentLevelId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "StudentStatusId",
+					"Description": "The unique identifier of an Attendance Status.",
+					"BaseAttributeReference": {
+						"Entity": "PatientEducation.cdm.json/PatientEducation",
+						"Name": "StudentStatusId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientEducationNote",
+					"Description": "Notes regarding the associated Patient education attainment and characteristics.",
+					"BaseAttributeReference": {
+						"Entity": "PatientEducation.cdm.json/PatientEducation",
+						"Name": "PatientEducationNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientEducation",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientEducation",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"PatientId\"},\"FieldOfStudyId\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"FieldOfStudyId\"},\"EducationalInstitutionId\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"EducationalInstitutionId\"},\"PeriodStartDate\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"PeriodStartDate\"},\"ServiceProviderId\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"ServiceProviderId\"},\"PeriodEndDate\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"PeriodEndDate\"},\"EducationAttainmentLevelId\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"EducationAttainmentLevelId\"},\"StudentStatusId\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"StudentStatusId\"},\"PatientEducationNote\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"PatientEducationNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientEducation\",\"path\":\"PatientEducation.cdm.json/PatientEducation\"},\"description\":\"The education attainment characteristics of the Patient consisting of:\\n\\n(1)  The Educational Institution attended\\n(2)  The Education Attainment Level at that institution\\n(3)  The Attendance Status\\n(4)  Defined for a period (Period Start Date/Period End Date)\",\"primaryKey\":[\"PatientId\",\"FieldOfStudyId\",\"EducationalInstitutionId\",\"PeriodStartDate\",\"ServiceProviderId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"FieldOfStudyId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Field of Study.\",\"isNullable\":false,\"name\":\"FieldOfStudyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"EducationalInstitutionId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of the Educational Institution.\",\"isNullable\":false,\"name\":\"EducationalInstitutionId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The Period Start Date for which the associated Patient education attainment and characteristics are defined.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The Period End Date for which the associated Patient education attainment and characteristics are defined.\",\"isNullable\":false,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"EducationAttainmentLevelId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Education Attainment Level.\",\"isNullable\":false,\"name\":\"EducationAttainmentLevelId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"StudentStatusId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Attendance Status.\",\"isNullable\":true,\"name\":\"StudentStatusId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientEducation.cdm.json/PatientEducation\",\"name\":\"PatientEducationNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"Notes regarding the associated Patient education attainment and characteristics.\",\"isNullable\":true,\"name\":\"PatientEducationNote\"}]}}}",
+			"Description": "The education attainment characteristics of the Patient consisting of:\n\n(1)  The Educational Institution attended\n(2)  The Education Attainment Level at that institution\n(3)  The Attendance Status\n(4)  Defined for a period (Period Start Date/Period End Date)",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,FieldOfStudyId,EducationalInstitutionId,PeriodStartDate,ServiceProviderId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

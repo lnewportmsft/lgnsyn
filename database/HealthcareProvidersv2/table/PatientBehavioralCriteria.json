@@ -1,0 +1,162 @@
+{
+	"name": "PatientBehavioralCriteria",
+	"properties": {
+		"Name": "PatientBehavioralCriteria",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more behavioral criteria that are assigned or linked to a Patient and by which they are identified or qualified from a behavioral focus.\n\nEx:\nBehavioral Criteria:       Narcotic Drug Abuse\nBehavioral Criteria Type:  Illegal Drug Usage\n\nBehavioral Criteria:       OTC Drug Abuse\nBehavioral Criteria Type:  Prescription Drug Usage\n\nBehavioral Criteria:       Binge Eater\nBehavioral Criteria Type:  Eating Habits",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "BehavioralCriteriaId",
+					"Description": "The unique identifier of a Behavioral Criteria.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria",
+						"Name": "BehavioralCriteriaId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientBehavioralCriteriaNote",
+					"Description": "A note, comment or additional information related to Patient Behavioral Criteria.",
+					"BaseAttributeReference": {
+						"Entity": "PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria",
+						"Name": "PatientBehavioralCriteriaNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientBehavioralCriteria",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientBehavioralCriteria",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria\",\"name\":\"PatientId\"},\"BehavioralCriteriaId\":{\"entity\":\"PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria\",\"name\":\"BehavioralCriteriaId\"},\"PeriodStartDate\":{\"entity\":\"PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria\",\"name\":\"PeriodEndDate\"},\"PatientBehavioralCriteriaNote\":{\"entity\":\"PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria\",\"name\":\"PatientBehavioralCriteriaNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientBehavioralCriteria\",\"path\":\"PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria\"},\"description\":\"The one or more behavioral criteria that are assigned or linked to a Patient and by which they are identified or qualified from a behavioral focus.\\n\\nEx:\\nBehavioral Criteria:       Narcotic Drug Abuse\\nBehavioral Criteria Type:  Illegal Drug Usage\\n\\nBehavioral Criteria:       OTC Drug Abuse\\nBehavioral Criteria Type:  Prescription Drug Usage\\n\\nBehavioral Criteria:       Binge Eater\\nBehavioral Criteria Type:  Eating Habits\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"BehavioralCriteriaId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria\",\"name\":\"BehavioralCriteriaId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Behavioral Criteria.\",\"isNullable\":false,\"name\":\"BehavioralCriteriaId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientBehavioralCriteria.cdm.json/PatientBehavioralCriteria\",\"name\":\"PatientBehavioralCriteriaNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information related to Patient Behavioral Criteria.\",\"isNullable\":true,\"name\":\"PatientBehavioralCriteriaNote\"}]}}}",
+			"Description": "The one or more behavioral criteria that are assigned or linked to a Patient and by which they are identified or qualified from a behavioral focus.\n\nEx:\nBehavioral Criteria:       Narcotic Drug Abuse\nBehavioral Criteria Type:  Illegal Drug Usage\n\nBehavioral Criteria:       OTC Drug Abuse\nBehavioral Criteria Type:  Prescription Drug Usage\n\nBehavioral Criteria:       Binge Eater\nBehavioral Criteria Type:  Eating Habits",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,BehavioralCriteriaId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

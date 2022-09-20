@@ -1,0 +1,178 @@
+{
+	"name": "PatientName",
+	"properties": {
+		"Name": "PatientName",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The names by which the patient is known in various contexts or usages.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientName.cdm.json/PatientName",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientName.cdm.json/PatientName",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientNameId",
+					"Description": "The unique identifier of a Patient Name.",
+					"BaseAttributeReference": {
+						"Entity": "PatientName.cdm.json/PatientName",
+						"Name": "PatientNameId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "NameUsageId",
+					"Description": "The unique identifier of a name usage.",
+					"BaseAttributeReference": {
+						"Entity": "PatientName.cdm.json/PatientName",
+						"Name": "NameUsageId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "StartDate",
+					"Description": "The start date for which the name is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientName.cdm.json/PatientName",
+						"Name": "StartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "EndDate",
+					"Description": "The end date for which the name is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientName.cdm.json/PatientName",
+						"Name": "EndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientNameNote",
+					"Description": "A note, comment or additional information regarding the patient name.",
+					"BaseAttributeReference": {
+						"Entity": "PatientName.cdm.json/PatientName",
+						"Name": "PatientNameNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientName",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientName",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientName.cdm.json/PatientName\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientName.cdm.json/PatientName\",\"name\":\"PatientId\"},\"PatientNameId\":{\"entity\":\"PatientName.cdm.json/PatientName\",\"name\":\"PatientNameId\"},\"NameUsageId\":{\"entity\":\"PatientName.cdm.json/PatientName\",\"name\":\"NameUsageId\"},\"StartDate\":{\"entity\":\"PatientName.cdm.json/PatientName\",\"name\":\"StartDate\"},\"EndDate\":{\"entity\":\"PatientName.cdm.json/PatientName\",\"name\":\"EndDate\"},\"PatientNameNote\":{\"entity\":\"PatientName.cdm.json/PatientName\",\"name\":\"PatientNameNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientName\",\"path\":\"PatientName.cdm.json/PatientName\"},\"description\":\"The names by which the patient is known in various contexts or usages.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PatientNameId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientName.cdm.json/PatientName\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientName.cdm.json/PatientName\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientName.cdm.json/PatientName\",\"name\":\"PatientNameId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Name.\",\"isNullable\":false,\"name\":\"PatientNameId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientName.cdm.json/PatientName\",\"name\":\"NameUsageId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a name usage.\",\"isNullable\":false,\"name\":\"NameUsageId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientName.cdm.json/PatientName\",\"name\":\"StartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The start date for which the name is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"StartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientName.cdm.json/PatientName\",\"name\":\"EndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The end date for which the name is effective or 'as-of'.\",\"isNullable\":true,\"name\":\"EndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientName.cdm.json/PatientName\",\"name\":\"PatientNameNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the patient name.\",\"isNullable\":true,\"name\":\"PatientNameNote\"}]}}}",
+			"Description": "The names by which the patient is known in various contexts or usages.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PatientNameId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

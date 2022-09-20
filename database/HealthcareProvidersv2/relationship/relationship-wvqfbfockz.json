@@ -1,0 +1,26 @@
+{
+	"name": "relationship-wvqfbfockz",
+	"properties": {
+		"Name": "relationship-wvqfbfockz",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientStatusType",
+		"ToTableName": "PatientStatus",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientStatusTypeId",
+				"ToColumnName": "PatientStatusTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientStatusType.cdm.json/PatientStatusType\",\"toEntity\":\"PatientStatus.cdm.json/PatientStatus\",\"joinPairs\":[{\"fromAttribute\":\"PatientStatusTypeId\",\"toAttribute\":\"PatientStatusTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,26 @@
+{
+	"name": "relationship-dehselryds",
+	"properties": {
+		"Name": "relationship-dehselryds",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientFamilyMember",
+		"ToTableName": "PatientFamilyMemberMedicalCondition",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ServiceProviderId",
+				"ToColumnName": "ServiceProviderId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientFamilyMember.cdm.json/PatientFamilyMember\",\"toEntity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"joinPairs\":[{\"fromAttribute\":\"ServiceProviderId\",\"toAttribute\":\"ServiceProviderId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

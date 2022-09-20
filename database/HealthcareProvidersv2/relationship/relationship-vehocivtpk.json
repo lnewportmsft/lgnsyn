@@ -1,0 +1,26 @@
+{
+	"name": "relationship-vehocivtpk",
+	"properties": {
+		"Name": "relationship-vehocivtpk",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientName",
+		"ToTableName": "PatientNameComponent",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientNameId",
+				"ToColumnName": "PatientNameId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientName.cdm.json/PatientName\",\"toEntity\":\"PatientNameComponent.cdm.json/PatientNameComponent\",\"joinPairs\":[{\"fromAttribute\":\"PatientNameId\",\"toAttribute\":\"PatientNameId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

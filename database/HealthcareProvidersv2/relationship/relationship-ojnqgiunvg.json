@@ -1,0 +1,26 @@
+{
+	"name": "relationship-ojnqgiunvg",
+	"properties": {
+		"Name": "relationship-ojnqgiunvg",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "RiskFactor",
+		"ToTableName": "PatientRiskFactor",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "RiskFactorId",
+				"ToColumnName": "RiskFactorId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"RiskFactor.cdm.json/RiskFactor\",\"toEntity\":\"PatientRiskFactor.cdm.json/PatientRiskFactor\",\"joinPairs\":[{\"fromAttribute\":\"RiskFactorId\",\"toAttribute\":\"RiskFactorId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

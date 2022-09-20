@@ -1,0 +1,162 @@
+{
+	"name": "PatientPrecaution",
+	"properties": {
+		"Name": "PatientPrecaution",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The precautions that have been identified for a Patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPrecaution.cdm.json/PatientPrecaution",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PrecautionTypeId",
+					"Description": "The unique identifier of a physical characteristic.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPrecaution.cdm.json/PatientPrecaution",
+						"Name": "PrecautionTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPrecaution.cdm.json/PatientPrecaution",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PrecautionPeriodStartDate",
+					"Description": "The period start date for which the associated Precaution is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPrecaution.cdm.json/PatientPrecaution",
+						"Name": "PrecautionPeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PrecautionPeriodEndDate",
+					"Description": "The period end date for which the associated Precaution is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPrecaution.cdm.json/PatientPrecaution",
+						"Name": "PrecautionPeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PrecautionNote",
+					"Description": "A note, comment or additional information regarding the Precaution.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPrecaution.cdm.json/PatientPrecaution",
+						"Name": "PrecautionNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPrecaution",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPrecaution",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientPrecaution.cdm.json/PatientPrecaution\",\"name\":\"PatientId\"},\"PrecautionTypeId\":{\"entity\":\"PatientPrecaution.cdm.json/PatientPrecaution\",\"name\":\"PrecautionTypeId\"},\"ServiceProviderId\":{\"entity\":\"PatientPrecaution.cdm.json/PatientPrecaution\",\"name\":\"ServiceProviderId\"},\"PrecautionPeriodStartDate\":{\"entity\":\"PatientPrecaution.cdm.json/PatientPrecaution\",\"name\":\"PrecautionPeriodStartDate\"},\"PrecautionPeriodEndDate\":{\"entity\":\"PatientPrecaution.cdm.json/PatientPrecaution\",\"name\":\"PrecautionPeriodEndDate\"},\"PrecautionNote\":{\"entity\":\"PatientPrecaution.cdm.json/PatientPrecaution\",\"name\":\"PrecautionNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientPrecaution\",\"path\":\"PatientPrecaution.cdm.json/PatientPrecaution\"},\"description\":\"The precautions that have been identified for a Patient.\",\"primaryKey\":[\"PatientId\",\"PrecautionTypeId\",\"ServiceProviderId\",\"PrecautionPeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPrecaution.cdm.json/PatientPrecaution\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPrecaution.cdm.json/PatientPrecaution\",\"name\":\"PrecautionTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a physical characteristic.\",\"isNullable\":false,\"name\":\"PrecautionTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPrecaution.cdm.json/PatientPrecaution\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPrecaution.cdm.json/PatientPrecaution\",\"name\":\"PrecautionPeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated Precaution is valid or in-effect.\",\"isNullable\":false,\"name\":\"PrecautionPeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPrecaution.cdm.json/PatientPrecaution\",\"name\":\"PrecautionPeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated Precaution is valid or in-effect.\",\"isNullable\":true,\"name\":\"PrecautionPeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPrecaution.cdm.json/PatientPrecaution\",\"name\":\"PrecautionNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Precaution.\",\"isNullable\":true,\"name\":\"PrecautionNote\"}]}}}",
+			"Description": "The precautions that have been identified for a Patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,PrecautionTypeId,ServiceProviderId,PrecautionPeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,259 @@
+{
+	"name": "PatientImmunization",
+	"properties": {
+		"Name": "PatientImmunization",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The Immunization(s) of the associated patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientImmunization.cdm.json/PatientImmunization",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientImmunization.cdm.json/PatientImmunization",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "VaccineId",
+					"Description": "The unique identifier of a vaccine.",
+					"BaseAttributeReference": {
+						"Entity": "PatientImmunization.cdm.json/PatientImmunization",
+						"Name": "VaccineId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ImmunizationDate",
+					"Description": "The date of the immunization.",
+					"BaseAttributeReference": {
+						"Entity": "PatientImmunization.cdm.json/PatientImmunization",
+						"Name": "ImmunizationDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "VaccineDose",
+					"Description": "The amount of vaccine administered.",
+					"BaseAttributeReference": {
+						"Entity": "PatientImmunization.cdm.json/PatientImmunization",
+						"Name": "VaccineDose"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "UnitOfMeasureId",
+					"Description": "The unique identifier of a Unit Of Measure.",
+					"BaseAttributeReference": {
+						"Entity": "PatientImmunization.cdm.json/PatientImmunization",
+						"Name": "UnitOfMeasureId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AdministeredByServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientImmunization.cdm.json/PatientImmunization",
+						"Name": "AdministeredByServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "VaccineSourceId",
+					"Description": "The unique identifier of the Vaccine source.",
+					"BaseAttributeReference": {
+						"Entity": "PatientImmunization.cdm.json/PatientImmunization",
+						"Name": "VaccineSourceId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "VaccineAdministeredSiteId",
+					"Description": "The unique identifier of a vaccine administered site.",
+					"BaseAttributeReference": {
+						"Entity": "PatientImmunization.cdm.json/PatientImmunization",
+						"Name": "VaccineAdministeredSiteId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "VaccineLotNumber",
+					"Description": "The lot number of the manufactured vaccine.",
+					"BaseAttributeReference": {
+						"Entity": "PatientImmunization.cdm.json/PatientImmunization",
+						"Name": "VaccineLotNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 21,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "VaccineManufacturerName",
+					"Description": "The name of the manufacturer of the vaccine + lot number.",
+					"BaseAttributeReference": {
+						"Entity": "PatientImmunization.cdm.json/PatientImmunization",
+						"Name": "VaccineManufacturerName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "ImmunizationNote",
+					"Description": "A note, comment or additional information regarding the patient immunization.",
+					"BaseAttributeReference": {
+						"Entity": "PatientImmunization.cdm.json/PatientImmunization",
+						"Name": "ImmunizationNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientImmunization",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientImmunization",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"PatientId\"},\"VaccineId\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"VaccineId\"},\"ImmunizationDate\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"ImmunizationDate\"},\"VaccineDose\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"VaccineDose\"},\"UnitOfMeasureId\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"UnitOfMeasureId\"},\"AdministeredByServiceProviderId\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"AdministeredByServiceProviderId\"},\"VaccineSourceId\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"VaccineSourceId\"},\"VaccineAdministeredSiteId\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"VaccineAdministeredSiteId\"},\"VaccineLotNumber\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"VaccineLotNumber\"},\"VaccineManufacturerName\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"VaccineManufacturerName\"},\"ImmunizationNote\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"ImmunizationNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientImmunization\",\"path\":\"PatientImmunization.cdm.json/PatientImmunization\"},\"description\":\"The Immunization(s) of the associated patient.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"VaccineId\",\"ImmunizationDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"VaccineId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a vaccine.\",\"isNullable\":false,\"name\":\"VaccineId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"ImmunizationDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date of the immunization.\",\"isNullable\":false,\"name\":\"ImmunizationDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"VaccineDose\"},\"dataType\":\"integer\",\"description\":\"The amount of vaccine administered.\",\"isNullable\":true,\"name\":\"VaccineDose\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"UnitOfMeasureId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Unit Of Measure.\",\"isNullable\":true,\"name\":\"UnitOfMeasureId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"AdministeredByServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":true,\"name\":\"AdministeredByServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"VaccineSourceId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of the Vaccine source.\",\"isNullable\":true,\"name\":\"VaccineSourceId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"VaccineAdministeredSiteId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a vaccine administered site.\",\"isNullable\":true,\"name\":\"VaccineAdministeredSiteId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"VaccineLotNumber\"},\"dataType\":\"string\",\"dataTypeLength\":21,\"description\":\"The lot number of the manufactured vaccine.\",\"isNullable\":true,\"name\":\"VaccineLotNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"VaccineManufacturerName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the manufacturer of the vaccine + lot number.\",\"isNullable\":true,\"name\":\"VaccineManufacturerName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientImmunization.cdm.json/PatientImmunization\",\"name\":\"ImmunizationNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the patient immunization.\",\"isNullable\":true,\"name\":\"ImmunizationNote\"}]}}}",
+			"Description": "The Immunization(s) of the associated patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,VaccineId,ImmunizationDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

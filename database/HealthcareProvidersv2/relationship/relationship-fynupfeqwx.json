@@ -1,0 +1,26 @@
+{
+	"name": "relationship-fynupfeqwx",
+	"properties": {
+		"Name": "relationship-fynupfeqwx",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientProblem",
+		"ToTableName": "PatientProblemActivity",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ServiceProviderId",
+				"ToColumnName": "ServiceProviderId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientProblem.cdm.json/PatientProblem\",\"toEntity\":\"PatientProblemActivity.cdm.json/PatientProblemActivity\",\"joinPairs\":[{\"fromAttribute\":\"ServiceProviderId\",\"toAttribute\":\"ServiceProviderId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,128 @@
+{
+	"name": "PatientAncestry",
+	"properties": {
+		"Name": "PatientAncestry",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The ancestry(s) identified by or for the Patient.\n\nOne or more ethnic identifies that may be identified by the Patient.\n\nSource:  US Bureau of Census\nThis identification is based on self-identification; the data on ancestry represents self-classification by people according to the ancestry group(s) with which they most closely identify. Ancestry refers to a person's ethnic origin or descent, \"roots,\" or heritage or the place of birth of the person or the person's parents or ancestors before their arrival in the United States. Some ethnic identities, such as \"Egyptian\" or \"Polish\" can be traced to geographic areas outside the United States, while other ethnicities such as \"Pennsylvania Dutch\" or \"Cajun\" evolved in the United States. \n\nThe ancestry question allowed respondents to report one or more ancestry groups. While a large number of respondents listed a single ancestry, the majority of answers included more than one ethnic entry.\n\nThe Census Bureau accepts \"American\" as a unique ethnicity if it was given alone, with an ambiguous response, or with State names. If the respondent listed any other ethnic identity such as \"Italian American,\" generally the \"American\" portion of the response\nwas not coded. However, distinct groups such as \"American Indian,\" \"Mexican American,\" and \"African American\" were coded and identified separately because they represented groups who considered themselves different from those who reported as\n\"Indian,\" \"Mexican,\" or \"African,\" respectively.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAncestry.cdm.json/PatientAncestry",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AncestryId",
+					"Description": "The unique identifier of an Ancestry.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAncestry.cdm.json/PatientAncestry",
+						"Name": "AncestryId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAncestry.cdm.json/PatientAncestry",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientAncestryNote",
+					"Description": "Notes, comments or additional information regarding the Patient's ancestry.",
+					"BaseAttributeReference": {
+						"Entity": "PatientAncestry.cdm.json/PatientAncestry",
+						"Name": "PatientAncestryNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientAncestry",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientAncestry",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientAncestry.cdm.json/PatientAncestry\",\"name\":\"PatientId\"},\"AncestryId\":{\"entity\":\"PatientAncestry.cdm.json/PatientAncestry\",\"name\":\"AncestryId\"},\"ServiceProviderId\":{\"entity\":\"PatientAncestry.cdm.json/PatientAncestry\",\"name\":\"ServiceProviderId\"},\"PatientAncestryNote\":{\"entity\":\"PatientAncestry.cdm.json/PatientAncestry\",\"name\":\"PatientAncestryNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientAncestry\",\"path\":\"PatientAncestry.cdm.json/PatientAncestry\"},\"description\":\"The ancestry(s) identified by or for the Patient.\\n\\nOne or more ethnic identifies that may be identified by the Patient.\\n\\nSource:  US Bureau of Census\\nThis identification is based on self-identification; the data on ancestry represents self-classification by people according to the ancestry group(s) with which they most closely identify. Ancestry refers to a person's ethnic origin or descent, \\\"roots,\\\" or heritage or the place of birth of the person or the person's parents or ancestors before their arrival in the United States. Some ethnic identities, such as \\\"Egyptian\\\" or \\\"Polish\\\" can be traced to geographic areas outside the United States, while other ethnicities such as \\\"Pennsylvania Dutch\\\" or \\\"Cajun\\\" evolved in the United States. \\n\\nThe ancestry question allowed respondents to report one or more ancestry groups. While a large number of respondents listed a single ancestry, the majority of answers included more than one ethnic entry.\\n\\nThe Census Bureau accepts \\\"American\\\" as a unique ethnicity if it was given alone, with an ambiguous response, or with State names. If the respondent listed any other ethnic identity such as \\\"Italian American,\\\" generally the \\\"American\\\" portion of the response\\nwas not coded. However, distinct groups such as \\\"American Indian,\\\" \\\"Mexican American,\\\" and \\\"African American\\\" were coded and identified separately because they represented groups who considered themselves different from those who reported as\\n\\\"Indian,\\\" \\\"Mexican,\\\" or \\\"African,\\\" respectively.\",\"primaryKey\":[\"PatientId\",\"AncestryId\",\"ServiceProviderId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAncestry.cdm.json/PatientAncestry\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAncestry.cdm.json/PatientAncestry\",\"name\":\"AncestryId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Ancestry.\",\"isNullable\":false,\"name\":\"AncestryId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAncestry.cdm.json/PatientAncestry\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientAncestry.cdm.json/PatientAncestry\",\"name\":\"PatientAncestryNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"Notes, comments or additional information regarding the Patient's ancestry.\",\"isNullable\":true,\"name\":\"PatientAncestryNote\"}]}}}",
+			"Description": "The ancestry(s) identified by or for the Patient.\n\nOne or more ethnic identifies that may be identified by the Patient.\n\nSource:  US Bureau of Census\nThis identification is based on self-identification; the data on ancestry represents self-classification by people according to the ancestry group(s) with which they most closely identify. Ancestry refers to a person's ethnic origin or descent, \"roots,\" or heritage or the place of birth of the person or the person's parents or ancestors before their arrival in the United States. Some ethnic identities, such as \"Egyptian\" or \"Polish\" can be traced to geographic areas outside the United States, while other ethnicities such as \"Pennsylvania Dutch\" or \"Cajun\" evolved in the United States. \n\nThe ancestry question allowed respondents to report one or more ancestry groups. While a large number of respondents listed a single ancestry, the majority of answers included more than one ethnic entry.\n\nThe Census Bureau accepts \"American\" as a unique ethnicity if it was given alone, with an ambiguous response, or with State names. If the respondent listed any other ethnic identity such as \"Italian American,\" generally the \"American\" portion of the response\nwas not coded. However, distinct groups such as \"American Indian,\" \"Mexican American,\" and \"African American\" were coded and identified separately because they represented groups who considered themselves different from those who reported as\n\"Indian,\" \"Mexican,\" or \"African,\" respectively.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,AncestryId,ServiceProviderId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

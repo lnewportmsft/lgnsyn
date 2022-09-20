@@ -1,0 +1,161 @@
+{
+	"name": "PatientPregnancyStatus",
+	"properties": {
+		"Name": "PatientPregnancyStatus",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The pregnancy status for a patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPregnancyStatus.cdm.json/PatientPregnancyStatus",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPregnancyStatus.cdm.json/PatientPregnancyStatus",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientPregnancyStatusCommunicatedDate",
+					"Description": "The date for which a patient pregnancy status was communicated.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPregnancyStatus.cdm.json/PatientPregnancyStatus",
+						"Name": "PatientPregnancyStatusCommunicatedDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientPregnancyStatusNote",
+					"Description": "A note, comment or additional information regarding a patient pregnancy status.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPregnancyStatus.cdm.json/PatientPregnancyStatus",
+						"Name": "PatientPregnancyStatusNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientPregnancyStatusTypeId",
+					"Description": "The unique identifier of a Patient Pregnancy Status type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPregnancyStatus.cdm.json/PatientPregnancyStatus",
+						"Name": "PatientPregnancyStatusTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "EncounterId",
+					"Description": "The unique identifier of an Encounter.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPregnancyStatus.cdm.json/PatientPregnancyStatus",
+						"Name": "EncounterId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPregnancyStatus",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPregnancyStatus",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientPregnancyStatus.cdm.json/PatientPregnancyStatus\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientPregnancyStatus.cdm.json/PatientPregnancyStatus\",\"name\":\"PatientId\"},\"PatientPregnancyStatusCommunicatedDate\":{\"entity\":\"PatientPregnancyStatus.cdm.json/PatientPregnancyStatus\",\"name\":\"PatientPregnancyStatusCommunicatedDate\"},\"PatientPregnancyStatusNote\":{\"entity\":\"PatientPregnancyStatus.cdm.json/PatientPregnancyStatus\",\"name\":\"PatientPregnancyStatusNote\"},\"PatientPregnancyStatusTypeId\":{\"entity\":\"PatientPregnancyStatus.cdm.json/PatientPregnancyStatus\",\"name\":\"PatientPregnancyStatusTypeId\"},\"EncounterId\":{\"entity\":\"PatientPregnancyStatus.cdm.json/PatientPregnancyStatus\",\"name\":\"EncounterId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientPregnancyStatus\",\"path\":\"PatientPregnancyStatus.cdm.json/PatientPregnancyStatus\"},\"description\":\"The pregnancy status for a patient.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PatientPregnancyStatusCommunicatedDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPregnancyStatus.cdm.json/PatientPregnancyStatus\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPregnancyStatus.cdm.json/PatientPregnancyStatus\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPregnancyStatus.cdm.json/PatientPregnancyStatus\",\"name\":\"PatientPregnancyStatusCommunicatedDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date for which a patient pregnancy status was communicated.\",\"isNullable\":false,\"name\":\"PatientPregnancyStatusCommunicatedDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPregnancyStatus.cdm.json/PatientPregnancyStatus\",\"name\":\"PatientPregnancyStatusNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding a patient pregnancy status.\",\"isNullable\":true,\"name\":\"PatientPregnancyStatusNote\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPregnancyStatus.cdm.json/PatientPregnancyStatus\",\"name\":\"PatientPregnancyStatusTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Pregnancy Status type.\",\"isNullable\":true,\"name\":\"PatientPregnancyStatusTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPregnancyStatus.cdm.json/PatientPregnancyStatus\",\"name\":\"EncounterId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of an Encounter.\",\"isNullable\":true,\"name\":\"EncounterId\"}]}}}",
+			"Description": "The pregnancy status for a patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PatientPregnancyStatusCommunicatedDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,26 @@
+{
+	"name": "relationship-ikobpkjehz",
+	"properties": {
+		"Name": "relationship-ikobpkjehz",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "ActivityOfDailyLiving",
+		"ToTableName": "PatientActivityOfDailyLiving",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ActivityOfDailyLivingId",
+				"ToColumnName": "ActivityOfDailyLivingId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"ActivityOfDailyLiving.cdm.json/ActivityOfDailyLiving\",\"toEntity\":\"PatientActivityOfDailyLiving.cdm.json/PatientActivityOfDailyLiving\",\"joinPairs\":[{\"fromAttribute\":\"ActivityOfDailyLivingId\",\"toAttribute\":\"ActivityOfDailyLivingId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,26 @@
+{
+	"name": "relationship-ugecrgzgdz",
+	"properties": {
+		"Name": "relationship-ugecrgzgdz",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "MedicalConsentType",
+		"ToTableName": "PatientMedicalConsent",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "MedicalConsentTypeId",
+				"ToColumnName": "MedicalConsentTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"MedicalConsentType.cdm.json/MedicalConsentType\",\"toEntity\":\"PatientMedicalConsent.cdm.json/PatientMedicalConsent\",\"joinPairs\":[{\"fromAttribute\":\"MedicalConsentTypeId\",\"toAttribute\":\"MedicalConsentTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

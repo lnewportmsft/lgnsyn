@@ -1,0 +1,113 @@
+{
+	"name": "AllergicReactionType",
+	"properties": {
+		"Name": "AllergicReactionType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "Allergic reactions are sensitivities to substances, called allergens, that are contacted through the skin, inhaled into the lungs, swallowed, or injected.\n\nEx:\n- Hives,\n- Itching\n- Nasal congestion\n- Rashes\n- Watery, red eyes\n- Mild\n- Intolerant",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "AllergicReactionTypeId",
+					"Description": "The unique identifier of an Allergic Reaction Type.",
+					"BaseAttributeReference": {
+						"Entity": "AllergicReactionType.cdm.json/AllergicReactionType",
+						"Name": "AllergicReactionTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AllergicReactionTypeName",
+					"Description": "The name of an Allergic Reaction Type.",
+					"BaseAttributeReference": {
+						"Entity": "AllergicReactionType.cdm.json/AllergicReactionType",
+						"Name": "AllergicReactionTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "AllergicReactionTypeDescription",
+					"Description": "The description of an Allergic Reaction Type.",
+					"BaseAttributeReference": {
+						"Entity": "AllergicReactionType.cdm.json/AllergicReactionType",
+						"Name": "AllergicReactionTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/AllergicReactionType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/AllergicReactionType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"AllergicReactionTypeId\":{\"entity\":\"AllergicReactionType.cdm.json/AllergicReactionType\",\"name\":\"AllergicReactionTypeId\"},\"AllergicReactionTypeName\":{\"entity\":\"AllergicReactionType.cdm.json/AllergicReactionType\",\"name\":\"AllergicReactionTypeName\"},\"AllergicReactionTypeDescription\":{\"entity\":\"AllergicReactionType.cdm.json/AllergicReactionType\",\"name\":\"AllergicReactionTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"AllergicReactionType\",\"path\":\"AllergicReactionType.cdm.json/AllergicReactionType\"},\"description\":\"Allergic reactions are sensitivities to substances, called allergens, that are contacted through the skin, inhaled into the lungs, swallowed, or injected.\\n\\nEx:\\n- Hives,\\n- Itching\\n- Nasal congestion\\n- Rashes\\n- Watery, red eyes\\n- Mild\\n- Intolerant\",\"primaryKey\":[\"AllergicReactionTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AllergicReactionType.cdm.json/AllergicReactionType\",\"name\":\"AllergicReactionTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Allergic Reaction Type.\",\"isNullable\":false,\"name\":\"AllergicReactionTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AllergicReactionType.cdm.json/AllergicReactionType\",\"name\":\"AllergicReactionTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of an Allergic Reaction Type.\",\"isNullable\":true,\"name\":\"AllergicReactionTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AllergicReactionType.cdm.json/AllergicReactionType\",\"name\":\"AllergicReactionTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of an Allergic Reaction Type.\",\"isNullable\":true,\"name\":\"AllergicReactionTypeDescription\"}]}}}",
+			"Description": "Allergic reactions are sensitivities to substances, called allergens, that are contacted through the skin, inhaled into the lungs, swallowed, or injected.\n\nEx:\n- Hives,\n- Itching\n- Nasal congestion\n- Rashes\n- Watery, red eyes\n- Mild\n- Intolerant",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "AllergicReactionTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

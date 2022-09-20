@@ -1,0 +1,178 @@
+{
+	"name": "PatientSocialMediaPlatformUser",
+	"properties": {
+		"Name": "PatientSocialMediaPlatformUser",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A Patient which is represented as a user of a Social Media Platform.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "SocialMediaPlatformId",
+					"Description": "The unique identifier of a Social Media Platform.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser",
+						"Name": "SocialMediaPlatformId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "SocialMediaPlatformUserId",
+					"Description": "The unique identifier of a Social Media Platform User.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser",
+						"Name": "SocialMediaPlatformUserId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientSocialMediaPlatformUserNote",
+					"Description": "A note, comment or additional information regarding the Patient Social Media Platform User.",
+					"BaseAttributeReference": {
+						"Entity": "PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser",
+						"Name": "PatientSocialMediaPlatformUserNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientSocialMediaPlatformUser",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientSocialMediaPlatformUser",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\",\"name\":\"PatientId\"},\"SocialMediaPlatformId\":{\"entity\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\",\"name\":\"SocialMediaPlatformId\"},\"SocialMediaPlatformUserId\":{\"entity\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\",\"name\":\"SocialMediaPlatformUserId\"},\"PeriodStartDate\":{\"entity\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\",\"name\":\"PeriodEndDate\"},\"PatientSocialMediaPlatformUserNote\":{\"entity\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\",\"name\":\"PatientSocialMediaPlatformUserNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientSocialMediaPlatformUser\",\"path\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\"},\"description\":\"A Patient which is represented as a user of a Social Media Platform.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"SocialMediaPlatformId\",\"SocialMediaPlatformUserId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\",\"name\":\"SocialMediaPlatformId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Social Media Platform.\",\"isNullable\":false,\"name\":\"SocialMediaPlatformId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\",\"name\":\"SocialMediaPlatformUserId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Social Media Platform User.\",\"isNullable\":false,\"name\":\"SocialMediaPlatformUserId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientSocialMediaPlatformUser.cdm.json/PatientSocialMediaPlatformUser\",\"name\":\"PatientSocialMediaPlatformUserNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient Social Media Platform User.\",\"isNullable\":true,\"name\":\"PatientSocialMediaPlatformUserNote\"}]}}}",
+			"Description": "A Patient which is represented as a user of a Social Media Platform.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,SocialMediaPlatformId,SocialMediaPlatformUserId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,113 @@
+{
+	"name": "PatientOwnBirthEventCountType",
+	"properties": {
+		"Name": "PatientOwnBirthEventCountType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A lookup that identifies whether the patient was part of a single or multiple birth\n\nEx:\n- Birth was single\n\n- Birth was 1st of 1\n- Birth was 2nd of 1\n- Birth was 3rd of 1\n- Birth was 4th of 1\n- Birth was 5th of 1\n- Birth was 6th of 1\n- Birth was 7th of 1\n- Birth was 8th of 1\n- Birth was 9th of 1\n- Birth was 10th of 1\n\n- Birth was 1st of 2\n- Birth was 2nd of 2\n- Birth was 3rd of 2\n- Birth was 4th of 2\n- Birth was 5th of 2\n- Birth was 6th of 2\n- Birth was 7th of 2\n- Birth was 8th of 2\n- Birth was 9th of 2\n- Birth was 10th of 2\n\n- Birth was 1st of 3\n- Birth was 2nd of 3\n- Birth was 3rd of 3\n- Birth was 4th of 3\n- Birth was 5th of 3\n- Birth was 6th of 3\n- Birth was 7th of 3\n- Birth was 8th of 3\n- Birth was 9th of 3\n- Birth was 10th of 3\n\netc..",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientOwnBirthEventCountTypeId",
+					"Description": "The unique identifier of a Patient Own Birth Event Count Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientOwnBirthEventCountType.cdm.json/PatientOwnBirthEventCountType",
+						"Name": "PatientOwnBirthEventCountTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientOwnBirthEventCountTypeName",
+					"Description": "The name of a Patient Own Birth Event Count Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientOwnBirthEventCountType.cdm.json/PatientOwnBirthEventCountType",
+						"Name": "PatientOwnBirthEventCountTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientOwnBirthEventCountTypeDescription",
+					"Description": "The description of a Patient Own Birth Event Count Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientOwnBirthEventCountType.cdm.json/PatientOwnBirthEventCountType",
+						"Name": "PatientOwnBirthEventCountTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientOwnBirthEventCountType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientOwnBirthEventCountType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientOwnBirthEventCountTypeId\":{\"entity\":\"PatientOwnBirthEventCountType.cdm.json/PatientOwnBirthEventCountType\",\"name\":\"PatientOwnBirthEventCountTypeId\"},\"PatientOwnBirthEventCountTypeName\":{\"entity\":\"PatientOwnBirthEventCountType.cdm.json/PatientOwnBirthEventCountType\",\"name\":\"PatientOwnBirthEventCountTypeName\"},\"PatientOwnBirthEventCountTypeDescription\":{\"entity\":\"PatientOwnBirthEventCountType.cdm.json/PatientOwnBirthEventCountType\",\"name\":\"PatientOwnBirthEventCountTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientOwnBirthEventCountType\",\"path\":\"PatientOwnBirthEventCountType.cdm.json/PatientOwnBirthEventCountType\"},\"description\":\"A lookup that identifies whether the patient was part of a single or multiple birth\\n\\nEx:\\n- Birth was single\\n\\n- Birth was 1st of 1\\n- Birth was 2nd of 1\\n- Birth was 3rd of 1\\n- Birth was 4th of 1\\n- Birth was 5th of 1\\n- Birth was 6th of 1\\n- Birth was 7th of 1\\n- Birth was 8th of 1\\n- Birth was 9th of 1\\n- Birth was 10th of 1\\n\\n- Birth was 1st of 2\\n- Birth was 2nd of 2\\n- Birth was 3rd of 2\\n- Birth was 4th of 2\\n- Birth was 5th of 2\\n- Birth was 6th of 2\\n- Birth was 7th of 2\\n- Birth was 8th of 2\\n- Birth was 9th of 2\\n- Birth was 10th of 2\\n\\n- Birth was 1st of 3\\n- Birth was 2nd of 3\\n- Birth was 3rd of 3\\n- Birth was 4th of 3\\n- Birth was 5th of 3\\n- Birth was 6th of 3\\n- Birth was 7th of 3\\n- Birth was 8th of 3\\n- Birth was 9th of 3\\n- Birth was 10th of 3\\n\\netc..\",\"primaryKey\":[\"PatientOwnBirthEventCountTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientOwnBirthEventCountType.cdm.json/PatientOwnBirthEventCountType\",\"name\":\"PatientOwnBirthEventCountTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Own Birth Event Count Type.\",\"isNullable\":false,\"name\":\"PatientOwnBirthEventCountTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientOwnBirthEventCountType.cdm.json/PatientOwnBirthEventCountType\",\"name\":\"PatientOwnBirthEventCountTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Patient Own Birth Event Count Type.\",\"isNullable\":true,\"name\":\"PatientOwnBirthEventCountTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientOwnBirthEventCountType.cdm.json/PatientOwnBirthEventCountType\",\"name\":\"PatientOwnBirthEventCountTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Patient Own Birth Event Count Type.\",\"isNullable\":true,\"name\":\"PatientOwnBirthEventCountTypeDescription\"}]}}}",
+			"Description": "A lookup that identifies whether the patient was part of a single or multiple birth\n\nEx:\n- Birth was single\n\n- Birth was 1st of 1\n- Birth was 2nd of 1\n- Birth was 3rd of 1\n- Birth was 4th of 1\n- Birth was 5th of 1\n- Birth was 6th of 1\n- Birth was 7th of 1\n- Birth was 8th of 1\n- Birth was 9th of 1\n- Birth was 10th of 1\n\n- Birth was 1st of 2\n- Birth was 2nd of 2\n- Birth was 3rd of 2\n- Birth was 4th of 2\n- Birth was 5th of 2\n- Birth was 6th of 2\n- Birth was 7th of 2\n- Birth was 8th of 2\n- Birth was 9th of 2\n- Birth was 10th of 2\n\n- Birth was 1st of 3\n- Birth was 2nd of 3\n- Birth was 3rd of 3\n- Birth was 4th of 3\n- Birth was 5th of 3\n- Birth was 6th of 3\n- Birth was 7th of 3\n- Birth was 8th of 3\n- Birth was 9th of 3\n- Birth was 10th of 3\n\netc..",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientOwnBirthEventCountTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

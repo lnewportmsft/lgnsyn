@@ -1,0 +1,113 @@
+{
+	"name": "PatientStatusType",
+	"properties": {
+		"Name": "PatientStatusType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A type of status that may be associated with a Patient.\n\nEx:\n- Prospect\n- Hospital-admitted\n- Outpatient \n- Hospital-release/Not Under Care\n- Unknown",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientStatusTypeId",
+					"Description": "The unique identifier of a Patient Status Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientStatusType.cdm.json/PatientStatusType",
+						"Name": "PatientStatusTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientStatusTypeName",
+					"Description": "The name of a Patient Status Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientStatusType.cdm.json/PatientStatusType",
+						"Name": "PatientStatusTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientStatusTypeDescription",
+					"Description": "The description of a Patient Status Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientStatusType.cdm.json/PatientStatusType",
+						"Name": "PatientStatusTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientStatusType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientStatusType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientStatusTypeId\":{\"entity\":\"PatientStatusType.cdm.json/PatientStatusType\",\"name\":\"PatientStatusTypeId\"},\"PatientStatusTypeName\":{\"entity\":\"PatientStatusType.cdm.json/PatientStatusType\",\"name\":\"PatientStatusTypeName\"},\"PatientStatusTypeDescription\":{\"entity\":\"PatientStatusType.cdm.json/PatientStatusType\",\"name\":\"PatientStatusTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientStatusType\",\"path\":\"PatientStatusType.cdm.json/PatientStatusType\"},\"description\":\"A type of status that may be associated with a Patient.\\n\\nEx:\\n- Prospect\\n- Hospital-admitted\\n- Outpatient \\n- Hospital-release/Not Under Care\\n- Unknown\",\"primaryKey\":[\"PatientStatusTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientStatusType.cdm.json/PatientStatusType\",\"name\":\"PatientStatusTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Status Type.\",\"isNullable\":false,\"name\":\"PatientStatusTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientStatusType.cdm.json/PatientStatusType\",\"name\":\"PatientStatusTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a Patient Status Type.\",\"isNullable\":true,\"name\":\"PatientStatusTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientStatusType.cdm.json/PatientStatusType\",\"name\":\"PatientStatusTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a Patient Status Type.\",\"isNullable\":true,\"name\":\"PatientStatusTypeDescription\"}]}}}",
+			"Description": "A type of status that may be associated with a Patient.\n\nEx:\n- Prospect\n- Hospital-admitted\n- Outpatient \n- Hospital-release/Not Under Care\n- Unknown",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientStatusTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

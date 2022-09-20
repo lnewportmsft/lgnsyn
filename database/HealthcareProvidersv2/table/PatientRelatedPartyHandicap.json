@@ -1,0 +1,211 @@
+{
+	"name": "PatientRelatedPartyHandicap",
+	"properties": {
+		"Name": "PatientRelatedPartyHandicap",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more handicaps that affect the associated individual.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PartyId",
+					"Description": "The unique identifier of a Party.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap",
+						"Name": "PartyId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				},
+				{
+					"Name": "PatientPartyRelationshipTypeId",
+					"Description": "The unique identifier of a Patient-Party relationship type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap",
+						"Name": "PatientPartyRelationshipTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated patient - party relationship is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "HandicapTypeId",
+					"Description": "The unique identifier of a biometric type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap",
+						"Name": "HandicapTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "HandicapPeriodStartDate",
+					"Description": "The period start date for which the associated handicap is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap",
+						"Name": "HandicapPeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "HandicapPeriodEndDate",
+					"Description": "The period end date for which the associated handicap is valid or in-effect.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap",
+						"Name": "HandicapPeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientPartyHandicapRelationshipNote",
+					"Description": "A note, comment or additional information regarding the Patient - Party Handicap relationship.",
+					"BaseAttributeReference": {
+						"Entity": "PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap",
+						"Name": "PatientPartyHandicapRelationshipNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRelatedPartyHandicap",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientRelatedPartyHandicap",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"PatientId\"},\"PartyId\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"PartyId\"},\"PatientPartyRelationshipTypeId\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"PatientPartyRelationshipTypeId\"},\"PeriodStartDate\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"PeriodStartDate\"},\"HandicapTypeId\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"HandicapTypeId\"},\"HandicapPeriodStartDate\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"HandicapPeriodStartDate\"},\"HandicapPeriodEndDate\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"HandicapPeriodEndDate\"},\"PatientPartyHandicapRelationshipNote\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"PatientPartyHandicapRelationshipNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientRelatedPartyHandicap\",\"path\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\"},\"description\":\"The one or more handicaps that affect the associated individual.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PartyId\",\"PatientPartyRelationshipTypeId\",\"PeriodStartDate\",\"HandicapTypeId\",\"HandicapPeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"PartyId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of a Party.\",\"isNullable\":false,\"name\":\"PartyId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"PatientPartyRelationshipTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient-Party relationship type.\",\"isNullable\":false,\"name\":\"PatientPartyRelationshipTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated patient - party relationship is valid or in-effect.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"HandicapTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a biometric type.\",\"isNullable\":false,\"name\":\"HandicapTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"HandicapPeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated handicap is valid or in-effect.\",\"isNullable\":false,\"name\":\"HandicapPeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"HandicapPeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated handicap is valid or in-effect.\",\"isNullable\":true,\"name\":\"HandicapPeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientRelatedPartyHandicap.cdm.json/PatientRelatedPartyHandicap\",\"name\":\"PatientPartyHandicapRelationshipNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient - Party Handicap relationship.\",\"isNullable\":true,\"name\":\"PatientPartyHandicapRelationshipNote\"}]}}}",
+			"Description": "The one or more handicaps that affect the associated individual.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PartyId,PatientPartyRelationshipTypeId,PeriodStartDate,HandicapTypeId,HandicapPeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

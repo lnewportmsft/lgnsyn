@@ -1,0 +1,113 @@
+{
+	"name": "PrecautionType",
+	"properties": {
+		"Name": "PrecautionType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A non-clinical precaution that can be associated with an individual.\n\nEx:\n- Aggressive\n- Blind\n- Confused\n- Deaf",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PrecautionTypeId",
+					"Description": "The unique identifier of a precaution type.",
+					"BaseAttributeReference": {
+						"Entity": "PrecautionType.cdm.json/PrecautionType",
+						"Name": "PrecautionTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PrecautionTypeName",
+					"Description": "The name of a precaution type.",
+					"BaseAttributeReference": {
+						"Entity": "PrecautionType.cdm.json/PrecautionType",
+						"Name": "PrecautionTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PrecautionTypeDescription",
+					"Description": "The description of a precaution type.",
+					"BaseAttributeReference": {
+						"Entity": "PrecautionType.cdm.json/PrecautionType",
+						"Name": "PrecautionTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PrecautionType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PrecautionType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PrecautionTypeId\":{\"entity\":\"PrecautionType.cdm.json/PrecautionType\",\"name\":\"PrecautionTypeId\"},\"PrecautionTypeName\":{\"entity\":\"PrecautionType.cdm.json/PrecautionType\",\"name\":\"PrecautionTypeName\"},\"PrecautionTypeDescription\":{\"entity\":\"PrecautionType.cdm.json/PrecautionType\",\"name\":\"PrecautionTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PrecautionType\",\"path\":\"PrecautionType.cdm.json/PrecautionType\"},\"description\":\"A non-clinical precaution that can be associated with an individual.\\n\\nEx:\\n- Aggressive\\n- Blind\\n- Confused\\n- Deaf\",\"primaryKey\":[\"PrecautionTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PrecautionType.cdm.json/PrecautionType\",\"name\":\"PrecautionTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a precaution type.\",\"isNullable\":false,\"name\":\"PrecautionTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PrecautionType.cdm.json/PrecautionType\",\"name\":\"PrecautionTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a precaution type.\",\"isNullable\":true,\"name\":\"PrecautionTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PrecautionType.cdm.json/PrecautionType\",\"name\":\"PrecautionTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a precaution type.\",\"isNullable\":true,\"name\":\"PrecautionTypeDescription\"}]}}}",
+			"Description": "A non-clinical precaution that can be associated with an individual.\n\nEx:\n- Aggressive\n- Blind\n- Confused\n- Deaf",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PrecautionTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

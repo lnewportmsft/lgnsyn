@@ -1,0 +1,26 @@
+{
+	"name": "relationship-ebwjokvxzo",
+	"properties": {
+		"Name": "relationship-ebwjokvxzo",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "PatientMedicalCondition",
+		"ToTableName": "PatientMedicalConditionTreatmentPlan",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "PatientId",
+				"ToColumnName": "PatientId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"PatientMedicalCondition.cdm.json/PatientMedicalCondition\",\"toEntity\":\"PatientMedicalConditionTreatmentPlan.cdm.json/PatientMedicalConditionTreatmentPlan\",\"joinPairs\":[{\"fromAttribute\":\"PatientId\",\"toAttribute\":\"PatientId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

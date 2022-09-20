@@ -1,0 +1,113 @@
+{
+	"name": "AdvanceDirectiveType",
+	"properties": {
+		"Name": "AdvanceDirectiveType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A means of identifying the instructions given regarding advance directives.\n\nEx:\n- Living Will\n- Durable Power of Attorney\n- Anatomical Donation\n- Do Not Resuscitate\n- Mental Healthcare Directive\n- Psychiatric Care Directive\n- None\n- Exists (for states with regulations preventing disclosure of directive information)",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "AdvanceDirectiveTypeId",
+					"Description": "The unique identifier of an Advance Directive Type.",
+					"BaseAttributeReference": {
+						"Entity": "AdvanceDirectiveType.cdm.json/AdvanceDirectiveType",
+						"Name": "AdvanceDirectiveTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AdvanceDirectiveTypeName",
+					"Description": "The name of the Advance Directive Type.",
+					"BaseAttributeReference": {
+						"Entity": "AdvanceDirectiveType.cdm.json/AdvanceDirectiveType",
+						"Name": "AdvanceDirectiveTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "AdvanceDirectiveTypeDescription",
+					"Description": "The description of the Advance Directive Type.",
+					"BaseAttributeReference": {
+						"Entity": "AdvanceDirectiveType.cdm.json/AdvanceDirectiveType",
+						"Name": "AdvanceDirectiveTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/AdvanceDirectiveType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/AdvanceDirectiveType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"AdvanceDirectiveTypeId\":{\"entity\":\"AdvanceDirectiveType.cdm.json/AdvanceDirectiveType\",\"name\":\"AdvanceDirectiveTypeId\"},\"AdvanceDirectiveTypeName\":{\"entity\":\"AdvanceDirectiveType.cdm.json/AdvanceDirectiveType\",\"name\":\"AdvanceDirectiveTypeName\"},\"AdvanceDirectiveTypeDescription\":{\"entity\":\"AdvanceDirectiveType.cdm.json/AdvanceDirectiveType\",\"name\":\"AdvanceDirectiveTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"AdvanceDirectiveType\",\"path\":\"AdvanceDirectiveType.cdm.json/AdvanceDirectiveType\"},\"description\":\"A means of identifying the instructions given regarding advance directives.\\n\\nEx:\\n- Living Will\\n- Durable Power of Attorney\\n- Anatomical Donation\\n- Do Not Resuscitate\\n- Mental Healthcare Directive\\n- Psychiatric Care Directive\\n- None\\n- Exists (for states with regulations preventing disclosure of directive information)\",\"primaryKey\":[\"AdvanceDirectiveTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AdvanceDirectiveType.cdm.json/AdvanceDirectiveType\",\"name\":\"AdvanceDirectiveTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Advance Directive Type.\",\"isNullable\":false,\"name\":\"AdvanceDirectiveTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AdvanceDirectiveType.cdm.json/AdvanceDirectiveType\",\"name\":\"AdvanceDirectiveTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the Advance Directive Type.\",\"isNullable\":true,\"name\":\"AdvanceDirectiveTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AdvanceDirectiveType.cdm.json/AdvanceDirectiveType\",\"name\":\"AdvanceDirectiveTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of the Advance Directive Type.\",\"isNullable\":true,\"name\":\"AdvanceDirectiveTypeDescription\"}]}}}",
+			"Description": "A means of identifying the instructions given regarding advance directives.\n\nEx:\n- Living Will\n- Durable Power of Attorney\n- Anatomical Donation\n- Do Not Resuscitate\n- Mental Healthcare Directive\n- Psychiatric Care Directive\n- None\n- Exists (for states with regulations preventing disclosure of directive information)",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "AdvanceDirectiveTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,160 @@
+{
+	"name": "PatientNamePrefix",
+	"properties": {
+		"Name": "PatientNamePrefix",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The patient name prefix(s) and it's ordering.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNamePrefix.cdm.json/PatientNamePrefix",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNamePrefix.cdm.json/PatientNamePrefix",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientNameId",
+					"Description": "The unique identifier of a Patient Name.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNamePrefix.cdm.json/PatientNamePrefix",
+						"Name": "PatientNameId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PrefixOrderNumber",
+					"Description": "The ordering of the associated prefix.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNamePrefix.cdm.json/PatientNamePrefix",
+						"Name": "PrefixOrderNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "NamePrefixId",
+					"Description": "The unique identifier of a Prefix.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNamePrefix.cdm.json/PatientNamePrefix",
+						"Name": "NamePrefixId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientNamePrefixNote",
+					"Description": "A note, comment or additional information regarding the patient name prefix.",
+					"BaseAttributeReference": {
+						"Entity": "PatientNamePrefix.cdm.json/PatientNamePrefix",
+						"Name": "PatientNamePrefixNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientNamePrefix",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientNamePrefix",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientNamePrefix.cdm.json/PatientNamePrefix\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientNamePrefix.cdm.json/PatientNamePrefix\",\"name\":\"PatientId\"},\"PatientNameId\":{\"entity\":\"PatientNamePrefix.cdm.json/PatientNamePrefix\",\"name\":\"PatientNameId\"},\"PrefixOrderNumber\":{\"entity\":\"PatientNamePrefix.cdm.json/PatientNamePrefix\",\"name\":\"PrefixOrderNumber\"},\"NamePrefixId\":{\"entity\":\"PatientNamePrefix.cdm.json/PatientNamePrefix\",\"name\":\"NamePrefixId\"},\"PatientNamePrefixNote\":{\"entity\":\"PatientNamePrefix.cdm.json/PatientNamePrefix\",\"name\":\"PatientNamePrefixNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientNamePrefix\",\"path\":\"PatientNamePrefix.cdm.json/PatientNamePrefix\"},\"description\":\"The patient name prefix(s) and it's ordering.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PatientNameId\",\"PrefixOrderNumber\",\"NamePrefixId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNamePrefix.cdm.json/PatientNamePrefix\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNamePrefix.cdm.json/PatientNamePrefix\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNamePrefix.cdm.json/PatientNamePrefix\",\"name\":\"PatientNameId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Name.\",\"isNullable\":false,\"name\":\"PatientNameId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNamePrefix.cdm.json/PatientNamePrefix\",\"name\":\"PrefixOrderNumber\"},\"dataType\":\"integer\",\"description\":\"The ordering of the associated prefix.\",\"isNullable\":false,\"name\":\"PrefixOrderNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNamePrefix.cdm.json/PatientNamePrefix\",\"name\":\"NamePrefixId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Prefix.\",\"isNullable\":false,\"name\":\"NamePrefixId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientNamePrefix.cdm.json/PatientNamePrefix\",\"name\":\"PatientNamePrefixNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the patient name prefix.\",\"isNullable\":true,\"name\":\"PatientNamePrefixNote\"}]}}}",
+			"Description": "The patient name prefix(s) and it's ordering.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PatientNameId,PrefixOrderNumber,NamePrefixId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

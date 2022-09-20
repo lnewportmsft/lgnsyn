@@ -1,0 +1,303 @@
+{
+	"name": "PatientTransunionCreditReport",
+	"properties": {
+		"Name": "PatientTransunionCreditReport",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The TransUnion Credit Report, which is a summary of a member's recent credit history plus additional facts about the Patient that will help creditors judge the consumer's creditworthiness.\n\nThere are four primary categories of information contained in each type of credit report: \n\n1. Personal Information \n2. Credit History \n3. Public Records \n4. Inquiries \n\nA credit report's personal information section includes your:\n-------------------------------------------------------------------------------------------\nName \nCurrent and previous addresses \nSocial Security number \nTelephone number \nDate of birth \nCurrent and previous employers \n\nA credit report does not include information regarding:\n-----------------------------------------------------------------------------------\nRace \nGender \nReligion \nSexual orientation \nNational origin \nMedical history \nChecking or savings accounts \nCredit score \n\nCREDIT HISTORY\n------------------------------\nCredit History\nA credit report's credit history section includes a listing of all the credit accounts you have had in the last ten years. Types of credit accounts include:\n\nRetail credit cards \nBank loans \nFinance company loans \nMortgages \nBank credit cards \nThe credit history section shows creditors how well you have kept your financial promises. Each entry in this section includes:\n\nAccount number \nCreditor's name \nAmount borrowed \nAmount owed \nCredit limit \nDates when the account was opened, updated, or closed \nTimeliness of payments \nLate payments (these are noted as a negative activity) \n\nPUBLIC RECORDS:\n--------------------------------\nPublic Records\nA credit report's public records section includes: \n\nTax liens \nBankruptcies \nCourt judgments (including child support judgments) \n\nAny negative activity in this section reflects poorly on your creditworthiness. Even if an item has been paid in full, the presence of even a one-time occurrence indicates a potential future concern for creditors. \n\nINQUIRIES:\n-------------------\nA credit report's inquiries section includes a listing of all parties who have requested a copy of your credit report. Your rights to privacy are protected by the Fair Credit Reporting Act (FCRA), and therefore only inquiries from those entities with a permissible purpose are granted access to your report.\n\nInquiries that do not appear on the business version of your credit report are promotional inquiries or account management inquiries. Both promotional and account management inquiries are not counted as official inquiries.\n\nPROMOTIONAL INQUIRIES:\n-----------------------------------------------\nVendors query our database based on a set of parameters and receive mailing address information for individuals matching their criteria. These vendors are not viewing your report. They just want to give people who meet their parameters a firm offer of credit or insurance.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "DateReported",
+					"Description": "The date of the Credit Report.",
+					"BaseAttributeReference": {
+						"Entity": "PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport",
+						"Name": "DateReported"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "FileNumber",
+					"Description": "The Patient's TransUnion file number.",
+					"BaseAttributeReference": {
+						"Entity": "PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport",
+						"Name": "FileNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "SocialSecurityNumber",
+					"Description": "The Patient's social security number.",
+					"BaseAttributeReference": {
+						"Entity": "PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport",
+						"Name": "SocialSecurityNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 9,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "InFilesSinceDate",
+					"Description": "The date that the Patient was originally in the TransUnion files.",
+					"BaseAttributeReference": {
+						"Entity": "PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport",
+						"Name": "InFilesSinceDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PersonalCreditScore",
+					"Description": "The Patient's personal TransUnion FICO Score.",
+					"BaseAttributeReference": {
+						"Entity": "PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport",
+						"Name": "PersonalCreditScore"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 3,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "FicoScore",
+					"Description": "The associated FICO Score.\n\nA consumer three FICO scores, one for each credit bureau\n\nA FICO score is a credit score developed by Fair Isaac & Co. Credit scoring is a method of determining the likelihood that credit users will pay their bills. Fair, Isaac began its pioneering work with credit scoring in the late 1950s and, since then, scoring has become widely accepted by lenders as a reliable means of credit evaluation. \n\nA credit score attempts to condense a borrowers credit history into a single number. Fair, Isaac & Co. and the credit bureaus do not reveal how these scores are computed. The Federal Trade Commission has ruled this to be acceptable.\n\nCredit scores are calculated by using scoring models and mathematical tables that assign points for different pieces of information which best predict future credit performance. Developing these models involves studying how thousands, even millions, of people have used credit. Score-model developers find predictive factors in the data that have proven to indicate future credit performance. Models can be developed from different sources of data. Credit-bureau models are developed from information in consumer credit-bureau reports. \n\nCredit scores analyze a borrower's credit history considering numerous factors such as:\n\nLate payments \nThe amount of time credit has been established \nThe amount of credit used versus the amount of credit available \nLength of time at present residence \nEmployment history \nNegative credit information such as bankruptcies, charge-offs, collections, etc. \n\nThere are really three FICO scores computed by data provided by each of the three bureaus: Experian, Trans Union and Equifax. \n\nSome lenders use one of these three scores, while other lenders may use the middle score.\n\nTRW/FICO Model: This scoring system developed by TRW in association with Fair, Isaac, and Company, Inc. The score enables credit grantor to identify credit prospect with the best credit opportunities and avoid losses due to charge-offs, repossessions, collections, and bankruptcies.\n\nBeacon: This scoring system developed by Equifax in association with Fair, Isaac, and Company, Inc. Beacon helps identifies and projects the full range of serious consumer credit risks which include bankruptcies, charge-offs, repossessions, loan defaults, and serious delinquencies.\n\nEmpirica: This scoring system developed by Trans Union in association with Fair, Isaac, and Company, Inc. Empirica has been fully validated to predict the performance odds, slow pays, no pays, and bankruptcies with unprecedented accuracy.",
+					"BaseAttributeReference": {
+						"Entity": "PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport",
+						"Name": "FicoScore"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 3,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "CurrentAddress",
+					"Description": "The 'street/po box' component of the consumer's address.",
+					"BaseAttributeReference": {
+						"Entity": "PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport",
+						"Name": "CurrentAddress"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 512,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "CurrentCity",
+					"Description": "The 'city' component of the consumer's  address.",
+					"BaseAttributeReference": {
+						"Entity": "PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport",
+						"Name": "CurrentCity"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "CurrentState",
+					"Description": "The 'state' component of the consumer's address.",
+					"BaseAttributeReference": {
+						"Entity": "PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport",
+						"Name": "CurrentState"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 64,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "CurrentZipCode",
+					"Description": "The 'zip code' component of the consumer's address.",
+					"BaseAttributeReference": {
+						"Entity": "PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport",
+						"Name": "CurrentZipCode"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 11,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "DateOfBirth",
+					"Description": "The consumer's date of birth.",
+					"BaseAttributeReference": {
+						"Entity": "PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport",
+						"Name": "DateOfBirth"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "TelephoneNumber",
+					"Description": "The consumer's  phone number.",
+					"BaseAttributeReference": {
+						"Entity": "PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport",
+						"Name": "TelephoneNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 15,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientTransunionCreditReport",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientTransunionCreditReport",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"PatientId\"},\"DateReported\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"DateReported\"},\"FileNumber\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"FileNumber\"},\"SocialSecurityNumber\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"SocialSecurityNumber\"},\"InFilesSinceDate\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"InFilesSinceDate\"},\"PersonalCreditScore\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"PersonalCreditScore\"},\"FicoScore\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"FicoScore\"},\"CurrentAddress\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"CurrentAddress\"},\"CurrentCity\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"CurrentCity\"},\"CurrentState\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"CurrentState\"},\"CurrentZipCode\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"CurrentZipCode\"},\"DateOfBirth\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"DateOfBirth\"},\"TelephoneNumber\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"TelephoneNumber\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientTransunionCreditReport\",\"path\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\"},\"description\":\"The TransUnion Credit Report, which is a summary of a member's recent credit history plus additional facts about the Patient that will help creditors judge the consumer's creditworthiness.\\n\\nThere are four primary categories of information contained in each type of credit report: \\n\\n1. Personal Information \\n2. Credit History \\n3. Public Records \\n4. Inquiries \\n\\nA credit report's personal information section includes your:\\n-------------------------------------------------------------------------------------------\\nName \\nCurrent and previous addresses \\nSocial Security number \\nTelephone number \\nDate of birth \\nCurrent and previous employers \\n\\nA credit report does not include information regarding:\\n-----------------------------------------------------------------------------------\\nRace \\nGender \\nReligion \\nSexual orientation \\nNational origin \\nMedical history \\nChecking or savings accounts \\nCredit score \\n\\nCREDIT HISTORY\\n------------------------------\\nCredit History\\nA credit report's credit history section includes a listing of all the credit accounts you have had in the last ten years. Types of credit accounts include:\\n\\nRetail credit cards \\nBank loans \\nFinance company loans \\nMortgages \\nBank credit cards \\nThe credit history section shows creditors how well you have kept your financial promises. Each entry in this section includes:\\n\\nAccount number \\nCreditor's name \\nAmount borrowed \\nAmount owed \\nCredit limit \\nDates when the account was opened, updated, or closed \\nTimeliness of payments \\nLate payments (these are noted as a negative activity) \\n\\nPUBLIC RECORDS:\\n--------------------------------\\nPublic Records\\nA credit report's public records section includes: \\n\\nTax liens \\nBankruptcies \\nCourt judgments (including child support judgments) \\n\\nAny negative activity in this section reflects poorly on your creditworthiness. Even if an item has been paid in full, the presence of even a one-time occurrence indicates a potential future concern for creditors. \\n\\nINQUIRIES:\\n-------------------\\nA credit report's inquiries section includes a listing of all parties who have requested a copy of your credit report. Your rights to privacy are protected by the Fair Credit Reporting Act (FCRA), and therefore only inquiries from those entities with a permissible purpose are granted access to your report.\\n\\nInquiries that do not appear on the business version of your credit report are promotional inquiries or account management inquiries. Both promotional and account management inquiries are not counted as official inquiries.\\n\\nPROMOTIONAL INQUIRIES:\\n-----------------------------------------------\\nVendors query our database based on a set of parameters and receive mailing address information for individuals matching their criteria. These vendors are not viewing your report. They just want to give people who meet their parameters a firm offer of credit or insurance.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"DateReported\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"DateReported\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date of the Credit Report.\",\"isNullable\":false,\"name\":\"DateReported\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"FileNumber\"},\"dataType\":\"integer\",\"description\":\"The Patient's TransUnion file number.\",\"isNullable\":false,\"name\":\"FileNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"SocialSecurityNumber\"},\"dataType\":\"decimal\",\"dataTypeLength\":9,\"description\":\"The Patient's social security number.\",\"isNullable\":true,\"scale\":0,\"name\":\"SocialSecurityNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"InFilesSinceDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that the Patient was originally in the TransUnion files.\",\"isNullable\":true,\"name\":\"InFilesSinceDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"PersonalCreditScore\"},\"dataType\":\"decimal\",\"dataTypeLength\":3,\"description\":\"The Patient's personal TransUnion FICO Score.\",\"isNullable\":true,\"scale\":0,\"name\":\"PersonalCreditScore\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"FicoScore\"},\"dataType\":\"decimal\",\"dataTypeLength\":3,\"description\":\"The associated FICO Score.\\n\\nA consumer three FICO scores, one for each credit bureau\\n\\nA FICO score is a credit score developed by Fair Isaac & Co. Credit scoring is a method of determining the likelihood that credit users will pay their bills. Fair, Isaac began its pioneering work with credit scoring in the late 1950s and, since then, scoring has become widely accepted by lenders as a reliable means of credit evaluation. \\n\\nA credit score attempts to condense a borrowers credit history into a single number. Fair, Isaac & Co. and the credit bureaus do not reveal how these scores are computed. The Federal Trade Commission has ruled this to be acceptable.\\n\\nCredit scores are calculated by using scoring models and mathematical tables that assign points for different pieces of information which best predict future credit performance. Developing these models involves studying how thousands, even millions, of people have used credit. Score-model developers find predictive factors in the data that have proven to indicate future credit performance. Models can be developed from different sources of data. Credit-bureau models are developed from information in consumer credit-bureau reports. \\n\\nCredit scores analyze a borrower's credit history considering numerous factors such as:\\n\\nLate payments \\nThe amount of time credit has been established \\nThe amount of credit used versus the amount of credit available \\nLength of time at present residence \\nEmployment history \\nNegative credit information such as bankruptcies, charge-offs, collections, etc. \\n\\nThere are really three FICO scores computed by data provided by each of the three bureaus: Experian, Trans Union and Equifax. \\n\\nSome lenders use one of these three scores, while other lenders may use the middle score.\\n\\nTRW/FICO Model: This scoring system developed by TRW in association with Fair, Isaac, and Company, Inc. The score enables credit grantor to identify credit prospect with the best credit opportunities and avoid losses due to charge-offs, repossessions, collections, and bankruptcies.\\n\\nBeacon: This scoring system developed by Equifax in association with Fair, Isaac, and Company, Inc. Beacon helps identifies and projects the full range of serious consumer credit risks which include bankruptcies, charge-offs, repossessions, loan defaults, and serious delinquencies.\\n\\nEmpirica: This scoring system developed by Trans Union in association with Fair, Isaac, and Company, Inc. Empirica has been fully validated to predict the performance odds, slow pays, no pays, and bankruptcies with unprecedented accuracy.\",\"isNullable\":true,\"scale\":0,\"name\":\"FicoScore\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"CurrentAddress\"},\"dataType\":\"string\",\"dataTypeLength\":512,\"description\":\"The 'street/po box' component of the consumer's address.\",\"isNullable\":true,\"name\":\"CurrentAddress\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"CurrentCity\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The 'city' component of the consumer's  address.\",\"isNullable\":true,\"name\":\"CurrentCity\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"CurrentState\"},\"dataType\":\"string\",\"dataTypeLength\":64,\"description\":\"The 'state' component of the consumer's address.\",\"isNullable\":true,\"name\":\"CurrentState\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"CurrentZipCode\"},\"dataType\":\"decimal\",\"dataTypeLength\":11,\"description\":\"The 'zip code' component of the consumer's address.\",\"isNullable\":true,\"scale\":0,\"name\":\"CurrentZipCode\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"DateOfBirth\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The consumer's date of birth.\",\"isNullable\":true,\"name\":\"DateOfBirth\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientTransunionCreditReport.cdm.json/PatientTransunionCreditReport\",\"name\":\"TelephoneNumber\"},\"dataType\":\"decimal\",\"dataTypeLength\":15,\"description\":\"The consumer's  phone number.\",\"isNullable\":true,\"scale\":0,\"name\":\"TelephoneNumber\"}]}}}",
+			"Description": "The TransUnion Credit Report, which is a summary of a member's recent credit history plus additional facts about the Patient that will help creditors judge the consumer's creditworthiness.\n\nThere are four primary categories of information contained in each type of credit report: \n\n1. Personal Information \n2. Credit History \n3. Public Records \n4. Inquiries \n\nA credit report's personal information section includes your:\n-------------------------------------------------------------------------------------------\nName \nCurrent and previous addresses \nSocial Security number \nTelephone number \nDate of birth \nCurrent and previous employers \n\nA credit report does not include information regarding:\n-----------------------------------------------------------------------------------\nRace \nGender \nReligion \nSexual orientation \nNational origin \nMedical history \nChecking or savings accounts \nCredit score \n\nCREDIT HISTORY\n------------------------------\nCredit History\nA credit report's credit history section includes a listing of all the credit accounts you have had in the last ten years. Types of credit accounts include:\n\nRetail credit cards \nBank loans \nFinance company loans \nMortgages \nBank credit cards \nThe credit history section shows creditors how well you have kept your financial promises. Each entry in this section includes:\n\nAccount number \nCreditor's name \nAmount borrowed \nAmount owed \nCredit limit \nDates when the account was opened, updated, or closed \nTimeliness of payments \nLate payments (these are noted as a negative activity) \n\nPUBLIC RECORDS:\n--------------------------------\nPublic Records\nA credit report's public records section includes: \n\nTax liens \nBankruptcies \nCourt judgments (including child support judgments) \n\nAny negative activity in this section reflects poorly on your creditworthiness. Even if an item has been paid in full, the presence of even a one-time occurrence indicates a potential future concern for creditors. \n\nINQUIRIES:\n-------------------\nA credit report's inquiries section includes a listing of all parties who have requested a copy of your credit report. Your rights to privacy are protected by the Fair Credit Reporting Act (FCRA), and therefore only inquiries from those entities with a permissible purpose are granted access to your report.\n\nInquiries that do not appear on the business version of your credit report are promotional inquiries or account management inquiries. Both promotional and account management inquiries are not counted as official inquiries.\n\nPROMOTIONAL INQUIRIES:\n-----------------------------------------------\nVendors query our database based on a set of parameters and receive mailing address information for individuals matching their criteria. These vendors are not viewing your report. They just want to give people who meet their parameters a firm offer of credit or insurance.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,DateReported",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

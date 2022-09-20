@@ -1,0 +1,162 @@
+{
+	"name": "PatientWorkerClass",
+	"properties": {
+		"Name": "PatientWorkerClass",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The Worker Class characteristics defined for the  Patient.\n\nExamples:\n-  Private For-Profit Wage and Salary Worker\n-  Private Not-For-Profit Wage and Salary Worker\n-  Local Government Worker\n-  State Government Worker\n-  Federal Government Worker\n-  Self-Employed Worker\n-  Unpaid Family Worker",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientWorkerClass.cdm.json/PatientWorkerClass",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientWorkerClass.cdm.json/PatientWorkerClass",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "WorkerClassId",
+					"Description": "The unique identifier of a Worker Class.",
+					"BaseAttributeReference": {
+						"Entity": "PatientWorkerClass.cdm.json/PatientWorkerClass",
+						"Name": "WorkerClassId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientWorkerClass.cdm.json/PatientWorkerClass",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientWorkerClass.cdm.json/PatientWorkerClass",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PatientWorkerClassNote",
+					"Description": "A note, comment or additional information regarding the Patient - Worker Class relationship.",
+					"BaseAttributeReference": {
+						"Entity": "PatientWorkerClass.cdm.json/PatientWorkerClass",
+						"Name": "PatientWorkerClassNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientWorkerClass",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientWorkerClass",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientWorkerClass.cdm.json/PatientWorkerClass\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientWorkerClass.cdm.json/PatientWorkerClass\",\"name\":\"PatientId\"},\"WorkerClassId\":{\"entity\":\"PatientWorkerClass.cdm.json/PatientWorkerClass\",\"name\":\"WorkerClassId\"},\"PeriodStartDate\":{\"entity\":\"PatientWorkerClass.cdm.json/PatientWorkerClass\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientWorkerClass.cdm.json/PatientWorkerClass\",\"name\":\"PeriodEndDate\"},\"PatientWorkerClassNote\":{\"entity\":\"PatientWorkerClass.cdm.json/PatientWorkerClass\",\"name\":\"PatientWorkerClassNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientWorkerClass\",\"path\":\"PatientWorkerClass.cdm.json/PatientWorkerClass\"},\"description\":\"The Worker Class characteristics defined for the  Patient.\\n\\nExamples:\\n-  Private For-Profit Wage and Salary Worker\\n-  Private Not-For-Profit Wage and Salary Worker\\n-  Local Government Worker\\n-  State Government Worker\\n-  Federal Government Worker\\n-  Self-Employed Worker\\n-  Unpaid Family Worker\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"WorkerClassId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientWorkerClass.cdm.json/PatientWorkerClass\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientWorkerClass.cdm.json/PatientWorkerClass\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientWorkerClass.cdm.json/PatientWorkerClass\",\"name\":\"WorkerClassId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Worker Class.\",\"isNullable\":false,\"name\":\"WorkerClassId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientWorkerClass.cdm.json/PatientWorkerClass\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientWorkerClass.cdm.json/PatientWorkerClass\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":true,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientWorkerClass.cdm.json/PatientWorkerClass\",\"name\":\"PatientWorkerClassNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient - Worker Class relationship.\",\"isNullable\":true,\"name\":\"PatientWorkerClassNote\"}]}}}",
+			"Description": "The Worker Class characteristics defined for the  Patient.\n\nExamples:\n-  Private For-Profit Wage and Salary Worker\n-  Private Not-For-Profit Wage and Salary Worker\n-  Local Government Worker\n-  State Government Worker\n-  Federal Government Worker\n-  Self-Employed Worker\n-  Unpaid Family Worker",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,WorkerClassId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

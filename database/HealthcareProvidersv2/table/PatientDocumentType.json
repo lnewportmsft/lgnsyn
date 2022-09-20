@@ -1,0 +1,113 @@
+{
+	"name": "PatientDocumentType",
+	"properties": {
+		"Name": "PatientDocumentType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A categorization of patient document(s) based on common function, application or usage.\n\nEx:\n- Patient Enrollment\n- Patient Test Results\n- Patient Medical Notes\n- Patient Financial Assistance Request\n- Patient Pre-authorization\n- Patient Encounter Notes",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientDocumentTypeId",
+					"Description": "The unique identifier of a Patient Document Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientDocumentType.cdm.json/PatientDocumentType",
+						"Name": "PatientDocumentTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientDocumentTypeName",
+					"Description": "The name of the Patient Document Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientDocumentType.cdm.json/PatientDocumentType",
+						"Name": "PatientDocumentTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientDocumentTypeDescription",
+					"Description": "The description of the Patient Document Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientDocumentType.cdm.json/PatientDocumentType",
+						"Name": "PatientDocumentTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientDocumentType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientDocumentType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientDocumentTypeId\":{\"entity\":\"PatientDocumentType.cdm.json/PatientDocumentType\",\"name\":\"PatientDocumentTypeId\"},\"PatientDocumentTypeName\":{\"entity\":\"PatientDocumentType.cdm.json/PatientDocumentType\",\"name\":\"PatientDocumentTypeName\"},\"PatientDocumentTypeDescription\":{\"entity\":\"PatientDocumentType.cdm.json/PatientDocumentType\",\"name\":\"PatientDocumentTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientDocumentType\",\"path\":\"PatientDocumentType.cdm.json/PatientDocumentType\"},\"description\":\"A categorization of patient document(s) based on common function, application or usage.\\n\\nEx:\\n- Patient Enrollment\\n- Patient Test Results\\n- Patient Medical Notes\\n- Patient Financial Assistance Request\\n- Patient Pre-authorization\\n- Patient Encounter Notes\",\"primaryKey\":[\"PatientDocumentTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientDocumentType.cdm.json/PatientDocumentType\",\"name\":\"PatientDocumentTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Document Type.\",\"isNullable\":false,\"name\":\"PatientDocumentTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientDocumentType.cdm.json/PatientDocumentType\",\"name\":\"PatientDocumentTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the Patient Document Type.\",\"isNullable\":true,\"name\":\"PatientDocumentTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientDocumentType.cdm.json/PatientDocumentType\",\"name\":\"PatientDocumentTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of the Patient Document Type.\",\"isNullable\":true,\"name\":\"PatientDocumentTypeDescription\"}]}}}",
+			"Description": "A categorization of patient document(s) based on common function, application or usage.\n\nEx:\n- Patient Enrollment\n- Patient Test Results\n- Patient Medical Notes\n- Patient Financial Assistance Request\n- Patient Pre-authorization\n- Patient Encounter Notes",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientDocumentTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

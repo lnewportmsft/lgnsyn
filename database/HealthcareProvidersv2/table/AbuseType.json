@@ -1,0 +1,113 @@
+{
+	"name": "AbuseType",
+	"properties": {
+		"Name": "AbuseType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "When used as a legal term in healthcare, it normally refers to actions that do not involve intentional misrepresentations in billing but which, nevertheless, result in improper conduct. Consequences can result in civil liability and administrative sanctions. An example of abuse is the excessive use of medical supplies. \n\nTypes of abuse include:\n- False application \n- False status\n- False address",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "AbuseTypeId",
+					"Description": "The unique identifier of a type of abuse.",
+					"BaseAttributeReference": {
+						"Entity": "AbuseType.cdm.json/AbuseType",
+						"Name": "AbuseTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "AbuseTypeName",
+					"Description": "The name of a type of abuse.",
+					"BaseAttributeReference": {
+						"Entity": "AbuseType.cdm.json/AbuseType",
+						"Name": "AbuseTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "AbuseTypeDescription",
+					"Description": "The description of a type of abuse.",
+					"BaseAttributeReference": {
+						"Entity": "AbuseType.cdm.json/AbuseType",
+						"Name": "AbuseTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/AbuseType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/AbuseType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"AbuseTypeId\":{\"entity\":\"AbuseType.cdm.json/AbuseType\",\"name\":\"AbuseTypeId\"},\"AbuseTypeName\":{\"entity\":\"AbuseType.cdm.json/AbuseType\",\"name\":\"AbuseTypeName\"},\"AbuseTypeDescription\":{\"entity\":\"AbuseType.cdm.json/AbuseType\",\"name\":\"AbuseTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"AbuseType\",\"path\":\"AbuseType.cdm.json/AbuseType\"},\"description\":\"When used as a legal term in healthcare, it normally refers to actions that do not involve intentional misrepresentations in billing but which, nevertheless, result in improper conduct. Consequences can result in civil liability and administrative sanctions. An example of abuse is the excessive use of medical supplies. \\n\\nTypes of abuse include:\\n- False application \\n- False status\\n- False address\",\"primaryKey\":[\"AbuseTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AbuseType.cdm.json/AbuseType\",\"name\":\"AbuseTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a type of abuse.\",\"isNullable\":false,\"name\":\"AbuseTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AbuseType.cdm.json/AbuseType\",\"name\":\"AbuseTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a type of abuse.\",\"isNullable\":true,\"name\":\"AbuseTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"AbuseType.cdm.json/AbuseType\",\"name\":\"AbuseTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a type of abuse.\",\"isNullable\":true,\"name\":\"AbuseTypeDescription\"}]}}}",
+			"Description": "When used as a legal term in healthcare, it normally refers to actions that do not involve intentional misrepresentations in billing but which, nevertheless, result in improper conduct. Consequences can result in civil liability and administrative sanctions. An example of abuse is the excessive use of medical supplies. \n\nTypes of abuse include:\n- False application \n- False status\n- False address",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "AbuseTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

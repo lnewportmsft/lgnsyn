@@ -1,0 +1,227 @@
+{
+	"name": "PatientFamilyMemberMedicalCondition",
+	"properties": {
+		"Name": "PatientFamilyMemberMedicalCondition",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one or more medical conditions ascribed to the Patient's Family Member. These medical conditions are as reported by the patient. In some countries, privacy rules do not allow the use of the actual family member's medical records and therefore the only information that can be used is the information provided by the patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientFamilyMemberId",
+					"Description": "The unique identifier of a Patient Family Member.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition",
+						"Name": "PatientFamilyMemberId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "MedicalConditionId",
+					"Description": "The unique identifier of a medical condition.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition",
+						"Name": "MedicalConditionId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date for which the associated data is effective or 'as-of'.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "FirstReportedDate",
+					"Description": "The date that the medical condition was first reported.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition",
+						"Name": "FirstReportedDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "MedicalSeverityId",
+					"Description": "The unique identifier of a the medical severity of an allergy or medical condition.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition",
+						"Name": "MedicalSeverityId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "MedicalConditionStatusTypeId",
+					"Description": "The unique identifier of a medical condition status type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition",
+						"Name": "MedicalConditionStatusTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientFamilyMemberMedicalConditionNote",
+					"Description": "A note, comment or additional information regarding the medical condition.",
+					"BaseAttributeReference": {
+						"Entity": "PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition",
+						"Name": "PatientFamilyMemberMedicalConditionNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFamilyMemberMedicalCondition",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientFamilyMemberMedicalCondition",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"PatientId\"},\"PatientFamilyMemberId\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"PatientFamilyMemberId\"},\"MedicalConditionId\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"MedicalConditionId\"},\"PeriodStartDate\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"PeriodEndDate\"},\"FirstReportedDate\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"FirstReportedDate\"},\"MedicalSeverityId\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"MedicalSeverityId\"},\"MedicalConditionStatusTypeId\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"MedicalConditionStatusTypeId\"},\"PatientFamilyMemberMedicalConditionNote\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"PatientFamilyMemberMedicalConditionNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientFamilyMemberMedicalCondition\",\"path\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\"},\"description\":\"The one or more medical conditions ascribed to the Patient's Family Member. These medical conditions are as reported by the patient. In some countries, privacy rules do not allow the use of the actual family member's medical records and therefore the only information that can be used is the information provided by the patient.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"PatientFamilyMemberId\",\"MedicalConditionId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"PatientFamilyMemberId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Family Member.\",\"isNullable\":false,\"name\":\"PatientFamilyMemberId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"MedicalConditionId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a medical condition.\",\"isNullable\":false,\"name\":\"MedicalConditionId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date for which the associated data is effective or 'as-of'.\",\"isNullable\":false,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"FirstReportedDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The date that the medical condition was first reported.\",\"isNullable\":true,\"name\":\"FirstReportedDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"MedicalSeverityId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a the medical severity of an allergy or medical condition.\",\"isNullable\":true,\"name\":\"MedicalSeverityId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"MedicalConditionStatusTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a medical condition status type.\",\"isNullable\":true,\"name\":\"MedicalConditionStatusTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientFamilyMemberMedicalCondition.cdm.json/PatientFamilyMemberMedicalCondition\",\"name\":\"PatientFamilyMemberMedicalConditionNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the medical condition.\",\"isNullable\":true,\"name\":\"PatientFamilyMemberMedicalConditionNote\"}]}}}",
+			"Description": "The one or more medical conditions ascribed to the Patient's Family Member. These medical conditions are as reported by the patient. In some countries, privacy rules do not allow the use of the actual family member's medical records and therefore the only information that can be used is the information provided by the patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,PatientFamilyMemberId,MedicalConditionId,PeriodStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

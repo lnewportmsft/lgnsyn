@@ -1,0 +1,162 @@
+{
+	"name": "FocusGroupPatient",
+	"properties": {
+		"Name": "FocusGroupPatient",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one of more Focus Groups that the Patient is a member of.\n\nA special interest group that focuses upon a specific Product or Product usage.\n\nFocus Groups are most often manufacturer-sponsored groups designed to provide feedback directly to the manufacturer regarding their products prior to product mass marketing.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "FocusGroupPatient.cdm.json/FocusGroupPatient",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "FocusGroupPatient.cdm.json/FocusGroupPatient",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "FocusGroupId",
+					"Description": "The unique identifier of the Focus Group.",
+					"BaseAttributeReference": {
+						"Entity": "FocusGroupPatient.cdm.json/FocusGroupPatient",
+						"Name": "FocusGroupId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "MembershipStartDate",
+					"Description": "The starting date of the Individual's membership or association with the Focus Group.",
+					"BaseAttributeReference": {
+						"Entity": "FocusGroupPatient.cdm.json/FocusGroupPatient",
+						"Name": "MembershipStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "MembershipEndDate",
+					"Description": "The ending date of the Individuals membership or association with the Focus Group.",
+					"BaseAttributeReference": {
+						"Entity": "FocusGroupPatient.cdm.json/FocusGroupPatient",
+						"Name": "MembershipEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					}
+				},
+				{
+					"Name": "FocusGroupMembershipNote",
+					"Description": "A note, comment or additional detail regarding the Focus Group membership.",
+					"BaseAttributeReference": {
+						"Entity": "FocusGroupPatient.cdm.json/FocusGroupPatient",
+						"Name": "FocusGroupMembershipNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/FocusGroupPatient",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/FocusGroupPatient",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"FocusGroupPatient.cdm.json/FocusGroupPatient\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"FocusGroupPatient.cdm.json/FocusGroupPatient\",\"name\":\"PatientId\"},\"FocusGroupId\":{\"entity\":\"FocusGroupPatient.cdm.json/FocusGroupPatient\",\"name\":\"FocusGroupId\"},\"MembershipStartDate\":{\"entity\":\"FocusGroupPatient.cdm.json/FocusGroupPatient\",\"name\":\"MembershipStartDate\"},\"MembershipEndDate\":{\"entity\":\"FocusGroupPatient.cdm.json/FocusGroupPatient\",\"name\":\"MembershipEndDate\"},\"FocusGroupMembershipNote\":{\"entity\":\"FocusGroupPatient.cdm.json/FocusGroupPatient\",\"name\":\"FocusGroupMembershipNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"FocusGroupPatient\",\"path\":\"FocusGroupPatient.cdm.json/FocusGroupPatient\"},\"description\":\"The one of more Focus Groups that the Patient is a member of.\\n\\nA special interest group that focuses upon a specific Product or Product usage.\\n\\nFocus Groups are most often manufacturer-sponsored groups designed to provide feedback directly to the manufacturer regarding their products prior to product mass marketing.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"FocusGroupId\",\"MembershipStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"FocusGroupPatient.cdm.json/FocusGroupPatient\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"FocusGroupPatient.cdm.json/FocusGroupPatient\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"FocusGroupPatient.cdm.json/FocusGroupPatient\",\"name\":\"FocusGroupId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of the Focus Group.\",\"isNullable\":false,\"name\":\"FocusGroupId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"FocusGroupPatient.cdm.json/FocusGroupPatient\",\"name\":\"MembershipStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The starting date of the Individual's membership or association with the Focus Group.\",\"isNullable\":false,\"name\":\"MembershipStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"FocusGroupPatient.cdm.json/FocusGroupPatient\",\"name\":\"MembershipEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The ending date of the Individuals membership or association with the Focus Group.\",\"isNullable\":false,\"name\":\"MembershipEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"FocusGroupPatient.cdm.json/FocusGroupPatient\",\"name\":\"FocusGroupMembershipNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional detail regarding the Focus Group membership.\",\"isNullable\":true,\"name\":\"FocusGroupMembershipNote\"}]}}}",
+			"Description": "The one of more Focus Groups that the Patient is a member of.\n\nA special interest group that focuses upon a specific Product or Product usage.\n\nFocus Groups are most often manufacturer-sponsored groups designed to provide feedback directly to the manufacturer regarding their products prior to product mass marketing.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,FocusGroupId,MembershipStartDate",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,227 @@
+{
+	"name": "PatientVitalSign",
+	"properties": {
+		"Name": "PatientVitalSign",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "The one of more vital signs observed (optionally) in conjunction with an associated Encounter.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientVitalSign.cdm.json/PatientVitalSign",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientVitalSign.cdm.json/PatientVitalSign",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "VitalSignId",
+					"Description": "The unique identifier of a Sign.",
+					"BaseAttributeReference": {
+						"Entity": "PatientVitalSign.cdm.json/PatientVitalSign",
+						"Name": "VitalSignId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "VitalSignObservedTimestamp",
+					"Description": "The timestamp that the sign was reported.",
+					"BaseAttributeReference": {
+						"Entity": "PatientVitalSign.cdm.json/PatientVitalSign",
+						"Name": "VitalSignObservedTimestamp"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "timestamp",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"TimestampFormat": "YYYY-MM-DD HH:MM:SS.fffffffff",
+							"HIVE_TYPE_STRING": "timestamp"
+						}
+					}
+				},
+				{
+					"Name": "PatientVitalSignValue",
+					"Description": "The value of the patient vital sign observed.",
+					"BaseAttributeReference": {
+						"Entity": "PatientVitalSign.cdm.json/PatientVitalSign",
+						"Name": "PatientVitalSignValue"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 18,
+						"Scale": 8,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					}
+				},
+				{
+					"Name": "UnitOfMeasureId",
+					"Description": "The unique identifier of a Unit Of Measure.",
+					"BaseAttributeReference": {
+						"Entity": "PatientVitalSign.cdm.json/PatientVitalSign",
+						"Name": "UnitOfMeasureId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientVitalSignNote",
+					"Description": "A note, comment or additional information regarding the Patient Vital Sign.",
+					"BaseAttributeReference": {
+						"Entity": "PatientVitalSign.cdm.json/PatientVitalSign",
+						"Name": "PatientVitalSignNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "DiagnosticMedicalEquipmentId",
+					"Description": "The unique identifier of a Diagnostic Medical Equipment.",
+					"BaseAttributeReference": {
+						"Entity": "PatientVitalSign.cdm.json/PatientVitalSign",
+						"Name": "DiagnosticMedicalEquipmentId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "DiagnosticMedicalEquipmentTypeId",
+					"Description": "The unique identifier of a Diagnostic Medical Equipment Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientVitalSign.cdm.json/PatientVitalSign",
+						"Name": "DiagnosticMedicalEquipmentTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "EncounterId",
+					"Description": "The unique identifier of an Encounter.",
+					"BaseAttributeReference": {
+						"Entity": "PatientVitalSign.cdm.json/PatientVitalSign",
+						"Name": "EncounterId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientVitalSign",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientVitalSign",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ServiceProviderId\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"ServiceProviderId\"},\"PatientId\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"PatientId\"},\"VitalSignId\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"VitalSignId\"},\"VitalSignObservedTimestamp\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"VitalSignObservedTimestamp\"},\"PatientVitalSignValue\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"PatientVitalSignValue\"},\"UnitOfMeasureId\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"UnitOfMeasureId\"},\"PatientVitalSignNote\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"PatientVitalSignNote\"},\"DiagnosticMedicalEquipmentId\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"DiagnosticMedicalEquipmentId\"},\"DiagnosticMedicalEquipmentTypeId\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"DiagnosticMedicalEquipmentTypeId\"},\"EncounterId\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"EncounterId\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientVitalSign\",\"path\":\"PatientVitalSign.cdm.json/PatientVitalSign\"},\"description\":\"The one of more vital signs observed (optionally) in conjunction with an associated Encounter.\",\"primaryKey\":[\"ServiceProviderId\",\"PatientId\",\"VitalSignId\",\"VitalSignObservedTimestamp\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"VitalSignId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Sign.\",\"isNullable\":false,\"name\":\"VitalSignId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"VitalSignObservedTimestamp\"},\"dataType\":\"timestamp\",\"description\":\"The timestamp that the sign was reported.\",\"isNullable\":false,\"name\":\"VitalSignObservedTimestamp\",\"timestampFormat\":\"YYYY-MM-DD HH:MM:SS.fffffffff\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"PatientVitalSignValue\"},\"dataType\":\"decimal\",\"dataTypeLength\":18,\"description\":\"The value of the patient vital sign observed.\",\"isNullable\":true,\"scale\":8,\"name\":\"PatientVitalSignValue\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"UnitOfMeasureId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Unit Of Measure.\",\"isNullable\":true,\"name\":\"UnitOfMeasureId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"PatientVitalSignNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the Patient Vital Sign.\",\"isNullable\":true,\"name\":\"PatientVitalSignNote\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"DiagnosticMedicalEquipmentId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Diagnostic Medical Equipment.\",\"isNullable\":true,\"name\":\"DiagnosticMedicalEquipmentId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"DiagnosticMedicalEquipmentTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Diagnostic Medical Equipment Type.\",\"isNullable\":true,\"name\":\"DiagnosticMedicalEquipmentTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientVitalSign.cdm.json/PatientVitalSign\",\"name\":\"EncounterId\"},\"dataType\":\"long\",\"description\":\"The unique identifier of an Encounter.\",\"isNullable\":false,\"name\":\"EncounterId\"}]}}}",
+			"Description": "The one of more vital signs observed (optionally) in conjunction with an associated Encounter.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ServiceProviderId,PatientId,VitalSignId,VitalSignObservedTimestamp",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

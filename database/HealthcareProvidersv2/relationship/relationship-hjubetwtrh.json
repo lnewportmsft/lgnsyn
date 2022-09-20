@@ -1,0 +1,26 @@
+{
+	"name": "relationship-hjubetwtrh",
+	"properties": {
+		"Name": "relationship-hjubetwtrh",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Timeslot",
+		"ToTableName": "PatientHealthcarePreference",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "TimeslotId",
+				"ToColumnName": "TimeslotId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Timeslot.cdm.json/Timeslot\",\"toEntity\":\"PatientHealthcarePreference.cdm.json/PatientHealthcarePreference\",\"joinPairs\":[{\"fromAttribute\":\"TimeslotId\",\"toAttribute\":\"TimeslotId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

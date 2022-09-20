@@ -1,0 +1,26 @@
+{
+	"name": "relationship-kujxvmtzau",
+	"properties": {
+		"Name": "relationship-kujxvmtzau",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Patient",
+		"ToTableName": "RelatedPatient",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ServiceProviderId",
+				"ToColumnName": "RelatedServiceProviderId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Patient.cdm.json/Patient\",\"toEntity\":\"RelatedPatient.cdm.json/RelatedPatient\",\"joinPairs\":[{\"fromAttribute\":\"ServiceProviderId\",\"toAttribute\":\"RelatedServiceProviderId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

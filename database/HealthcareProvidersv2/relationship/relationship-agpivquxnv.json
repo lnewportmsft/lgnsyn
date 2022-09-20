@@ -1,0 +1,26 @@
+{
+	"name": "relationship-agpivquxnv",
+	"properties": {
+		"Name": "relationship-agpivquxnv",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "ScreeningMethodology",
+		"ToTableName": "PatientScreening",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ScreeningMethodologyId",
+				"ToColumnName": "ScreeningMethodologyId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"ScreeningMethodology.cdm.json/ScreeningMethodology\",\"toEntity\":\"PatientScreening.cdm.json/PatientScreening\",\"joinPairs\":[{\"fromAttribute\":\"ScreeningMethodologyId\",\"toAttribute\":\"ScreeningMethodologyId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

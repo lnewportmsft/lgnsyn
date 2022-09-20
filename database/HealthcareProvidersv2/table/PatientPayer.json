@@ -1,0 +1,128 @@
+{
+	"name": "PatientPayer",
+	"properties": {
+		"Name": "PatientPayer",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "Payers that have an obligation to pay for patients. This includes insurance companies as well as individuals that have sponsored or made a guarantee to make payments for any services provided on behalf of the patient.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientId",
+					"Description": "The unique identifier of a Patient.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPayer.cdm.json/PatientPayer",
+						"Name": "PatientId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "SponsorId",
+					"Description": "The unique identifier of a Sponsor.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPayer.cdm.json/PatientPayer",
+						"Name": "SponsorId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "ServiceProviderId",
+					"Description": "The unique identifier of a Service Provider.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPayer.cdm.json/PatientPayer",
+						"Name": "ServiceProviderId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientPayerNote",
+					"Description": "A note, comment or additional information regarding the patient payer.",
+					"BaseAttributeReference": {
+						"Entity": "PatientPayer.cdm.json/PatientPayer",
+						"Name": "PatientPayerNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPayer",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientPayer",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientId\":{\"entity\":\"PatientPayer.cdm.json/PatientPayer\",\"name\":\"PatientId\"},\"SponsorId\":{\"entity\":\"PatientPayer.cdm.json/PatientPayer\",\"name\":\"SponsorId\"},\"ServiceProviderId\":{\"entity\":\"PatientPayer.cdm.json/PatientPayer\",\"name\":\"ServiceProviderId\"},\"PatientPayerNote\":{\"entity\":\"PatientPayer.cdm.json/PatientPayer\",\"name\":\"PatientPayerNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientPayer\",\"path\":\"PatientPayer.cdm.json/PatientPayer\"},\"description\":\"Payers that have an obligation to pay for patients. This includes insurance companies as well as individuals that have sponsored or made a guarantee to make payments for any services provided on behalf of the patient.\",\"primaryKey\":[\"PatientId\",\"SponsorId\",\"ServiceProviderId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPayer.cdm.json/PatientPayer\",\"name\":\"PatientId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient.\",\"isNullable\":false,\"name\":\"PatientId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPayer.cdm.json/PatientPayer\",\"name\":\"SponsorId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Sponsor.\",\"isNullable\":false,\"name\":\"SponsorId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPayer.cdm.json/PatientPayer\",\"name\":\"ServiceProviderId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Service Provider.\",\"isNullable\":false,\"name\":\"ServiceProviderId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientPayer.cdm.json/PatientPayer\",\"name\":\"PatientPayerNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the patient payer.\",\"isNullable\":true,\"name\":\"PatientPayerNote\"}]}}}",
+			"Description": "Payers that have an obligation to pay for patients. This includes insurance companies as well as individuals that have sponsored or made a guarantee to make payments for any services provided on behalf of the patient.",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientId,SponsorId,ServiceProviderId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

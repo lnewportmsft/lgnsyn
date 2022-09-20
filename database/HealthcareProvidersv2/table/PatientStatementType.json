@@ -1,0 +1,113 @@
+{
+	"name": "PatientStatementType",
+	"properties": {
+		"Name": "PatientStatementType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "HealthcareProvidersv2"
+		},
+		"Description": "A means of categorizing or grouping patient statements.\n\nEx.:\n- Vulnerability Statement\n- Capacity / Competence Statement\n- Mental Well-Being Statement\n- Physical Well-Being Statement\n- FDA Procedure Eligibility Statement",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "PatientStatementTypeId",
+					"Description": "The unique identifier of a Patient Statement Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientStatementType.cdm.json/PatientStatementType",
+						"Name": "PatientStatementTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					}
+				},
+				{
+					"Name": "PatientStatementTypeName",
+					"Description": "The name of the Patient Statement Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientStatementType.cdm.json/PatientStatementType",
+						"Name": "PatientStatementTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				},
+				{
+					"Name": "PatientStatementTypeDescription",
+					"Description": "The description of the Patient Statement Type.",
+					"BaseAttributeReference": {
+						"Entity": "PatientStatementType.cdm.json/PatientStatementType",
+						"Name": "PatientStatementTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					}
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "csv",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientStatementType",
+					"delimiter": ",",
+					"multiLine": "false",
+					"firstRowAsHeader": "false",
+					"serialization.format": "1",
+					"escape": "\\",
+					"quote": "\"",
+					"FormatTypeSetToDatabaseDefault": true,
+					"header": "false"
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcareProvidersv2/PatientStatementType",
+				"Properties": {
+					"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"PatientStatementTypeId\":{\"entity\":\"PatientStatementType.cdm.json/PatientStatementType\",\"name\":\"PatientStatementTypeId\"},\"PatientStatementTypeName\":{\"entity\":\"PatientStatementType.cdm.json/PatientStatementType\",\"name\":\"PatientStatementTypeName\"},\"PatientStatementTypeDescription\":{\"entity\":\"PatientStatementType.cdm.json/PatientStatementType\",\"name\":\"PatientStatementTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"PatientStatementType\",\"path\":\"PatientStatementType.cdm.json/PatientStatementType\"},\"description\":\"A means of categorizing or grouping patient statements.\\n\\nEx.:\\n- Vulnerability Statement\\n- Capacity / Competence Statement\\n- Mental Well-Being Statement\\n- Physical Well-Being Statement\\n- FDA Procedure Eligibility Statement\",\"primaryKey\":[\"PatientStatementTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientStatementType.cdm.json/PatientStatementType\",\"name\":\"PatientStatementTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Patient Statement Type.\",\"isNullable\":false,\"name\":\"PatientStatementTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientStatementType.cdm.json/PatientStatementType\",\"name\":\"PatientStatementTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the Patient Statement Type.\",\"isNullable\":true,\"name\":\"PatientStatementTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"PatientStatementType.cdm.json/PatientStatementType\",\"name\":\"PatientStatementTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of the Patient Statement Type.\",\"isNullable\":true,\"name\":\"PatientStatementTypeDescription\"}]}}}",
+			"Description": "A means of categorizing or grouping patient statements.\n\nEx.:\n- Vulnerability Statement\n- Capacity / Competence Statement\n- Mental Well-Being Statement\n- Physical Well-Being Statement\n- FDA Procedure Eligibility Statement",
+			"DisplayFolderInfo": "{\"name\":\"Patient\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "PatientStatementTypeId",
+			"spark.sql.sources.provider": "csv",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}
