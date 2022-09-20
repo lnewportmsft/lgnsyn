@@ -1,0 +1,24 @@
+{
+	"name": "HealthcarePayors",
+	"properties": {
+		"Name": "HealthcarePayors",
+		"EntityType": "DATABASE",
+		"Description": "",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"DerivedModelDBInfo": "{\"ModelDirectives\":{\"BaseModel\":{\"Name\":\"HealthcareInsurance\",\"Version\":\"1.1.0\"}}}",
+			"IsSyMSCDMDatabase": true
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://lgnsynfs@lgnsynlake.dfs.core.windows.net/HealthcarePayors",
+			"Properties": {
+				"FormatType": "csv",
+				"LinkedServiceName": "lgnsyn-WorkspaceDefaultStorage"
+			}
+		}
+	},
+	"type": "DATABASE"
+}

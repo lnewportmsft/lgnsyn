@@ -1,0 +1,26 @@
+{
+	"name": "relationship-hteraqsele",
+	"properties": {
+		"Name": "relationship-hteraqsele",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "HealthcarePayors"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Channel",
+		"ToTableName": "Order",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ChannelId",
+				"ToColumnName": "DistributionChannelId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Channel.cdm.json/Channel\",\"toEntity\":\"Order.cdm.json/Order\",\"joinPairs\":[{\"fromAttribute\":\"ChannelId\",\"toAttribute\":\"DistributionChannelId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}
